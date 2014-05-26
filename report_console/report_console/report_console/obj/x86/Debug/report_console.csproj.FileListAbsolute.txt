@@ -1,0 +1,9 @@
+c:\users\ee\documents\visual studio 2010\Projects\report_console\report_console\bin\Debug\report_console.exe
+c:\users\ee\documents\visual studio 2010\Projects\report_console\report_console\bin\Debug\report_console.pdb
+c:\users\ee\documents\visual studio 2010\Projects\report_console\report_console\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\ee\documents\visual studio 2010\Projects\report_console\report_console\obj\x86\Debug\report_console.exe
+c:\users\ee\documents\visual studio 2010\Projects\report_console\report_console\obj\x86\Debug\report_console.pdb
+D:\HL5.0 Automation\report_console\report_console\report_console\obj\x86\Debug\report_console.exe
+D:\HL5.0 Automation\report_console\report_console\report_console\obj\x86\Debug\report_console.pdb
+D:\HL5.0 Automation\report_console\report_console\report_console\bin\Debug\report_console.exe
+D:\HL5.0 Automation\report_console\report_console\report_console\bin\Debug\report_console.pdb
