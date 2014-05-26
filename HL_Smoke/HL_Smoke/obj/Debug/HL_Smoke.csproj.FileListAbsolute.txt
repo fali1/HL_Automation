@@ -18,3 +18,23 @@ C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug\
 C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.dll
 C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.pdb
 C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.csprojResolveAssemblyReference.cache
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.pdb
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\nunit.framework.dll
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\nunit.mocks.dll
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\Selenium.WebDriverBackedSelenium.dll
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\ThoughtWorks.Selenium.Core.dll
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\WebDriver.dll
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\WebDriver.Support.dll
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\nunit.framework.xml
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\Selenium.WebDriverBackedSelenium.pdb
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\Selenium.WebDriverBackedSelenium.xml
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\ThoughtWorks.Selenium.Core.pdb
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\ThoughtWorks.Selenium.Core.xml
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\WebDriver.pdb
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\WebDriver.xml
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\WebDriver.Support.pdb
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\WebDriver.Support.xml
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.csprojResolveAssemblyReference.cache
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.dll
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.pdb
