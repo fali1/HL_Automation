@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-05-22" time="17:23:41">
+  <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5477" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
+  <culture-info current-culture="en-US" current-uiculture="en-US" />
+  <test-suite type="Assembly" name="C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Success" success="True" time="52.427" asserts="0">
+    <results>
+      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Success" success="True" time="52.425" asserts="0">
+        <results>
+          <test-suite type="TestFixture" name="SmokeTest" executed="True" result="Success" success="True" time="52.423" asserts="1">
+            <results>
+              <test-case name="HL_Smoke.SmokeTest.Reports_Panel" executed="True" result="Success" success="True" time="39.791" asserts="1">
+                <reason>
+                  <message><![CDATA[Reports_Panel Passed...]]></message>
+                </reason>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
