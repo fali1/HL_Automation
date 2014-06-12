@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="true">
-  <TopNode>[0-1043]C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll</TopNode>
-  <SelectedNode>[0-1043]C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll</SelectedNode>
+  <TopNode>[0-1042]D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll</TopNode>
+  <SelectedNode>[0-1042]D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
-    <Node UniqueName="[0-1043]C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" Expanded="true" />
-    <Node UniqueName="[0-1044]HL_Smoke" Expanded="true" />
+    <Node UniqueName="[0-1042]D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" Expanded="true" />
+    <Node UniqueName="[0-1043]HL_Smoke" Expanded="true" />
     <Node UniqueName="[0-1001]HL_Smoke.SmokeTest" Expanded="true" />
-    <Node UniqueName="[0-1024]HL_Smoke.SmokeTest.i_Timezone" Checked="true" />
-    <Node UniqueName="[0-1033]HL_Smoke.SmokeTest.j_File_System_Interface" Checked="true" />
-    <Node UniqueName="[0-1037]HL_Smoke.SmokeTest.k_Add_Department" Checked="true" />
-    <Node UniqueName="[0-1039]HL_Smoke.SmokeTest.License_Page" Checked="true" />
-    <Node UniqueName="[0-1003]HL_Smoke.SmokeTest.Reports_Panel" Checked="true" />
     <Node UniqueName="[0-1002]HL_Smoke.SmokeTest.shortcut_keys" Checked="true" />
   </Nodes>
 </VisualState>

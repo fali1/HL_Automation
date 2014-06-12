@@ -204,19 +204,28 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#profile/my_data/user_data"))
             {
-
+                Thread.Sleep(2000);
               //  Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+                
             
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Users data");
             
             }
 
             // Change Password
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).Click();
             driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("pcp");
+
+            Thread.Sleep(1000);
+
+            //   Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text + "*");
+
+            Console.WriteLine("*" + driver.Url + "*");
 
             if (driver.Url.Contains("#profile/my_data/change_password"))
             {
@@ -227,9 +236,11 @@ namespace HL_Smoke
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Change Password");
 
             }
+
+            /*
 
             // Common System Information
             driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("psi");
@@ -1481,7 +1492,7 @@ namespace HL_Smoke
                 Assert.Fail("Shortcutkeys ");
 
             }
-
+            */
         }
 
 
