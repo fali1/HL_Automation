@@ -229,7 +229,7 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#profile/my_data/change_password"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Change Password", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
@@ -240,21 +240,21 @@ namespace HL_Smoke
 
             }
 
-            /*
+           
 
             // Common System Information
             driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("psi");
 
             if (driver.Url.Contains("#profile/my_data/common_system_information"))
             {
-
+                Thread.Sleep(2000);
                // Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Common System Information");
 
             }
 
@@ -263,14 +263,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#profile/my_data/usage_reports"))
             {
-
+                Thread.Sleep(2000);
              //   Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Usage Reports");
 
             }
 
@@ -279,14 +279,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#profile/my_data/bio_information"))
             {
-
+                Thread.Sleep(2000);
               //  Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Bio information");
 
             }
 
@@ -295,14 +295,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#profile/favorites/recipients"))
             {
-
+                Thread.Sleep(2000);
               //  Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Recipients");
 
             }
 
@@ -311,14 +311,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#profile/recent_messaging/statistics"))
             {
-
+                Thread.Sleep(2000);
               //  Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Statistics");
 
             }
 
@@ -327,14 +327,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#administration/system/global_settings"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Global Settings", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Global Settings");
 
             }
 
@@ -343,14 +343,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#administration/system/directories"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Directories & Queues", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Directories");
 
             }
 
@@ -359,14 +359,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#administration/system/ldap_settings"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("LDAP", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys LDAP Settings");
 
             }
 
@@ -375,14 +375,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#administration/system/log_settings"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Log Settings", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Log Settings");
 
             }
 
@@ -391,14 +391,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#administration/system/db_settings"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Database Configuration Setting", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys DB Settings");
 
             }
 
@@ -407,14 +407,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#administration/system/timezone_settings"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Time Zone Setting", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Timezone Settings");
 
             }
 
@@ -423,14 +423,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#administration/delivery/messengers"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Messengers", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Messengers");
 
             }
 
@@ -439,14 +439,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#administration/delivery/carriers"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Carriers", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Carriers");
 
             }
 
@@ -455,14 +455,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#administration/delivery/filters"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Filters Panel", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Filters");
 
             }
 
@@ -471,14 +471,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#administration/monitoring_failover/system_attendant_settings"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("System Attendant Settings", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys System Attendant Settings");
 
             }
 
@@ -487,14 +487,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#administration/monitoring_failover/backup_settings"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Backup Service", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Backup Settings");
 
             }
 
@@ -503,14 +503,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#administration/services_logs/services"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Services", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Services");
 
             }
 
@@ -519,14 +519,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#administration/services_logs/logs"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Logs Panel", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Logs");
 
             }
 
@@ -535,14 +535,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#administration/services_logs/sessions_manager"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Sessions Manager", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Sessions Manager");
 
             }
 
@@ -551,14 +551,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#about"))
             {
-
-                Assert.AreEqual("About", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+                Thread.Sleep(2000);
+                Assert.AreEqual("About", driver.FindElement(By.XPath("//div[@class='main_container pg_about']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys About");
 
             }
 
@@ -567,14 +567,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/accounts/users"))
             {
-
-                Assert.AreEqual("Users ", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+                Thread.Sleep(2000);
+                Assert.AreEqual("Users", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Users");
 
             }
 
@@ -583,30 +583,30 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/accounts/user_groups"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("User Groups", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys User Groups");
 
             }
 
-            // department panel
+            // Department panel
             driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sdp"); 
 
             if (driver.Url.Contains("#settings/accounts/departments"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Department panel");
 
             }
 
@@ -615,14 +615,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/accounts/recipient_users"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Recipient Users Main", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Recipient Users");
 
             }
 
@@ -631,14 +631,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/integrations/alarm_notification_gateway"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Alarm Notification Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Alarm Notification Gateway");
 
             }
 
@@ -647,46 +647,46 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/integrations/file_system_interface"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("File System Interface", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys File System Interface");
 
             }
 
             // Email Gateway
-            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("seg");
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sig");
 
-            if (driver.Url.Contains("#settings/integrations/email_gateway"))
+            if (driver.Url.Contains("#settings/integrations/email_gateway/view"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Email Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Email Gateway");
 
             }
 
             // SNPP Gateway
             driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sng");
 
-            if (driver.Url.Contains("#settings/integrations/snpp_gateway"))
+            if (driver.Url.Contains("#settings/integrations/snpp_gateway/view"))
             {
-
-                Assert.AreEqual("SNPP Gateway ", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+                Thread.Sleep(2000);
+                Assert.AreEqual("SNPP Gateway", driver.FindElement(By.XPath("//div[@id='main']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys SNPP Gateway");
 
             }
 
@@ -695,14 +695,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/integrations/xmpp_gateway"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("XMPP Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys XMPP Gateway");
 
             }
 
@@ -711,14 +711,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/integrations/tap_gateway"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("TAP Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys TAP Gateway");
 
             }
 
@@ -727,14 +727,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/integrations/snmp_alerts"))
             {
-
+                Thread.Sleep(2000);
                // Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys SNMP ALerts");
 
             }
 
@@ -743,14 +743,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/mass_notifications/websignup-settings"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Web Sign-up Settings", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Websign up Settings");
 
             }
 
@@ -759,14 +759,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/mass_notifications/gis_settings"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("GIS Integration", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys GIS Settings");
 
             }
 
@@ -775,14 +775,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/mass_notifications/web_signup_profiles"))
             {
-
+                Thread.Sleep(2000);
               //  Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Websign up Profiles");
 
             }
 
@@ -791,14 +791,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/mass_notifications/web_signup_topic_profiles"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Web Sign-up Topic Settings", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Websign up Topic Profiles");
 
             }
 
@@ -807,14 +807,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/mass_notifications/web_signup_characteristics_profile"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Web Sign-up characteristics Settings", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Websign up Characteristics Profiles");
 
             }
 
@@ -823,14 +823,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/mass_notifications/web_signup_recipients"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Web Sign-up Registered Recipients", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Websign up Recipients");
 
             }
 
@@ -839,14 +839,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/enterprise_mobility/activation"))
             {
-
-                Assert.AreEqual("Activation Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Thread.Sleep(2000);
+                Assert.AreEqual("Activation Panel", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Enterprise Mobility Activation");
 
             }
 
@@ -855,14 +855,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/enterprise_mobility/configuration"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("HNP Configuration", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Enterprise Mobility Configuration");
 
             }
 
@@ -871,14 +871,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/enterprise_mobility/general_policy"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("General Policy", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys General Ploicy");
 
             }
 
@@ -887,14 +887,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/templates/message_templates"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Message Template", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Message Templates");
 
             }
 
@@ -903,14 +903,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/templates/schedule_templates"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Schedule Template", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Schedule Templates");
 
             }
 
@@ -919,14 +919,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/2way_actions/events_feedback"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Feedback", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Events Feedback");
 
             }
 
@@ -935,14 +935,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#settings/2way_actions/response_actions"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Response Actions Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Response Actions");
 
             }
 
@@ -951,14 +951,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#recipients/groups/broadcast_group"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Broadcast Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Broadcast Group");
 
             }
 
@@ -967,14 +967,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#recipients/groups/on_duty_group"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("On-Duty Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Onduty Group");
 
             }
 
@@ -983,14 +983,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#recipients/groups/escalation_group"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Escalation Group", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Escalation Group");
 
             }
 
@@ -999,14 +999,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#recipients/groups/rotation_group"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Rotation Group", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Rotation Group");
 
             }
 
@@ -1015,14 +1015,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#recipients/groups/follow_me_group"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Follow-Me Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Follow me Group");
 
             }
 
@@ -1031,14 +1031,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#recipients/groups/subscription_group"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Subscription Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Subscription Group");
 
             }
 
@@ -1047,14 +1047,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#recipients/devices/receivers"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Receivers Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Receivers");
 
             }
 
@@ -1063,14 +1063,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#recipients/devices/receiver_search"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Receiver Search", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Receiver Search");
 
             }
 
@@ -1079,14 +1079,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#send/send/primary_send"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Primary Send Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Primary Send");
 
             }
 
@@ -1095,14 +1095,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#send/send/quick_send"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Quick Send Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Quick Send");
 
             }
 
@@ -1111,14 +1111,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#send/send/escalation_send"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Escalation Send Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Escalation Send");
 
             }
 
@@ -1127,14 +1127,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#send/send/fax_send"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Fax Send Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Fax Send");
 
             }
 
@@ -1143,14 +1143,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#send/send/voice_send"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Voice Send Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Voice Send");
 
             }
 
@@ -1159,14 +1159,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#send/send/attribute_send"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Attribute Send Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Attribute Send");
 
             }
 
@@ -1175,14 +1175,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#send/send/quota_send"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Quota Send Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Quota Send");
 
             }
 
@@ -1191,14 +1191,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#send/mass_notification/web_signup_notification"))
             {
-
+                Thread.Sleep(2000);
               //  Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Websign up Notification");
 
             }
 
@@ -1207,14 +1207,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#send/mass_notification/map_based_notification"))
             {
-
+                Thread.Sleep(2000);
             //    Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Map based Notification");
 
             }
 
@@ -1223,14 +1223,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#send/send_management/campaign_progress"))
             {
-
+                Thread.Sleep(2000);
              //   Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Campaign Progress");
 
             }
 
@@ -1239,7 +1239,7 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#send/send_management/confirm_message"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual(true, driver.FindElement(By.XPath("//form[@id='jobConfirmationLightbox']")).Displayed);
 
                 driver.FindElement(By.Id("btnCloseJobConfirm")).Click();
@@ -1249,7 +1249,7 @@ namespace HL_Smoke
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Confirm Message");
 
             }
 
@@ -1258,14 +1258,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#send/send_management/resend_message"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Resend Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Resend Message");
 
             }
 
@@ -1274,14 +1274,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#queues/message_queues/Escalation/3"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Escalation Queue");
 
             }
 
@@ -1290,14 +1290,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#queues/message_queues/Scheduled/2"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Scheduled Queue");
 
             }
 
@@ -1306,14 +1306,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#queues/message_queues/Waiting/10"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Waiting Queue");
 
             }
 
@@ -1322,14 +1322,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#queues/paging_queues/Fax/6"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Fax Queue");
 
             }
 
@@ -1338,14 +1338,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#queues/paging_queues/Voice/7"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Voice Queue");
 
             }
 
@@ -1354,14 +1354,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#queues/paging_queues/Default/101"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Default Queue");
 
             }
 
@@ -1370,14 +1370,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#queues/terminal_queues/Failed/5"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Failed Queue");
 
             }
 
@@ -1386,14 +1386,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#queues/terminal_queues/Filtered/9"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Filtered Queue");
 
             }
 
@@ -1402,14 +1402,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#queues/terminal_queues/Completed/4"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Completed Queue");
 
             }
 
@@ -1418,14 +1418,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#reports/main/reports/list"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Report List");
 
             }
 
@@ -1434,14 +1434,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#reports/main/reports/summary"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Report Summary");
 
             }
 
@@ -1450,14 +1450,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#reports/main/stats"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Stats");
 
             }
 
@@ -1466,14 +1466,14 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#reports/main/reports/webSignup"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Websign up");
 
             }
 
@@ -1482,17 +1482,17 @@ namespace HL_Smoke
 
             if (driver.Url.Contains("#reports"))
             {
-
+                Thread.Sleep(2000);
                 Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
             {
 
-                Assert.Fail("Shortcutkeys ");
+                Assert.Fail("Shortcutkeys Reports");
 
             }
-            */
+           
         }
 
 
