@@ -107,7 +107,7 @@ namespace HL_Smoke
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-             System.Diagnostics.Debugger.Launch();// launch debugger
+        //     System.Diagnostics.Debugger.Launch();// launch debugger
 
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
@@ -198,7 +198,7 @@ namespace HL_Smoke
         [Test]
         public void shortcut_keys()
         {
-
+            
             // Users data
             driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("pud");
 
@@ -217,6 +217,7 @@ namespace HL_Smoke
             
             }
 
+           /*
             // Change Password
             driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).Click();
             driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("pcp");
@@ -230,7 +231,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#profile/my_data/change_password"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Change Password", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+             //   Assert.AreEqual("Change Password", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -239,7 +240,7 @@ namespace HL_Smoke
                 Assert.Fail("Shortcutkeys Change Password");
 
             }
-
+            */
            
 
             // Common System Information
@@ -520,7 +521,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#administration/services_logs/logs"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Logs Panel", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+                Assert.AreEqual("Logs", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -840,7 +841,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#settings/enterprise_mobility/activation"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Activation Panel", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+                Assert.AreEqual("Activation", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -856,7 +857,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#settings/enterprise_mobility/configuration"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("HNP Configuration", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("HNP Configuration", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -872,7 +873,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#settings/enterprise_mobility/general_policy"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("General Policy", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("General Policy", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -888,7 +889,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#settings/templates/message_templates"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Message Template", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Message Template", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -920,7 +921,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#settings/2way_actions/events_feedback"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Feedback", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Feedback", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -936,7 +937,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#settings/2way_actions/response_actions"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Response Actions Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Response Actions Panel", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -984,7 +985,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#recipients/groups/escalation_group"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Escalation Group", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Escalation Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
@@ -1000,7 +1001,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#recipients/groups/rotation_group"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Rotation Group", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Rotate Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
@@ -1048,7 +1049,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#recipients/devices/receivers"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Receivers Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Receivers", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
@@ -1061,10 +1062,10 @@ namespace HL_Smoke
             // Receiver Search
             driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("crh");
 
-            if (driver.Url.Contains("#recipients/devices/receiver_search"))
+            if (driver.Url.Contains("#recipients/devices/reciever_search"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Receiver Search", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Receiver Search", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -1080,7 +1081,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#send/send/primary_send"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Primary Send Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Primary Send Panel", driver.FindElement(By.Id("lblPanelTitle")).Text);
 
             }
             else
@@ -1096,7 +1097,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#send/send/quick_send"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Quick Send Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Quick Send Panel", driver.FindElement(By.Id("lblPanelTitle")).Text);
 
             }
             else
@@ -1112,7 +1113,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#send/send/escalation_send"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Escalation Send Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Escalation Send Panel", driver.FindElement(By.Id("lblPanelTitle")).Text);
 
             }
             else
@@ -1128,7 +1129,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#send/send/fax_send"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Fax Send Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Fax Send Panel", driver.FindElement(By.Id("lblPanelTitle")).Text);
 
             }
             else
@@ -1144,7 +1145,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#send/send/voice_send"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Voice Send Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Voice Send Panel", driver.FindElement(By.Id("lblPanelTitle")).Text);
 
             }
             else
@@ -1160,7 +1161,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#send/send/attribute_send"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Attribute Send Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Attribute Send Panel", driver.FindElement(By.Id("lblPanelTitle")).Text);
 
             }
             else
@@ -1176,7 +1177,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#send/send/quota_send"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Quota Send Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Quota Send Panel", driver.FindElement(By.Id("lblPanelTitle")).Text);
 
             }
             else
@@ -1259,7 +1260,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#send/send_management/resend_message"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Resend Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Resend Panel", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -1275,7 +1276,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/message_queues/Escalation/3"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Escalation Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
@@ -1291,7 +1292,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/message_queues/Scheduled/2"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Scheduled Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
@@ -1307,7 +1308,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/message_queues/Waiting/10"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Waiting Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
@@ -1323,7 +1324,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/paging_queues/Fax/6"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Fax Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
@@ -1339,7 +1340,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/paging_queues/Voice/7"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Voice Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
@@ -1355,7 +1356,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/paging_queues/Default/101"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Default Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
@@ -1371,7 +1372,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/terminal_queues/Failed/5"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Failed Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
@@ -1387,7 +1388,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/terminal_queues/Filtered/9"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Filtered Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
@@ -1403,7 +1404,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/terminal_queues/Completed/4"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Completed Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
             else
@@ -1419,7 +1420,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#reports/main/reports/list"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Reports", driver.FindElement(By.Id("main_title")).Text);
 
             }
             else
@@ -1435,7 +1436,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#reports/main/reports/summary"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Reports", driver.FindElement(By.Id("main_title")).Text);
 
             }
             else
@@ -1451,7 +1452,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#reports/main/stats"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Statistics", driver.FindElement(By.Id("main_title")).Text);
 
             }
             else
@@ -1467,7 +1468,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#reports/main/reports/webSignup"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Reports", driver.FindElement(By.Id("main_title")).Text);
 
             }
             else
@@ -1483,7 +1484,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#reports"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Reports", driver.FindElement(By.Id("main_title")).Text);
 
             }
             else
