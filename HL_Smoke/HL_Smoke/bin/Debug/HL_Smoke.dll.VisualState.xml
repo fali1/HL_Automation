@@ -7,6 +7,17 @@
     <Node UniqueName="[0-1042]D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" Expanded="true" />
     <Node UniqueName="[0-1043]HL_Smoke" Expanded="true" />
     <Node UniqueName="[0-1001]HL_Smoke.SmokeTest" Expanded="true" />
+    <Node UniqueName="[0-1030]HL_Smoke.SmokeTest.a_Add_User" Checked="true" />
+    <Node UniqueName="[0-1031]HL_Smoke.SmokeTest.b_Add_User_Group" Checked="true" />
+    <Node UniqueName="[0-1034]HL_Smoke.SmokeTest.c_Add_Messenger" Checked="true" />
+    <Node UniqueName="[0-1035]HL_Smoke.SmokeTest.d_Add_Carrier" Checked="true" />
+    <Node UniqueName="[0-1021]HL_Smoke.SmokeTest.e_Add_Receiver" Checked="true" />
+    <Node UniqueName="[0-1016]HL_Smoke.SmokeTest.g_Add_Broadcast_Group" Checked="true" />
+    <Node UniqueName="[0-1014]HL_Smoke.SmokeTest.h_Add_Escalation_Group" Checked="true" />
+    <Node UniqueName="[0-1012]HL_Smoke.SmokeTest.i_Add_Follow_me_Group" Checked="true" />
+    <Node UniqueName="[0-1011]HL_Smoke.SmokeTest.j_Add_On_Duty_Group" Checked="true" />
+    <Node UniqueName="[0-1013]HL_Smoke.SmokeTest.k_Add_Rotate_Group" Checked="true" />
+    <Node UniqueName="[0-1015]HL_Smoke.SmokeTest.l_Add_Subscription_Group" Checked="true" />
     <Node UniqueName="[0-1002]HL_Smoke.SmokeTest.shortcut_keys" Checked="true" />
   </Nodes>
 </VisualState>

@@ -1899,7 +1899,7 @@ namespace HL_Smoke
 
 
         [Test]
-        public void Add_On_Duty_Group()
+        public void j_Add_On_Duty_Group()
         {
             string receiver_name = "receiver_smtp";
             string on_duty_group_name = "On_Duty_Group3";
@@ -2007,7 +2007,7 @@ namespace HL_Smoke
 
 
         [Test]
-        public void Add_Follow_me_Group()
+        public void i_Add_Follow_me_Group()
         {
             string receiver_name = "receiver_smtp";
             string follow_me_group_name = "Follow_me_Group3";
@@ -2156,7 +2156,7 @@ namespace HL_Smoke
         }
 
         [Test]
-        public void Add_Rotate_Group()
+        public void k_Add_Rotate_Group()
         {
             string receiver_name = "receiver_smtp";
             string rotate_group_name = "Rotate_Group3";
@@ -2225,7 +2225,7 @@ namespace HL_Smoke
         }
 
         [Test]
-        public void Add_Escalation_Group()
+        public void h_Add_Escalation_Group()
         {
 
             string receiver_name = "receiver_smtp";
@@ -2305,7 +2305,7 @@ namespace HL_Smoke
         }
 
         [Test]
-        public void Add_Subscription_Group()
+        public void l_Add_Subscription_Group()
         {
             string receiver_name = "receiver_smtp";
             string subscription_group_name = "Subscription_Group4";
@@ -2369,7 +2369,7 @@ namespace HL_Smoke
 
 
         [Test]
-        public void Add_Broadcast_Group()
+        public void g_Add_Broadcast_Group()
         {
             string broadcast_group_name = "Broadcast_Group3";
             string broadcast_group_description = "Broadcast Group Description";
@@ -2943,7 +2943,7 @@ namespace HL_Smoke
             Assert.AreEqual("Receivers Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             driver.FindElement(By.XPath(".//div[@class='filter_panel']/a[text()='Add Reciever']")).Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(5000);
 
             driver.FindElement(By.Id("txtName")).Clear();
             driver.FindElement(By.Id("txtName")).SendKeys(receiver_name);
@@ -2992,7 +2992,7 @@ namespace HL_Smoke
         }
 
         [Test]
-        public void Quick_Send_Panel()
+        public void o_Quick_Send_Panel()
         {
             string pin_number = "testm703@gmail.com";
             string carrier_name = "smtp_carrier";
@@ -3055,7 +3055,7 @@ namespace HL_Smoke
 
 
         [Test]
-        public void Primary_Send_Panel()
+        public void n_Primary_Send_Panel()
         {
             string receiver_name = "receiver_smtp";
             string primary_message = "Test Automation Message";
@@ -3140,7 +3140,7 @@ namespace HL_Smoke
 
 
         [Test]
-        public void i_Timezone()
+        public void Timezone()
         {
             string timezone_name = "Karachi Timezone";
             string timezone_desc = "Karachi Timezone description";
@@ -3610,7 +3610,7 @@ namespace HL_Smoke
 
 
         [Test]
-        public void g_Add_Tap_Gateway()
+        public void Add_Tap_Gateway()
         {
             string port = "1452";
             string Initial_String = "Initial String";
@@ -3782,7 +3782,7 @@ namespace HL_Smoke
 
            
             driver.FindElement(By.LinkText("Add User")).Click();
-            Thread.Sleep(3000);
+            Thread.Sleep(5000);
 
             driver.FindElement(By.Id("txtName")).Clear();
             
@@ -3920,7 +3920,7 @@ namespace HL_Smoke
             }*/
 
             driver.FindElement(By.LinkText("Add User Group")).Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
             
             driver.FindElement(By.Id("txtname")).Clear();
             
@@ -4057,7 +4057,7 @@ namespace HL_Smoke
 
 
         [Test]
-        public void j_File_System_Interface()
+        public void File_System_Interface()
         {
             string hiplink_url = "info@folio3.com";
             string spool_dir = @"C:\Program Files (x86)\HipLink Software\Hiplink\test";
@@ -4365,7 +4365,7 @@ namespace HL_Smoke
                                                                               
                           
                         driver.FindElement(By.Id("btnMsngr")).Click();
-                        Thread.Sleep(2000);
+                        Thread.Sleep(5000);
                         driver.FindElement(By.Id("txtMessangerName")).Clear();
                         driver.FindElement(By.Id("txtMessangerName")).SendKeys(messenger_name);
 
@@ -4519,7 +4519,7 @@ namespace HL_Smoke
 
 
             driver.FindElement(By.Id("btnaddcarrier")).Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
 
 
             driver.FindElement(By.Id("carrierName")).Clear();
@@ -4752,7 +4752,7 @@ namespace HL_Smoke
 
 
         [Test]
-        public void k_Add_Department()
+        public void m_Add_Department()
         {
 
             string user_group = "ug2";

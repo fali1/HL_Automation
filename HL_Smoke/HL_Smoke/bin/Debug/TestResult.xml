@@ -1,15 +1,130 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-06-17" time="16:47:24">
+<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="12" errors="10" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-06-19" time="19:34:42">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5477" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Success" success="True" time="219.427" asserts="0">
+  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Failure" success="False" time="881.690" asserts="0">
     <results>
-      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Success" success="True" time="219.410" asserts="0">
+      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Failure" success="False" time="881.669" asserts="0">
         <results>
-          <test-suite type="TestFixture" name="SmokeTest" executed="True" result="Success" success="True" time="219.407" asserts="1">
+          <test-suite type="TestFixture" name="SmokeTest" executed="True" result="Failure" success="False" time="881.665" asserts="1">
             <results>
-              <test-case name="HL_Smoke.SmokeTest.shortcut_keys" executed="True" result="Success" success="True" time="206.631" asserts="68" />
+              <test-case name="HL_Smoke.SmokeTest.a_Add_User" executed="True" result="Error" success="False" time="69.812" asserts="3">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : Element is not currently visible and so may not be interacted with]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Smoke.SmokeTest.a_Add_User() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\SmokeTest.cs:line 3840
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.SmokeTest.b_Add_User_Group" executed="True" result="Error" success="False" time="73.924" asserts="3">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : Element is not currently visible and so may not be interacted with]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Smoke.SmokeTest.b_Add_User_Group() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\SmokeTest.cs:line 3958
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.SmokeTest.c_Add_Messenger" executed="True" result="Success" success="True" time="66.560" asserts="3" />
+              <test-case name="HL_Smoke.SmokeTest.d_Add_Carrier" executed="True" result="Error" success="False" time="92.618" asserts="3">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"xpath","selector":"//span[text()='Check for Automatic Carrier Updates']"}]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Smoke.SmokeTest.d_Add_Carrier() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\SmokeTest.cs:line 4545
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.SmokeTest.e_Add_Receiver" executed="True" result="Failure" success="False" time="30.911" asserts="3">
+                <failure>
+                  <message><![CDATA[  Expected string length 15 but was 9. Strings differ at index 9.
+  Expected: "Receivers Panel"
+  But was:  "Receivers"
+  --------------------^
+]]></message>
+                  <stack-trace><![CDATA[at HL_Smoke.SmokeTest.e_Add_Receiver() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\SmokeTest.cs:line 2943
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.SmokeTest.g_Add_Broadcast_Group" executed="True" result="Error" success="False" time="67.955" asserts="3">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"xpath","selector":"//li[text()='receiver_smtp']"}]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Smoke.SmokeTest.g_Add_Broadcast_Group() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\SmokeTest.cs:line 2412
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.SmokeTest.h_Add_Escalation_Group" executed="True" result="Error" success="False" time="64.671" asserts="3">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"xpath","selector":"//li[text()='receiver_smtp']"}]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Smoke.SmokeTest.h_Add_Escalation_Group() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\SmokeTest.cs:line 2273
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.SmokeTest.i_Add_Follow_me_Group" executed="True" result="Error" success="False" time="65.553" asserts="3">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"xpath","selector":"//li[text()='receiver_smtp']"}]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Smoke.SmokeTest.i_Add_Follow_me_Group() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\SmokeTest.cs:line 2049
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.SmokeTest.j_Add_On_Duty_Group" executed="True" result="Error" success="False" time="64.498" asserts="3">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"xpath","selector":"//li[text()='receiver_smtp']"}]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Smoke.SmokeTest.j_Add_On_Duty_Group() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\SmokeTest.cs:line 1941
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.SmokeTest.k_Add_Rotate_Group" executed="True" result="Error" success="False" time="58.817" asserts="3">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"xpath","selector":"//div[@id='additionalInfo']/fieldset[1]/div/ul/li[text()='Default']"}]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Smoke.SmokeTest.k_Add_Rotate_Group() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\SmokeTest.cs:line 2180
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.SmokeTest.l_Add_Subscription_Group" executed="True" result="Error" success="False" time="45.868" asserts="2">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : Element is not currently visible and so may not be interacted with]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Smoke.SmokeTest.hover_func(String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\SmokeTest.cs:line 5433
+at HL_Smoke.SmokeTest.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\SmokeTest.cs:line 5398
+at HL_Smoke.SmokeTest.l_Add_Subscription_Group() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\SmokeTest.cs:line 2315
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.SmokeTest.shortcut_keys" executed="True" result="Error" success="False" time="166.655" asserts="46">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : Element is not currently visible and so may not be interacted with]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Smoke.SmokeTest.shortcut_keys() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\SmokeTest.cs:line 1095
+]]></stack-trace>
+                </failure>
+              </test-case>
             </results>
           </test-suite>
         </results>
