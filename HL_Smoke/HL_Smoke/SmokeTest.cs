@@ -161,7 +161,7 @@ namespace HL_Smoke
             Console.WriteLine("Driver Type:" + " " + driver_type);
 
 
-            baseURL = "http://localhost:8000/";
+            baseURL = "http://10.0.50.105:8000/";
 
             driver.Navigate().GoToUrl(baseURL + "/HipLink5UI-Work/index.html#login");
 
@@ -3960,8 +3960,8 @@ namespace HL_Smoke
             
             driver.FindElement(By.CssSelector("#tab_send > a")).Click();
             Thread.Sleep(2000);
-            
-            driver.FindElement(By.XPath("//table[@id='sendTable']/tbody/tr[8]/td[1]/label/span")).Click();//*[@id='sendTable']/tbody/tr[8]/td[1]/label/span
+
+            driver.FindElement(By.XPath("(.//*[@id='tab_send']/a)[1]")).Click();//*[@id='sendTable']/tbody/tr[8]/td[1]/label/span
             Thread.Sleep(1000);
             
             driver.FindElement(By.LinkText("User Group")).Click();

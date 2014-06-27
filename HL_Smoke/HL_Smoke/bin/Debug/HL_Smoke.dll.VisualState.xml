@@ -7,7 +7,6 @@
     <Node UniqueName="[0-1042]D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" Expanded="true" />
     <Node UniqueName="[0-1043]HL_Smoke" Expanded="true" />
     <Node UniqueName="[0-1001]HL_Smoke.SmokeTest" Expanded="true" />
-    <Node UniqueName="[0-1030]HL_Smoke.SmokeTest.a_Add_User" Checked="true" />
     <Node UniqueName="[0-1031]HL_Smoke.SmokeTest.b_Add_User_Group" Checked="true" />
     <Node UniqueName="[0-1034]HL_Smoke.SmokeTest.c_Add_Messenger" Checked="true" />
     <Node UniqueName="[0-1035]HL_Smoke.SmokeTest.d_Add_Carrier" Checked="true" />
