@@ -184,6 +184,41 @@ namespace report_console
                     sw.WriteLine("</style>");
                     sw.WriteLine("</head>");
 
+
+                    sw.WriteLine("<center>");
+                    sw.WriteLine("<b> <font size=\"6\"><u>TESTCASE EXECUTION REPORT</u> </font> </b>");    // Main heading
+                    sw.WriteLine("</center>");
+
+
+                    sw.WriteLine("<p>");
+                    sw.WriteLine("<b> <u> SUMMARY </u></b>");    // SUMMARY heading
+                    sw.WriteLine("</p>");
+
+                    sw.WriteLine("<p>");
+                    sw.WriteLine("Date :" + " " + "<b>" + todaydatetime_createfile.ToString(format1) + "</b>"); //datetime formatting
+                    sw.WriteLine("</p>");
+
+
+                    sw.WriteLine("<p>");
+                    sw.WriteLine("Total Testcases :" + " " + "<b>" + testcase_count + "</b>");           // total testcases count
+                    sw.WriteLine("</p>");
+
+                    sw.WriteLine("<p style=\"color:green\">");
+                    sw.WriteLine("Testcases Passed :" + " " + "<b>" + testcase_success_count + "</b>");  // total succeeded testcases
+                    sw.WriteLine("</p>");
+
+                    sw.WriteLine("<p style=\"color:red\">");
+                    sw.WriteLine("Testcases Failed :" + " " + "<b>" + testcase_failed_count + "</b>");   // total failed testcases
+                    sw.WriteLine("</p>");
+
+                    sw.WriteLine("<p/>");
+
+                    sw.WriteLine("<p>");
+                    sw.WriteLine("<b> <u>DETAILS </u></b>");
+                    sw.WriteLine("</p>");
+
+
+
                     sw.WriteLine("<table>");
                     
                     sw.WriteLine("<tr>");                  // creating header row
@@ -239,39 +274,6 @@ namespace report_console
                         }
 
                     }
-
-                    sw.WriteLine("<center>");
-                    sw.WriteLine("<b> <font size=\"6\"><u>TESTCASE EXECUTION REPORT</u> </font> </b>");    // Main heading
-                    sw.WriteLine("</center>");
-
-                    
-                    sw.WriteLine("<p>");
-                    sw.WriteLine("<b> <u> SUMMARY </u></b>");    // SUMMARY heading
-                    sw.WriteLine("</p>");
-
-                    sw.WriteLine("<p>");
-                    sw.WriteLine("Date :" + " " + "<b>" + todaydatetime_createfile.ToString(format1) + "</b>"); //datetime formatting
-                    sw.WriteLine("</p>");
-
-                   
-                    sw.WriteLine("<p>");
-                    sw.WriteLine("Total Testcases :" + " " + "<b>" + testcase_count + "</b>");           // total testcases count
-                    sw.WriteLine("</p>");
-
-                    sw.WriteLine("<p style=\"color:green\">");
-                    sw.WriteLine("Testcases Passed :" + " " + "<b>" + testcase_success_count + "</b>");  // total succeeded testcases
-                    sw.WriteLine("</p>");
-
-                    sw.WriteLine("<p style=\"color:red\">");
-                    sw.WriteLine("Testcases Failed :" + " " + "<b>" + testcase_failed_count + "</b>");   // total failed testcases
-                    sw.WriteLine("</p>");
-
-                    sw.WriteLine("<p/>");
-
-                    sw.WriteLine("<p>");
-                    sw.WriteLine("<b> <u>DETAILS </u></b>");
-                    sw.WriteLine("</p>");
-
 
                     sw.WriteLine("</table>");
                     sw.WriteLine("</body>");

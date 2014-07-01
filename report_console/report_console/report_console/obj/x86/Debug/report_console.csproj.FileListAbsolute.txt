@@ -9,3 +9,5 @@ D:\HL5.0 Automation\report_console\report_console\report_console\bin\Debug\repor
 D:\HL5.0 Automation\report_console\report_console\report_console\bin\Debug\report_console.pdb
 D:\git_local\HL_Automation\report_console\report_console\report_console\obj\x86\Debug\report_console.exe
 D:\git_local\HL_Automation\report_console\report_console\report_console\obj\x86\Debug\report_console.pdb
+D:\git_local\HL_Automation\report_console\report_console\report_console\bin\Debug\report_console.exe
+D:\git_local\HL_Automation\report_console\report_console\report_console\bin\Debug\report_console.pdb
