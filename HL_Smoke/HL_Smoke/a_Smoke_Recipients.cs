@@ -51,16 +51,6 @@ namespace HL_Smoke
 
         string browser_name;
 
-        string testcase_name;
-
-        string testcase_executed;
-
-        string testcase_result;
-
-        string testcase_sucess;
-
-        string testcase_time;
-
         string user_label;
 
         string trimmed_user_label;
@@ -69,22 +59,7 @@ namespace HL_Smoke
 
         string create_directory_path_directory = @"C:\Program Files (x86)\Hiplink Software\HipLink\new_directory";
 
-        int testcase_count = 0;
-
         int test_result_exist = 0;
-
-        int testcase_success_count = 0;
-
-        int testcase_failed_count = 0;
-
-        ArrayList testcase_name_list = new ArrayList();
-        ArrayList testcase_executed_list = new ArrayList();
-        ArrayList testcase_result_list = new ArrayList();
-        ArrayList testcase_success_list = new ArrayList();
-        ArrayList testcase_time_list = new ArrayList();
-        ArrayList testcase_msg_list = new ArrayList();
-        ArrayList testcase_stack_list = new ArrayList();
-
 
         string create_directory_path_with_time;
 
