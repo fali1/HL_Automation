@@ -161,7 +161,7 @@ namespace HL_Smoke
             Console.WriteLine("Driver Type:" + " " + driver_type);
 
 
-            baseURL = "http://10.0.50.105:8000/";
+            baseURL = "http://localhost:8000/";
 
             driver.Navigate().GoToUrl(baseURL + "/HipLink5UI-Work/index.html#login");
 
