@@ -63,6 +63,12 @@ namespace HL_Smoke
 
         string create_directory_path_with_time;
 
+        string new_dir = "new_directory";
+
+        string messenger_name = "smtp_messenger";
+
+        string carrier_name = "smtp_carrier";
+
 
 
         [TestFixtureSetUp]
@@ -170,7 +176,7 @@ namespace HL_Smoke
         [Test]
         public void a_Directory_Settings_Panel()
         {
-            string new_dir = "new_directory";
+            
             string dir_path = @"C:\Program Files (x86)\Hiplink Software\HipLink\new_directory";
 
             if (!Directory.Exists(create_directory_path_directory))
@@ -251,8 +257,8 @@ namespace HL_Smoke
         [Test]
         public void b_Add_Messenger()
         {
-            string messenger_name = "smtp_messenger";
-            string new_dir = "new_directory";
+            
+            
             string messenger_desc = "SMTP Messenger Description";
 
             check_driver_type(driver_type, "administration", "Messengers", "Sys Admin");
@@ -377,7 +383,7 @@ namespace HL_Smoke
 
                 driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains("SMTP") &&
 
-                driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains("Default")))
+                driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(new_dir)))
             {
                 takescreenshot("Messenger_Failed");
                 Assert.Fail("Added messenger is failed ...");
@@ -397,8 +403,8 @@ namespace HL_Smoke
         public void c_Add_Carrier()
         {
 
-            string carrier_name = "smtp_carrier";
-            string queue = "new_directory";
+            
+            
             string carrier_desc = "SMTP Carrier Description";
             string email_server = "smtp.gmail.com";
             string user_name = "hiplink@gmail.com";
@@ -492,7 +498,7 @@ namespace HL_Smoke
             string path1 = "//li[text()='";
             string path2 = "']";
 
-            driver.FindElement(By.XPath(path1 + queue + path2)).Click();
+            driver.FindElement(By.XPath(path1 + new_dir + path2)).Click();
             Thread.Sleep(2000);
 
             //----------- xxxxxxxxxxxxxxxxxxxxxx ----------
@@ -592,7 +598,7 @@ namespace HL_Smoke
             Thread.Sleep(3000);
             Console.WriteLine("*" + driver.FindElement(By.Id("divGrid_idGridDataNode")).Text.Contains(carrier_name) + "*");
             Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(carrier_desc) + "*");
-            Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(queue) + "*");
+            Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(new_dir) + "*");
             Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text + "*");
 
 
@@ -621,7 +627,7 @@ namespace HL_Smoke
             string receiver_pin = "testm703@gmail.com";
             string receiver_description = "Receiver Description";
             string receiver_emailaddress = "email@address.com";
-            string carrier_name = "smtp_carrier";
+            
             string department_name = "Default";
 
             check_driver_type(driver_type, "recipients", "Receivers", "Recipients");
@@ -648,7 +654,7 @@ namespace HL_Smoke
             driver.FindElement(By.XPath("//div[@class='add_receiver_block']/div[1]/div[1]/div[1]/fieldset[4]/div/a[2]")).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("(//li[contains(text(),'" + department_name + "')])")).Click();// selecting department
+            driver.FindElement(By.XPath("(//li[contains(text(),'Default')])")).Click();// selecting department
 
             driver.FindElement(By.XPath("//div[@class='add_receiver_block']/div/div[2]/div[3]/fieldset[1]/div/a[2]")).Click();
             Thread.Sleep(2000);
@@ -663,8 +669,7 @@ namespace HL_Smoke
 
             takescreenshot("Receiver");
 
-            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(receiver_name) &&
-               driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(receiver_description)))
+            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(receiver_name)))
             {
                 Assert.Fail("Add Receiver Failed...");
             }

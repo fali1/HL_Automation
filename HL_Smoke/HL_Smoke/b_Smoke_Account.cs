@@ -66,7 +66,7 @@ namespace HL_Smoke
 
         string user_group_name = "new_user_group";
 
-        string department_name = "new_department";
+        string department_name = "new_department1";
 
         string username = "new_user";
 
@@ -275,7 +275,7 @@ namespace HL_Smoke
             driver.FindElement(By.Id("recipientMoveRight")).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
+     /*       driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
 
             driver.FindElement(By.XPath("//li[text()='Quick Send']")).Click();
 
@@ -286,6 +286,7 @@ namespace HL_Smoke
             driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
 
             driver.FindElement(By.XPath("//li[text()='Important']")).Click();
+      */
 
             driver.FindElement(By.Id("DivTemplate")).Click();
             Thread.Sleep(2000);
@@ -548,104 +549,120 @@ namespace HL_Smoke
         [Test]
         public void e_Add_Department()
         {
-            string department_description = "Department description";
+           
+                string department_description = "Department description";
 
-            check_driver_type(driver_type, "settings", "Departments", "Settings");
+                check_driver_type(driver_type, "settings", "Departments", "Settings");
 
-            Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
-            /*  var driver_type = driver.GetType();
-              Console.WriteLine("*" + driver_type + "*");
+                /*  var driver_type = driver.GetType();
+                  Console.WriteLine("*" + driver_type + "*");
 
-              if (driver_type.ToString() == "OpenQA.Selenium.Safari.SafariDriver")
-              {
-                  Console.WriteLine("if clause ....");
-                  Thread.Sleep(2000);
-                  driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                  Thread.Sleep(2000);
-                  driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Departments']")).Click();
-                  Thread.Sleep(2000);
-              }
-              else
-              {
-                  Console.WriteLine("using hover func() ....");
-                  Thread.Sleep(2000);
-                  driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                  Thread.Sleep(2000);
-                  driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Departments']")).Click();
-                  Thread.Sleep(2000);
-                  driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                  hover_func("settings", "Departments");
-              }*/
+                  if (driver_type.ToString() == "OpenQA.Selenium.Safari.SafariDriver")
+                  {
+                      Console.WriteLine("if clause ....");
+                      Thread.Sleep(2000);
+                      driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
+                      Thread.Sleep(2000);
+                      driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Departments']")).Click();
+                      Thread.Sleep(2000);
+                  }
+                  else
+                  {
+                      Console.WriteLine("using hover func() ....");
+                      Thread.Sleep(2000);
+                      driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
+                      Thread.Sleep(2000);
+                      driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Departments']")).Click();
+                      Thread.Sleep(2000);
+                      driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
+                      hover_func("settings", "Departments");
+                  }*/
 
-            Thread.Sleep(2000);
-            driver.FindElement(By.LinkText("Add Department")).Click();
+                Thread.Sleep(2000);
+                driver.FindElement(By.LinkText("Add Department")).Click();
 
-            Thread.Sleep(1000);
+                Thread.Sleep(1000);
 
-            driver.FindElement(By.Id("txtname")).Clear();
+                driver.FindElement(By.Id("txtname")).Clear();
 
-            driver.FindElement(By.Id("txtname")).SendKeys(department_name);
+                driver.FindElement(By.Id("txtname")).SendKeys(department_name);
 
-            driver.FindElement(By.Id("txtdesc")).Clear();
+                driver.FindElement(By.Id("txtdesc")).Clear();
 
-            driver.FindElement(By.Id("txtdesc")).SendKeys(department_description);
-            //  driver.FindElement(By.XPath("//a[text()='Permission']")).Click();
-            Thread.Sleep(2000);
+                driver.FindElement(By.Id("txtdesc")).SendKeys(department_description);
+                //  driver.FindElement(By.XPath("//a[text()='Permission']")).Click();
+                Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("//div[@class='add_user_department_add']/div/a[2]")).Click();
+                driver.FindElement(By.XPath("//div[@class='add_user_department_add']/div/a[2]")).Click();
 
-            string path1 = "//li[text()='";
-            string path2 = "']";
+                string path1 = "//li[text()='";
+                string path2 = "']";
 
-            driver.FindElement(By.XPath(path1 + user_group_name + path2)).Click();
+                driver.FindElement(By.XPath(path1 + user_group_name + path2)).Click();
 
-            driver.FindElement(By.Id("btnUsergroup")).Click();
-            Thread.Sleep(2000);
+                driver.FindElement(By.Id("btnUsergroup")).Click();
+                Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("//tr[@id='footerTr']/td[2]/label")).Click(); // Default Permission checkboxes
+                driver.FindElement(By.XPath("//tr[@id='footerTr']/td[2]/label")).Click(); // Default Permission checkboxes
 
-            driver.FindElement(By.XPath("//tr[@id='footerTr']/td[3]/label")).Click();
+                driver.FindElement(By.XPath("//tr[@id='footerTr']/td[3]/label")).Click();
 
-            driver.FindElement(By.XPath("//tr[@id='footerTr']/td[4]/label")).Click();
+                driver.FindElement(By.XPath("//tr[@id='footerTr']/td[4]/label")).Click();
 
-            driver.FindElement(By.XPath("//tr[@id='footerTr']/td[5]/label")).Click();
+                driver.FindElement(By.XPath("//tr[@id='footerTr']/td[5]/label")).Click();
 
-            driver.FindElement(By.XPath("//tr[@id='footerTr']/td[6]/label")).Click();
+                driver.FindElement(By.XPath("//tr[@id='footerTr']/td[6]/label")).Click();
 
-            driver.FindElement(By.XPath("//tr[@id='footerTr']/td[7]/label")).Click();
+                driver.FindElement(By.XPath("//tr[@id='footerTr']/td[7]/label")).Click();
 
-            driver.FindElement(By.XPath("//tr[@id='footerTr']/td[8]/label")).Click();
+                driver.FindElement(By.XPath("//tr[@id='footerTr']/td[8]/label")).Click();
 
-            driver.FindElement(By.LinkText("Member")).Click();
+                driver.FindElement(By.LinkText("Member")).Click();
 
-            driver.FindElement(By.XPath("//div[@id='memberTab']/div/div/fieldset/div/a[2]")).Click();
-            Thread.Sleep(2000);
+                driver.FindElement(By.XPath("//div[@id='memberTab']/div/div/fieldset/div/a[2]")).Click();
+                Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("//li[text()='Default']")).Click();
+                driver.FindElement(By.XPath("//li[text()='Default']")).Click();
 
-            driver.FindElement(By.XPath("//div[@id='selMemberList']/div/div/div/div/ul/li[contains(text(),'receiver_smtp')]")).Click();
+                driver.FindElement(By.XPath("//div[@id='selMemberList']/div/div/div/div/ul/li[contains(text(),'receiver_smtp')]")).Click();
 
-            driver.FindElement(By.Id("moveMemberRight")).Click();
-            Thread.Sleep(2000);
+                driver.FindElement(By.Id("moveMemberRight")).Click();
+                Thread.Sleep(2000);
 
-            //  driver.FindElement(By.CssSelector("fieldset > div.custom.dropdown > a.selector")).Click();
+                //  driver.FindElement(By.CssSelector("fieldset > div.custom.dropdown > a.selector")).Click();
 
 
-            driver.FindElement(By.LinkText("Guest")).Click();
+                driver.FindElement(By.LinkText("Guest")).Click();
 
-            driver.FindElement(By.XPath("//div[@id='guestTab']/div/div/fieldset/div/a[2]")).Click();
-            Thread.Sleep(2000);
+                driver.FindElement(By.XPath("//div[@id='guestTab']/div/div/fieldset/div/a[2]")).Click();
+                Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("//li[text()='Default']")).Click();
+                driver.FindElement(By.XPath(".//*[@id='guestTab']/div[1]/div/fieldset/div/ul/li[text()='Default']")).Click();
 
-            driver.FindElement(By.XPath("//div[@id='selMemberListGuest']/div/div/div/div/ul/li[contains(text(),'Broadcast_Group3')]")).Click();
+                driver.FindElement(By.XPath("//div[@id='selMemberListGuest']/div/div/div/div/ul/li[contains(text(),'Broadcast_Group3')]")).Click();
 
-            driver.FindElement(By.Id("moveGuestRight")).Click();
-            Thread.Sleep(2000);
+                driver.FindElement(By.Id("moveGuestRight")).Click();
+                Thread.Sleep(2000);
 
-            driver.FindElement(By.Id("btnsave")).Click();
-                        
+                driver.FindElement(By.Id("btnsave")).Click();
+
+                takescreenshot("Department");
+
+                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridNode']")).Text.Contains(department_name)))
+                {
+                    takescreenshot("Add_Department_Failed");
+                    Assert.Fail("Add Department Failed...");
+                }
+
+                else
+                {
+                    takescreenshot("Add_Department_Passed");
+                    Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add Department Passed...    ^^^^^^^^^^^^^^^^^^^^^");
+                    // driver.FindElement(By.XPath("//*[@id='logout']")).Click();
+                }
+            
 
         }
 

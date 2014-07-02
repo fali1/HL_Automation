@@ -1,15 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-07-01" time="16:37:53">
+<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="7" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-07-02" time="15:46:53">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5477" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Success" success="True" time="56.575" asserts="0">
+  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Success" success="True" time="388.234" asserts="0">
     <results>
-      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Success" success="True" time="56.550" asserts="0">
+      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Success" success="True" time="388.216" asserts="0">
         <results>
-          <test-suite type="TestFixture" name="b_Smoke_Account" executed="True" result="Success" success="True" time="56.545" asserts="1">
+          <test-suite type="TestFixture" name="c_Smoke_Send_Panels" executed="True" result="Success" success="True" time="388.213" asserts="1">
             <results>
-              <test-case name="HL_Smoke.b_Smoke_Account.c_Add_Response_Action" executed="True" result="Success" success="True" time="42.644" asserts="3" />
+              <test-case name="HL_Smoke.c_Smoke_Send_Panels.a_Services_Settings_Panel" executed="True" result="Success" success="True" time="46.083" asserts="3" />
+              <test-case name="HL_Smoke.c_Smoke_Send_Panels.b_Primary_Send_Panel" executed="True" result="Success" success="True" time="37.162" asserts="3" />
+              <test-case name="HL_Smoke.c_Smoke_Send_Panels.c_Quick_Send_Panel" executed="True" result="Success" success="True" time="37.890" asserts="3" />
+              <test-case name="HL_Smoke.c_Smoke_Send_Panels.d_Escalation_Send_Panel" executed="True" result="Success" success="True" time="54.985" asserts="4">
+                <reason>
+                  <message><![CDATA[Escalation_Send_Panel Passed...]]></message>
+                </reason>
+              </test-case>
+              <test-case name="HL_Smoke.c_Smoke_Send_Panels.e_Fax_Send_Panel" executed="True" result="Success" success="True" time="89.250" asserts="7">
+                <reason>
+                  <message><![CDATA[Fax_Send_Panel Passed...]]></message>
+                </reason>
+              </test-case>
+              <test-case name="HL_Smoke.c_Smoke_Send_Panels.f_Voice_Send_Panel" executed="True" result="Success" success="True" time="87.247" asserts="7">
+                <reason>
+                  <message><![CDATA[Voice_Send_Panel Passed...]]></message>
+                </reason>
+              </test-case>
+              <test-case name="HL_Smoke.c_Smoke_Send_Panels.g_Add_Message_Template_Primary_Send_Panel" executed="True" result="Success" success="True" time="23.043" asserts="1">
+                <reason>
+                  <message><![CDATA[Add_Message_Template_Primary_Send_Panel Passed...]]></message>
+                </reason>
+              </test-case>
             </results>
           </test-suite>
         </results>
