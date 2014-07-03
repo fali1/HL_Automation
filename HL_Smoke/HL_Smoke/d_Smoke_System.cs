@@ -84,7 +84,7 @@ namespace HL_Smoke
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-            //     System.Diagnostics.Debugger.Launch();// launch debugger
+            //   System.Diagnostics.Debugger.Launch();// launch debugger
 
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
@@ -173,7 +173,7 @@ namespace HL_Smoke
         }
 
         [Test]
-        public void System_Attendant_Settings()
+        public void a_System_Attendant_Settings()
         {
             string administrationemail = "fali@folio3.com";
             string numberofcompletemsgs = "20";
@@ -260,7 +260,7 @@ namespace HL_Smoke
         }
 
         [Test]
-        public void w_Email_Gateway_Settings()
+        public void b_Email_Gateway_Settings()
         {
             string type = "SMTP";
             string hiplink_url = @"http://192.168.4.237:8000/cgi-bin/no_action.exe";
@@ -480,7 +480,7 @@ namespace HL_Smoke
         }
 
         [Test]
-        public void x_Backup_Settings_Panel()
+        public void c_Backup_Settings_Panel()
         {
             string backup_dir = "C:\\Program Files (x86)\\Hiplink Software\\HipLink\\backup";
             string backup_keep_days = "05";
@@ -574,7 +574,7 @@ namespace HL_Smoke
 
 
         [Test]
-        public void Snpp_Gateway()
+        public void d_Snpp_Gateway()
         {
             string port = "8080";
             string timeout = "10";
@@ -718,7 +718,7 @@ namespace HL_Smoke
 
 
         [Test]
-        public void Add_Tap_Gateway()
+        public void e_Add_Tap_Gateway()
         {
             string port = "1452";
             string Initial_String = "Initial String";
@@ -848,6 +848,156 @@ namespace HL_Smoke
         }
 
 
+        [Test]
+        public void f_Add_Feedback()
+        {
+            check_driver_type(driver_type, "settings", "Feedback", "Settings");
+
+            Assert.AreEqual("Feedback", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+            //hover mouse on msg backedup
+
+            Actions feedback_action = new Actions(driver);
+           
+            feedback_action.MoveToElement(driver.FindElement(By.Id("eventsList"))).Perform();
+            
+            driver.FindElement(By.XPath("//*[@id='3']")).Click();
+            Thread.Sleep(1000);
+            
+            driver.FindElement(By.XPath("//li[text()='Add New']")).Click();
+            Thread.Sleep(1000);
+            
+            driver.FindElement(By.XPath("//fieldset/div/a[2]")).Click();
+            Thread.Sleep(1000);
+            
+            driver.FindElement(By.Id("btnSave")).Click();
+            
+            takescreenshot("Feedback_Action");
+
+            Thread.Sleep(3000);
+            
+            if (!(driver.FindElement(By.XPath(".//*[@id='3']/span")).Text.Equals("1")))
+            {
+                Assert.Fail("Feedback Action failed...");
+            }
+
+            else
+            {
+                
+                Console.WriteLine("Feedback Action Passed");
+
+            }
+        }
+
+        [Test]
+        public void g_Add_Schedule_Template()
+        {
+
+            string schedule_template_name = "Schedule_Template_Monthly";
+
+            check_driver_type(driver_type, "settings", "Schedule Template", "Settings");
+
+            Assert.AreEqual("Schedule Template", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            driver.FindElement(By.LinkText("Add Schedule Template")).Click();
+
+            driver.FindElement(By.XPath(".//*[@id='light']/div[2]/div[2]/div/a[2]")).Click(); //schedule type
+
+            driver.FindElement(By.XPath(".//*[@id='light']/div[2]/div[2]/div/ul/li[text()='Monthly']")).Click();
+
+            driver.FindElement(By.Id("sname")).Clear();
+            driver.FindElement(By.Id("sname")).SendKeys(schedule_template_name); //schedule template name
+
+            driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[1]/a[2]")).Click(); //time frame
+
+            driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[1]/ul/li[text()='01']")).Click();
+
+            driver.FindElement(By.XPath("//div[@id='sch_main']/div/fieldset[2]/div[3]/a[2]")).Click(); //time frame
+
+            driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[3]/ul/li[text()='02']")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("startpicker")).Click();//range start from
+
+            driver.FindElement(By.LinkText("14")).Click();
+
+            driver.FindElement(By.XPath(".//*[@class='end_after_label']")).Click(); //radio button 'End After'
+
+            driver.FindElement(By.Id("txtOccurences")).Clear();
+            driver.FindElement(By.Id("txtOccurences")).SendKeys("3");
+
+            driver.FindElement(By.Id("saveScheduleTemplate")).Click();
+            Thread.Sleep(1000);
+
+            takescreenshot("Schedule_Template");
+            Thread.Sleep(2000);
+
+            Console.WriteLine("text:" + driver.FindElement(By.XPath(".//*[@id='gridDiv']/table/tbody")).Text);
+
+            if (driver.FindElement(By.XPath(".//*[@id='gridDiv']/table/tbody")).Text.Contains(schedule_template_name))
+            {
+                takescreenshot("Schedule_Template_Passed");
+
+                Console.WriteLine("^^^^^^^^^^^^^^^ Schedule_Template Passed ... ^^^^^^^^^^^^^^^");
+            }
+            else
+            {
+                takescreenshot("Schedule_Template_Failed");
+
+                Assert.Fail("Schedule_Template Failed ...");
+            }
+
+
+        }
+
+
+        [Test]
+        public void h_LDAP_Panel()
+        {
+
+            check_driver_type(driver_type, "administration", "LDAP Settings", "Sys Admin");
+
+            Assert.AreEqual("LDAP", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            driver.FindElement(By.Id("ldapEnabled")).Click();
+
+            driver.FindElement(By.Id("connectionParameters")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("btnGetDefaults")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("btnOk")).Click();
+
+
+            new SelectElement(driver.FindElement(By.Id("directoryType"))).SelectByText("Active Directory"); // select value from dropdown
+
+            driver.FindElement(By.Id("primaryServerHost")).Clear();
+            driver.FindElement(By.Id("primaryServerHost")).SendKeys("192.168.4.7");
+
+            driver.FindElement(By.Id("baseDn")).Clear();
+            driver.FindElement(By.Id("baseDn")).SendKeys("dc=folio3pk, dc=com");
+
+            driver.FindElement(By.Id("domainName")).Clear();
+            driver.FindElement(By.Id("domainName")).SendKeys("folio3pk");
+
+            driver.FindElement(By.Id("userId")).Clear();
+            driver.FindElement(By.Id("userId")).SendKeys("fali");
+
+            driver.FindElement(By.Id("password")).Clear();
+            driver.FindElement(By.Id("password")).SendKeys("password");
+
+            driver.FindElement(By.Id("userParameters")).Click();
+
+            driver.FindElement(By.Id("userEmailAttribute")).Clear();
+            driver.FindElement(By.Id("userEmailAttribute")).SendKeys("mail");
+
+            driver.FindElement(By.Id("userNameAttribute")).Clear();
+            driver.FindElement(By.Id("userNameAttribute")).SendKeys("sAMAccountName");
+
+
+        }
+
+
         public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 
         {
 
@@ -862,12 +1012,12 @@ namespace HL_Smoke
                 driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
                 Thread.Sleep(2000);
 
-                Assert.AreEqual(trimmed_user_label, "Welcome fahad");
+               
 
                 driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
                 Thread.Sleep(2000);
 
-                Assert.AreEqual(trimmed_user_label, "Welcome fahad");
+                
 
             }
 
@@ -890,7 +1040,7 @@ namespace HL_Smoke
                 a1c.MoveToElement(driver.FindElement(By.XPath("//div[@class='footer']"))).Perform();
                 Thread.Sleep(3000);
 
-                Assert.AreEqual(trimmed_user_label, "Welcome fahad");
+                
 
                 driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
                 Thread.Sleep(2000);
@@ -907,7 +1057,7 @@ namespace HL_Smoke
                     Thread.Sleep(2000);
                 }*/
 
-                Assert.AreEqual(trimmed_user_label, "Welcome fahad");
+               
 
                 driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
                 Thread.Sleep(2000);
@@ -922,7 +1072,7 @@ namespace HL_Smoke
 
                 // drivertype.ToString() == "OpenQA.Selenium.IE.InternetExplorerDriver"
 
-                Assert.AreEqual(trimmed_user_label, "Welcome fahad");
+               
 
                 hover_func(id_name, link_text, a_text);
                 Thread.Sleep(2000);

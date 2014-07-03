@@ -353,6 +353,18 @@ namespace HL_Smoke
             driver.FindElement(By.Id("txtRespName")).SendKeys(response_action_name);// typing Response Action name
 
             driver.FindElement(By.Id("btnAddAction")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.XPath(".//*[@id='sideBars']/div[3]/div/div[1]/b")).Click();  // opening Attachment section
+            
+            Thread.Sleep(4500);
+
+
+            IWebElement fileInput = driver.FindElement(By.XPath("//input[@type='file']"));
+            fileInput.SendKeys(@"C:\Users\Public\Pictures\Sample Pictures\Tulips.jpg");
+            Thread.Sleep(4500);
+
+            
 
             driver.FindElement(By.Id("btnSend")).Click();
             Thread.Sleep(2000);
@@ -706,6 +718,23 @@ namespace HL_Smoke
         }
 
 
+        [Test]
+        public void h_Job_Confirmation_Panel()
+        {
+
+            check_driver_type(driver_type, "send", "Confirm Message", "Send");
+
+            Assert.AreEqual("Job Confirmation", driver.FindElement(By.XPath("//div[@class='title_bar']/span")).Text);
+
+            driver.FindElement(By.Id("txtJobId")).Clear();
+            driver.FindElement(By.Id("txtJobId")).SendKeys("5_1");
+            driver.FindElement(By.Id("txtCommments")).Clear();
+            driver.FindElement(By.Id("txtCommments")).SendKeys("confirm");
+            driver.FindElement(By.Id("btnConfirmJob")).Click();
+            Thread.Sleep(2000);
+        }
+
+
 
         public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 
         {
@@ -721,12 +750,12 @@ namespace HL_Smoke
                 driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
                 Thread.Sleep(2000);
 
-                Assert.AreEqual(trimmed_user_label, "Welcome fahad");
+                
 
                 driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
                 Thread.Sleep(2000);
 
-                Assert.AreEqual(trimmed_user_label, "Welcome fahad");
+                
 
             }
 
@@ -749,10 +778,18 @@ namespace HL_Smoke
                 a1c.MoveToElement(driver.FindElement(By.XPath("//div[@class='footer']"))).Perform();
                 Thread.Sleep(3000);
 
-                Assert.AreEqual(trimmed_user_label, "Welcome fahad");
+                
 
                 driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
                 Thread.Sleep(2000);
+
+                if(link_text.Equals("Confirm Message"))
+                {
+                    driver.FindElement(By.Id("btnCloseJobConfirm")).Click();
+                    Thread.Sleep(2000);
+                }
+
+
 
                 /*
                 if (link_text.Equals("Escalation"))
@@ -766,7 +803,7 @@ namespace HL_Smoke
                     Thread.Sleep(2000);
                 }*/
 
-                Assert.AreEqual(trimmed_user_label, "Welcome fahad");
+                
 
                 driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
                 Thread.Sleep(2000);
@@ -781,7 +818,7 @@ namespace HL_Smoke
 
                 // drivertype.ToString() == "OpenQA.Selenium.IE.InternetExplorerDriver"
 
-                Assert.AreEqual(trimmed_user_label, "Welcome fahad");
+                
 
                 hover_func(id_name, link_text, a_text);
                 Thread.Sleep(2000);
