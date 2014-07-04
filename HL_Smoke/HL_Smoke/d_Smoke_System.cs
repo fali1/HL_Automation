@@ -173,6 +173,71 @@ namespace HL_Smoke
         }
 
         [Test]
+        public void test_System_Attendant_Settings()
+        {
+
+            string administrationemail = "fali@folio3.com";
+            string numberofcompletemsgs = "20";
+            string numberoffailedmsgs = "30";
+            string numberoffilteredmsgs = "40";
+            string idlemsgtime = "60";
+            string alertcommand = "Test Alert Command";
+            string expired = "Yes";
+            string expired_status_on_page_load;
+            string expired_status_after_saving;
+
+
+            driver.FindElement(By.XPath(".//*[@id='administration']/a")).Click();
+            Thread.Sleep(1000);
+            driver.FindElement(By.LinkText("System Attendent Settings")).Click();
+
+            driver.FindElement(By.Id("btnedit")).Click();
+            Thread.Sleep(2000);
+
+            IWebElement e = driver.FindElement(By.XPath("(//input[@type='number'])[1]"));
+            Thread.Sleep(2000);
+            e.Clear();
+            e.SendKeys("20");
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("txtcompmsgs")).Clear();
+
+            driver.FindElement(By.Id("txtcompmsgs")).SendKeys(numberofcompletemsgs);
+
+/*
+            driver.FindElement(By.Id("txtemail")).Clear();
+
+            driver.FindElement(By.Id("txtemail")).SendKeys(administrationemail);
+
+            driver.FindElement(By.Id("txtcompmsgs")).Clear();
+
+            driver.FindElement(By.Id("txtcompmsgs")).SendKeys(numberofcompletemsgs);
+
+            driver.FindElement(By.Id("txtfailedmsgs")).Clear();
+
+            driver.FindElement(By.Id("txtfailedmsgs")).SendKeys(numberoffailedmsgs);
+
+            driver.FindElement(By.Id("txtfilteredmsgs")).Clear();
+
+            driver.FindElement(By.Id("txtfilteredmsgs")).SendKeys(numberoffilteredmsgs);
+
+            driver.FindElement(By.Id("txtcommand")).Clear();
+
+            driver.FindElement(By.Id("txtcommand")).SendKeys(alertcommand);
+
+            driver.FindElement(By.Id("txtidlemsgs")).Clear();
+
+            driver.FindElement(By.Id("txtidlemsgs")).SendKeys(idlemsgtime);
+
+            driver.FindElement(By.XPath("//span[text()='Delete Expired Web Sign-up Recipients']")).Click();
+ */
+
+            driver.FindElement(By.Id("btnsave")).Click();
+            Thread.Sleep(1000);
+
+        }
+
+        [Test]
         public void a_System_Attendant_Settings()
         {
             string administrationemail = "fali@folio3.com";
@@ -958,7 +1023,11 @@ namespace HL_Smoke
 
             Assert.AreEqual("LDAP", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
+            // General Setting Section
+
             driver.FindElement(By.Id("ldapEnabled")).Click();
+
+            // Connection Parameter Section
 
             driver.FindElement(By.Id("connectionParameters")).Click();
             Thread.Sleep(2000);
@@ -986,13 +1055,25 @@ namespace HL_Smoke
             driver.FindElement(By.Id("password")).Clear();
             driver.FindElement(By.Id("password")).SendKeys("password");
 
+            // LDAP User Parameters Section
+
             driver.FindElement(By.Id("userParameters")).Click();
 
+            new SelectElement(driver.FindElement(By.Id("isUserId"))).SelectByText("User Name Attribute"); // select value from dropdown
+
+            new SelectElement(driver.FindElement(By.Id("rdnFilterOnly"))).SelectByText("User RDN Template(s)"); // select value from dropdown
+            
             driver.FindElement(By.Id("userEmailAttribute")).Clear();
             driver.FindElement(By.Id("userEmailAttribute")).SendKeys("mail");
 
             driver.FindElement(By.Id("userNameAttribute")).Clear();
             driver.FindElement(By.Id("userNameAttribute")).SendKeys("sAMAccountName");
+
+            driver.FindElement(By.Id("rdnName")).Clear();
+            driver.FindElement(By.Id("rdnName")).SendKeys("CN=?,CN=Users");
+
+            driver.FindElement(By.Id("rdnFilter")).Clear();
+            driver.FindElement(By.Id("rdnFilter")).SendKeys("(objectClass=user);");
 
 
         }

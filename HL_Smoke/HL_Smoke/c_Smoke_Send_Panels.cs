@@ -542,7 +542,7 @@ namespace HL_Smoke
             driver.FindElement(By.XPath("//div[@class='add_receiver_block']/div[1]/div[1]/div[1]/fieldset[4]/div/a[2]")).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("(//li[contains(text(),'Default')])")).Click();// selecting department
+            driver.FindElement(By.XPath("(//li[contains(text(),'"+department_name+"')])")).Click();// selecting department
 
             driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click();
             Thread.Sleep(2000);
@@ -583,7 +583,7 @@ namespace HL_Smoke
             driver.FindElement(By.Id("btnToMessage")).Click(); // return to message button
             Thread.Sleep(2000);
 
-            Assert.Pass("Fax_Send_Panel Passed...");
+            Console.WriteLine("Fax_Send_Panel Passed...");
 
         }
 
@@ -625,7 +625,7 @@ namespace HL_Smoke
             driver.FindElement(By.XPath("//div[@class='add_receiver_block']/div[1]/div[1]/div[1]/fieldset[4]/div/a[2]")).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("(//li[contains(text(),'Default')])")).Click();// selecting department
+            driver.FindElement(By.XPath("(//li[contains(text(),'" + department_name + "')])")).Click();// selecting department
 
             driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();
             Thread.Sleep(2000);
@@ -665,7 +665,7 @@ namespace HL_Smoke
             driver.FindElement(By.Id("btnToMessage")).Click(); // return to message button
             Thread.Sleep(2000);
 
-            Assert.Pass("Voice_Send_Panel Passed...");
+            Console.WriteLine("Voice_Send_Panel Passed...");
 
         }
 
@@ -712,7 +712,7 @@ namespace HL_Smoke
             driver.FindElement(By.Id("btnToMessage")).Click();  //return to message button
             Thread.Sleep(2000);
 
-            Assert.Pass("Add_Message_Template_Primary_Send_Panel Passed...");
+            Console.WriteLine("Add_Message_Template_Primary_Send_Panel Passed...");
 
 
         }

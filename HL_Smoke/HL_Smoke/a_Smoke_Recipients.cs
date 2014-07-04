@@ -654,7 +654,7 @@ namespace HL_Smoke
             driver.FindElement(By.XPath("//div[@class='add_receiver_block']/div[1]/div[1]/div[1]/fieldset[4]/div/a[2]")).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("(//li[contains(text(),'Default')])")).Click();// selecting department
+            driver.FindElement(By.XPath("(//li[contains(text(),'"+department_name+"')])")).Click();// selecting department
 
             driver.FindElement(By.XPath("//div[@class='add_receiver_block']/div/div[2]/div[3]/fieldset[1]/div/a[2]")).Click();
             Thread.Sleep(2000);

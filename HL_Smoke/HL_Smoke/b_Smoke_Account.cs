@@ -213,7 +213,7 @@ namespace HL_Smoke
             driver.FindElement(By.Id("btnSaveTimeBox")).Click();
             Thread.Sleep(2000);
 
-
+            takescreenshot("Timezone");
 
             Console.WriteLine(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text);
 

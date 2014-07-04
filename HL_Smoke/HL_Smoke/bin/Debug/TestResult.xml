@@ -1,15 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-07-03" time="16:44:09">
+<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="1" errors="1" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-07-04" time="14:43:54">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5477" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Success" success="True" time="49.684" asserts="0">
+  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Failure" success="False" time="75.050" asserts="0">
     <results>
-      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Success" success="True" time="49.667" asserts="0">
+      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Failure" success="False" time="75.032" asserts="0">
         <results>
-          <test-suite type="TestFixture" name="d_Smoke_System" executed="True" result="Success" success="True" time="49.664" asserts="1">
+          <test-suite type="TestFixture" name="d_Smoke_System" executed="True" result="Failure" success="False" time="75.029" asserts="1">
             <results>
-              <test-case name="HL_Smoke.d_Smoke_System.h_LDAP_Panel" executed="True" result="Success" success="True" time="36.611" asserts="1" />
+              <test-case name="HL_Smoke.d_Smoke_System.h_LDAP_Panel" executed="True" result="Error" success="False" time="62.060" asserts="1">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"id","selector":"isUserId"}]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Smoke.d_Smoke_System.h_LDAP_Panel() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_System.cs:line 1062
+]]></stack-trace>
+                </failure>
+              </test-case>
             </results>
           </test-suite>
         </results>
