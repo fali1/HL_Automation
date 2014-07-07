@@ -84,7 +84,7 @@ namespace HL_Smoke
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-            //   System.Diagnostics.Debugger.Launch();// launch debugger
+               System.Diagnostics.Debugger.Launch();// launch debugger
 
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
@@ -92,7 +92,9 @@ namespace HL_Smoke
             switch (browser_name)
             {
                 case "firefox":
-                    driver = new FirefoxDriver();// launch firefox browser
+                    var profile = new FirefoxProfile();
+                    profile.SetPreference("dom.forms.number", false);
+                    driver = new FirefoxDriver(profile);// launch firefox browser
                     break;
 
                 case "safari":
@@ -268,6 +270,10 @@ namespace HL_Smoke
 
             driver.FindElement(By.Id("txtemail")).SendKeys(administrationemail);
 
+            driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
+
+            driver.FindElement(By.XPath("//li[contains(text(),'receiver_smtp')]")).Click();
+
             driver.FindElement(By.Id("txtcompmsgs")).Clear();
 
             driver.FindElement(By.Id("txtcompmsgs")).SendKeys(numberofcompletemsgs);
@@ -292,6 +298,8 @@ namespace HL_Smoke
 
             driver.FindElement(By.Id("btnsave")).Click();
             Thread.Sleep(1000);
+
+            driver.FindElement(By.Id("btnOk")).Click();
 
             expired_status_after_saving = driver.FindElement(By.Id("lblDelExpired")).Text.ToString();
 
@@ -552,7 +560,11 @@ namespace HL_Smoke
             string backup_start_time = "05:06";
             string backup_interval = "02";
 
-            check_driver_type(driver_type, "administration", "Backup Service", "Sys Admin");
+            driver.FindElement(By.Id("administration")).Click();
+
+            driver.FindElement(By.LinkText("Backup Service")).Click();
+
+      //      check_driver_type(driver_type, "administration", "Backup Service", "Sys Admin");
 
             Assert.AreEqual("Backup Service", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
@@ -607,6 +619,9 @@ namespace HL_Smoke
 
             driver.FindElement(By.XPath("//*[@id='tab_backupfiles']/a")).Click();
 
+            driver.FindElement(By.Id("btnbackup")).Click();
+            Thread.Sleep(2000);
+
             driver.FindElement(By.XPath("//*[@id='tab_backupservice']/a")).Click();
             Thread.Sleep(2000);
 
@@ -632,7 +647,7 @@ namespace HL_Smoke
 
             else
             {
-                Assert.Fail("Backup_settings_panel ---------- Testcase Failed2");
+                Assert.Fail("Backup_settings_panel Testcase Failed");
             }
 
         }
@@ -709,12 +724,10 @@ namespace HL_Smoke
                 driver.FindElement(By.Id("btnsave")).Click();
                 Thread.Sleep(2000);
 
-                driver.FindElement(By.Id("btncancel")).Click();
-                Thread.Sleep(2000);
 
                 if (driver.FindElement(By.XPath("//*[@id='lblAuth']")).Text.Equals(CLI_USER) &&
 
-                    driver.FindElement(By.Id("txtport")).Text.Equals(port) &&
+                    driver.FindElement(By.Id("lblPort")).Text.Equals(port) &&
 
                     driver.FindElement(By.Id("lblTimeout")).Text.Equals(timeout))
                 {
@@ -754,12 +767,9 @@ namespace HL_Smoke
                 driver.FindElement(By.Id("btnsave")).Click();
                 Thread.Sleep(2000);
 
-                driver.FindElement(By.Id("btncancel")).Click();
-                Thread.Sleep(2000);
-
                 if (driver.FindElement(By.XPath("//*[@id='lblAuth']")).Text.Equals(NoAuth) &&
 
-                    driver.FindElement(By.Id("txtport")).Text.Equals(port) &&
+                    driver.FindElement(By.Id("lblPort")).Text.Equals(port) &&
 
                     driver.FindElement(By.Id("lblTimeout")).Text.Equals(timeout))
                 {
@@ -824,41 +834,41 @@ namespace HL_Smoke
 
             driver.FindElement(By.Id("txtSerialPort")).SendKeys(port);
 
-            driver.FindElement(By.CssSelector("a.selector")).Click();
+            driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
             Thread.Sleep(1000);
 
             driver.FindElement(By.XPath("//li[(contains(text(),'1200'))]")).Click();
             Thread.Sleep(1000);
             //driver.FindElement(By.XPath("//ul[@id='sizzle-1396510222684']/li[2]")).Click();
 
-            driver.FindElement(By.XPath("//div[@id='tapGatewayLightbox']/div[2]/div[2]/fieldset[2]/div/a[2]")).Click();
+            driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
             Thread.Sleep(1000);
 
-            driver.FindElement(By.XPath("//li[(contains(text(),'Odd'))]")).Click();
+            driver.FindElement(By.XPath("//li[(contains(text(),'Even'))]")).Click();
             Thread.Sleep(1000);
             //driver.FindElement(By.XPath("//ul[@id='sizzle-1396510222684']/li[2]")).Click();
 
-            driver.FindElement(By.XPath("//div[@id='tapGatewayLightbox']/div[2]/div[2]/fieldset[3]/div/a[2]")).Click();
+            driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
 
-            driver.FindElement(By.XPath("//div[@id='tapGatewayLightbox']/div[2]/div[2]/fieldset[3]/div/ul/li[2]")).Click();
+            driver.FindElement(By.XPath(".//*[@id='tapGatewayLightbox']/div[3]/div[2]/fieldset[3]/div/ul/li[3]")).Click();
             Thread.Sleep(1000);
 
-            driver.FindElement(By.XPath("//div[@id='tapGatewayLightbox']/div[2]/div[2]/fieldset[4]/div/a[2]")).Click();
+            driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click();
 
-            driver.FindElement(By.XPath("//div[@id='tapGatewayLightbox']/div[2]/div[2]/fieldset[4]/div/ul/li[2]")).Click();
+            driver.FindElement(By.XPath(".//*[@id='tapGatewayLightbox']/div[3]/div[2]/fieldset[4]/div/ul/li[3]")).Click();
             Thread.Sleep(1000);
 
-            driver.FindElement(By.XPath("//div[@id='tapGatewayLightbox']/div[2]/div[2]/fieldset[5]/div/a[2]")).Click();
+            driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();
 
             driver.FindElement(By.XPath("//li[(contains(text(),'Hardware'))]")).Click();
             Thread.Sleep(1000);
 
-            driver.FindElement(By.XPath("//div[@id='tapGatewayLightbox']/div[2]/div[3]/fieldset[1]/div/a[2]")).Click();
+            driver.FindElement(By.XPath("(//a[@class='selector'])[6]")).Click();
 
             driver.FindElement(By.XPath("//li[(contains(text(),'2 sec'))]")).Click();
             Thread.Sleep(1000);
 
-            driver.FindElement(By.XPath("//div[@id='tapGatewayLightbox']/div[2]/div[3]/fieldset[2]/div/a[2]")).Click();
+            driver.FindElement(By.XPath("(//a[@class='selector'])[7]")).Click();
 
             driver.FindElement(By.XPath("//li[(contains(text(),'30 minutes'))]")).Click();
 
