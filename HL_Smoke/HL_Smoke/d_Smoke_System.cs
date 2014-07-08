@@ -555,16 +555,12 @@ namespace HL_Smoke
         [Test]
         public void c_Backup_Settings_Panel()
         {
-            string backup_dir = "C:\\Program Files (x86)\\Hiplink Software\\HipLink\\backup";
+            string backup_dir = @"C:\Program Files (x86)\Hiplink Software\HipLink\backup";
             string backup_keep_days = "05";
             string backup_start_time = "05:06";
             string backup_interval = "02";
 
-            driver.FindElement(By.Id("administration")).Click();
-
-            driver.FindElement(By.LinkText("Backup Service")).Click();
-
-      //      check_driver_type(driver_type, "administration", "Backup Service", "Sys Admin");
+            check_driver_type(driver_type, "administration", "Backup Service", "Sys Admin");
 
             Assert.AreEqual("Backup Service", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
@@ -924,7 +920,247 @@ namespace HL_Smoke
 
 
         [Test]
-        public void f_Add_Feedback()
+        public void f_File_System_Interface()
+        {
+            string hiplink_url = "info@folio3.com";
+            string spool_dir = @"C:\Program Files (x86)\HipLink Software\Hiplink\test";
+            string bulk_spool_dir = @"C:\Program Files (x86)\HipLink Software\Hiplink\new";
+            string bulk_message_recipient_pattern = "^.*<Receiver:(.*)>.*$";
+            string bulk_message_pattern = "^.*>(.*)$";
+            string bulk_message_file_pattern = "*";
+
+
+
+            if (!Directory.Exists(spool_dir))
+            {
+                Directory.CreateDirectory(spool_dir);
+            }
+
+            if (!Directory.Exists(bulk_spool_dir))
+            {
+                Directory.CreateDirectory(bulk_spool_dir);
+            }
+
+            check_driver_type(driver_type, "settings", "File System Interface", "Settings");
+
+            Assert.AreEqual("File System Interface", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+
+            /*    var driver_type = driver.GetType();
+                Console.WriteLine("*" + driver_type + "*");
+
+                if (driver_type.ToString() == "OpenQA.Selenium.Safari.SafariDriver")
+                {
+                    Console.WriteLine("if clause ....");
+                    Thread.Sleep(2000);
+                    driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
+                    Thread.Sleep(2000);
+                    driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='File System Interface']")).Click();
+                    Thread.Sleep(2000);
+                }
+                else
+                {
+                    Console.WriteLine("using hover func() ....");
+                    Thread.Sleep(2000);
+                    driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
+                    Thread.Sleep(2000);
+                    driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='File System Interface']")).Click();
+                    Thread.Sleep(2000);
+                    driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
+                    hover_func("settings", "File System Interface");
+                }*/
+
+
+            Thread.Sleep(2000);
+
+            if (driver.FindElement(By.Id("lblBulkMsg")).Text.Equals("Enabled"))
+            {
+                driver.FindElement(By.Id("btnedit")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.Id("txturl")).Clear();
+
+                driver.FindElement(By.Id("txturl")).SendKeys(hiplink_url);
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.Id("txtdir")).Clear();
+
+                driver.FindElement(By.Id("txtdir")).SendKeys(spool_dir);
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.XPath("//*[@id='fileSysPanel']/div[1]/div[1]/fieldset[2]/div/a[2]")).Click();
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.XPath("//li[text()='35']")).Click();
+                Thread.Sleep(1000);
+                //   driver.FindElement(By.XPath("//span[text()='Enable Bulk Message Processing']")).Click();  // checkbox already checked
+
+                driver.FindElement(By.Id("txtspooldir")).Clear();
+
+                driver.FindElement(By.Id("txtspooldir")).SendKeys(bulk_spool_dir);
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.Id("txtmsgfilepat")).Clear();
+
+                driver.FindElement(By.Id("txtmsgfilepat")).SendKeys(bulk_message_file_pattern);
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.Id("txtmsgrec")).Clear();
+
+                driver.FindElement(By.Id("txtmsgrec")).SendKeys(bulk_message_recipient_pattern);
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.Id("txtbulkmsgpat")).Clear();
+
+                driver.FindElement(By.Id("txtbulkmsgpat")).SendKeys(bulk_message_pattern);
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.XPath("//*[@id='fileSysPanel']/div[2]/div/fieldset[4]/div/a[2]")).Click();
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.XPath("//*[@id='fileSysPanel']/div[2]/div[1]/fieldset[4]/div/ul/li[17]")).Click();
+
+                string lblBulkSpoolDirChk = driver.FindElement(By.XPath("//*[@id='fileSysPanel']/div[2]/div[1]/fieldset[4]/div/ul/li[17]")).Text;
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.Id("btnsave")).Click();
+                Thread.Sleep(2000);
+
+                takescreenshot("FSI");
+
+                Console.WriteLine("Enable Bulk Message Processing was checked");
+
+                Console.WriteLine(driver.FindElement(By.XPath(".//*[@id='lblUrl']")).Text +
+                    driver.FindElement(By.XPath(".//*[@id='lblSpoolDir']")).Text +
+                    driver.FindElement(By.XPath(".//*[@id='lblDirChk']")).Text +
+                    driver.FindElement(By.XPath(".//*[@id='lblBulkMsg']")).Text +
+                    driver.FindElement(By.XPath(".//*[@id='lblBulkSpoolDir']")).Text +
+                    driver.FindElement(By.XPath(".//*[@id='lblBullFilePatt']")).Text +
+                    driver.FindElement(By.XPath(".//*[@id='lblBulkMsgRec']")).Text +
+                    driver.FindElement(By.XPath(".//*[@id='lblBulkMsgPatt']")).Text +
+                    driver.FindElement(By.XPath(".//*[@id='lblBulkSpoolDirChk']")).Text);
+
+                if (!(driver.FindElement(By.XPath(".//*[@id='lblUrl']")).Text.Equals(hiplink_url) &&
+
+                    driver.FindElement(By.XPath(".//*[@id='lblSpoolDir']")).Text.Equals(spool_dir) &&
+
+                    driver.FindElement(By.XPath(".//*[@id='lblDirChk']")).Text.Equals("35") &&
+
+                    driver.FindElement(By.XPath(".//*[@id='lblBulkMsg']")).Text.Equals("Enabled") &&
+
+                    driver.FindElement(By.XPath(".//*[@id='lblBulkSpoolDir']")).Text.Equals(bulk_spool_dir) &&
+
+                    driver.FindElement(By.XPath(".//*[@id='lblBullFilePatt']")).Text.Equals(bulk_message_file_pattern) &&
+
+                    driver.FindElement(By.XPath(".//*[@id='lblBulkMsgRec']")).Text.Equals(bulk_message_recipient_pattern) &&
+
+                    driver.FindElement(By.XPath(".//*[@id='lblBulkMsgPatt']")).Text.Equals(bulk_message_pattern)))
+                {
+                    Assert.Fail("File System Interface Failed ...");
+                }
+
+                else
+                {
+                    Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   File System Interface Passed ...when Enable Bulk Message Processing was checked  ^^^^^^^^^^^^^^^^^^^^^");
+                    //  driver.FindElement(By.XPath("//*[@id='logout']")).Click();
+                }
+
+            }
+
+            else
+            {
+
+                driver.FindElement(By.Id("btnedit")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.Id("txturl")).Clear();
+
+                driver.FindElement(By.Id("txturl")).SendKeys(hiplink_url);
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.Id("txtdir")).Clear();
+
+                driver.FindElement(By.Id("txtdir")).SendKeys(spool_dir);
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.XPath("//*[@id='fileSysPanel']/div[1]/div[1]/fieldset[2]/div/a[2]")).Click();
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.XPath("//li[text()='35']")).Click();
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.XPath("//span[text()='Enable Bulk Message Processing']")).Click();
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.Id("txtspooldir")).Clear();
+
+                driver.FindElement(By.Id("txtspooldir")).SendKeys(bulk_spool_dir);
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.Id("txtmsgfilepat")).Clear();
+
+                driver.FindElement(By.Id("txtmsgfilepat")).SendKeys(bulk_message_file_pattern);
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.Id("txtmsgrec")).Clear();
+
+                driver.FindElement(By.Id("txtmsgrec")).SendKeys(bulk_message_recipient_pattern);
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.Id("txtbulkmsgpat")).Clear();
+
+                driver.FindElement(By.Id("txtbulkmsgpat")).SendKeys(bulk_message_pattern);
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.XPath("//*[@id='fileSysPanel']/div[2]/div/fieldset[4]/div/a[2]")).Click();
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.XPath("//*[@id='fileSysPanel']/div[2]/div[1]/fieldset[4]/div/ul/li[17]")).Click();
+
+                string lblBulkSpoolDirChk = driver.FindElement(By.XPath("//*[@id='fileSysPanel']/div[2]/div[1]/fieldset[4]/div/ul/li[17]")).Text;
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.Id("btnsave")).Click();
+
+                takescreenshot("FSI");
+                Thread.Sleep(2000);
+
+                Console.WriteLine("Enable Bulk Message Processing was unchecked");
+
+                if (!(driver.FindElement(By.XPath(".//*[@id='lblUrl']")).Text.Equals(hiplink_url) &&
+
+                    driver.FindElement(By.XPath(".//*[@id='lblSpoolDir']")).Text.Equals(spool_dir) &&
+
+                    driver.FindElement(By.XPath(".//*[@id='lblDirChk']")).Text.Equals("35") &&
+
+                    driver.FindElement(By.XPath(".//*[@id='lblBulkMsg']")).Text.Equals("Enabled") &&
+
+                    driver.FindElement(By.XPath(".//*[@id='lblBulkSpoolDir']")).Text.Equals(bulk_spool_dir) &&
+
+                    driver.FindElement(By.XPath(".//*[@id='lblBullFilePatt']")).Text.Equals(bulk_message_file_pattern) &&
+
+                    driver.FindElement(By.XPath(".//*[@id='lblBulkMsgRec']")).Text.Equals(bulk_message_recipient_pattern) &&
+
+                    driver.FindElement(By.XPath(".//*[@id='lblBulkMsgPatt']")).Text.Equals(bulk_message_pattern) &&
+
+                    driver.FindElement(By.XPath(".//*[@id='lblBulkSpoolDirChk']")).Text.Equals(lblBulkSpoolDirChk)))
+                {
+                    Assert.Fail("File System Interface Failed ...");
+                }
+
+                else
+                {
+                    Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   File System Interface Passed ...when Enable Bulk Message Processing was unchecked   ^^^^^^^^^^^^^^^^^^^^^");
+                    // driver.FindElement(By.XPath("//*[@id='logout']")).Click();
+                }
+
+            }
+
+        }
+
+
+        [Test]
+        public void g_Add_Feedback()
         {
             check_driver_type(driver_type, "settings", "Feedback", "Settings");
 
@@ -964,7 +1200,7 @@ namespace HL_Smoke
         }
 
         [Test]
-        public void g_Add_Schedule_Template()
+        public void h_Add_Schedule_Template()
         {
 
             string schedule_template_name = "Schedule_Template_Monthly";
@@ -1026,7 +1262,7 @@ namespace HL_Smoke
 
 
         [Test]
-        public void h_LDAP_Panel()
+        public void i_LDAP_Panel()
         {
 
             check_driver_type(driver_type, "administration", "LDAP Settings", "Sys Admin");
