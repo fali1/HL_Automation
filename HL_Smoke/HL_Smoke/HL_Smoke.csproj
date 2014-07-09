@@ -64,13 +64,14 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="b_Smoke_Account.cs" />
-    <Compile Include="c_Smoke_Send_Panels.cs" />
-    <Compile Include="d_Smoke_System.cs" />
-    <Compile Include="e_Smoke_Hnp.cs" />
+    <Compile Include="a_Smoke_Global_Settings.cs" />
+    <Compile Include="c_Smoke_Account.cs" />
+    <Compile Include="d_Smoke_Send_Panels.cs" />
+    <Compile Include="e_Smoke_System.cs" />
+    <Compile Include="f_Smoke_Hnp.cs" />
     <Compile Include="SmokeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="a_Smoke_Recipients.cs" />
+    <Compile Include="b_Smoke_Recipients.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

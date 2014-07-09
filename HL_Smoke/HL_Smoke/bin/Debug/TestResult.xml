@@ -1,23 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="1" errors="1" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-07-08" time="16:50:33">
+<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-07-09" time="16:35:54">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5477" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Failure" success="False" time="86.784" asserts="0">
+  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Success" success="True" time="61.138" asserts="0">
     <results>
-      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Failure" success="False" time="86.783" asserts="0">
+      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Success" success="True" time="61.119" asserts="0">
         <results>
-          <test-suite type="TestFixture" name="e_Smoke_Hnp" executed="True" result="Failure" success="False" time="86.782" asserts="1">
+          <test-suite type="TestFixture" name="e_Smoke_System" executed="True" result="Success" success="True" time="61.114" asserts="1">
             <results>
-              <test-case name="HL_Smoke.e_Smoke_Hnp.a_Hnp_Configuration" executed="True" result="Error" success="False" time="75.624" asserts="3">
-                <failure>
-                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : Element is not currently visible and so may not be interacted with]]></message>
-                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
-at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
-at HL_Smoke.e_Smoke_Hnp.a_Hnp_Configuration() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\e_Smoke_Hnp.cs:line 242
-]]></stack-trace>
-                </failure>
-              </test-case>
+              <test-case name="HL_Smoke.e_Smoke_System.j_Filter_Panel" executed="True" result="Success" success="True" time="45.552" asserts="1" />
             </results>
           </test-suite>
         </results>
