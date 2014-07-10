@@ -69,6 +69,8 @@
     <Compile Include="d_Smoke_Send_Panels.cs" />
     <Compile Include="e_Smoke_System.cs" />
     <Compile Include="f_Smoke_Hnp.cs" />
+    <Compile Include="g_Smoke_Logs_Queues_Reports.cs" />
+    <Compile Include="h_Smoke_User_Profile.cs" />
     <Compile Include="SmokeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="b_Smoke_Recipients.cs" />

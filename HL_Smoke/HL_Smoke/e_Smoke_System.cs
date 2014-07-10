@@ -26,7 +26,7 @@ using System.Collections;
 namespace HL_Smoke
 {
     [TestFixture]
-    class e_Smoke_System
+    public class e_Smoke_System
     {
         private IWebDriver driver;
 
@@ -84,7 +84,7 @@ namespace HL_Smoke
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-               System.Diagnostics.Debugger.Launch();// launch debugger
+            //  System.Diagnostics.Debugger.Launch();// launch debugger
 
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
@@ -1208,12 +1208,17 @@ namespace HL_Smoke
 
             // General Setting Section
 
-            driver.FindElement(By.Id("ldapEnabled")).Click();
+            driver.FindElement(By.XPath("(//span[text()='Enabled'])[1]")).Click();
+
+            driver.FindElement(By.Id("syncEnabled")).Click();
+            
 
             // Connection Parameter Section
 
             driver.FindElement(By.Id("connectionParameters")).Click();
             Thread.Sleep(2000);
+
+            new SelectElement(driver.FindElement(By.Id("directoryType"))).SelectByText("Active Directory"); // select value from dropdown
 
             driver.FindElement(By.Id("btnGetDefaults")).Click();
             Thread.Sleep(2000);
@@ -1221,13 +1226,18 @@ namespace HL_Smoke
             driver.FindElement(By.Id("btnOk")).Click();
 
 
-            new SelectElement(driver.FindElement(By.Id("directoryType"))).SelectByText("Active Directory"); // select value from dropdown
-
             driver.FindElement(By.Id("primaryServerHost")).Clear();
             driver.FindElement(By.Id("primaryServerHost")).SendKeys("192.168.4.7");
 
             driver.FindElement(By.Id("baseDn")).Clear();
             driver.FindElement(By.Id("baseDn")).SendKeys("dc=folio3pk, dc=com");
+
+            driver.FindElement(By.Id("anonymousAccess")).Click();
+            Thread.Sleep(2000);
+            driver.FindElement(By.Id("anonymousAccess")).Click();
+            Thread.Sleep(2000);
+            
+            
 
             driver.FindElement(By.Id("domainName")).Clear();
             driver.FindElement(By.Id("domainName")).SendKeys("folio3pk");
@@ -1236,7 +1246,7 @@ namespace HL_Smoke
             driver.FindElement(By.Id("userId")).SendKeys("fali");
 
             driver.FindElement(By.Id("password")).Clear();
-            driver.FindElement(By.Id("password")).SendKeys("password");
+            driver.FindElement(By.Id("password")).SendKeys("allahoakbar1");
 
             // LDAP User Parameters Section
 
@@ -1258,6 +1268,23 @@ namespace HL_Smoke
             driver.FindElement(By.Id("rdnFilter")).Clear();
             driver.FindElement(By.Id("rdnFilter")).SendKeys("(objectClass=user);");
 
+            
+            // LDAP Group Parameters Section
+            
+            driver.FindElement(By.Id("groupParameters")).Click();
+
+            driver.FindElement(By.Id("autoUser")).Click();
+
+            driver.FindElement(By.Id("groupNameAttribute")).Clear();
+
+            driver.FindElement(By.Id("groupNameAttribute")).SendKeys("sAMAccountName");
+
+            driver.FindElement(By.Id("memberAttribute")).Clear();
+
+            driver.FindElement(By.Id("memberAttribute")).SendKeys("member");
+
+            driver.FindElement(By.XPath("//li[text()='Add New']")).Click();
+            
 
         }
 
