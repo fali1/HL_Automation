@@ -502,7 +502,6 @@ namespace HL_Smoke
             driver.FindElement(By.Id("btnToMessage")).Click(); //return to message button
             Thread.Sleep(2000);
 
-            Assert.Pass("Escalation_Send_Panel Passed...");
 
         }
 
@@ -697,9 +696,17 @@ namespace HL_Smoke
             driver.FindElement(By.Id("txtAreaMessage")).SendKeys("Test quota");
             
             driver.FindElement(By.Id("btnSend")).Click();
-            Thread.Sleep(1000);
-            driver.FindElement(By.Id("btnToMessage")).Click();
-            Thread.Sleep(1000); 
+            Thread.Sleep(2000);
+
+            takescreenshot("Quota_Send_Panel");
+
+            Assert.AreEqual(true, driver.FindElement(By.Id("btnToMessage")).Displayed); // Visible Works
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("btnToMessage")).Click(); // return to message button
+            Thread.Sleep(2000);
+
+            Console.WriteLine("Quota_Send_Panel Passed...");
         }
 
 
@@ -720,8 +727,17 @@ namespace HL_Smoke
             driver.FindElement(By.Id("txtAreaMessage")).SendKeys("Test attribute");
             
             driver.FindElement(By.Id("btnSend")).Click();
-            
-            driver.FindElement(By.Id("btnToMessage")).Click();
+            Thread.Sleep(2000);
+
+            takescreenshot("Attribute_Send_Panel");
+
+            Assert.AreEqual(true, driver.FindElement(By.Id("btnToMessage")).Displayed); // Visible Works
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("btnToMessage")).Click(); // return to message button
+            Thread.Sleep(2000);
+
+            Console.WriteLine("Attribute_Send_Panel Passed...");
         }
 
 

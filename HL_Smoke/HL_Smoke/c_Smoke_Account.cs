@@ -74,6 +74,8 @@ namespace HL_Smoke
 
         string message_template_name = "Message Template";
 
+        string response_action_name = "Standard_Response_Action";
+
 
 
         [TestFixtureSetUp]
@@ -240,10 +242,9 @@ namespace HL_Smoke
         public void b_Add_Message_Template()
         {
 
+            string message_template_description = "message template description";
             
-            string message_template_description = "Message Template Description";
             
-
             check_driver_type(driver_type, "settings", "Message Template", "Settings");
 
             Assert.AreEqual("Message Template", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
@@ -305,24 +306,30 @@ namespace HL_Smoke
 
             driver.FindElement(By.Id("btnSelOk")).Click();
 
-            /* driver.FindElement(By.Id("btnInsertField")).Click();//btnSelectField
+            driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
 
-             driver.FindElement(By.XPath(".//*[@id='DivTemplate']/input[@type='text']")).Clear();
+            driver.FindElement(By.XPath("//li[text()='Primary Send']")).Click();
 
-             driver.FindElement(By.CssSelector(".//*[@id='DivTemplate']/input[@type='text']")).SendKeys("Age:12");.//*[@id='selectTempBox']/form/div[@id='comboDiv']/div/div[2]/div/div/div/div/div/fieldset/input
-            
-             driver.FindElement(By.Id("btnSelectField")).Click();
-            
-             driver.FindElement(By.CssSelector("#objBar_360 > fieldset > input[type=\"text\"]")).Clear();
-            
-             driver.FindElement(By.CssSelector("#objBar_360 > fieldset > input[type=\"text\"]")).SendKeys("1");
-             driver.FindElement(By.Id("add_a718c602-78a5-458c-beaf-6bd80902df40")).Click();
-             driver.FindElement(By.CssSelector("#objBar_392 > fieldset > input[type=\"text\"]")).Clear();
-             driver.FindElement(By.CssSelector("#objBar_392 > fieldset > input[type=\"text\"]")).SendKeys("2");
-             driver.FindElement(By.Id("add_a718c602-78a5-458c-beaf-6bd80902df40")).Click();
-             */
+            driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
+
+            driver.FindElement(By.XPath("//li[text()='Normal']")).Click();
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
+
+            driver.FindElement(By.XPath("//li[text()='Important']")).Click();
+
+            driver.FindElement(By.Id("btnAddResp")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("txtResponseText")).Clear();
+            driver.FindElement(By.Id("txtResponseText")).SendKeys("ra1");
+
+            driver.FindElement(By.Id("respSave")).Click();
 
             driver.FindElement(By.Id("btnSaveTemp")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.Id("btnCancel")).Click();
             Thread.Sleep(1000);
 
             takescreenshot("Message_Template");
@@ -350,7 +357,7 @@ namespace HL_Smoke
         [Test]
         public void c_Add_Response_Action()
         {
-            string response_action_name = "Standard_Response_Action";
+            
             string response_action_description = "Standard Response Action description";
             string command_line_statement=("echo \"fahad\"");
 
@@ -631,10 +638,8 @@ namespace HL_Smoke
                 driver.FindElement(By.Id("moveMemberRight")).Click();
                 Thread.Sleep(2000);
 
-                //  driver.FindElement(By.CssSelector("fieldset > div.custom.dropdown > a.selector")).Click();
-
-
-                driver.FindElement(By.LinkText("Guest")).Click();
+               
+           /*     driver.FindElement(By.LinkText("Guest")).Click();
 
                 driver.FindElement(By.XPath("//div[@id='guestTab']/div/div/fieldset/div/a[2]")).Click();
                 Thread.Sleep(2000);
@@ -645,6 +650,7 @@ namespace HL_Smoke
 
                 driver.FindElement(By.Id("moveGuestRight")).Click();
                 Thread.Sleep(2000);
+            */ 
 
                 driver.FindElement(By.Id("btnsave")).Click();
 
@@ -720,11 +726,12 @@ namespace HL_Smoke
             driver.FindElement(By.CssSelector("a.selector")).Click();
             Thread.Sleep(1000);
 
-            driver.FindElement(By.XPath("//li[text()='"+timezone_name+"']")).Click();
+        /*    driver.FindElement(By.XPath("//li[text()='"+timezone_name+"']")).Click();
 
             driver.FindElement(By.Id("txtAccess_code")).Clear();
 
             driver.FindElement(By.Id("txtAccess_code")).SendKeys(access_code);
+         */ 
 
             driver.FindElement(By.Id("txtDesc")).Clear();
 
@@ -746,13 +753,14 @@ namespace HL_Smoke
             driver.FindElement(By.Id("txtRetypePass")).SendKeys("123");
             Thread.Sleep(1000);
 
-            driver.FindElement(By.XPath("//form[@id='userPanel']/div[2]/div/div/div/fieldset[4]/div/a[2]")).Click();
+       /*     driver.FindElement(By.XPath("//form[@id='userPanel']/div[2]/div/div/div/fieldset[4]/div/a[2]")).Click();
             Thread.Sleep(1000);
 
             driver.FindElement(By.XPath("//li[text()='GUI']")).Click();
             Thread.Sleep(1000);
+        */
 
-            driver.FindElement(By.XPath("//div[@class='user_group_col1']/div/div[2]/fieldset/div/a[2]")).Click();
+            driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
             Thread.Sleep(1000);
 
             driver.FindElement(By.XPath("//li[text()='" + user_group_name + "']")).Click();

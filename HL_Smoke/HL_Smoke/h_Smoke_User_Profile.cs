@@ -184,24 +184,34 @@ namespace HL_Smoke
 
             driver.FindElement(By.Id("pro_change_password")).Click();
             Thread.Sleep(1000);
-            
-            driver.FindElement(By.Id("closePassBox")).Click();
-            Thread.Sleep(1000);
-            
-            driver.FindElement(By.Id("favoriteToggle")).Click();
-            Thread.Sleep(1000);
-            
-            driver.FindElement(By.Id("favoriteToggle")).Click();
-            Thread.Sleep(1000);
-            
-            driver.FindElement(By.Id("dashboardToggle")).Click();
-            Thread.Sleep(1000);
-            
-            driver.FindElement(By.Id("dashboardToggle")).Click();
-            Thread.Sleep(1000);
+
+            if (driver.FindElement(By.Id("pwLightBox")).Displayed)
+            {
+                driver.FindElement(By.Id("closePassBox")).Click();
+
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.Id("favoriteToggle")).Click();
+                Thread.Sleep(1000);
+
+
+                driver.FindElement(By.Id("favoriteToggle")).Click();
+                Thread.Sleep(1000);
+
+
+                driver.FindElement(By.Id("dashboardToggle")).Click();
+                Thread.Sleep(1000);
+
+
+                driver.FindElement(By.Id("dashboardToggle")).Click();
+                Thread.Sleep(1000);
+            }
+            else
+            {
+                Assert.Fail("User Profile Failed");
+            }
 
         }
-
 
 
         public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 

@@ -214,36 +214,56 @@ namespace HL_Smoke
                 driver.FindElement(By.Id("btnOk")).Click();
                 Thread.Sleep(2000);*/
 
-            driver.FindElement(By.Id("divGrid_selectAllRows")).Click();  // Select all/Deselect all checkbox
-
-            driver.FindElement(By.Id("selChangeLevel")).Click();
-            Thread.Sleep(2000);
-
-
-            SelectElement se = new SelectElement(driver.FindElement(By.Id("selChangeLevel")));
-            se.SelectByText(log_level);
-           
-          //  driver.FindElement(By.XPath("//option[text()='INFO']")).Click();
-
-           
-
-           // new SelectElement(driver.FindElement(By.Id("selChangeLevel"))).SelectByText(log_level); // select value from dropdown
-            
-
-            driver.FindElement(By.Id("btnOk")).Click();
-            Thread.Sleep(2000);
-
-            takescreenshot("Log_Settings");
-
-            if (driver.FindElement(By.XPath(".//*[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[5]/descendant::div")).Text.Equals(log_level))
+            if (driver_type.ToString() == "OpenQA.Selenium.Firefox.FirefoxDriver")
             {
-                Console.WriteLine("^^^^^^^^^^^^^^^^^^ Log Settings Passed... ^^^^^^^^^^^^^^^^^^");
+                driver.FindElement(By.XPath("(//a[@class='row_action_edit'])[2]")).Click();
+                Thread.Sleep(2000);
+
+                if (driver.FindElement(By.Id("logSettingLightbox")).Displayed)
+                {
+                    driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
+
+                    driver.FindElement(By.XPath("//li[text()='"+log_level+"']")).Click();
+
+                    driver.FindElement(By.Id("lnkSave")).Click();
+
+                }
+                else
+                {
+                    Assert.Fail("Logs Settings Failed");
+                }
+                
             }
+
             else
-            {
-                Assert.Fail("Log Settings Failed...");
-            }
 
+            {
+
+                driver.FindElement(By.Id("divGrid_selectAllRows")).Click();  // Select all/Deselect all checkbox
+
+                driver.FindElement(By.Id("selChangeLevel")).Click();
+                Thread.Sleep(2000);
+
+                SelectElement se = new SelectElement(driver.FindElement(By.Id("selChangeLevel")));
+                se.SelectByText(log_level);
+
+                // new SelectElement(driver.FindElement(By.Id("selChangeLevel"))).SelectByText(log_level); // select value from dropdown
+
+                driver.FindElement(By.Id("btnOk")).Click();
+                Thread.Sleep(2000);
+
+                takescreenshot("Log_Settings");
+
+                if (driver.FindElement(By.XPath(".//*[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[5]/descendant::div")).Text.Equals(log_level))
+                {
+                    Console.WriteLine("^^^^^^^^^^^^^^^^^^ Log Settings Passed... ^^^^^^^^^^^^^^^^^^");
+                }
+                else
+                {
+                    Assert.Fail("Log Settings Failed...");
+                }
+            }
+        
         }
 
 

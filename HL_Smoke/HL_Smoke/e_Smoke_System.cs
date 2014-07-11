@@ -1246,7 +1246,7 @@ namespace HL_Smoke
             driver.FindElement(By.Id("userId")).SendKeys("fali");
 
             driver.FindElement(By.Id("password")).Clear();
-            driver.FindElement(By.Id("password")).SendKeys("allahoakbar1");
+            driver.FindElement(By.Id("password")).SendKeys("password");
 
             // LDAP User Parameters Section
 
