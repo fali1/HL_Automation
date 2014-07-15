@@ -1251,6 +1251,7 @@ namespace HL_Smoke
             // LDAP User Parameters Section
 
             driver.FindElement(By.Id("userParameters")).Click();
+            Thread.Sleep(2000);
 
             new SelectElement(driver.FindElement(By.Id("isUserId"))).SelectByText("User Name Attribute"); // select value from dropdown
 
@@ -1285,12 +1286,13 @@ namespace HL_Smoke
             driver.FindElement(By.Id("memberAttribute")).SendKeys("member");
             Thread.Sleep(2000);
 
-            driver.FindElement(By.Id("rdnName")).Clear();
-            driver.FindElement(By.Id("rdnName")).SendKeys("CN=?,CN=Users");
+            driver.FindElement(By.XPath("(//*[@id='rdnName'])[2]")).Clear();
+            driver.FindElement(By.XPath("(//*[@id='rdnName'])[2]")).SendKeys("CN=?,CN=Users");
 
 
-            driver.FindElement(By.Id("rdnFilter")).Clear();
-            driver.FindElement(By.Id("rdnFilter")).SendKeys("(objectClass=group)");
+            driver.FindElement(By.XPath("(//*[@id='rdnFilter'])[3]")).Clear();
+            driver.FindElement(By.XPath("(//*[@id='rdnFilter'])[3]")).SendKeys("(objectClass=group)");
+           
 
 
            // driver.FindElement(By.XPath("//li[text()='Add New']")).Click();
@@ -1298,6 +1300,7 @@ namespace HL_Smoke
             // LDAP Group Mappings
 
             driver.FindElement(By.Id("groupMappings")).Click();
+            Thread.Sleep(2000);
             
             driver.FindElement(By.Id("selectAll")).Click();
 
@@ -1317,39 +1320,51 @@ namespace HL_Smoke
 
             driver.FindElement(By.Id("recEmailAttribute")).Clear();
             driver.FindElement(By.Id("recEmailAttribute")).SendKeys("mail");
+            Thread.Sleep(2000);
 
-            driver.FindElement(By.Id("rdnName")).Clear();
-            driver.FindElement(By.Id("rdnName")).SendKeys("CN=?,CN=Users");
+            driver.FindElement(By.XPath("(//*[@id='rdnName'])[3]")).Clear();
+            driver.FindElement(By.XPath("(//*[@id='rdnName'])[3]")).SendKeys("CN=?,CN=Users");
 
 
-            driver.FindElement(By.Id("rdnFilter")).Clear();
-            driver.FindElement(By.Id("rdnFilter")).SendKeys("(objectClass=user)");
+            driver.FindElement(By.XPath("(//*[@id='rdnFilter'])[4]")).Clear();
+            driver.FindElement(By.XPath("(//*[@id='rdnFilter'])[4]")).SendKeys("(objectClass=user)");
 
             // Receiver Carrier Mapping
 
+            driver.FindElement(By.Id("receiverCarrierMappings")).Click();
+            Thread.Sleep(2000);
+
             new SelectElement(driver.FindElement(By.Id("carrierLdapMode"))).SelectByText("Manual");
             
-            driver.FindElement(By.Id("receiverCarrierMappings")).Click();
-
             driver.FindElement(By.Id("carrierPinName")).SendKeys("mail");
 
-            driver.FindElement(By.Id("selectAll")).Click();
+            new SelectElement(driver.FindElement(By.XPath("(//*[@id='mbox_listB'])[2]"))).SelectByText("smtp_carrier");
+            Thread.Sleep(2000);
 
-            new SelectElement(driver.FindElement(By.Id("mbox_listB"))).SelectByText(carrier_name);
+            driver.FindElement(By.XPath("(//*[@id='selectAll'])[2]")).Click();
+            Thread.Sleep(4000);
 
-            driver.FindElement(By.Id("mbox_mapping_add")).Click();
+            driver.FindElement(By.XPath("(//*[@id='mbox_mapping_add'])[2]")).Click();
+            Thread.Sleep(4000);
 
             // Receiver Department Mapping
 
+            driver.FindElement(By.Id("receiverDepartmentMappings")).Click();
+            Thread.Sleep(2000);
+
             new SelectElement(driver.FindElement(By.Id("departLdapMode"))).SelectByText("Manual");
 
-            driver.FindElement(By.Id("selectAll")).Click();
+            new SelectElement(driver.FindElement(By.XPath("(//*[@id='mbox_listB'])[3]"))).SelectByText("Default");
+            Thread.Sleep(2000);
 
-            new SelectElement(driver.FindElement(By.Id("mbox_listB"))).SelectByText("Default");
+            driver.FindElement(By.XPath("(//*[@id='selectAll'])[4]")).Click();
+            Thread.Sleep(4000);
 
-            driver.FindElement(By.Id("mbox_mapping_add")).Click();
+            driver.FindElement(By.XPath("(//*[@id='mbox_mapping_add'])[3]")).Click();
+            Thread.Sleep(4000);
 
             driver.FindElement(By.Id("btnSave")).Click();
+            Thread.Sleep(2000);
 
         }
 

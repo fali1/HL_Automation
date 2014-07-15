@@ -70,7 +70,7 @@ namespace HL_Smoke
 
         string username = "new_user";
 
-        string timezone_name = "Karachi Timezone";
+        string timezone_name = "Server Time";
 
         string message_template_name = "Message Template";
 

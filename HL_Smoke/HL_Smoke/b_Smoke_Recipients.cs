@@ -63,7 +63,7 @@ namespace HL_Smoke
 
         string create_directory_path_with_time;
 
-        string new_dir = "new_directory";
+        string new_dir = "Default";
 
         string messenger_name = "smtp_messenger";
 
@@ -345,11 +345,11 @@ namespace HL_Smoke
                     SelectElement select_msngr_Queue = new SelectElement(driver.FindElement(By.Id("selMessangerQueue"))); // Creating SelectElement.
                     select_msngr_Queue.SelectByText("new_directory");*/
 
-                driver.FindElement(By.CssSelector("a.selector")).Click();
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
 
                 Thread.Sleep(1000);
 
-                driver.FindElement(By.XPath("//fieldset[1]/div/ul/li[text()='" + new_dir + "']")).Click();
+                driver.FindElement(By.XPath("//li[text()='" + new_dir + "']")).Click();
                 /*             string path1 = "//li[text()='";
                              string path2 = "']";
 
@@ -371,7 +371,7 @@ namespace HL_Smoke
                      select_Queue_checking_period.SelectByValue("5");*/
 
 
-                driver.FindElement(By.XPath(".//*[@id='protocolParameters']/div/div[2]/fieldset/div/a[2]")).Click();
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
                 Thread.Sleep(1000);
                 driver.FindElement(By.XPath("//li[text()='5']")).Click();
 
@@ -406,7 +406,6 @@ namespace HL_Smoke
         [Test]
         public void c_Add_Carrier()
         {
-
 
                 string carrier_desc = "SMTP Carrier Description";
                 string email_server = "smtp.gmail.com";
@@ -496,7 +495,7 @@ namespace HL_Smoke
                 //----------- Selecting Paging Queue ----------
 
                 //  html.js body div.wrapper div.middle_area div div.main_container form.add_carrier div.c_form_inner div.col_form fieldset div.custom ul li.selected
-                driver.FindElement(By.CssSelector("a.selector")).Click();
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
                 Thread.Sleep(1000);
                 string path1 = "//li[text()='";
                 string path2 = "']";
@@ -641,7 +640,7 @@ namespace HL_Smoke
 
                 Assert.AreEqual("Receivers", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);  //verifying page name
 
-                driver.FindElement(By.XPath(".//div[@class='filter_panel']/a[text()='Add Reciever']")).Click();
+                driver.FindElement(By.XPath("//a[text()='Add Reciever']")).Click();
                 Thread.Sleep(5000);
 
                 driver.FindElement(By.Id("txtName")).Clear();
@@ -658,7 +657,7 @@ namespace HL_Smoke
                 driver.FindElement(By.XPath("//label/b[text()='Email Failover']")).Click();
                 Thread.Sleep(2000);
 
-                driver.FindElement(By.XPath("//div[@class='add_receiver_block']/div[1]/div[1]/div[1]/fieldset[4]/div/a[2]")).Click();
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
                 Thread.Sleep(2000);
 
                 driver.FindElement(By.XPath("(//li[contains(text(),'" + department_name + "')])")).Click();// selecting department
@@ -673,7 +672,7 @@ namespace HL_Smoke
                 driver.FindElement(By.Id("btnAddAttribute")).Click();
                 Thread.Sleep(2000);
 
-                driver.FindElement(By.XPath("//div[@class='add_receiver_block']/div/div[2]/div[3]/fieldset[1]/div/a[2]")).Click();
+                driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();
                 Thread.Sleep(2000);
 
                 driver.FindElement(By.XPath("(//li[contains(text(),'" + carrier_name + "')])")).Click();// selecting carrier
@@ -728,17 +727,17 @@ namespace HL_Smoke
                 driver.FindElement(By.Id("txtDesc")).Clear();
                 driver.FindElement(By.Id("txtDesc")).SendKeys(broadcast_group_description); //description
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[1]/div/a[2]")).Click(); //member of department drop down
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click(); //member of department drop down
                 Thread.Sleep(2000);
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[1]/div/ul/li[text()='" + department_name + "']")).Click();
+                driver.FindElement(By.XPath("//li[text()='" + department_name + "']")).Click();
 
                 driver.FindElement(By.XPath("//span[text()='Set Owner']")).Click();
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[2]/fieldset/div[1]/a[2]")).Click(); //set owner drop down
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click(); //set owner drop down
                 Thread.Sleep(2000);
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[2]/fieldset/div[1]/ul/li[text()='" + owner_name + "']")).Click();
+                driver.FindElement(By.XPath("//li[text()='" + owner_name + "']")).Click();
 
                 driver.FindElement(By.XPath("//span[text()='Alert this owner for membership changes']")).Click(); //Alert this owner for membership changes checkbox
 
@@ -802,19 +801,19 @@ namespace HL_Smoke
 
                 driver.FindElement(By.XPath("//span[text()='Rotating']")).Click(); //Rotating checkbox 
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[2]/div/a[2]")).Click(); //cycle drop down
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click(); //cycle drop down
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[2]/div/ul/li[2]")).Click();
+                driver.FindElement(By.XPath("//li[text()='2']")).Click();
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[3]/div/a[2]")).Click(); //member of department dropdown
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click(); //member of department dropdown
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[3]/div/ul/li[text()='Default']")).Click();
+                driver.FindElement(By.XPath("//li[text()='Default']")).Click();
 
                 driver.FindElement(By.XPath("//span[text()='Set Owner']")).Click();
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[4]/fieldset/div[1]/a[2]")).Click(); //set owner drop down 
+                driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click(); //set owner drop down 
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[4]/fieldset/div[1]/ul/li[text()='" + set_owner + "']")).Click();
+                driver.FindElement(By.XPath("//li[text()='" + set_owner + "']")).Click();
 
                 driver.FindElement(By.XPath("//span[text()='Alert this owner for membership changes']")).Click(); //Alert this owner for membership changes checkbox
 
@@ -835,7 +834,7 @@ namespace HL_Smoke
                 driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click(); //Delay dropp down
                 Thread.Sleep(2000);
 
-                driver.FindElement(By.XPath("//div[@id='membersGrid']/table/tbody/tr[3]/td[10]/div/ul/li[2]")).Click();
+              //  driver.FindElement(By.XPath("//div[@id='membersGrid']/table/tbody/tr[3]/td[10]/div/ul/li[2]")).Click();
 
                 driver.FindElement(By.Id("btnSaveTabTwo")).Click();
                 Thread.Sleep(2000);
@@ -885,15 +884,15 @@ namespace HL_Smoke
 
                 driver.FindElement(By.XPath("//span[text()='Rotating']")).Click(); //Rotating checkbox
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[2]/div/a[2]")).Click(); //member of department drop odwn
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click(); //member of department drop odwn
 
                 driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[2]/div/ul/li[text()='Default']")).Click();
 
                 driver.FindElement(By.XPath("//span[text()='Set Owner']")).Click();
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[3]/fieldset/div[1]/a[2]")).Click();//set owner drop down
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();//set owner drop down
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[3]/fieldset/div[1]/ul/li[1][text()='" + set_owner + "']")).Click();
+                driver.FindElement(By.XPath("//li[1][text()='" + set_owner + "']")).Click();
 
                 driver.FindElement(By.XPath("//span[text()='Alert this owner for membership changes']")).Click(); //Alert this owner for membership changes checkbox
 
@@ -916,25 +915,25 @@ namespace HL_Smoke
                 driver.FindElement(By.Id("schedule")).Click();
                 Thread.Sleep(2000);
 
-                driver.FindElement(By.XPath("//div[@id='scheduleTab']/div/div[1]/div[1]/div/a[2]")).Click(); //select receiver name drop down
-                driver.FindElement(By.XPath("//div[@id='scheduleTab']/div/div[1]/div[1]/div/ul/li[text()='" + receiver_name + "']")).Click();
+                driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click(); //select receiver name drop down
+                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
 
                 driver.FindElement(By.LinkText("Add Monthly")).Click();
 
                 driver.FindElement(By.Id("sname")).Clear();
                 driver.FindElement(By.Id("sname")).SendKeys("monthly");
 
-                driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[1]/a[2]")).Click(); //timeframe drop down
-                driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[1]/ul/li[2]")).Click();
+                driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click(); //timeframe drop down
+                driver.FindElement(By.XPath("(//li[text()='02'])[1]")).Click();
 
-                driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[3]/a[2]")).Click(); //timeframe drop down
-                driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[3]/ul/li[2]")).Click();
+                driver.FindElement(By.XPath("(//a[@class='selector'])[6]")).Click(); //timeframe drop down
+                driver.FindElement(By.XPath("(//li[text()='02'])[3]")).Click();
 
-                driver.FindElement(By.XPath(".//*[@id='sch_monthly']/fieldset[1]/div[1]/a[2]")).Click(); //Days dropdown
+                driver.FindElement(By.XPath("(//a[@class='selector'])[9]")).Click(); //Days dropdown
 
                 driver.FindElement(By.XPath(".//*[@id='sch_monthly']/fieldset[1]/div[1]/ul/li[2][text()='First']")).Click();
 
-                driver.FindElement(By.XPath(".//*[@id='sch_monthly']/fieldset[1]/div[2]/a[2]")).Click();
+                driver.FindElement(By.XPath("(//a[@class='selector'])[10]")).Click();
 
                 driver.FindElement(By.XPath(".//*[@id='sch_monthly']/fieldset[1]/div[2]/ul/li[2][text()='Monday']")).Click();
                 Thread.Sleep(3000);
@@ -996,15 +995,15 @@ namespace HL_Smoke
 
                 driver.FindElement(By.XPath("//span[text()='Rotating']")).Click(); //Rotating checkbox
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[2]/div/a[2]")).Click(); //member of department drop odwn
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click(); //member of department drop odwn
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[2]/div/ul/li[text()='Default']")).Click();
+                driver.FindElement(By.XPath("//li[text()='Default']")).Click();
 
                 driver.FindElement(By.XPath("//span[text()='Set Owner']")).Click();
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[3]/fieldset/div[1]/a[2]")).Click();//set owner drop down
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();//set owner drop down
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[3]/fieldset/div[1]/ul/li[1][text()='" + set_owner + "']")).Click();
+                driver.FindElement(By.XPath("//li[1][text()='" + set_owner + "']")).Click();
 
                 driver.FindElement(By.XPath("//span[text()='Alert this owner for membership changes']")).Click(); //Alert this owner for membership changes checkbox
 
@@ -1026,19 +1025,19 @@ namespace HL_Smoke
 
                 driver.FindElement(By.Id("schedule")).Click();
 
-                driver.FindElement(By.XPath("//div[@id='scheduleTab']/div/div[1]/div[1]/div/a[2]")).Click(); //select receiver name drop down
-                driver.FindElement(By.XPath("//div[@id='scheduleTab']/div/div[1]/div[1]/div/ul/li[text()='" + receiver_name + "']")).Click();
+                driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click(); //select receiver name drop down
+                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
 
                 driver.FindElement(By.Id("sname")).Clear();
                 driver.FindElement(By.Id("sname")).SendKeys("weekly");
 
-                driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[1]/a[2]")).Click(); //timeframe drop down
+                driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click(); //timeframe drop down
                 driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[1]/ul/li[2]")).Click();
 
-                driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[3]/a[2]")).Click(); //timeframe drop down
+                driver.FindElement(By.XPath("(//a[@class='selector'])[6]")).Click(); //timeframe drop down
                 driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[3]/ul/li[2]")).Click();
 
-                driver.FindElement(By.XPath(".//*[@id='sch_weekly']/fieldset[1]/div/a[2]")).Click(); // Repeat every drop down
+                driver.FindElement(By.XPath("(//a[@class='selector'])[8]")).Click(); // Repeat every drop down
                 driver.FindElement(By.XPath(".//*[@id='sch_weekly']/fieldset[1]/div/ul/li[3]")).Click();
 
                 driver.FindElement(By.Id("schSunday")).Click(); // On these days
@@ -1146,15 +1145,15 @@ namespace HL_Smoke
                 driver.FindElement(By.Id("txtDesc")).Clear();
                 driver.FindElement(By.Id("txtDesc")).SendKeys(rotate_group_description); //description
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[1]/div/a[2]")).Click(); //member of department 
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click(); //member of department 
 
                 driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[1]/div/ul/li[text()='Default']")).Click();
 
                 driver.FindElement(By.XPath("//span[text()='Set Owner']")).Click();
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[2]/fieldset/div[1]/a[2]")).Click(); //set owner drop down
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click(); //set owner drop down
 
-                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[2]/fieldset/div[1]/ul/li[1][text()='" + set_owner + "']")).Click();
+                driver.FindElement(By.XPath("//li[1][text()='" + set_owner + "']")).Click();
 
                 driver.FindElement(By.XPath("//span[text()='Alert this owner for membership changes']")).Click(); // Alert this owner for membership changes checkbox
 
