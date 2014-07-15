@@ -183,57 +183,58 @@ namespace HL_Smoke
         [Test]
         public void a_Add_Timezone()
         {
-            
-            string timezone_desc = "Karachi Timezone description";
-            string offset = "5 Hours";
-            string offset_digit = "5";
+           
+                string timezone_desc = "Karachi Timezone description";
+                string offset = "5 Hours";
+                string offset_digit = "5";
 
-            check_driver_type(driver_type, "administration", "Time Zone Settings", "Sys Admin");
+                check_driver_type(driver_type, "administration", "Time Zone Settings", "Sys Admin");
 
-            Assert.AreEqual("Time Zone Setting", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Time Zone Setting", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
-            driver.FindElement(By.LinkText("Add Time Zone")).Click();
+                driver.FindElement(By.LinkText("Add Time Zone")).Click();
 
-            driver.FindElement(By.Id("txtName")).Clear();
+                driver.FindElement(By.Id("txtName")).Clear();
 
-            driver.FindElement(By.Id("txtName")).SendKeys(timezone_name);
+                driver.FindElement(By.Id("txtName")).SendKeys(timezone_name);
 
-            driver.FindElement(By.Id("txtDesc")).Clear();
+                driver.FindElement(By.Id("txtDesc")).Clear();
 
-            driver.FindElement(By.Id("txtDesc")).SendKeys(timezone_desc);
+                driver.FindElement(By.Id("txtDesc")).SendKeys(timezone_desc);
 
-            driver.FindElement(By.CssSelector("a.selector")).Click();
-            Thread.Sleep(2000);
+                driver.FindElement(By.CssSelector("a.selector")).Click();
+                Thread.Sleep(2000);
 
-            string path1 = "//li[(text()='";
-            string path2 = "')]";
+                string path1 = "//li[(text()='";
+                string path2 = "')]";
 
-            driver.FindElement(By.XPath(path1 + offset + path2)).Click();
+                driver.FindElement(By.XPath(path1 + offset + path2)).Click();
 
-            //driver.FindElement(By.XPath("//li[(text()='5 Hours')]")).Click();  -----Xpath as it is
+                //driver.FindElement(By.XPath("//li[(text()='5 Hours')]")).Click();  -----Xpath as it is
 
-            driver.FindElement(By.Id("btnSaveTimeBox")).Click();
-            Thread.Sleep(2000);
+                driver.FindElement(By.Id("btnSaveTimeBox")).Click();
+                Thread.Sleep(2000);
 
-            takescreenshot("Timezone");
+                takescreenshot("Timezone");
 
-            Console.WriteLine(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text);
+                Console.WriteLine(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text);
 
-            //driver.FindElement(By.XPath("//div[@title='Karachi Timezone']"))
-            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(timezone_name) &&
-                driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(timezone_desc) &&
-                driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(offset_digit)))
-            {
-                takescreenshot("Timezone_Failed");
-                Assert.Fail("Time zone Failed...");
-            }
+                //driver.FindElement(By.XPath("//div[@title='Karachi Timezone']"))
+                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(timezone_name) &&
+                    driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(timezone_desc) &&
+                    driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(offset_digit)))
+                {
+                    takescreenshot("Timezone_Failed");
+                    Assert.Fail("Time zone Failed...");
+                }
 
-            else
-            {
-                takescreenshot("Timezone_Passed");
-                Console.WriteLine("^^^^^^^^^^^^^^^^^  Add Time Zone Passed ...  ^^^^^^^^^^^^^^^^^");
-                //driver.FindElement(By.XPath("//*[@id='logout']")).Click();
-            }
+                else
+                {
+                    takescreenshot("Timezone_Passed");
+                    Console.WriteLine("^^^^^^^^^^^^^^^^^  Add Time Zone Passed ...  ^^^^^^^^^^^^^^^^^");
+                    //driver.FindElement(By.XPath("//*[@id='logout']")).Click();
+                }
+          
         }
 
 
@@ -241,115 +242,117 @@ namespace HL_Smoke
         [Test]
         public void b_Add_Message_Template()
         {
-
-            string message_template_description = "message template description";
             
-            
-            check_driver_type(driver_type, "settings", "Message Template", "Settings");
-
-            Assert.AreEqual("Message Template", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
-
-            driver.FindElement(By.LinkText("Add Template")).Click();
-
-            driver.FindElement(By.Id("txtTmpltName")).Clear();
-            driver.FindElement(By.Id("txtTmpltName")).SendKeys(message_template_name); //message template name
-
-            driver.FindElement(By.Id("txtAdesc")).Clear();
-            driver.FindElement(By.Id("txtAdesc")).SendKeys(message_template_description); //message template description
-
-            driver.FindElement(By.XPath("//div[@id='recipientList']/div/div/div/div[1]/ul/li[1]")).Click();
-            Thread.Sleep(2000);
-
-            // driver will scrol down the screen untill the required element is in view... 
-
-            IWebElement element = driver.FindElement(By.XPath("//div[@id='recipientList']/div/div/div/div[1]/ul/li[contains(text(),'" + receiver_name + "')]"));
-            ((IJavaScriptExecutor)driver).ExecuteScript("var $myLi = $(arguments[0]), $myParent = $myLi.parents('.common_scrollbar'); $myParent.mCustomScrollbar('scrollTo', '#' + $myLi.attr('id'));", element);
-            Thread.Sleep(2000);
+                string message_template_description = "message template description";
 
 
-           // driver.FindElement(By.XPath("//div[@id='recipientList']/div/div/div/div[1]/ul/li[1]")).SendKeys("rec");
-            Thread.Sleep(2000);
+                check_driver_type(driver_type, "settings", "Message Template", "Settings");
 
-            driver.FindElement(By.XPath("//div[@id='recipientList']/div/div/div/div[1]/ul/li[contains(text(),'" + receiver_name + "')]")).Click(); //Assign Templates To Recipients list box
-            Thread.Sleep(2000);
+                Assert.AreEqual("Message Template", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
-            driver.FindElement(By.Id("recipientMoveRight")).Click();
-            Thread.Sleep(2000);
+                driver.FindElement(By.LinkText("Add Template")).Click();
 
-     /*       driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
+                driver.FindElement(By.Id("txtTmpltName")).Clear();
+                driver.FindElement(By.Id("txtTmpltName")).SendKeys(message_template_name); //message template name
 
-            driver.FindElement(By.XPath("//li[text()='Quick Send']")).Click();
+                driver.FindElement(By.Id("txtAdesc")).Clear();
+                driver.FindElement(By.Id("txtAdesc")).SendKeys(message_template_description); //message template description
 
-            driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
+                driver.FindElement(By.XPath("//div[@id='recipientList']/div/div/div/div[1]/ul/li[1]")).Click();
+                Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("//li[text()='Confidential']")).Click();
+                // driver will scrol down the screen untill the required element is in view... 
 
-            driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
-
-            driver.FindElement(By.XPath("//li[text()='Important']")).Click();
-      */
-
-            driver.FindElement(By.Id("DivTemplate")).Click();
-            Thread.Sleep(2000);
-
-            driver.FindElement(By.Id("DivTemplate")).SendKeys("number of messages: ");
-            Thread.Sleep(2000);
-
-            driver.FindElement(By.Id("btnSelectField")).Click(); //Drop down of Create Template Content
-            Thread.Sleep(2000);
-
-            driver.FindElement(By.XPath(".//*[@id='selectTempBox']/form/div[@id='comboDiv']/div/div[2]/div/div/div/div/div/fieldset/input")).SendKeys("1");
-
-            driver.FindElement(By.XPath("//li[text()='Add New']")).Click();
-
-            driver.FindElement(By.XPath(".//*[@id='selectTempBox']/form/div[@id='comboDiv']/div/div[2]/div/div/div/div/div[2]/fieldset/input")).SendKeys("2");
-
-            driver.FindElement(By.Id("btnSelOk")).Click();
-
-            driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
-
-            driver.FindElement(By.XPath("//li[text()='Primary Send']")).Click();
-
-            driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
-
-            driver.FindElement(By.XPath("//li[text()='Normal']")).Click();
-
-            driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
-
-            driver.FindElement(By.XPath("//li[text()='Important']")).Click();
-
-            driver.FindElement(By.Id("btnAddResp")).Click();
-            Thread.Sleep(2000);
-
-            driver.FindElement(By.Id("txtResponseText")).Clear();
-            driver.FindElement(By.Id("txtResponseText")).SendKeys("ra1");
-
-            driver.FindElement(By.Id("respSave")).Click();
-
-            driver.FindElement(By.Id("btnSaveTemp")).Click();
-            Thread.Sleep(1000);
-
-            driver.FindElement(By.Id("btnCancel")).Click();
-            Thread.Sleep(1000);
-
-            takescreenshot("Message_Template");
-            Thread.Sleep(2000);
+                IWebElement element = driver.FindElement(By.XPath("//div[@id='recipientList']/div/div/div/div[1]/ul/li[contains(text(),'" + receiver_name + "')]"));
+                ((IJavaScriptExecutor)driver).ExecuteScript("var $myLi = $(arguments[0]), $myParent = $myLi.parents('.common_scrollbar'); $myParent.mCustomScrollbar('scrollTo', '#' + $myLi.attr('id'));", element);
+                Thread.Sleep(2000);
 
 
-            Console.WriteLine(driver.FindElement(By.XPath(".//*[@id='divGrid_idGridDataNode']/div[1]/div[1]/div[1]/div[2]")).Text);
+                // driver.FindElement(By.XPath("//div[@id='recipientList']/div/div/div/div[1]/ul/li[1]")).SendKeys("rec");
+                Thread.Sleep(2000);
 
-            if (driver.FindElement(By.XPath(".//*[@id='divGrid_idGridDataNode']/div[1]/div[1]/div[1]/div[2]")).Text.Contains(message_template_name))
-            {
-                takescreenshot("Message_Template_Passed");
+                driver.FindElement(By.XPath("//div[@id='recipientList']/div/div/div/div[1]/ul/li[contains(text(),'" + receiver_name + "')]")).Click(); //Assign Templates To Recipients list box
+                Thread.Sleep(2000);
 
-                Console.WriteLine("^^^^^^^^^^^^^^^ Message_Template Passed ... ^^^^^^^^^^^^^^^");
-            }
-            else
-            {
-                takescreenshot("Message_Template_Failed");
+                driver.FindElement(By.Id("recipientMoveRight")).Click();
+                Thread.Sleep(2000);
 
-                Assert.Fail("Message_Template Failed ...");
-            }
+                /*       driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
+
+                       driver.FindElement(By.XPath("//li[text()='Quick Send']")).Click();
+
+                       driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
+
+                       driver.FindElement(By.XPath("//li[text()='Confidential']")).Click();
+
+                       driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
+
+                       driver.FindElement(By.XPath("//li[text()='Important']")).Click();
+                 */
+
+                driver.FindElement(By.Id("DivTemplate")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.Id("DivTemplate")).SendKeys("number of messages: ");
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.Id("btnSelectField")).Click(); //Drop down of Create Template Content
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath(".//*[@id='selectTempBox']/form/div[@id='comboDiv']/div/div[2]/div/div/div/div/div/fieldset/input")).SendKeys("1");
+
+                driver.FindElement(By.XPath("//li[text()='Add New']")).Click();
+
+                driver.FindElement(By.XPath(".//*[@id='selectTempBox']/form/div[@id='comboDiv']/div/div[2]/div/div/div/div/div[2]/fieldset/input")).SendKeys("2");
+
+                driver.FindElement(By.Id("btnSelOk")).Click();
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
+
+                driver.FindElement(By.XPath("//li[text()='Primary Send']")).Click();
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
+
+                driver.FindElement(By.XPath("//li[text()='Normal']")).Click();
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
+
+                driver.FindElement(By.XPath("//li[text()='Important']")).Click();
+
+                driver.FindElement(By.Id("btnAddResp")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.Id("txtResponseText")).Clear();
+                driver.FindElement(By.Id("txtResponseText")).SendKeys("ra1");
+
+                driver.FindElement(By.Id("respSave")).Click();
+
+                driver.FindElement(By.Id("btnSaveTemp")).Click();
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.Id("btnCancel")).Click();
+                Thread.Sleep(1000);
+
+                takescreenshot("Message_Template");
+                Thread.Sleep(2000);
+
+
+                Console.WriteLine(driver.FindElement(By.XPath(".//*[@id='divGrid_idGridDataNode']/div[1]/div[1]/div[1]/div[2]")).Text);
+
+                if (driver.FindElement(By.XPath(".//*[@id='divGrid_idGridDataNode']/div[1]/div[1]/div[1]/div[2]")).Text.Contains(message_template_name))
+                {
+                    takescreenshot("Message_Template_Passed");
+
+                    Console.WriteLine("^^^^^^^^^^^^^^^ Message_Template Passed ... ^^^^^^^^^^^^^^^");
+                }
+                else
+                {
+                    takescreenshot("Message_Template_Failed");
+
+                    Assert.Fail("Message_Template Failed ...");
+                }
+
+           
 
         }
 
@@ -358,73 +361,74 @@ namespace HL_Smoke
         public void c_Add_Response_Action()
         {
             
-            string response_action_description = "Standard Response Action description";
-            string command_line_statement=("echo \"fahad\"");
+                string response_action_description = "Standard Response Action description";
+                string command_line_statement = ("echo \"fahad\"");
 
-            check_driver_type(driver_type, "settings", "Response Actions", "Settings");
+                check_driver_type(driver_type, "settings", "Response Actions", "Settings");
 
-            Assert.AreEqual("Response Actions Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Response Actions Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
-            Thread.Sleep(2000);
+                Thread.Sleep(2000);
 
-            driver.FindElement(By.LinkText("Add Action")).Click();
+                driver.FindElement(By.LinkText("Add Action")).Click();
 
-            driver.FindElement(By.Id("txtname")).Clear();
-            driver.FindElement(By.Id("txtname")).SendKeys(response_action_name);
-            
-            driver.FindElement(By.Id("txtdescription")).Clear();
-            driver.FindElement(By.Id("txtdescription")).SendKeys(response_action_description);
-            Thread.Sleep(2000);
+                driver.FindElement(By.Id("txtname")).Clear();
+                driver.FindElement(By.Id("txtname")).SendKeys(response_action_name);
 
-            driver.FindElement(By.XPath("//label[@for='rdReply']")).Click(); // Reply type radio button
-            Thread.Sleep(2000);
+                driver.FindElement(By.Id("txtdescription")).Clear();
+                driver.FindElement(By.Id("txtdescription")).SendKeys(response_action_description);
+                Thread.Sleep(2000);
 
-         /*   driver.FindElement(By.XPath("//label[@for='rdstandard']")).Click();
+                driver.FindElement(By.XPath("//label[@for='rdReply']")).Click(); // Reply type radio button
+                Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("//input[@class='text_name']")).Clear();
-            driver.FindElement(By.XPath("//input[@class='text_name']")).SendKeys("Parameter1");
-            Thread.Sleep(1000);
+                /*   driver.FindElement(By.XPath("//label[@for='rdstandard']")).Click();
 
-            driver.FindElement(By.XPath("//input[@class='text_length']")).Clear();
-            driver.FindElement(By.XPath("//input[@class='text_length']")).SendKeys("3");
-            Thread.Sleep(1000);
+                   driver.FindElement(By.XPath("//input[@class='text_name']")).Clear();
+                   driver.FindElement(By.XPath("//input[@class='text_name']")).SendKeys("Parameter1");
+                   Thread.Sleep(1000);
 
-            driver.FindElement(By.XPath("//input[@class='text_default']")).Clear();
-            driver.FindElement(By.XPath("//input[@class='text_default']")).SendKeys("yes");
-            Thread.Sleep(2000);
+                   driver.FindElement(By.XPath("//input[@class='text_length']")).Clear();
+                   driver.FindElement(By.XPath("//input[@class='text_length']")).SendKeys("3");
+                   Thread.Sleep(1000);
 
-            driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
-            driver.FindElement(By.XPath("//li[text()='Yes']")).Click();
-            Thread.Sleep(2000);
+                   driver.FindElement(By.XPath("//input[@class='text_default']")).Clear();
+                   driver.FindElement(By.XPath("//input[@class='text_default']")).SendKeys("yes");
+                   Thread.Sleep(2000);
 
-          */
-          
-            driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();  // Actions dropdown
-            driver.FindElement(By.XPath("//li[text()='Command Line']")).Click();
+                   driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
+                   driver.FindElement(By.XPath("//li[text()='Yes']")).Click();
+                   Thread.Sleep(2000);
 
-            driver.FindElement(By.Id("txtAcommand")).Clear();
-            driver.FindElement(By.Id("txtAcommand")).SendKeys(command_line_statement); // Commands textbox
-            
-            driver.FindElement(By.Id("saveResponse")).Click();
+                 */
 
-            takescreenshot("Response_Action");
-            Thread.Sleep(2000);
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();  // Actions dropdown
+                driver.FindElement(By.XPath("//li[text()='Command Line']")).Click();
+
+                driver.FindElement(By.Id("txtAcommand")).Clear();
+                driver.FindElement(By.Id("txtAcommand")).SendKeys(command_line_statement); // Commands textbox
+
+                driver.FindElement(By.Id("saveResponse")).Click();
+
+                takescreenshot("Response_Action");
+                Thread.Sleep(2000);
 
 
-            Console.WriteLine(driver.FindElement(By.XPath(".//*[@id='divGrid_idGridDataNode']/div[1]/div[1]/div[1]/div[2]")).Text);
+                Console.WriteLine(driver.FindElement(By.XPath(".//*[@id='divGrid_idGridDataNode']/div[1]/div[1]/div[1]/div[2]")).Text);
 
-            if (driver.FindElement(By.XPath(".//*[@id='divGrid_idGridDataNode']/div/div[1]/div/div[3]")).Text.Contains(response_action_name))
-            {
-                takescreenshot("Response_Action_Passed");
+                if (driver.FindElement(By.XPath(".//*[@id='divGrid_idGridDataNode']/div/div[1]/div/div[3]")).Text.Contains(response_action_name))
+                {
+                    takescreenshot("Response_Action_Passed");
 
-                Console.WriteLine("^^^^^^^^^^^^^^^ Response_Action Passed ... ^^^^^^^^^^^^^^^");
-            }
-            else
-            {
-                takescreenshot("Response_Action_Failed");
+                    Console.WriteLine("^^^^^^^^^^^^^^^ Response_Action Passed ... ^^^^^^^^^^^^^^^");
+                }
+                else
+                {
+                    takescreenshot("Response_Action_Failed");
 
-                Assert.Fail("Response_Action Failed ...");
-            }
+                    Assert.Fail("Response_Action Failed ...");
+                }
+
             
         }
 
@@ -433,130 +437,133 @@ namespace HL_Smoke
         public void d_Add_User_Group()
         {
             
-            string user_group_desc = "User Group Description";
 
-            Thread.Sleep(2000);
+                string user_group_desc = "User Group Description";
 
-            check_driver_type(driver_type, "settings", "User Groups- Permissioning", "Settings");
+                Thread.Sleep(2000);
 
-            Assert.AreEqual("User Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                check_driver_type(driver_type, "settings", "User Groups- Permissioning", "Settings");
 
-            Thread.Sleep(2000);
+                Assert.AreEqual("User Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+                Thread.Sleep(2000);
 
 
-            /*    var driver_type = driver.GetType();
-                Console.WriteLine("*" + driver_type + "*");
+                /*    var driver_type = driver.GetType();
+                    Console.WriteLine("*" + driver_type + "*");
 
-                if (driver_type.ToString() == "OpenQA.Selenium.Safari.SafariDriver")
+                    if (driver_type.ToString() == "OpenQA.Selenium.Safari.SafariDriver")
+                    {
+                        Console.WriteLine("if clause ....");
+                        Thread.Sleep(2000);
+                        driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
+                        Thread.Sleep(2000);
+                        driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='User Groups- Permissioning']")).Click();
+                        Thread.Sleep(2000);
+                    }
+                    else
+                    {
+                        Console.WriteLine("using hover func() ....");
+                        Thread.Sleep(2000);
+                        driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
+                        Thread.Sleep(2000);
+                        driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='User Groups- Permissioning']")).Click();
+                        Thread.Sleep(2000);
+                        driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
+                        hover_func("settings", "User Groups- Permissioning");
+                    }*/
+
+                driver.FindElement(By.LinkText("Add User Group")).Click();
+                Thread.Sleep(5000);
+
+                driver.FindElement(By.Id("txtname")).Clear();
+
+                driver.FindElement(By.Id("txtname")).SendKeys(user_group_name);
+
+                driver.FindElement(By.CssSelector("a.selector")).Click();
+
+                driver.FindElement(By.XPath("//li[text()='Reports Menu']")).Click();
+
+                driver.FindElement(By.Id("txtdesc")).Clear();
+
+                driver.FindElement(By.Id("txtdesc")).SendKeys(user_group_name + " " + user_group_desc);
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
+
+                driver.FindElement(By.XPath("//li[text()='Default']")).Click();
+
+                driver.FindElement(By.Id("btnAddUserGroup")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//tr[@id='footerTr']/td[2]/label")).Click(); // Department permission checkboxes
+
+                driver.FindElement(By.XPath("//tr[@id='footerTr']/td[3]/label")).Click();
+
+                driver.FindElement(By.XPath("//tr[@id='footerTr']/td[4]/label")).Click();
+
+                driver.FindElement(By.XPath("//tr[@id='footerTr']/td[5]/label")).Click();
+
+                driver.FindElement(By.XPath("//tr[@id='footerTr']/td[6]/label")).Click();
+
+                driver.FindElement(By.XPath("//tr[@id='footerTr']/td[7]/label")).Click();
+
+                driver.FindElement(By.XPath("//tr[@id='footerTr']/td[8]/label")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.LinkText("System")).Click();                        //System tab
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//label[@for='selectAll_system']/span")).Click();//*[@id='systemTable']/tbody/tr[12]/td[1]/label/span
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.CssSelector("#tab_send > a")).Click();               //Send tab
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//label[@for='selectAll_send']/span")).Click();//*[@id='sendTable']/tbody/tr[8]/td[1]/label/span
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.LinkText("User Group")).Click();                     //User group tab
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//table[@id='ug_grid']/tbody/tr[4]/td[2]/label/span")).Click();//*[@id='ug_grid']/tbody/tr[4]/td[2]/label/span
+
+                driver.FindElement(By.XPath("//table[@id='ug_grid']/tbody/tr[4]/td[3]/label/span")).Click();
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.LinkText("Response Action")).Click();                     //Response Action tab
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//label[@for='selectAll_response']/span")).Click();
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.Id("btnsave")).Click();
+                Thread.Sleep(2000);
+
+                takescreenshot("User group");
+
+                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridNode']")).Text.Contains(user_group_name) &&
+
+                    driver.FindElement(By.XPath("//div[@id='divGrid_idGridNode']")).Text.Contains(user_group_name + " " + user_group_desc)))
                 {
-                    Console.WriteLine("if clause ....");
-                    Thread.Sleep(2000);
-                    driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                    Thread.Sleep(2000);
-                    driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='User Groups- Permissioning']")).Click();
-                    Thread.Sleep(2000);
+                    takescreenshot("User_Group_Failed");
+                    Assert.Fail("Add User Group Failed...");
                 }
+
                 else
                 {
-                    Console.WriteLine("using hover func() ....");
-                    Thread.Sleep(2000);
-                    driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                    Thread.Sleep(2000);
-                    driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='User Groups- Permissioning']")).Click();
-                    Thread.Sleep(2000);
-                    driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                    hover_func("settings", "User Groups- Permissioning");
-                }*/
+                    takescreenshot("User_Group_Passed");
+                    Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add User Group Passed...    ^^^^^^^^^^^^^^^^^^^^^");
+                    // driver.FindElement(By.XPath("//*[@id='logout']")).Click();
+                }
 
-            driver.FindElement(By.LinkText("Add User Group")).Click();
-            Thread.Sleep(5000);
-
-            driver.FindElement(By.Id("txtname")).Clear();
-
-            driver.FindElement(By.Id("txtname")).SendKeys(user_group_name);
-
-            driver.FindElement(By.CssSelector("a.selector")).Click();
-
-            driver.FindElement(By.XPath("//li[text()='Reports Menu']")).Click();
-
-            driver.FindElement(By.Id("txtdesc")).Clear();
-
-            driver.FindElement(By.Id("txtdesc")).SendKeys(user_group_name + " " + user_group_desc);
-
-            driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
-
-            driver.FindElement(By.XPath("//li[text()='Default']")).Click();
-
-            driver.FindElement(By.Id("btnAddUserGroup")).Click();
-            Thread.Sleep(2000);
-
-            driver.FindElement(By.XPath("//tr[@id='footerTr']/td[2]/label")).Click(); // Department permission checkboxes
-
-            driver.FindElement(By.XPath("//tr[@id='footerTr']/td[3]/label")).Click();
-
-            driver.FindElement(By.XPath("//tr[@id='footerTr']/td[4]/label")).Click();
-
-            driver.FindElement(By.XPath("//tr[@id='footerTr']/td[5]/label")).Click();
-
-            driver.FindElement(By.XPath("//tr[@id='footerTr']/td[6]/label")).Click();
-
-            driver.FindElement(By.XPath("//tr[@id='footerTr']/td[7]/label")).Click();
-
-            driver.FindElement(By.XPath("//tr[@id='footerTr']/td[8]/label")).Click();
-            Thread.Sleep(2000);
-
-            driver.FindElement(By.LinkText("System")).Click();                        //System tab
-            Thread.Sleep(2000);
-
-            driver.FindElement(By.XPath("//label[@for='selectAll_system']/span")).Click();//*[@id='systemTable']/tbody/tr[12]/td[1]/label/span
-            Thread.Sleep(1000);
-
-            driver.FindElement(By.CssSelector("#tab_send > a")).Click();               //Send tab
-            Thread.Sleep(2000);
-
-            driver.FindElement(By.XPath("//label[@for='selectAll_send']/span")).Click();//*[@id='sendTable']/tbody/tr[8]/td[1]/label/span
-            Thread.Sleep(1000);
-
-            driver.FindElement(By.LinkText("User Group")).Click();                     //User group tab
-            Thread.Sleep(2000);
-
-            driver.FindElement(By.XPath("//table[@id='ug_grid']/tbody/tr[4]/td[2]/label/span")).Click();//*[@id='ug_grid']/tbody/tr[4]/td[2]/label/span
-
-            driver.FindElement(By.XPath("//table[@id='ug_grid']/tbody/tr[4]/td[3]/label/span")).Click();
-            Thread.Sleep(1000);
-
-            driver.FindElement(By.LinkText("Response Action")).Click();                     //Response Action tab
-            Thread.Sleep(2000);
-
-            driver.FindElement(By.XPath("//label[@for='selectAll_response']/span")).Click();
-            Thread.Sleep(1000);
-
-            driver.FindElement(By.Id("btnsave")).Click();
-            Thread.Sleep(2000);
-
-            takescreenshot("User group");
-
-            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridNode']")).Text.Contains(user_group_name) &&
-
-                driver.FindElement(By.XPath("//div[@id='divGrid_idGridNode']")).Text.Contains(user_group_name + " " + user_group_desc)))
-            {
-                takescreenshot("User_Group_Failed");
-                Assert.Fail("Add User Group Failed...");
-            }
-
-            else
-            {
-                takescreenshot("User_Group_Passed");
-                Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add User Group Passed...    ^^^^^^^^^^^^^^^^^^^^^");
-                // driver.FindElement(By.XPath("//*[@id='logout']")).Click();
-            }
+           
 
         }
 
         [Test]
         public void e_Add_Department()
         {
-           
+            
                 string department_description = "Department description";
 
                 check_driver_type(driver_type, "settings", "Departments", "Settings");
@@ -638,19 +645,19 @@ namespace HL_Smoke
                 driver.FindElement(By.Id("moveMemberRight")).Click();
                 Thread.Sleep(2000);
 
-               
-           /*     driver.FindElement(By.LinkText("Guest")).Click();
 
-                driver.FindElement(By.XPath("//div[@id='guestTab']/div/div/fieldset/div/a[2]")).Click();
-                Thread.Sleep(2000);
+                /*     driver.FindElement(By.LinkText("Guest")).Click();
 
-                driver.FindElement(By.XPath(".//*[@id='guestTab']/div[1]/div/fieldset/div/ul/li[text()='Default']")).Click();
+                     driver.FindElement(By.XPath("//div[@id='guestTab']/div/div/fieldset/div/a[2]")).Click();
+                     Thread.Sleep(2000);
 
-                driver.FindElement(By.XPath("//div[@id='selMemberListGuest']/div/div/div/div/ul/li[contains(text(),'Broadcast_Group3')]")).Click();
+                     driver.FindElement(By.XPath(".//*[@id='guestTab']/div[1]/div/fieldset/div/ul/li[text()='Default']")).Click();
 
-                driver.FindElement(By.Id("moveGuestRight")).Click();
-                Thread.Sleep(2000);
-            */ 
+                     driver.FindElement(By.XPath("//div[@id='selMemberListGuest']/div/div/div/div/ul/li[contains(text(),'Broadcast_Group3')]")).Click();
+
+                     driver.FindElement(By.Id("moveGuestRight")).Click();
+                     Thread.Sleep(2000);
+                 */
 
                 driver.FindElement(By.Id("btnsave")).Click();
 
@@ -668,148 +675,147 @@ namespace HL_Smoke
                     Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add Department Passed...    ^^^^^^^^^^^^^^^^^^^^^");
                     // driver.FindElement(By.XPath("//*[@id='logout']")).Click();
                 }
-            
+
+           
 
         }
 
         [Test]
         public void f_Add_User()
         {
-            
-            string userdescription = "user description";
-            string email = "b@folio3.com";
-            string access_code = "1228";
-            string status = "Enabled";
+          
+                string userdescription = "user description";
+                string email = "b@folio3.com";
+                string access_code = "1228";
+                string status = "Enabled";
 
-            check_driver_type(driver_type, "settings", "Users", "Settings");
+                check_driver_type(driver_type, "settings", "Users", "Settings");
 
-            Assert.AreEqual("Users", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Users", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
-            /*     var driver_type = driver.GetType();
-                 Console.WriteLine("*" + driver_type + "*");
+                /*     var driver_type = driver.GetType();
+                     Console.WriteLine("*" + driver_type + "*");
 
-                 if (driver_type.ToString() == "OpenQA.Selenium.Safari.SafariDriver")
-                 {
-                     Console.WriteLine("if clause ....");
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Users']")).Click();
-                     Thread.Sleep(2000);
-                 }
-                 else
-                 {
-                     Console.WriteLine("using hover func() ....");
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Users']")).Click();
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                     hover_func("settings", "Users");
-                 }*/
-
-
-            driver.FindElement(By.LinkText("Add User")).Click();
-            Thread.Sleep(5000);
-
-            driver.FindElement(By.Id("txtName")).Clear();
-
-            driver.FindElement(By.Id("txtName")).SendKeys(username);
-
-            driver.FindElement(By.Id("txtEmail")).Clear();
-
-            driver.FindElement(By.Id("txtEmail")).SendKeys(email);
-
-            driver.FindElement(By.XPath("//span[text()='Result to User Email']")).Click();
-
-            driver.FindElement(By.CssSelector("a.selector")).Click();
-            Thread.Sleep(1000);
-
-        /*    driver.FindElement(By.XPath("//li[text()='"+timezone_name+"']")).Click();
-
-            driver.FindElement(By.Id("txtAccess_code")).Clear();
-
-            driver.FindElement(By.Id("txtAccess_code")).SendKeys(access_code);
-         */ 
-
-            driver.FindElement(By.Id("txtDesc")).Clear();
-
-            driver.FindElement(By.Id("txtDesc")).SendKeys(userdescription);
-            Thread.Sleep(1000);
-
-            //       driver.FindElement(By.XPath("//div[@class='user_group_col1']/div/div/fieldset[1]/div/a[2]")).Click();
-            //       Thread.Sleep(1000);
-
-            //       driver.FindElement(By.XPath("//li[text()='Hiplink']")).Click();
-            //     driver.FindElement(By.XPath("//form[@id='userPanel']/div[2]/div/div/div/fieldset/div/a[2]")).Click();
-
-            driver.FindElement(By.Id("txtpassword")).Clear();
-
-            driver.FindElement(By.Id("txtpassword")).SendKeys("123");
-
-            driver.FindElement(By.Id("txtRetypePass")).Clear();
-
-            driver.FindElement(By.Id("txtRetypePass")).SendKeys("123");
-            Thread.Sleep(1000);
-
-       /*     driver.FindElement(By.XPath("//form[@id='userPanel']/div[2]/div/div/div/fieldset[4]/div/a[2]")).Click();
-            Thread.Sleep(1000);
-
-            driver.FindElement(By.XPath("//li[text()='GUI']")).Click();
-            Thread.Sleep(1000);
-        */
-
-            driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
-            Thread.Sleep(1000);
-
-            driver.FindElement(By.XPath("//li[text()='" + user_group_name + "']")).Click();
-            Thread.Sleep(1000);
-            //    driver.FindElement(By.Id("txtIp")).Clear();
-            //    driver.FindElement(By.Id("txtIp")).SendKeys("10.0.0.40");
-
-            driver.FindElement(By.Id("btnsave")).Click();
+                     if (driver_type.ToString() == "OpenQA.Selenium.Safari.SafariDriver")
+                     {
+                         Console.WriteLine("if clause ....");
+                         Thread.Sleep(2000);
+                         driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
+                         Thread.Sleep(2000);
+                         driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Users']")).Click();
+                         Thread.Sleep(2000);
+                     }
+                     else
+                     {
+                         Console.WriteLine("using hover func() ....");
+                         Thread.Sleep(2000);
+                         driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
+                         Thread.Sleep(2000);
+                         driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Users']")).Click();
+                         Thread.Sleep(2000);
+                         driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
+                         hover_func("settings", "Users");
+                     }*/
 
 
-            Thread.Sleep(3000);
-            takescreenshot("User");
+                driver.FindElement(By.LinkText("Add User")).Click();
+                Thread.Sleep(5000);
 
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+                driver.FindElement(By.Id("txtName")).Clear();
 
-            IWebElement myDynamicElement = wait.Until<IWebElement>(d => driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")));
-            //wait.Until(driver => driver.FindElement(searchBy));
+                driver.FindElement(By.Id("txtName")).SendKeys(username);
+
+                driver.FindElement(By.Id("txtEmail")).Clear();
+
+                driver.FindElement(By.Id("txtEmail")).SendKeys(email);
+
+                driver.FindElement(By.XPath("//span[text()='Result to User Email']")).Click();
+
+                driver.FindElement(By.CssSelector("a.selector")).Click();
+                Thread.Sleep(1000);
+
+                /*    driver.FindElement(By.XPath("//li[text()='"+timezone_name+"']")).Click();
+
+                    driver.FindElement(By.Id("txtAccess_code")).Clear();
+
+                    driver.FindElement(By.Id("txtAccess_code")).SendKeys(access_code);
+                 */
+
+                driver.FindElement(By.Id("txtDesc")).Clear();
+
+                driver.FindElement(By.Id("txtDesc")).SendKeys(userdescription);
+                Thread.Sleep(1000);
+
+                //       driver.FindElement(By.XPath("//div[@class='user_group_col1']/div/div/fieldset[1]/div/a[2]")).Click();
+                //       Thread.Sleep(1000);
+
+                //       driver.FindElement(By.XPath("//li[text()='Hiplink']")).Click();
+                //     driver.FindElement(By.XPath("//form[@id='userPanel']/div[2]/div/div/div/fieldset/div/a[2]")).Click();
+
+                driver.FindElement(By.Id("txtpassword")).Clear();
+
+                driver.FindElement(By.Id("txtpassword")).SendKeys("123");
+
+                driver.FindElement(By.Id("txtRetypePass")).Clear();
+
+                driver.FindElement(By.Id("txtRetypePass")).SendKeys("123");
+                Thread.Sleep(1000);
+
+                /*     driver.FindElement(By.XPath("//form[@id='userPanel']/div[2]/div/div/div/fieldset[4]/div/a[2]")).Click();
+                     Thread.Sleep(1000);
+
+                     driver.FindElement(By.XPath("//li[text()='GUI']")).Click();
+                     Thread.Sleep(1000);
+                 */
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.XPath("//li[text()='" + user_group_name + "']")).Click();
+                Thread.Sleep(1000);
+                //    driver.FindElement(By.Id("txtIp")).Clear();
+                //    driver.FindElement(By.Id("txtIp")).SendKeys("10.0.0.40");
+
+                driver.FindElement(By.Id("btnsave")).Click();
 
 
-            Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(username) + "*");
-            Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(userdescription) + "*");
-            Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(user_group_name) + "*");
-            Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(email) + "*");
-            Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(status) + "*");
+                Thread.Sleep(3000);
+                takescreenshot("User");
 
-            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(username) &&
+                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
 
-                driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(userdescription) &&
+                IWebElement myDynamicElement = wait.Until<IWebElement>(d => driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")));
+                //wait.Until(driver => driver.FindElement(searchBy));
 
-                driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(user_group_name) &&
 
-                driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(email)))
-            {
-                takescreenshot("User_Failed");
-                Assert.Fail("Add User Failed...");
-            }
+                Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(username) + "*");
+                Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(userdescription) + "*");
+                Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(user_group_name) + "*");
+                Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(email) + "*");
+                Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(status) + "*");
 
-            else
-            {
-                takescreenshot("User_Passed");
-                Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add User Passed...   ^^^^^^^^^^^^^^^^^^^^^");
-                //  driver.FindElement(By.XPath("//*[@id='logout']")).Click();
-                Thread.Sleep(2000);
-            }
+                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(username) &&
+
+                    driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(userdescription) &&
+
+                    driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(user_group_name) &&
+
+                    driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(email)))
+                {
+                    takescreenshot("User_Failed");
+                    Assert.Fail("Add User Failed...");
+                }
+
+                else
+                {
+                    takescreenshot("User_Passed");
+                    Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add User Passed...   ^^^^^^^^^^^^^^^^^^^^^");
+                    //  driver.FindElement(By.XPath("//*[@id='logout']")).Click();
+                    Thread.Sleep(2000);
+                }
+           
 
         }
-
-
-
 
 
 

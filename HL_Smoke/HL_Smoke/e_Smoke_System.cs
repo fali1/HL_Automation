@@ -1246,7 +1246,7 @@ namespace HL_Smoke
             driver.FindElement(By.Id("userId")).SendKeys("fali");
 
             driver.FindElement(By.Id("password")).Clear();
-            driver.FindElement(By.Id("password")).SendKeys("password");
+            driver.FindElement(By.Id("password")).SendKeys("allahoakbar1");
 
             // LDAP User Parameters Section
 
@@ -1266,12 +1266,13 @@ namespace HL_Smoke
             driver.FindElement(By.Id("rdnName")).SendKeys("CN=?,CN=Users");
 
             driver.FindElement(By.Id("rdnFilter")).Clear();
-            driver.FindElement(By.Id("rdnFilter")).SendKeys("(objectClass=user);");
+            driver.FindElement(By.Id("rdnFilter")).SendKeys("(objectClass=user)");
 
             
             // LDAP Group Parameters Section
             
             driver.FindElement(By.Id("groupParameters")).Click();
+            Thread.Sleep(2000);
 
             driver.FindElement(By.Id("autoUser")).Click();
 
@@ -1282,9 +1283,73 @@ namespace HL_Smoke
             driver.FindElement(By.Id("memberAttribute")).Clear();
 
             driver.FindElement(By.Id("memberAttribute")).SendKeys("member");
+            Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("//li[text()='Add New']")).Click();
+            driver.FindElement(By.Id("rdnName")).Clear();
+            driver.FindElement(By.Id("rdnName")).SendKeys("CN=?,CN=Users");
+
+
+            driver.FindElement(By.Id("rdnFilter")).Clear();
+            driver.FindElement(By.Id("rdnFilter")).SendKeys("(objectClass=group)");
+
+
+           // driver.FindElement(By.XPath("//li[text()='Add New']")).Click();
+
+            // LDAP Group Mappings
+
+            driver.FindElement(By.Id("groupMappings")).Click();
             
+            driver.FindElement(By.Id("selectAll")).Click();
+
+            new SelectElement(driver.FindElement(By.Id("mbox_listB"))).SelectByText("sysAdmin");
+
+            driver.FindElement(By.Id("mbox_mapping_add")).Click();
+
+            // Receiver Parameters
+
+            driver.FindElement(By.Id("receiverParameters")).Click();
+            
+            driver.FindElement(By.Id("recEnabled")).Click();
+
+            driver.FindElement(By.Id("recNameAttribute")).Clear();
+            driver.FindElement(By.Id("recNameAttribute")).SendKeys("sAMAccountName");
+
+
+            driver.FindElement(By.Id("recEmailAttribute")).Clear();
+            driver.FindElement(By.Id("recEmailAttribute")).SendKeys("mail");
+
+            driver.FindElement(By.Id("rdnName")).Clear();
+            driver.FindElement(By.Id("rdnName")).SendKeys("CN=?,CN=Users");
+
+
+            driver.FindElement(By.Id("rdnFilter")).Clear();
+            driver.FindElement(By.Id("rdnFilter")).SendKeys("(objectClass=user)");
+
+            // Receiver Carrier Mapping
+
+            new SelectElement(driver.FindElement(By.Id("carrierLdapMode"))).SelectByText("Manual");
+            
+            driver.FindElement(By.Id("receiverCarrierMappings")).Click();
+
+            driver.FindElement(By.Id("carrierPinName")).SendKeys("mail");
+
+            driver.FindElement(By.Id("selectAll")).Click();
+
+            new SelectElement(driver.FindElement(By.Id("mbox_listB"))).SelectByText(carrier_name);
+
+            driver.FindElement(By.Id("mbox_mapping_add")).Click();
+
+            // Receiver Department Mapping
+
+            new SelectElement(driver.FindElement(By.Id("departLdapMode"))).SelectByText("Manual");
+
+            driver.FindElement(By.Id("selectAll")).Click();
+
+            new SelectElement(driver.FindElement(By.Id("mbox_listB"))).SelectByText("Default");
+
+            driver.FindElement(By.Id("mbox_mapping_add")).Click();
+
+            driver.FindElement(By.Id("btnSave")).Click();
 
         }
 

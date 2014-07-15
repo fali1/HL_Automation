@@ -71,6 +71,9 @@
     <Compile Include="f_Smoke_Hnp.cs" />
     <Compile Include="g_Smoke_Logs_Queues_Reports.cs" />
     <Compile Include="h_Smoke_User_Profile.cs" />
+    <Compile Include="i_Smoke_Shortcut_keys.cs" />
+    <Compile Include="j_Smoke_Global_search.cs" />
+    <Compile Include="k_Smoke_Help_About_Session_License_key.cs" />
     <Compile Include="SmokeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="b_Smoke_Recipients.cs" />

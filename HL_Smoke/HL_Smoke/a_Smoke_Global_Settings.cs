@@ -484,12 +484,7 @@ namespace HL_Smoke
 
         }
 
-        [Test]
-        public void a_Global_Settings()
-        {
-           
-
-        }
+      
 
 
         public void takescreenshot(string suffix)
