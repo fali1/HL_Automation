@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="true">
-  <TopNode>[0-1102]D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll</TopNode>
-  <SelectedNode>[0-1102]D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll</SelectedNode>
+  <TopNode>[0-1006]HL_Smoke.c_Smoke_Account.d_Add_User_Group</TopNode>
+  <SelectedNode>[0-1029]HL_Smoke.e_Smoke_System.i_LDAP_Panel</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
     <Node UniqueName="[0-1102]D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" Expanded="true" />
@@ -17,5 +17,7 @@
     <Node UniqueName="[0-1033]HL_Smoke.g_Smoke_Logs_Queues_Reports" Expanded="true" />
     <Node UniqueName="[0-1039]HL_Smoke.h_Smoke_User_Profile" Expanded="true" />
     <Node UniqueName="[0-1041]HL_Smoke.i_Smoke_Shortcut_keys" Expanded="true" />
+    <Node UniqueName="[0-1043]HL_Smoke.j_Smoke_Global_search" Expanded="true" Checked="true" />
+    <Node UniqueName="[0-1045]HL_Smoke.k_Smoke_Help_About_Session_License_key" Expanded="true" />
   </Nodes>
 </VisualState>
