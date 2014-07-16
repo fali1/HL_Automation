@@ -63,7 +63,7 @@ namespace HL_Smoke
 
         string create_directory_path_with_time;
 
-        string new_dir = "Default";
+        string new_dir = "new_directory";
 
         string messenger_name = "smtp_messenger";
 
@@ -349,7 +349,7 @@ namespace HL_Smoke
 
                 Thread.Sleep(1000);
 
-                driver.FindElement(By.XPath("//li[text()='" + new_dir + "']")).Click();
+                driver.FindElement(By.XPath("//li[text()='Default']")).Click();
                 /*             string path1 = "//li[text()='";
                              string path2 = "']";
 
@@ -383,11 +383,7 @@ namespace HL_Smoke
                 takescreenshot("Messenger");
 
 
-                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(messenger_name) &&
-
-                    driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains("SMTP") &&
-
-                    driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(new_dir)))
+                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(messenger_name)))
                 {
                     takescreenshot("Messenger_Failed");
                     Assert.Fail("Added messenger is failed ...");
@@ -500,7 +496,7 @@ namespace HL_Smoke
                 string path1 = "//li[text()='";
                 string path2 = "']";
 
-                driver.FindElement(By.XPath(path1 + new_dir + path2)).Click();
+                driver.FindElement(By.XPath(path1 + "Default" + path2)).Click();
                 Thread.Sleep(2000);
 
                 //----------- xxxxxxxxxxxxxxxxxxxxxx ----------
@@ -568,28 +564,6 @@ namespace HL_Smoke
                           Thread.Sleep(1000);
                           driver.FindElement(By.XPath("//li[text()='2']")).Click();*/
 
-
-
-
-
-                /*     driver.FindElement(By.XPath("html/body/div/div[3]/div/div/form/div[3]/div/fieldset[2]/label/span")).Click();
-                                 driver.FindElement(By.Id("txtsplitLongMsg")).Clear();
-                                 driver.FindElement(By.Id("txtsplitLongMsg")).SendKeys("11");
-                               //  html.js body div.wrapper div.middle_area div div.main_container form.add_carrier div.c_form_inner div.col_form fieldset div.custom a.selector
-
-                                 driver.FindElement(By.XPath("/html/body/div/div[3]/div/div/form/div[3]/div/fieldset[3]/div/a[2]")).Click();
-                                     Thread.Sleep(2000);
-                                // /html/body/div/div[3]/div/div/form/div[3]/div/fieldset[3]/div/a[2]
-                                     driver.FindElement(By.XPath("/html/body/div/div[3]/div/div/form/div[3]/div/fieldset[3]/div/ul/li[2]")).Click();
-                                // driver.FindElement(By.XPath("//ul[@id='sizzle-1394732679492']/li[2]")).Click();
-                                // driver.FindElement(By.XPath("(//a[contains(@href, '#')])[104]")).Click();
-                                // driver.FindElement(By.CssSelector("#sizzle-1394732679492 > li")).Click();
-                                 driver.FindElement(By.CssSelector("div.c_form_inner > div.col_form > fieldset > div.custom.dropdown > a.selector")).Click();
-                                 // /html/body/div/div[3]/div/div/form/div[3]/div/fieldset[3]/div/a[2]
-                                 //html/body/div/div[3]/div/div/form/div[3]/div[2]/fieldset/div/a[2]
-                                 driver.FindElement(By.XPath("//fieldset/div/a[2]")).Click();
-          
-                                 */
 
 
                 driver.FindElement(By.Id("btnsave")).Click();

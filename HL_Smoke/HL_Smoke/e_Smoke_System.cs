@@ -133,8 +133,6 @@ namespace HL_Smoke
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(25000));//wait for request 
 
-            //driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 30, 15));
-
             driver_type = driver.GetType().ToString();// get driver type ( firefox , safari , chrome , internetexplorer )
 
             Console.WriteLine("Driver Type:" + " " + driver_type);
@@ -193,8 +191,6 @@ namespace HL_Smoke
             check_driver_type(driver_type, "administration", "System Attendent Settings", "Sys Admin");
 
             Assert.AreEqual("System Attendant Settings", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
-
-            //Console.WriteLine("Text................."+driver.FindElement(By.XPath("//*[@id='lblAdminEmail']")).Text);
 
             expired_status_on_page_load = driver.FindElement(By.Id("lblDelExpired")).Text.ToString();
 
@@ -258,7 +254,7 @@ namespace HL_Smoke
                     driver.FindElement(By.XPath("//*[@id='lblDelExpired']")).Text.Equals(expired))
             {
                 Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   System_Attendant_Settings Testcase Passed    ^^^^^^^^^^^^^^^^^^^^^");
-                //driver.FindElement(By.XPath("//*[@id='logout']")).Click();
+                
 
             }
 
@@ -288,56 +284,14 @@ namespace HL_Smoke
             string pop_two_pwd = "123";
             string standard_send_pattern = "p1";
 
-            /*        //------ Hover functionality and click ------
-
-                    var phonec = driver.FindElement(By.Id("settings"));
-                    var phoneLic = phonec.FindElements(By.ClassName("integrations"));
-                    Actions actionc = new Actions(driver);//simply my webdriver
-                    actionc.MoveToElement(phonec).Perform();//move to list element that needs to be hovered
-                    driver.FindElement(By.LinkText("Email Gateway")).Click();
-                    Thread.Sleep(3000);
-
-                    //------ Focus out the mouse to disappear hovered dialog ------
-
-                    Actions a1c = new Actions(driver);
-                    //  a.MoveByOffset(0, 0);
-                    a1c.MoveToElement(driver.FindElement(By.ClassName("top_bar"))).Perform();
-                    Thread.Sleep(2000);*/
-
             check_driver_type(driver_type, "settings", "Email Gateway", "Settings");
 
             Assert.AreEqual("Email Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
-            /*    var driver_type = driver.GetType();
-                Console.WriteLine("*" + driver_type + "*");
-
-                if (driver_type.ToString() == "OpenQA.Selenium.Safari.SafariDriver")
-                {
-                    Console.WriteLine("if clause ....");
-                    Thread.Sleep(2000);
-                    driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                    Thread.Sleep(2000);
-                    driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Email Gateway']")).Click();
-                    Thread.Sleep(2000);
-                }
-                else
-                {
-                    Console.WriteLine("using hover func() ....");
-                    Thread.Sleep(2000);
-                    driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                    Thread.Sleep(2000);
-                    driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Email Gateway']")).Click();
-                    Thread.Sleep(2000);
-                    driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                    hover_func("settings", "Email Gateway");
-                }*/
-
-
-
 
             driver.FindElement(By.Id("btnedit")).Click();
             Thread.Sleep(2000);
-            driver.FindElement(By.XPath("//form[@id='emailPanel']/div/div[2]/div/fieldset/div/a[2]")).Click();
+            driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
             driver.FindElement(By.XPath("//li[text()='SMTP']")).Click();
             Thread.Sleep(1000);
 
@@ -347,7 +301,7 @@ namespace HL_Smoke
             driver.FindElement(By.Id("txtspooldir")).Clear();
             driver.FindElement(By.Id("txtspooldir")).SendKeys(email_spool_directory);
 
-            driver.FindElement(By.XPath("//form[@id='emailPanel']/div/div[2]/div[2]/fieldset[2]/div/a[2]")).Click();
+            driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
 
             driver.FindElement(By.XPath("//span[text()='Preserve sender email in email messages']")).Click();
             driver.FindElement(By.XPath("//span[text()='Send delivery report to the sender']")).Click();
@@ -380,10 +334,10 @@ namespace HL_Smoke
             driver.FindElement(By.Id("txtpopserverport")).Clear();
             driver.FindElement(By.Id("txtpopserverport")).SendKeys(pop_port);
 
-            driver.FindElement(By.XPath("//div[@id='POP']/div/div[2]/div[1]/fieldset[2]/div/a[2]")).Click();
+            driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
             Thread.Sleep(2000);
             Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='POP']/div/div[2]/div[1]/fieldset[2]/div/ul")).Text + "*");
-            //         driver.FindElement(By.XPath("//li[text()='31')]")).Click();
+            
             Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='POP']/div/div[2]/div[1]/fieldset[2]/div/ul/li")).Text + "*");
 
             driver.FindElement(By.Id("txtPopOneAccount")).Clear();
@@ -398,7 +352,7 @@ namespace HL_Smoke
             driver.FindElement(By.Id("txtPoptwoPassword")).Clear();
             driver.FindElement(By.Id("txtPoptwoPassword")).SendKeys(pop_two_pwd);
 
-            driver.FindElement(By.XPath("//div[@id='stdSendPat']/div/ul/li[text()='Add New']")).Click();
+            driver.FindElement(By.XPath("(//li[text()='Add New'])[1]")).Click();
             Thread.Sleep(1000);
             driver.FindElement(By.XPath("//div[@class='viewport c_list_scroll_height']/div/div/fieldset/input")).Click();
             driver.FindElement(By.XPath("//div[@class='viewport c_list_scroll_height']/div/div/fieldset/input")).Clear();
@@ -406,7 +360,7 @@ namespace HL_Smoke
             driver.FindElement(By.XPath("//div[@class='viewport c_list_scroll_height']/div/div/fieldset/input")).SendKeys(standard_send_pattern);
             Thread.Sleep(1000);
 
-            driver.FindElement(By.XPath("//div[@id='pin']/div/ul/li[text()='Add New']")).Click();
+            driver.FindElement(By.XPath("(//li[text()='Add New'])[2]")).Click();
             Thread.Sleep(1000);
             driver.FindElement(By.XPath("//*[@id='pin']/div/div[2]/div/div[2]/div/div/fieldset/div[1]/input")).Click();
             driver.FindElement(By.XPath("//*[@id='pin']/div/div[2]/div/div[2]/div/div/fieldset/div[1]/input")).Clear();
@@ -501,32 +455,6 @@ namespace HL_Smoke
 
             Assert.AreEqual("Backup Service", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
-            /*  var driver_type = driver.GetType();
-              Console.WriteLine("*" + driver_type + "*");
-
-              if (driver_type.ToString() == "OpenQA.Selenium.Safari.SafariDriver")
-              {
-                  Console.WriteLine("if clause ....");
-                  Thread.Sleep(2000);
-                  driver.FindElement(By.XPath(".//*[@id='administration']/a")).Click();
-                  Thread.Sleep(2000);
-                  driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Backup Service']")).Click();
-                  Thread.Sleep(2000);
-              }
-              else
-              {
-                  Console.WriteLine("using hover func() ....");
-                  Thread.Sleep(2000);
-                  driver.FindElement(By.XPath(".//*[@id='administration']/a")).Click();
-                  Thread.Sleep(2000);
-                  driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Backup Service']")).Click();
-                  Thread.Sleep(2000);
-                  driver.FindElement(By.XPath(".//*[@id='administration']/a")).Click();
-                  hover_func("administration", "Backup Service");
-              }*/
-
-
-
             driver.FindElement(By.Id("btnedit")).Click();
 
             driver.FindElement(By.Id("backup_dir")).Clear();
@@ -598,33 +526,6 @@ namespace HL_Smoke
             check_driver_type(driver_type, "settings", "SNPP Gateway", "Settings");
 
             Assert.AreEqual("SNPP Gateway", driver.FindElement(By.XPath("//div[@id='main']/h1")).Text);
-
-
-            /*     var driver_type = driver.GetType();
-                 Console.WriteLine("*" + driver_type + "*");
-
-                 if (driver_type.ToString() == "OpenQA.Selenium.Safari.SafariDriver")
-                 {
-                     Console.WriteLine("if clause ....");
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='SNPP Gateway']")).Click();
-                     Thread.Sleep(2000);
-                 }
-                 else
-                 {
-                     Console.WriteLine("using hover func() ....");
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='SNPP Gateway']")).Click();
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                     hover_func("settings", "SNPP Gateway");
-                 }*/
-
-
 
             current_radiobtn_txt = driver.FindElement(By.XPath("//*[@id='lblAuth']")).Text.ToString();
 
@@ -735,31 +636,6 @@ namespace HL_Smoke
             check_driver_type(driver_type, "settings", "TAP Gateway", "Settings");
 
             Assert.AreEqual("TAP Gateway", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
-
-            /*     var driver_type = driver.GetType();
-                 Console.WriteLine("*" + driver_type + "*");
-
-                 if (driver_type.ToString() == "OpenQA.Selenium.Safari.SafariDriver")
-                 {
-                     Console.WriteLine("if clause ....");
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='TAP Gateway']")).Click();
-                     Thread.Sleep(2000);
-                 }
-                 else
-                 {
-                     Console.WriteLine("using hover func() ....");
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='TAP Gateway']")).Click();
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                     hover_func("settings", "TAP Gateway");
-                 }*/
-
 
             driver.FindElement(By.LinkText("Add TAP Gateway")).Click();
 
@@ -882,32 +758,6 @@ namespace HL_Smoke
 
             Assert.AreEqual("File System Interface", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
-
-            /*    var driver_type = driver.GetType();
-                Console.WriteLine("*" + driver_type + "*");
-
-                if (driver_type.ToString() == "OpenQA.Selenium.Safari.SafariDriver")
-                {
-                    Console.WriteLine("if clause ....");
-                    Thread.Sleep(2000);
-                    driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                    Thread.Sleep(2000);
-                    driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='File System Interface']")).Click();
-                    Thread.Sleep(2000);
-                }
-                else
-                {
-                    Console.WriteLine("using hover func() ....");
-                    Thread.Sleep(2000);
-                    driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                    Thread.Sleep(2000);
-                    driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='File System Interface']")).Click();
-                    Thread.Sleep(2000);
-                    driver.FindElement(By.XPath(".//*[@id='settings']/a")).Click();
-                    hover_func("settings", "File System Interface");
-                }*/
-
-
             Thread.Sleep(2000);
 
             if (driver.FindElement(By.Id("lblBulkMsg")).Text.Equals("Enabled"))
@@ -925,13 +775,12 @@ namespace HL_Smoke
                 driver.FindElement(By.Id("txtdir")).SendKeys(spool_dir);
                 Thread.Sleep(1000);
 
-                driver.FindElement(By.XPath("//*[@id='fileSysPanel']/div[1]/div[1]/fieldset[2]/div/a[2]")).Click();
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
                 Thread.Sleep(1000);
 
                 driver.FindElement(By.XPath("//li[text()='35']")).Click();
                 Thread.Sleep(1000);
-                //   driver.FindElement(By.XPath("//span[text()='Enable Bulk Message Processing']")).Click();  // checkbox already checked
-
+              
                 driver.FindElement(By.Id("txtspooldir")).Clear();
 
                 driver.FindElement(By.Id("txtspooldir")).SendKeys(bulk_spool_dir);
@@ -952,7 +801,7 @@ namespace HL_Smoke
                 driver.FindElement(By.Id("txtbulkmsgpat")).SendKeys(bulk_message_pattern);
                 Thread.Sleep(1000);
 
-                driver.FindElement(By.XPath("//*[@id='fileSysPanel']/div[2]/div/fieldset[4]/div/a[2]")).Click();
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
                 Thread.Sleep(1000);
 
                 driver.FindElement(By.XPath("//*[@id='fileSysPanel']/div[2]/div[1]/fieldset[4]/div/ul/li[17]")).Click();
@@ -1148,18 +997,18 @@ namespace HL_Smoke
 
             driver.FindElement(By.LinkText("Add Schedule Template")).Click();
 
-            driver.FindElement(By.XPath(".//*[@id='light']/div[2]/div[2]/div/a[2]")).Click(); //schedule type
+            driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click(); //schedule type
 
             driver.FindElement(By.XPath(".//*[@id='light']/div[2]/div[2]/div/ul/li[text()='Monthly']")).Click();
 
             driver.FindElement(By.Id("sname")).Clear();
             driver.FindElement(By.Id("sname")).SendKeys(schedule_template_name); //schedule template name
 
-            driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[1]/a[2]")).Click(); //time frame
+            driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click(); //time frame
 
             driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[1]/ul/li[text()='01']")).Click();
 
-            driver.FindElement(By.XPath("//div[@id='sch_main']/div/fieldset[2]/div[3]/a[2]")).Click(); //time frame
+            driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click(); //time frame
 
             driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[3]/ul/li[text()='02']")).Click();
             Thread.Sleep(2000);

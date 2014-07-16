@@ -74,7 +74,7 @@ namespace HL_Smoke
 
         string message_template_name = "Message Template";
 
-        string response_action_name = "Standard_Response_Action";
+        string response_action_name = "Reply_Response_Action";
 
 
 
@@ -183,7 +183,8 @@ namespace HL_Smoke
         [Test]
         public void a_Add_Timezone()
         {
-           
+
+            string timezone_name_karachi = "Karachi Timezon";
                 string timezone_desc = "Karachi Timezone description";
                 string offset = "5 Hours";
                 string offset_digit = "5";
@@ -196,13 +197,13 @@ namespace HL_Smoke
 
                 driver.FindElement(By.Id("txtName")).Clear();
 
-                driver.FindElement(By.Id("txtName")).SendKeys(timezone_name);
+                driver.FindElement(By.Id("txtName")).SendKeys(timezone_name_karachi);
 
                 driver.FindElement(By.Id("txtDesc")).Clear();
 
                 driver.FindElement(By.Id("txtDesc")).SendKeys(timezone_desc);
 
-                driver.FindElement(By.CssSelector("a.selector")).Click();
+                driver.FindElement(By.XPath("//a[@class='selector']")).Click();
                 Thread.Sleep(2000);
 
                 string path1 = "//li[(text()='";
@@ -220,7 +221,7 @@ namespace HL_Smoke
                 Console.WriteLine(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text);
 
                 //driver.FindElement(By.XPath("//div[@title='Karachi Timezone']"))
-                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(timezone_name) &&
+                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(timezone_name_karachi) &&
                     driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(timezone_desc) &&
                     driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(offset_digit)))
                 {
@@ -258,21 +259,23 @@ namespace HL_Smoke
                 driver.FindElement(By.Id("txtAdesc")).Clear();
                 driver.FindElement(By.Id("txtAdesc")).SendKeys(message_template_description); //message template description
 
-                driver.FindElement(By.XPath("//div[@id='recipientList']/div/div/div/div[1]/ul/li[1]")).Click();
+             //   driver.FindElement(By.XPath("//div[@id='recipientList']/div/div/div/div[1]/ul/li[1]")).Click();
                 Thread.Sleep(2000);
 
+
+            /*
                 // driver will scrol down the screen untill the required element is in view... 
 
                 IWebElement element = driver.FindElement(By.XPath("//div[@id='recipientList']/div/div/div/div[1]/ul/li[contains(text(),'" + receiver_name + "')]"));
                 ((IJavaScriptExecutor)driver).ExecuteScript("var $myLi = $(arguments[0]), $myParent = $myLi.parents('.common_scrollbar'); $myParent.mCustomScrollbar('scrollTo', '#' + $myLi.attr('id'));", element);
                 Thread.Sleep(2000);
+             */ 
 
-
-                // driver.FindElement(By.XPath("//div[@id='recipientList']/div/div/div/div[1]/ul/li[1]")).SendKeys("rec");
                 Thread.Sleep(2000);
 
-                driver.FindElement(By.XPath("//div[@id='recipientList']/div/div/div/div[1]/ul/li[contains(text(),'" + receiver_name + "')]")).Click(); //Assign Templates To Recipients list box
-                Thread.Sleep(2000);
+           //     driver.FindElement(By.XPath("//div[@id='recipientList']/div/div/div/div[1]/ul/li[contains(text(),'" + receiver_name + "')]")).Click(); //Assign Templates To Recipients list box
+                driver.FindElement(By.XPath("//div[@id='recipientList']/div/div/div/div[1]/ul/li[1]")).Click(); //Assign Templates To Recipients list box    
+            Thread.Sleep(2000);
 
                 driver.FindElement(By.Id("recipientMoveRight")).Click();
                 Thread.Sleep(2000);
@@ -361,7 +364,7 @@ namespace HL_Smoke
         public void c_Add_Response_Action()
         {
             
-                string response_action_description = "Standard Response Action description";
+                string response_action_description = "Reply Response Action description";
                 string command_line_statement = ("echo \"fahad\"");
 
                 check_driver_type(driver_type, "settings", "Response Actions", "Settings");
@@ -480,7 +483,7 @@ namespace HL_Smoke
 
                 driver.FindElement(By.Id("txtname")).SendKeys(user_group_name);
 
-                driver.FindElement(By.CssSelector("a.selector")).Click();
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
 
                 driver.FindElement(By.XPath("//li[text()='Reports Menu']")).Click();
 
@@ -609,12 +612,12 @@ namespace HL_Smoke
                 //  driver.FindElement(By.XPath("//a[text()='Permission']")).Click();
                 Thread.Sleep(2000);
 
-                driver.FindElement(By.XPath("//div[@class='add_user_department_add']/div/a[2]")).Click();
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
 
                 string path1 = "//li[text()='";
                 string path2 = "']";
 
-                driver.FindElement(By.XPath(path1 + user_group_name + path2)).Click();
+                driver.FindElement(By.XPath(path1 + "sysOper" + path2)).Click();
 
                 driver.FindElement(By.Id("btnUsergroup")).Click();
                 Thread.Sleep(2000);
@@ -635,12 +638,12 @@ namespace HL_Smoke
 
                 driver.FindElement(By.LinkText("Member")).Click();
 
-                driver.FindElement(By.XPath("//div[@id='memberTab']/div/div/fieldset/div/a[2]")).Click();
+                driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
                 Thread.Sleep(2000);
 
                 driver.FindElement(By.XPath("//li[text()='Default']")).Click();
 
-                driver.FindElement(By.XPath("//div[@id='selMemberList']/div/div/div/div/ul/li[contains(text(),'receiver_smtp')]")).Click();
+                driver.FindElement(By.XPath("//li[contains(text(),'receiver_smtp')]")).Click();
 
                 driver.FindElement(By.Id("moveMemberRight")).Click();
                 Thread.Sleep(2000);
@@ -731,7 +734,7 @@ namespace HL_Smoke
 
                 driver.FindElement(By.XPath("//span[text()='Result to User Email']")).Click();
 
-                driver.FindElement(By.CssSelector("a.selector")).Click();
+            //    driver.FindElement(By.CssSelector("a.selector")).Click();
                 Thread.Sleep(1000);
 
                 /*    driver.FindElement(By.XPath("//li[text()='"+timezone_name+"']")).Click();
@@ -771,7 +774,7 @@ namespace HL_Smoke
                 driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
                 Thread.Sleep(1000);
 
-                driver.FindElement(By.XPath("//li[text()='" + user_group_name + "']")).Click();
+                driver.FindElement(By.XPath("//li[text()='sysAdmin']")).Click();
                 Thread.Sleep(1000);
                 //    driver.FindElement(By.Id("txtIp")).Clear();
                 //    driver.FindElement(By.Id("txtIp")).SendKeys("10.0.0.40");
@@ -788,17 +791,18 @@ namespace HL_Smoke
                 //wait.Until(driver => driver.FindElement(searchBy));
 
 
-                Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(username) + "*");
+          /*      Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(username) + "*");
                 Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(userdescription) + "*");
                 Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(user_group_name) + "*");
                 Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(email) + "*");
                 Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(status) + "*");
+           */ 
 
                 if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(username) &&
 
                     driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(userdescription) &&
 
-                    driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(user_group_name) &&
+                    driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains("sysAdmin") &&
 
                     driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(email)))
                 {
@@ -810,7 +814,6 @@ namespace HL_Smoke
                 {
                     takescreenshot("User_Passed");
                     Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add User Passed...   ^^^^^^^^^^^^^^^^^^^^^");
-                    //  driver.FindElement(By.XPath("//*[@id='logout']")).Click();
                     Thread.Sleep(2000);
                 }
            
@@ -832,8 +835,6 @@ namespace HL_Smoke
 
                 driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
                 Thread.Sleep(2000);
-
-                
 
                 driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
                 Thread.Sleep(2000);

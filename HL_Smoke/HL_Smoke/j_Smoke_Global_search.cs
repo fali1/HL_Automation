@@ -176,10 +176,10 @@ namespace HL_Smoke
         public void Global_Search_Panel()
         {
             string user = "fahad";
-            string department = "new_dpt";
-            string receiver = "receiver1";
-            string user_group = "user_group";
-            string receiver_group = "bg";
+            string department = "Default";
+            string receiver = "receiver_smtp";
+            string user_group = "new_user_group";
+            string receiver_group = "Broadcast_Group3";
 
             // search for user
 
@@ -192,7 +192,7 @@ namespace HL_Smoke
             driver.FindElement(By.Id("txtSearch")).SendKeys(user);
             driver.FindElement(By.Id("btnSearchGo")).Click();
             Thread.Sleep(2000);
-            if (driver.FindElement(By.XPath(".//*[@id='tab_UserBlock']/div/div[2]/div/div/div/div[1]")).Text.Contains(user))
+            if (driver.FindElement(By.XPath("(//div[@class='result-row-title'])[1]")).Text.Contains(user))
             {
                 Console.WriteLine("User record fetched ...");
                 driver.FindElement(By.Id("btnClose")).Click();
@@ -216,7 +216,7 @@ namespace HL_Smoke
             Thread.Sleep(2000);
             driver.FindElement(By.LinkText("Department")).Click();
             Thread.Sleep(2000);
-            if (driver.FindElement(By.XPath(".//*[@id='tab_DepartmentBlock']/div/div[2]/div/div/div/div[1]")).Text.Contains(department))
+            if (driver.FindElement(By.XPath("(//div[@class='result-row-title'])[2]")).Text.Contains(department))
             {
                 Console.WriteLine("Department record fetched ...");
                 driver.FindElement(By.Id("btnOKSearch")).Click();
@@ -240,7 +240,7 @@ namespace HL_Smoke
             Thread.Sleep(2000);
             driver.FindElement(By.LinkText("Receiver")).Click();
             Thread.Sleep(2000);
-            if (driver.FindElement(By.XPath(".//*[@id='tab_ReceiverBlock']/div/div[2]/div/div/div/div[1]")).Text.Contains(receiver))
+            if (driver.FindElement(By.XPath("(//div[@class='result-row-title'])[2]")).Text.Contains(receiver))
             {
                 Console.WriteLine("Receiver record fetched ...");
                 driver.FindElement(By.Id("btnClose")).Click();
@@ -264,7 +264,7 @@ namespace HL_Smoke
             Thread.Sleep(2000);
             driver.FindElement(By.LinkText("User Group")).Click();
             Thread.Sleep(2000);
-            if (driver.FindElement(By.XPath(".//*[@id='tab_UserGroupBlock']/div/div[2]/div/div/div/div[1]")).Text.Contains(user_group))
+            if (driver.FindElement(By.XPath("(//div[@class='result-row-title'])[2]")).Text.Contains(user_group))
             {
                 Console.WriteLine("User Group record fetched ...");
                 driver.FindElement(By.Id("btnOKSearch")).Click();
@@ -278,16 +278,18 @@ namespace HL_Smoke
 
             // search for Receiver Group
 
-            /*       driver.FindElement(By.XPath("//span[text()='Receive Groups']")).Click();
+            driver.FindElement(By.Id("btnSearchOptions")).Click();
+            Thread.Sleep(2000);
+                   driver.FindElement(By.XPath("//span[text()='Receiver Groups']")).Click();
                    Thread.Sleep(2000);
                    driver.FindElement(By.Id("txtSearch")).Click();
                    driver.FindElement(By.Id("txtSearch")).Clear();
                    driver.FindElement(By.Id("txtSearch")).SendKeys(receiver_group);
                    driver.FindElement(By.Id("btnSearchGo")).Click();
                    Thread.Sleep(2000);
-                   driver.FindElement(By.LinkText("Receive Groups")).Click();
+                   driver.FindElement(By.LinkText("Receiver Groups")).Click();
                    Thread.Sleep(2000);
-                   if (driver.FindElement(By.XPath(".//*[@id='tab_ReceiveGroupsBlock']/div/div[2]/div/div/div/div[1]")).Text.Contains(receiver_group))
+                   if (driver.FindElement(By.XPath("(//div[@class='result-row-title'])[2]")).Text.Contains(receiver_group))
                    {
                        Console.WriteLine("User Group record fetched ...");
                        driver.FindElement(By.Id("btnClose")).Click();
@@ -296,7 +298,7 @@ namespace HL_Smoke
                    {
                        Assert.Fail("User Group record not fetched ...");
                    }
-                   */
+                   
 
 
 

@@ -177,7 +177,7 @@ namespace HL_Smoke
         [Test]
         public void shortcut_keys()
         {
-
+/*
             // Users data
             driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("pud");
 
@@ -195,6 +195,7 @@ namespace HL_Smoke
                 Assert.Fail("Shortcutkeys Users data");
 
             }
+ */
 
             /*
              // Change Password

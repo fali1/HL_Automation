@@ -184,29 +184,29 @@ namespace HL_Smoke
 
             //hover_func("administration", "Services");
 
-            driver.FindElement(By.XPath("//div[@id='tab_messenger']/div[2]/div/a[2]")).Click();
+            driver.FindElement(By.XPath("(//a[text()='Stop All'])[1]")).Click();
             Thread.Sleep(2000);
 
             // for messenger services panel 
 
-            if (IsElementPresent(By.XPath("//table[@id='tblmessenger']/tbody/tr[1]/td[2]/a[@class='action service_action_play']"))) //messenger service start button
+            if (IsElementPresent(By.XPath("(//a[@title='Play'])[1]"))) //messenger service start button
             {
-                driver.FindElement(By.XPath("//table[@id='tblmessenger']/tbody/tr[1]/td[2]/a[@class='action service_action_play']")).Click();
+                driver.FindElement(By.XPath("(//a[@title='Play'])[1]")).Click();
                 Thread.Sleep(2000);
 
-                if (IsElementPresent(By.XPath("//table[@id='tblmessenger']/tbody/tr[1]/td[3]/a[@class='service_action_refresh']"))) //messenger service restart button
+                if (IsElementPresent(By.XPath("(//a[@title='Restart'])[1]"))) //messenger service restart button
                 {
-                    driver.FindElement(By.XPath("//table[@id='tblmessenger']/tbody/tr[1]/td[3]/a[@class='service_action_refresh']")).Click();
+                    driver.FindElement(By.XPath("(//a[@title='Restart'])[1]")).Click();
                     Thread.Sleep(2000);
 
-                    if (IsElementPresent(By.XPath("//table[@id='tblmessenger']/tbody/tr[1]/td[2]/a[@class='action service_action_stop']"))) //messenger service stop button
+                    if (IsElementPresent(By.XPath("(//a[@title='Stop'])[1]"))) //messenger service stop button
                     {
-                        driver.FindElement(By.XPath("//table[@id='tblmessenger']/tbody/tr[1]/td[2]/a[@class='action service_action_stop']")).Click();
+                        driver.FindElement(By.XPath("(//a[@title='Stop'])[1]")).Click();
                         Thread.Sleep(2000);
 
-                        if (IsElementPresent(By.XPath("//table[@id='tblmessenger']/tbody/tr[1]/td[2]/a[@class='action service_action_play']"))) //messenger service start button
+                        if (IsElementPresent(By.XPath("(//a[@title='Play'])[1]"))) //messenger service start button
                         {
-                            driver.FindElement(By.XPath("//table[@id='tblmessenger']/tbody/tr[1]/td[2]/a[@class='action service_action_play']")).Click();
+                            driver.FindElement(By.XPath("(//a[@title='Play'])[1]")).Click();
                             Thread.Sleep(2000);
 
                             takescreenshot("Services_Passed");
@@ -334,17 +334,17 @@ namespace HL_Smoke
 
             driver.FindElement(By.XPath("//div[@id='testing']/b")).Click();//opening Advanced Messaging Parameters
 
-            driver.FindElement(By.XPath("//div[@id='advOptPanel']/div/fieldset[1]/div/a[2]")).Click();// opening severity dropdown
+            driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();// opening severity dropdown
 
             driver.FindElement(By.XPath("//li[text()='Important']")).Click();// selecting severity as Important
 
             driver.FindElement(By.XPath("//b[text()='Expire After']")).Click();// checking 'Expire After' checkbox
 
-            driver.FindElement(By.XPath("//div[@id='advOptPanel']/div/fieldset[2]/div[2]/div/a[2]")).Click();// selecting Hours drop down
+            driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click();// selecting Hours drop down
 
             driver.FindElement(By.XPath("//li[text()='02']")).Click();// selecting '02'
 
-            driver.FindElement(By.XPath("//div[@id='advOptPanel']/div/fieldset[2]/div[3]/div/a[2]")).Click();// selecting Hours drop down
+            driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();// selecting Hours drop down
 
             driver.FindElement(By.XPath("//div[@id='advOptPanel']/div/fieldset[2]/div[3]/div/ul/li[3]")).Click();// selecting '02'
 
@@ -361,7 +361,7 @@ namespace HL_Smoke
             
             Thread.Sleep(4500);
 
-
+            //uploading attachment
             IWebElement fileInput = driver.FindElement(By.XPath("//input[@type='file']"));
             fileInput.SendKeys(@"C:\Users\Public\Pictures\Sample Pictures\Tulips.jpg");
             Thread.Sleep(4500);
@@ -412,7 +412,7 @@ namespace HL_Smoke
 
             driver.FindElement(By.XPath("//div[@class='data_row_col1']/input")).SendKeys(pin_number);
 
-            driver.FindElement(By.XPath("//div[@class='data_row_col2']/div/a[2]")).Click();
+            driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
             Thread.Sleep(2000);
 
             driver.FindElement(By.XPath("(//li[contains(text(),'" + carrier_name + "')])")).Click();
@@ -492,7 +492,7 @@ namespace HL_Smoke
             driver.FindElement(By.Id("incMsgIdCheck")).Click(); //msg id checkbox
 
             driver.FindElement(By.Id("btnSend")).Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
 
             takescreenshot("Escalation_Send_Panel");
 
@@ -523,7 +523,7 @@ namespace HL_Smoke
 
             Assert.AreEqual("Receivers", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
-            driver.FindElement(By.XPath(".//div[@class='filter_panel']/a[text()='Add Reciever']")).Click();
+            driver.FindElement(By.XPath("//a[text()='Add Reciever']")).Click();
             Thread.Sleep(5000);
 
             driver.FindElement(By.Id("txtName")).Clear();
@@ -540,10 +540,10 @@ namespace HL_Smoke
             driver.FindElement(By.XPath("//label/b[text()='Email Failover']")).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("//div[@class='add_receiver_block']/div[1]/div[1]/div[1]/fieldset[4]/div/a[2]")).Click();
+            driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("(//li[contains(text(),'"+department_name+"')])")).Click();// selecting department
+            driver.FindElement(By.XPath("(//li[contains(text(),'Default')])")).Click();// selecting department
 
             driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click();
             Thread.Sleep(2000);
@@ -593,14 +593,14 @@ namespace HL_Smoke
         [Test]
         public void f_Voice_Send_Panel()
         {
-            string receiver_name = "receiver_voice";
+            string receiver_name_voice = "receiver_voice";
             string msg = "hello voice receiver";
 
             string receiver_pin = "123456789";
             string receiver_description = "Receiver Description";
             string receiver_emailaddress = "email@address.com";
 
-            string department_name = "Default";
+            string department_name_default = "Default";
 
             check_driver_type(driver_type, "recipients", "Receivers", "Recipients");
 
@@ -610,7 +610,7 @@ namespace HL_Smoke
             Thread.Sleep(5000);
 
             driver.FindElement(By.Id("txtName")).Clear();
-            driver.FindElement(By.Id("txtName")).SendKeys(receiver_name);
+            driver.FindElement(By.Id("txtName")).SendKeys(receiver_name_voice);
 
             driver.FindElement(By.Id("txtADesc")).Clear();
             driver.FindElement(By.Id("txtADesc")).SendKeys(receiver_description);
@@ -623,10 +623,10 @@ namespace HL_Smoke
             driver.FindElement(By.XPath("//label/b[text()='Email Failover']")).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("//div[@class='add_receiver_block']/div[1]/div[1]/div[1]/fieldset[4]/div/a[2]")).Click();
+            driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("(//li[contains(text(),'" + department_name + "')])")).Click();// selecting department
+            driver.FindElement(By.XPath("(//li[contains(text(),'"+department_name_default+"')])")).Click();// selecting department
 
             driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();
             Thread.Sleep(2000);
@@ -643,7 +643,7 @@ namespace HL_Smoke
 
             Assert.AreEqual("Voice Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text); //verifying page title
 
-            driver.FindElement(By.XPath("//*[contains(text(),'" + receiver_name + "')]")).Click(); //select receiver to send message
+            driver.FindElement(By.XPath("//*[contains(text(),'" + receiver_name_voice + "')]")).Click(); //select receiver to send message
 
             driver.FindElement(By.Id("moveItemRight")).Click();
 
@@ -756,10 +756,10 @@ namespace HL_Smoke
 
             driver.FindElement(By.Id("moveItemRight")).Click();
 
-            driver.FindElement(By.XPath("//div[@class='custom dropdown small template_open']/a[2]")).Click();
+            driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("//div[@class='custom dropdown small template_open open']/ul/li[contains(text(),'Message Template')]")).Click(); // selecting message template from template dropdown
+            driver.FindElement(By.XPath("//li[contains(text(),'Message Template')]")).Click(); // selecting message template from template dropdown
             Thread.Sleep(2000);
 
             driver.FindElement(By.XPath("//ul[@id='msgTemplateList']/li/a[contains(text(),'Message Template')]")).Click(); //message template popup 
