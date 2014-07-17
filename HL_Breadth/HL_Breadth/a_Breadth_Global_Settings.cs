@@ -132,8 +132,6 @@ namespace HL_Breadth
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(25000));//wait for request 
 
-            //driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 30, 15));
-
             driver_type = driver.GetType().ToString();// get driver type ( firefox , safari , chrome , internetexplorer )
 
             Console.WriteLine("Driver Type:" + " " + driver_type);
@@ -171,6 +169,428 @@ namespace HL_Breadth
 
             verificationErrors = new StringBuilder();
         }
+
+
+
+        [Test]
+        public void Global_Settings_Panel()
+        {
+            check_driver_type(driver_type, "administration", "Global Settings", "Sys Admin");
+
+            Assert.AreEqual("Global Settings", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            //  hover_func("administration", "Global Settings");
+
+          
+            //Common section (Display)
+            driver.FindElement(By.XPath("(//a[text()='Common'])[1]")).Click();
+
+            driver.FindElement(By.Id("btnEditMain")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("txtnumOfRecordReportPage")).Clear();
+            driver.FindElement(By.Id("txtnumOfRecordReportPage")).SendKeys("12");
+
+
+            //Receiver section
+            driver.FindElement(By.LinkText("Receiver")).Click();
+
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click();//Detail Receiver/User Display
+            driver.FindElement(By.XPath("//div[@id='display_receiverEdit']/fieldset[1]/div/ul/li[text()='Yes']")).Click();
+
+            /*
+            driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();//Enable Receiver First Name
+            driver.FindElement(By.XPath("//div[@id='display_receiverEdit']/fieldset[2]/div/ul/li[text()='Yes']")).Click();
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[6]")).Click();//Enable Receiver Last Name
+            driver.FindElement(By.XPath("//div[@id='display_receiverEdit']/fieldset[3]/div/ul/li[text()='Yes']")).Click();
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[7]")).Click();//Enable Receiver Security Code
+            driver.FindElement(By.XPath("//div[@id='display_receiverEdit']/fieldset[4]/div/ul/li[text()='Yes']")).Click();
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[8]")).Click();//Enable Receiver Status
+            driver.FindElement(By.XPath("//div[@id='display_receiverEdit']/fieldset[5]/div/ul/li[text()='Yes']")).Click();
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[9]")).Click();//Allow Receiver Login
+            driver.FindElement(By.XPath("//div[@id='display_receiverEdit']/fieldset[6]/div/ul/li[text()='Yes']")).Click();
+
+            Thread.Sleep(2000);
+            
+
+            // scroll down the screen until "Receiver Logon via Assigned Owner" dropdown is displayed
+
+            IWebElement element = driver.FindElement(By.XPath("(//a[@class='selector'])[10]"));
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
+            Thread.Sleep(500);
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[10]")).Click();//Receiver Logon via Assigned Owner
+            driver.FindElement(By.XPath("//div[@id='display_receiverEdit']/fieldset[7]/div/ul/li[text()='Yes']")).Click();
+
+            driver.FindElement(By.Id("txtemailSubject")).Clear();
+            driver.FindElement(By.Id("txtemailSubject")).SendKeys("Failed over email subject");//Failed Over Email Subject 
+
+            // scroll down the screen until "Failed Over Email Message" textbox is displayed
+
+            IWebElement element12 = driver.FindElement(By.Id("txtemailMsg"));
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", element12);
+            Thread.Sleep(500);
+
+            driver.FindElement(By.Id("txtemailMsg")).Clear();
+            driver.FindElement(By.Id("txtemailMsg")).SendKeys("failed over email message");//Failed Over Email Message
+
+
+            // driver.FindElement(By.XPath("//div[@id='display_receiverEdit']/fieldset[12]/div/a[2]")).SendKeys(OpenQA.Selenium.Keys.Tab);
+
+            // scroll down the screen until "Notify Admin when receiver changes his/her own schedule" dropdown is displayed
+
+            IWebElement element123 = driver.FindElement(By.XPath("(//a[@class='selector'])[11]"));
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", element123);
+            Thread.Sleep(500);
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[11]")).Click();//Notify Admin when receiver changes his/her own schedule
+            driver.FindElement(By.XPath("//div[@id='display_receiverEdit']/fieldset[11]/div/ul/li[text()='Yes']")).Click();
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[12]")).Click();//Notify Receiver on covering other receiver
+            driver.FindElement(By.XPath("//div[@id='display_receiverEdit']/fieldset[12]/div/ul/li[text()='Yes']")).Click();
+
+            driver.FindElement(By.XPath("//b[text()='Receiver to send Test Message']")).Click();
+
+            driver.FindElement(By.Id("txtAenableReceiver")).Clear();
+            driver.FindElement(By.Id("txtAenableReceiver")).SendKeys("Receiver to send test message");
+             */
+
+            // driver will scrol down the screen untill the required element is in view... 
+
+            IWebElement element1 = driver.FindElement(By.XPath("//b[text()='Enable Receiver Attributes']"));
+            ((IJavaScriptExecutor)driver).ExecuteScript("var $myLabel = $(arguments[0]), $myParent = $myLabel.parents('.common_scrollbar'); $myParent.mCustomScrollbar('scrollTo', 'label[for=' + $myLabel.siblings('input').attr('id') + ']');", element1);
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("//b[text()='Enable Receiver Attributes']")).Click();
+
+            driver.FindElement(By.XPath("//li[text()='Add New']")).Click();
+
+            driver.FindElement(By.Id("attrib_")).SendKeys("A1");
+
+            
+            // Recipient User
+
+
+            driver.FindElement(By.LinkText("Recipient User")).Click();
+
+            driver.FindElement(By.Id("receipentDeviceName")).Clear();
+
+            driver.FindElement(By.Id("receipentDeviceName")).SendKeys("Recipient_user_name");
+
+
+
+            //Common section
+
+            driver.FindElement(By.XPath("(//a[text()='Common'])[2]")).Click();
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[14]")).Click();//Enable time-stamp on all messages
+            driver.FindElement(By.XPath("//div[@id='messagesending_commonEdit']/fieldset[1]/div/ul/li[text()='Yes']")).Click();
+
+            /*  driver.FindElement(By.XPath("//div[@id='messagesending_commonEdit']/fieldset[2]/div/a[2]")).Click();//Enable sender name on all messages
+              driver.FindElement(By.XPath("//div[@id='messagesending_commonEdit']/fieldset[2]/div/ul/li[text()='Yes']")).Click();
+
+              driver.FindElement(By.XPath("//div[@id='messagesending_commonEdit']/fieldset[3]/div/a[2]")).Click();//Put sender name at the beginning of message
+              driver.FindElement(By.XPath("//div[@id='messagesending_commonEdit']/fieldset[3]/div/ul/li[text()='Yes']")).Click();
+
+              driver.FindElement(By.XPath("//div[@id='messagesending_commonEdit']/fieldset[4]/div/a[2]")).Click();//Include message ID in the message automatically
+              driver.FindElement(By.XPath("//div[@id='messagesending_commonEdit']/fieldset[4]/div/ul/li[text()='Yes']")).Click();
+
+              driver.FindElement(By.XPath("//div[@id='messagesending_commonEdit']/fieldset[8]/div/a[2]")).Click();//Enable Authorization Code for all messages
+              driver.FindElement(By.XPath("//div[@id='messagesending_commonEdit']/fieldset[8]/div/ul/li[text()='Yes']")).Click();
+
+              // scroll down the screen until "Maximum Resend messages to keep for a User(10-1000)" textbox is displayed
+
+              IWebElement element13 = driver.FindElement(By.Id("txtemailMsg"));
+              ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", element13);
+              Thread.Sleep(500);
+
+              driver.FindElement(By.Id("txtmaxResendMsg")).Clear();//Maximum Resend messages to keep for a User(10-1000)
+              driver.FindElement(By.Id("txtmaxResendMsg")).SendKeys("100");
+
+              driver.FindElement(By.XPath("//div[@id='messagesending_commonEdit']/fieldset[9]/div/a[2]")).Click();//User Description as Signature
+              driver.FindElement(By.XPath("//div[@id='messagesending_commonEdit']/fieldset[9]/div/ul/li[text()='Yes']")).Click();
+
+              driver.FindElement(By.XPath("//div[@id='messagesending_commonEdit']/fieldset[10]/div/a[2]")).Click();//Enable Send Subject Field
+              driver.FindElement(By.XPath("//div[@id='messagesending_commonEdit']/fieldset[10]/div/ul/li[text()='Yes']")).Click();
+
+              driver.FindElement(By.Id("txtdefaultSmtpSub")).Clear();//Default SMTP Subject
+              driver.FindElement(By.Id("txtdefaultSmtpSub")).SendKeys("Default smtp message");
+
+              driver.FindElement(By.XPath("//div[@id='messagesending_commonEdit']/fieldset[12]/div/a[2]")).Click();//Enable Confidential Messaging
+              driver.FindElement(By.XPath("//div[@id='messagesending_commonEdit']/fieldset[12]/div/ul/li[text()='Yes']")).Click();
+
+             */
+
+            //Department section
+          
+            driver.FindElement(By.LinkText("Departments")).Click();
+
+
+
+            driver.FindElement(By.XPath("//b[text()='Maximum Receivers Allowed in a Department']")).Click();//Maximum Receivers Allowed in a Department
+
+            driver.FindElement(By.Id("txtMaxRecieverDPT")).Clear();
+            driver.FindElement(By.Id("txtMaxRecieverDPT")).SendKeys("100");//Maximum Receivers Allowed in a Department
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[24]")).Click();//Count Recipient Groups as Members
+            driver.FindElement(By.XPath("//div[@id='departmentsEdit']/fieldset[2]/div/ul/li[text()='Yes']")).Click();
+
+            //Session section
+            driver.FindElement(By.LinkText("Session")).Click();
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[25]")).Click();//Temporary session
+            driver.FindElement(By.XPath("//div[@id='sessionEdit']/fieldset/div/ul/li[text()='No']")).Click();
+
+            /*    driver.FindElement(By.Id("txtsessionTimeout")).Clear();//Session Timeout (minutes)
+                driver.FindElement(By.Id("txtsessionTimeout")).SendKeys("40");
+
+                driver.FindElement(By.Id("txtuserPasswordExpire")).Clear();//User password expires after (days)
+                driver.FindElement(By.Id("txtuserPasswordExpire")).SendKeys("10");
+
+                driver.FindElement(By.XPath("//div[@id='sessionEdit']/fieldset[4]/div/a[2]")).Click();//Minimum user password length in characters
+                driver.FindElement(By.XPath("//div[@id='sessionEdit']/fieldset[4]/div/ul/li[4]")).Click();
+
+                driver.FindElement(By.XPath("//div[@id='sessionEdit']/fieldset[5]/div/a[2]")).Click();//User password needs at least a numeric, an alphabetic and a special char
+                driver.FindElement(By.XPath("//div[@id='sessionEdit']/fieldset[5]/div/ul/li[text()='No']")).Click();
+             */
+
+            driver.FindElement(By.Id("btnSave")).Click();
+
+            driver.FindElement(By.Id("btnOk")).Click();
+
+            //Common section (Display)
+
+            driver.FindElement(By.XPath("(//a[text()='Common'])[1]")).Click();
+
+            if (driver.FindElement(By.Id("lblnumOfRecordReportPage")).Text.Equals("12"))
+            {
+                driver.FindElement(By.LinkText("Receiver")).Click();
+
+                if (driver.FindElement(By.Id("lbldetailDisplay")).Text.Equals("Yes"))
+                {
+                    driver.FindElement(By.LinkText("Recipient User")).Click();
+
+                    if (driver.FindElement(By.Id("lblRespTemp")).Text.Equals("Recipient_user_name"))
+                    {
+
+                        //Common section (Message Sending)
+                        driver.FindElement(By.XPath("(//a[text()='Common'])[2]")).Click();
+
+                        if (driver.FindElement(By.Id("lblselenableTimeStamp")).Text.Equals("Yes"))
+                        {
+                            driver.FindElement(By.LinkText("Departments")).Click();
+
+                            if (driver.FindElement(By.Id("lblMaxRecieverDPT")).Text.Equals("100"))
+                            {
+                                driver.FindElement(By.LinkText("Session")).Click();
+
+                                if (driver.FindElement(By.Id("lbltemparerySession")).Text.Equals("No"))
+                                {
+                                    Console.WriteLine("Global Settings Passed...");
+                                }
+                                else
+                                {
+                                    Assert.Fail("Session section is not updated");
+
+                                }
+
+                            }
+
+                            else
+                            {
+                                Assert.Fail("Departments section is not updated");
+
+                            }
+
+                        }
+
+                        else
+                        {
+                            Assert.Fail("Common section (Message Sending) is not updated");
+
+                        }
+
+                    }
+
+                    else
+                    {
+                        Assert.Fail("Recipient User section is not updated");
+
+                    }
+
+                }
+
+                else
+                {
+                    Assert.Fail("Receiver section is not updated");
+
+                }
+            }
+
+            else
+            {
+                Assert.Fail("Common section (Display) is not updated");
+            }
+
+
+
+
+            //Common section (Display)
+            driver.FindElement(By.XPath("(//a[text()='Common'])[1]")).Click();
+
+            driver.FindElement(By.Id("btnEditMain")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("txtnumOfRecordReportPage")).Clear();
+            driver.FindElement(By.Id("txtnumOfRecordReportPage")).SendKeys("20");
+
+
+            //Receiver section
+            driver.FindElement(By.LinkText("Receiver")).Click();
+
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click();//Detail Receiver/User Display
+            driver.FindElement(By.XPath("//div[@id='display_receiverEdit']/fieldset[1]/div/ul/li[text()='No']")).Click();
+
+      /*      // driver will scrol down the screen untill the required element is in view... 
+
+            IWebElement element_update = driver.FindElement(By.XPath("//b[text()='Enable Receiver Attributes']"));
+            ((IJavaScriptExecutor)driver).ExecuteScript("var $myLabel = $(arguments[0]), $myParent = $myLabel.parents('.common_scrollbar'); $myParent.mCustomScrollbar('scrollTo', 'label[for=' + $myLabel.siblings('input').attr('id') + ']');", element_update);
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("//b[text()='Enable Receiver Attributes']")).Click();
+
+            driver.FindElement(By.XPath("//li[text()='Add New']")).Click();
+
+            driver.FindElement(By.Id("attrib_")).SendKeys("B1");
+
+            */
+
+            // Recipient User
+
+
+            driver.FindElement(By.LinkText("Recipient User")).Click();
+
+            driver.FindElement(By.Id("receipentDeviceName")).Clear();
+
+            driver.FindElement(By.Id("receipentDeviceName")).SendKeys("Recipient_user_name_updated");
+
+
+
+            //Common section
+
+            driver.FindElement(By.XPath("(//a[text()='Common'])[2]")).Click();
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[14]")).Click();//Enable time-stamp on all messages
+            driver.FindElement(By.XPath("//div[@id='messagesending_commonEdit']/fieldset[1]/div/ul/li[text()='No']")).Click();
+
+            //Department section
+
+            driver.FindElement(By.LinkText("Departments")).Click();
+
+          //  driver.FindElement(By.XPath("//b[text()='Maximum Receivers Allowed in a Department']")).Click();//Maximum Receivers Allowed in a Department
+
+            driver.FindElement(By.Id("txtMaxRecieverDPT")).Clear();
+            driver.FindElement(By.Id("txtMaxRecieverDPT")).SendKeys("200");//Maximum Receivers Allowed in a Department
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[24]")).Click();//Count Recipient Groups as Members
+            driver.FindElement(By.XPath("//div[@id='departmentsEdit']/fieldset[2]/div/ul/li[text()='Yes']")).Click();
+
+            //Session section
+            driver.FindElement(By.LinkText("Session")).Click();
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[25]")).Click();//Temporary session
+            driver.FindElement(By.XPath("//div[@id='sessionEdit']/fieldset/div/ul/li[text()='Yes']")).Click();
+
+
+            driver.FindElement(By.Id("btnSave")).Click();
+
+            driver.FindElement(By.Id("btnOk")).Click();
+            Thread.Sleep(2000);
+
+            //Common section (Display)
+
+            driver.FindElement(By.XPath("(//a[text()='Common'])[1]")).Click();
+
+            if (driver.FindElement(By.Id("lblnumOfRecordReportPage")).Text.Equals("20"))
+            {
+                driver.FindElement(By.LinkText("Receiver")).Click();
+
+                if (driver.FindElement(By.Id("lbldetailDisplay")).Text.Equals("No"))
+                {
+                    driver.FindElement(By.LinkText("Recipient User")).Click();
+
+                    if (driver.FindElement(By.Id("lblRespTemp")).Text.Equals("Recipient_user_name_updated"))
+                    {
+
+                        //Common section (Message Sending)
+                        driver.FindElement(By.XPath("(//a[text()='Common'])[2]")).Click();
+
+                        if (driver.FindElement(By.Id("lblselenableTimeStamp")).Text.Equals("No"))
+                        {
+                            driver.FindElement(By.LinkText("Departments")).Click();
+
+                            if (driver.FindElement(By.Id("lblMaxRecieverDPT")).Text.Equals("200"))
+                            {
+                                driver.FindElement(By.LinkText("Session")).Click();
+
+                                if (driver.FindElement(By.Id("lbltemparerySession")).Text.Equals("Yes"))
+                                {
+                                    Console.WriteLine("Global Settings Passed...");
+                                }
+                                else
+                                {
+                                    Assert.Fail("Session section is not updated");
+
+                                }
+
+                            }
+
+                            else
+                            {
+                                Assert.Fail("Departments section is not updated");
+
+                            }
+
+                        }
+
+                        else
+                        {
+                            Assert.Fail("Common section (Message Sending) is not updated");
+
+                        }
+
+                    }
+
+                    else
+                    {
+                        Assert.Fail("Recipient User section is not updated");
+
+                    }
+
+                }
+
+                else
+                {
+                    Assert.Fail("Receiver section is not updated");
+
+                }
+            }
+
+            else
+            {
+                Assert.Fail("Common section (Display) is not updated");
+            }
+
+
+        }
+
+
 
         public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 
         {

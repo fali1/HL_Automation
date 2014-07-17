@@ -16,3 +16,21 @@ c:\users\fali\documents\visual studio 2012\Projects\HL_Breadth\HL_Breadth\bin\De
 c:\users\fali\documents\visual studio 2012\Projects\HL_Breadth\HL_Breadth\bin\Debug\WebDriver.Support.xml
 c:\users\fali\documents\visual studio 2012\Projects\HL_Breadth\HL_Breadth\obj\Debug\HL_Breadth.dll
 c:\users\fali\documents\visual studio 2012\Projects\HL_Breadth\HL_Breadth\obj\Debug\HL_Breadth.pdb
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.pdb
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\nunit.framework.dll
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\Selenium.WebDriverBackedSelenium.dll
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\ThoughtWorks.Selenium.Core.dll
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\WebDriver.dll
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\WebDriver.Support.dll
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\nunit.framework.xml
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\Selenium.WebDriverBackedSelenium.pdb
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\Selenium.WebDriverBackedSelenium.xml
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\ThoughtWorks.Selenium.Core.pdb
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\ThoughtWorks.Selenium.Core.xml
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\WebDriver.pdb
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\WebDriver.xml
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\WebDriver.Support.pdb
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\WebDriver.Support.xml
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\obj\Debug\HL_Breadth.dll
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\obj\Debug\HL_Breadth.pdb
