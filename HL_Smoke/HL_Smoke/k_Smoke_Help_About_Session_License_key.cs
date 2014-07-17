@@ -173,8 +173,81 @@ namespace HL_Smoke
         }
 
 
+
         [Test]
-        public void Help()
+        public void a_User_Session()
+        {
+
+            check_driver_type(driver_type, "administration", "Sessions Manager", "Sys Admin");
+
+            Assert.AreEqual("Sessions Manager", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            Console.WriteLine(driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text);
+
+            if (!(driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text.Contains(login_name) &&
+
+                driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text.Contains(browser)))
+            {
+                Assert.Fail("Session Manager Failed ...");
+            }
+
+            else
+            {
+                Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Session Manager Passed ...    ^^^^^^^^^^^^^^^^^^^^^");
+                
+            }
+
+        }
+
+
+        [Test]
+        public void b_License_Page()
+        {
+
+            check_driver_type(driver_type, "administration", "Install Licence", "Sys Admin");
+
+            Assert.AreEqual("Install Licence", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[@class='product_name']")).Text + "*");
+
+            if (!(driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[@class='product_name']")).Text.Contains("HipLink") &&
+                driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[@class='version']")).Text.Contains("4.7") &&
+                driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[4]")).Text.Contains("Full")))
+            {
+                Assert.Fail("License page Failed...");
+            }
+            else
+            {
+                Console.WriteLine("^^^^^^^^^^^^^^^^^  License page Passed...  ^^^^^^^^^^^^^^^^^^^");
+            }
+        }
+
+
+
+        [Test]
+        public void c_About_Page()
+        {
+
+            check_driver_type(driver_type, "administration", "About Hiplink", "Sys Admin");
+
+            Assert.AreEqual("About", driver.FindElement(By.XPath("//div[@class='main_container pg_about']/h1")).Text);
+
+
+            if (!(driver.FindElement(By.Id("lblProductName")).Text.Equals("HipLink") &&
+                driver.FindElement(By.XPath("//i[@class='product_name_sec']")).Text.Contains("Hiplink Alert Notification Solutions")))
+            {
+                Assert.Fail("About page Failed...");
+            }
+            else
+            {
+                Console.WriteLine("^^^^^^^^^^^^^^^^^  About page Passed...  ^^^^^^^^^^^^^^^^^^^");
+            }
+        }
+
+
+
+        [Test]
+        public void d_Help()
         {
             ICollection<string> windowids = null;
             IEnumerator<String> iter = null;
@@ -221,6 +294,9 @@ namespace HL_Smoke
                         driver.FindElement(By.XPath("//li[@class='product_name']")).Text.Contains("Manual"))
                     {
 
+                        // Do some operations in the new window and close it 
+                        driver.Close();
+
                         Console.WriteLine("^^^^^^^^^^^^^^^  Help Passed ... ^^^^^^^^^^^^^^^^");
                     }
 
@@ -229,11 +305,6 @@ namespace HL_Smoke
                         Assert.Fail("Help Failed ...");
                     }
 
-
-                    /*  driver.FindElement(By.XPath("//span[text()='Installation and Administration Guide']")).Click();
-                        driver.FindElement(By.XPath("//span[text()='User Guide']")).Click();
-                        driver.FindElement(By.XPath("//span[text()='Programmer Guide']")).Click();
-                        driver.FindElement(By.LinkText("HLSales@hiplink.com")).Click();*/
 
                 }
 
@@ -249,12 +320,6 @@ namespace HL_Smoke
             // Code that does this is left as an exercise for you to complete on your own. 
 
 
-
-
-
-            // Do some operations in the new window and close it 
-            driver.Close();
-
             // Switch "focus" back to the original window. 
             //   driver.SwitchTo().Window(originalHandle);
 
@@ -263,156 +328,6 @@ namespace HL_Smoke
 
 
         }
-
-
-        [Test]
-        public void z_About_Page()
-        {
-
-            check_driver_type(driver_type, "administration", "About Hiplink", "Sys Admin");
-
-            Assert.AreEqual("About", driver.FindElement(By.XPath("//div[@class='main_container pg_about']/h1")).Text);
-
-            /*  var driver_type = driver.GetType();
-              Console.WriteLine("*" + driver_type + "*");
-
-              if (driver_type.ToString() == "OpenQA.Selenium.Safari.SafariDriver")
-              {
-                  Console.WriteLine("if clause ....");
-                  Thread.Sleep(2000);
-                  driver.FindElement(By.XPath(".//*[@id='administration']/a")).Click();
-                  Thread.Sleep(2000);
-                  driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='About Hiplink']")).Click();
-                  Thread.Sleep(2000);
-              }
-              else
-              {
-                  Console.WriteLine("using hover func() ....");
-                  Thread.Sleep(2000);
-                  driver.FindElement(By.XPath(".//*[@id='administration']/a")).Click();
-                  Thread.Sleep(2000);
-                  driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='About Hiplink']")).Click();
-                  Thread.Sleep(2000);
-                  driver.FindElement(By.XPath(".//*[@id='administration']/a")).Click();
-                  hover_func("administration", "About Hiplink");
-              }*/
-
-
-
-
-
-            if (!(driver.FindElement(By.Id("lblProductName")).Text.Equals("HipLink") &&
-                driver.FindElement(By.XPath("//i[@class='product_name_sec']")).Text.Contains("Hiplink Alert Notification Solutions") &&
-                driver.FindElement(By.XPath("//div[@class='about_left_panel notBorder']/p")).Text.Contains("HipLink Software was founded in 1993 with corporate headquarters in the heart of Silicon Valley California. As a stable, profitable, woman-owned business, HipLink continues to demonstrate a high commitment to its customers, while introducing numerous technological innovations. HipLink Software has been the premier provider of software for wireless text and voice communication to global organizations of all sizes for over fifteen years.")))
-            {
-                Assert.Fail("About page Failed...");
-            }
-            else
-            {
-                Console.WriteLine("^^^^^^^^^^^^^^^^^  About page Passed...  ^^^^^^^^^^^^^^^^^^^");
-            }
-        }
-
-
-
-        [Test]
-        public void User_Session()
-        {
-
-            check_driver_type(driver_type, "administration", "Sessions Manager", "Sys Admin");
-
-            Assert.AreEqual("Sessions Manager", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
-
-            /*     var driver_type = driver.GetType();
-                 Console.WriteLine("*" + driver_type + "*");
-
-                 if (driver_type.ToString() == "OpenQA.Selenium.Safari.SafariDriver")
-                 {
-                     Console.WriteLine("if clause ....");
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath(".//*[@id='administration']/a")).Click();
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Sessions Manager']")).Click();
-                     Thread.Sleep(2000);
-                 }
-                 else
-                 {
-                     Console.WriteLine("using hover func() ....");
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath(".//*[@id='administration']/a")).Click();
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Sessions Manager']")).Click();
-                     Thread.Sleep(2000);
-                     driver.FindElement(By.XPath(".//*[@id='administration']/a")).Click();
-                     hover_func("administration", "Sessions Manager");
-                 }*/
-
-            Console.WriteLine(driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text);
-
-            if (!(driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text.Contains(login_name) &&
-
-                driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text.Contains(browser)))
-            {
-                Assert.Fail("Session Manager Failed ...");
-            }
-
-            else
-            {
-                Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Session Manager Passed ...    ^^^^^^^^^^^^^^^^^^^^^");
-                //  driver.FindElement(By.XPath("//*[@id='logout']")).Click();
-            }
-
-        }
-
-
-        [Test]
-        public void License_Page()
-        {
-
-            check_driver_type(driver_type, "administration", "Install Licence", "Sys Admin");
-
-            Assert.AreEqual("Install Licence", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
-
-            /*      var driver_type = driver.GetType();
-                  Console.WriteLine("*" + driver_type + "*");
-
-                  if (driver_type.ToString() == "OpenQA.Selenium.Safari.SafariDriver")
-                  {
-                      Console.WriteLine("if clause ....");
-                      Thread.Sleep(2000);
-                      driver.FindElement(By.XPath(".//*[@id='administration']/a")).Click();
-                      Thread.Sleep(2000);
-                      driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Install Licence']")).Click();
-                      Thread.Sleep(2000);
-                  }
-                  else
-                  {
-                      Console.WriteLine("using hover func() ....");
-                      Thread.Sleep(2000);
-                      driver.FindElement(By.XPath(".//*[@id='administration']/a")).Click();
-                      Thread.Sleep(2000);
-                      driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Install Licence']")).Click();
-                      Thread.Sleep(2000);
-                      driver.FindElement(By.XPath(".//*[@id='administration']/a")).Click();
-                      hover_func("administration", "Install Licence");
-                  }*/
-
-
-
-            Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[@class='product_name']")).Text + "*");
-
-            if (!(driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[@class='product_name']")).Text.Contains("HipLink") &&
-                driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[@class='version']")).Text.Contains("4.7") &&
-                driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[4]")).Text.Contains("Full")))
-            {
-                Assert.Fail("License page Failed...");
-            }
-            else
-            {
-                Console.WriteLine("^^^^^^^^^^^^^^^^^  License page Passed...  ^^^^^^^^^^^^^^^^^^^");
-            }
-        }
-
 
 
 

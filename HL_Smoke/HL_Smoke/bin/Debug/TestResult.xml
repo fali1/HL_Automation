@@ -1,21 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="1" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-07-16" time="15:52:50">
+<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-07-17" time="14:41:11">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5477" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Failure" success="False" time="54.415" asserts="0">
+  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Success" success="True" time="61.406" asserts="0">
     <results>
-      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Failure" success="False" time="54.396" asserts="0">
+      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Success" success="True" time="61.406" asserts="0">
         <results>
-          <test-suite type="TestFixture" name="j_Smoke_Global_search" executed="True" result="Failure" success="False" time="54.391" asserts="1">
+          <test-suite type="TestFixture" name="a_Smoke_Global_Settings" executed="True" result="Success" success="True" time="61.341" asserts="1">
             <results>
-              <test-case name="HL_Smoke.j_Smoke_Global_search.Global_Search_Panel" executed="True" result="Failure" success="False" time="42.537" asserts="0">
-                <failure>
-                  <message><![CDATA[User Group record not fetched ...]]></message>
-                  <stack-trace><![CDATA[at HL_Smoke.j_Smoke_Global_search.Global_Search_Panel() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\j_Smoke_Global_search.cs:line 299
-]]></stack-trace>
-                </failure>
-              </test-case>
+              <test-case name="HL_Smoke.a_Smoke_Global_Settings.Global_Settings_Panel" executed="True" result="Success" success="True" time="47.786" asserts="1" />
             </results>
           </test-suite>
         </results>
