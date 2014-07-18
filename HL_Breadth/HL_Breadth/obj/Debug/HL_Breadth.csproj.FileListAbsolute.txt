@@ -34,3 +34,4 @@ D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\WebDriver.Support.pdb
 D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\WebDriver.Support.xml
 D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\obj\Debug\HL_Breadth.dll
 D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\obj\Debug\HL_Breadth.pdb
+D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\obj\Debug\HL_Breadth.csprojResolveAssemblyReference.cache
