@@ -8,6 +8,8 @@
     <Node UniqueName="[0-1023]HL_Breadth" Expanded="true" />
     <Node UniqueName="[0-1000]HL_Breadth.a_Breadth_Global_Settings" Expanded="true" />
     <Node UniqueName="[0-1002]HL_Breadth.b_Breadth_Recipients" Expanded="true" />
+    <Node UniqueName="[0-1003]HL_Breadth.b_Breadth_Recipients.a_Directory_Settings_Panel" Checked="true" />
     <Node UniqueName="[0-1004]HL_Breadth.b_Breadth_Recipients.b_Add_Messenger" Checked="true" />
+    <Node UniqueName="[0-1006]HL_Breadth.b_Breadth_Recipients.d_Add_Receiver" Checked="true" />
   </Nodes>
 </VisualState>
