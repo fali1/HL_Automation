@@ -172,6 +172,18 @@ namespace HL_Breadth
             verificationErrors = new StringBuilder();
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
         public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 
         {
 

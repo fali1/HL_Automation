@@ -194,7 +194,7 @@ namespace HL_Breadth
 
 
         [Test]
-        public void a_Directory_Settings_Panel()
+        public void a_Add_Edit_Delete_Directory_Settings_Panel()
         {
 
 
@@ -344,7 +344,7 @@ namespace HL_Breadth
 
 
         [Test]
-        public void b_Add_Messenger()
+        public void b_Add_Edit_Delete_Messenger()
         {
 
 
@@ -551,7 +551,7 @@ namespace HL_Breadth
 
 
         [Test]
-        public void c_Add_Carrier()
+        public void c_Add_Edit_Delete_Carrier()
         {
 
             string carrier_desc = "SMTP Carrier Description";
@@ -733,7 +733,7 @@ namespace HL_Breadth
 
                 driver.FindElement(By.Id("carrierDescription")).Clear();
 
-                driver.FindElement(By.Id("carrierDescription")).SendKeys(carrier_desc);
+                driver.FindElement(By.Id("carrierDescription")).SendKeys(carrier_desc_2);
 
                 driver.FindElement(By.XPath("//span[text()='Check for automatic carrier updates']")).Click();
 
@@ -846,7 +846,7 @@ namespace HL_Breadth
 
 
         [Test]
-        public void d_Add_Receiver()
+        public void d_Add_Edit_Delete_Receiver()
         {
 
 
@@ -980,7 +980,7 @@ namespace HL_Breadth
 
                 else
                 {
-                    //EDITING RECEIVER
+                    //EDITING SECOND RECEIVER
 
                     driver.FindElement(By.XPath("(//a[@title='Edit'])[2]")).Click();
 
@@ -1042,13 +1042,19 @@ namespace HL_Breadth
 
 
         [Test]
-        public void e_Add_Broadcast_Group()
+        public void e_Add_Edit_Delete_Broadcast_Group()
         {
 
 
 
-            string broadcast_group_name = "Broadcast_Group3";
+            string broadcast_group_name = "Broadcast_Group";
+            string broadcast_group_name_2 = "Broadcast_Group_2";
+            string broadcast_group_name_2_edited = "edited_Broadcast_Group_2";
+            
             string broadcast_group_description = "Broadcast Group Description";
+            string broadcast_group_description_2 = "Broadcast Group Description 2";
+            string broadcast_group_description_2_edited = "Broadcast Group Description 2 Edited";
+
             string department_name = "Default";
             string owner_name = "admin";
             string receiver_name = "receiver_smtp";
@@ -1101,27 +1107,160 @@ namespace HL_Breadth
 
             Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text);
 
-            if (driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text.Contains(broadcast_group_name))
+            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text.Contains(broadcast_group_name)))
             {
-                takescreenshot("Broadcast_Group_Passed");
-                Console.WriteLine("^^^^^^^^^^^^^^^ Broadcast Group Passed ... ^^^^^^^^^^^^^^^");
+                takescreenshot("Broadcast_Group_Failed");
+                Console.WriteLine("^^^^^^^^^^^^^^^ Broadcast Group Failed ... ^^^^^^^^^^^^^^^");
             }
             else
             {
-                takescreenshot("Broadcast_Group_Failed");
-                Assert.Fail("Broadcast Group Failed ...");
+                // ADDING SECOND BROADCAST GROUP
+
+
+                driver.FindElement(By.LinkText("Add Group")).Click();
+
+                driver.FindElement(By.Id("txtName")).Clear();
+            
+                driver.FindElement(By.Id("txtName")).SendKeys(broadcast_group_name_2); //name
+
+            
+                driver.FindElement(By.Id("txtDesc")).Clear();
+            
+                driver.FindElement(By.Id("txtDesc")).SendKeys(broadcast_group_description_2); //description
+
+            
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click(); //member of department drop down
+            
+                Thread.Sleep(2000);
+
+            
+                driver.FindElement(By.XPath("//li[text()='" + department_name + "']")).Click();
+
+            
+                driver.FindElement(By.XPath("//span[text()='Set Owner']")).Click();
+
+            
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click(); //set owner drop down
+            
+                Thread.Sleep(2000);
+
+            
+                driver.FindElement(By.XPath("//li[text()='" + owner_name + "']")).Click();
+
+            
+                driver.FindElement(By.XPath("//span[text()='Alert this owner for membership changes']")).Click(); //Alert this owner for membership changes checkbox
+
+            
+                driver.FindElement(By.Id("btnSaveTabOne")).Click();
+            
+                Thread.Sleep(2000);
+
+            
+                driver.FindElement(By.XPath("//a[text()='Define Members']")).Click(); //Members tab
+            
+                Thread.Sleep(2000);
+
+            
+                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+
+            
+                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+
+            
+                driver.FindElement(By.Id("addRec")).Click();
+
+            
+                driver.FindElement(By.Id("btnSaveTabTwo")).Click();
+            
+                Thread.Sleep(2000);
+
+            
+                takescreenshot("Broadcast_Group");
+
+            
+                driver.FindElement(By.Id("btnCancelTwo")).Click();
+            
+                Thread.Sleep(2000);
+
+
+                // VERIFYING SECOND ADDED BROADCAST GROUP
+                
+                if(!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(broadcast_group_name_2)))
+                {
+                    takescreenshot("Second_Added_Broadcast_Group_Failed");
+                    Assert.Fail("Second Added Broadcast Group Failed ...");
+                }
+                else
+                {
+                   //EDITING SECOND BROADCAST GROUP 
+
+                    driver.FindElement(By.XPath("(//a[@title='Edit'])[2]")).Click();
+                    Thread.Sleep(2000);
+
+                    driver.FindElement(By.Id("txtName")).Clear();
+                    driver.FindElement(By.Id("txtName")).SendKeys(broadcast_group_name_2_edited); //name
+
+                    driver.FindElement(By.Id("txtDesc")).Clear();
+                    driver.FindElement(By.Id("txtDesc")).SendKeys(broadcast_group_description_2_edited); //description
+
+                    driver.FindElement(By.Id("btnSaveTabOne")).Click();
+                    Thread.Sleep(2000);
+
+                    driver.FindElement(By.Id("btncancel")).Click();
+                    Thread.Sleep(2000);
+
+            
+                    // VERIFYING SECOND EDITED BROADCAST GROUP
+
+                    if(!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(broadcast_group_name_2_edited)))
+                    {
+                        takescreenshot("Editing_Broadcast_Group_Failed");
+                        Assert.Fail("Editing Broadcast Group Failed ...");
+                    }
+                    else
+                    {
+                        //DELETING EDITED BROADCAST GROUP
+
+                        driver.FindElement(By.XPath("(//a[@title='Delete'])[2]")).Click();
+
+                        driver.FindElement(By.Id("btnOk")).Click();
+                        Thread.Sleep(2000);
+
+                        if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(broadcast_group_name_2_edited)))
+                        {
+                            takescreenshot("Broadcast_Group_Passed");
+                            Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add_Edit_Delete Broadcast Group Passed... ^^^^^^^^^^^^^^^^^^^^^");
+                        }
+                        else
+                        {
+                            takescreenshot("Deleting_Broadcast_Group_Failed");
+                            Assert.Fail("Deleting Broadcast Group Failed ...");
+                        }
+                    }
+                
+                }
+
             }
 
         }
 
+
+
         [Test]
-        public void f_Add_Escalation_Group()
+        public void f_Add_Edit_Delete_Escalation_Group()
         {
 
 
             string receiver_name = "receiver_smtp";
-            string escalation_group_name = "Escalation_Group3";
+            
+            string escalation_group_name = "Escalation_Group";
+            string escalation_group_name_2 = "Escalation_Group_2";
+            string escalation_group_name_2_edited = "edited_Escalation_Group_2_";
+
             string escalation_group_description = "Escalation Group Description";
+            string escalation_group_description_2 = "Escalation Group Description_2";
+            string escalation_group_description_2_edited = "Escalation Group Description_2 Edited";
+
             string set_owner = "admin";
 
             check_driver_type(driver_type, "recipients", "Escalation", "Recipients");
@@ -1184,28 +1323,153 @@ namespace HL_Breadth
 
             Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text);
 
-            if (driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text.Contains(escalation_group_name))
-            {
-                takescreenshot("Escalation_Group_Passed");
-                Console.WriteLine("^^^^^^^^^^^^^^^ Escalation Group Passed ... ^^^^^^^^^^^^^^^");
-            }
-            else
+            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text.Contains(escalation_group_name)))
             {
                 takescreenshot("Escalation_Group_Failed");
                 Assert.Fail("Escalation Group Failed ...");
+
+              /*  takescreenshot("Escalation_Group_Passed");
+                Console.WriteLine("^^^^^^^^^^^^^^^ Escalation Group Passed ... ^^^^^^^^^^^^^^^");
+               */
+            }
+            else
+            {
+                // ADDING SECOND ESCALATION GROUP
+
+
+                driver.FindElement(By.LinkText("Add Group")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.Id("txtName")).Clear();
+                driver.FindElement(By.Id("txtName")).SendKeys(escalation_group_name_2); //name
+
+                driver.FindElement(By.Id("txtDesc")).Clear();
+                driver.FindElement(By.Id("txtDesc")).SendKeys(escalation_group_description_2); //description
+
+                driver.FindElement(By.XPath("//span[text()='Rotating']")).Click(); //Rotating checkbox 
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click(); //cycle drop down
+
+                driver.FindElement(By.XPath("//li[text()='2']")).Click();
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click(); //member of department dropdown
+
+                driver.FindElement(By.XPath("//li[text()='Default']")).Click();
+
+                driver.FindElement(By.XPath("//span[text()='Set Owner']")).Click();
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click(); //set owner drop down 
+
+                driver.FindElement(By.XPath("//li[text()='" + set_owner + "']")).Click();
+
+                driver.FindElement(By.XPath("//span[text()='Alert this owner for membership changes']")).Click(); //Alert this owner for membership changes checkbox
+
+                driver.FindElement(By.Id("btnSaveTabOne")).Click();
+                Thread.Sleep(3000);
+
+                driver.FindElement(By.XPath("//a[text()='Define Members']")).Click(); //Members tab
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+
+                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+
+
+                driver.FindElement(By.Id("addRec")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click(); //Delay dropp down
+                Thread.Sleep(2000);
+
+                //  driver.FindElement(By.XPath("//div[@id='membersGrid']/table/tbody/tr[3]/td[10]/div/ul/li[2]")).Click();
+
+                driver.FindElement(By.Id("btnSaveTabTwo")).Click();
+                Thread.Sleep(2000);
+
+                takescreenshot("Escalation_Group");
+
+                driver.FindElement(By.Id("btnCancelTwo")).Click();
+                Thread.Sleep(2000);
+
+
+                // VERIFYING SECOND ADDED ESCALATION GROUP
+
+                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(escalation_group_name_2)))
+                {
+                    takescreenshot("Second_Added_Escalation_Group_Failed");
+                    Assert.Fail("Second Added Escalation Group Failed ...");
+                }
+                else
+                {
+                    //EDITING SECOND ESCALATION GROUP 
+
+                    driver.FindElement(By.XPath("(//a[@title='Edit'])[2]")).Click();
+                    Thread.Sleep(2000);
+
+                    driver.FindElement(By.Id("txtName")).Clear();
+                    driver.FindElement(By.Id("txtName")).SendKeys(escalation_group_name_2_edited); //name
+
+                    driver.FindElement(By.Id("txtDesc")).Clear();
+                    driver.FindElement(By.Id("txtDesc")).SendKeys(escalation_group_description_2_edited); //description
+
+                    driver.FindElement(By.Id("btnSaveTabOne")).Click();
+                    Thread.Sleep(2000);
+
+                    driver.FindElement(By.Id("btncancel")).Click();
+                    Thread.Sleep(2000);
+
+
+                    // VERIFYING SECOND EDITED ESCALATION GROUP
+
+                    if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(escalation_group_name_2_edited)))
+                    {
+                        takescreenshot("Editing_Escalation_Group_Failed");
+                        Assert.Fail("Editing Escalation Group Failed ...");
+                    }
+                    else
+                    {
+                        //DELETING EDITED ESCALATION GROUP
+
+                        driver.FindElement(By.XPath("(//a[@title='Delete'])[1]")).Click();
+
+                        driver.FindElement(By.Id("btnOk")).Click();
+                        Thread.Sleep(2000);
+
+                        if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(escalation_group_name_2_edited)))
+                        {
+                            takescreenshot("Broadcast_Group_Passed");
+                            Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add_Edit_Delete Escalation Group Passed... ^^^^^^^^^^^^^^^^^^^^^");
+                        }
+                        else
+                        {
+                            takescreenshot("Deleting_Escalation_Group_Failed");
+                            Assert.Fail("Deleting Escalation Group Failed ...");
+                        }
+                    }
+
+                }
+
             }
 
         }
 
 
+
         [Test]
-        public void g_Add_On_Duty_Group()
+        public void g_Add_Edit_Delete_On_Duty_Group()
         {
 
 
             string receiver_name = "receiver_smtp";
-            string on_duty_group_name = "On_Duty_Group3";
+
+            string on_duty_group_name = "On_Duty_Group";
+            string on_duty_group_name_2 = "On_Duty_Group_2";
+            string on_duty_group_name_2_edited = "edited_On_Duty_Group_2";
+            
             string on_duty_group_description = "On Duty Group Description";
+            string on_duty_group_description_2 = "On Duty Group Description_2";
+            string on_duty_group_description_2_edited = "On Duty Group Description_2_edited";
+
             string set_owner = "admin";
 
             check_driver_type(driver_type, "recipients", "On-Duty", "Recipients");
@@ -1289,34 +1553,183 @@ namespace HL_Breadth
 
             driver.FindElement(By.XPath("(//a[contains(text(),'On-Duty')])[2]")).Click(); // as an alternate of close button , bcz its not working right now
 
-            Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text);
 
-            if (driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(on_duty_group_name)) // /div[1]/div[1]/div/div[3]
+            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(on_duty_group_name))) // /div[1]/div[1]/div/div[3]
             {
-                takescreenshot("On_Duty_Group_Passed");
 
-                Console.WriteLine("^^^^^^^^^^^^^^^ On_Duty Group Passed ... ^^^^^^^^^^^^^^^");
-            }
-            else
-            {
                 takescreenshot("On_Duty_Group_Failed");
 
                 Assert.Fail("On_Duty Group Failed ...");
-            }
+                /*
+                takescreenshot("On_Duty_Group_Passed");
 
+                Console.WriteLine("^^^^^^^^^^^^^^^ On_Duty Group Passed ... ^^^^^^^^^^^^^^^");
+                 */ 
+            }
+            else
+            {
+
+                // ADDING SECOND ONDUTY GROUP
+
+                driver.FindElement(By.LinkText("Add Group")).Click();
+
+                driver.FindElement(By.Id("txtName")).Clear();
+                driver.FindElement(By.Id("txtName")).SendKeys(on_duty_group_name_2);
+
+                driver.FindElement(By.Id("txtDesc")).Clear();
+                driver.FindElement(By.Id("txtDesc")).SendKeys(on_duty_group_description_2);
+
+                driver.FindElement(By.XPath("//span[text()='Rotating']")).Click(); //Rotating checkbox
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click(); //member of department drop odwn
+
+                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[2]/div/ul/li[text()='Default']")).Click();
+
+                driver.FindElement(By.XPath("//span[text()='Set Owner']")).Click();
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();//set owner drop down
+
+                driver.FindElement(By.XPath("//li[1][text()='" + set_owner + "']")).Click();
+
+                driver.FindElement(By.XPath("//span[text()='Alert this owner for membership changes']")).Click(); //Alert this owner for membership changes checkbox
+
+                driver.FindElement(By.Id("btnSaveTabOne")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//a[text()='Define Members']")).Click(); //Members tab
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+
+                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+
+                driver.FindElement(By.Id("addRec")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.Id("btnSaveTabTwo")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.Id("schedule")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click(); //select receiver name drop down
+                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+
+                driver.FindElement(By.LinkText("Add Monthly")).Click();
+
+                driver.FindElement(By.Id("sname")).Clear();
+                driver.FindElement(By.Id("sname")).SendKeys("monthly");
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click(); //timeframe drop down
+                driver.FindElement(By.XPath("(//li[text()='02'])[1]")).Click();
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[6]")).Click(); //timeframe drop down
+                driver.FindElement(By.XPath("(//li[text()='02'])[3]")).Click();
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[9]")).Click(); //Days dropdown
+
+                driver.FindElement(By.XPath(".//*[@id='sch_monthly']/fieldset[1]/div[1]/ul/li[2][text()='First']")).Click();
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[10]")).Click();
+
+                driver.FindElement(By.XPath(".//*[@id='sch_monthly']/fieldset[1]/div[2]/ul/li[2][text()='Monday']")).Click();
+                Thread.Sleep(3000);
+
+                driver.FindElement(By.Id("startpicker")).Click(); //Range start from calendar
+                driver.FindElement(By.LinkText("8")).Click();
+
+                driver.FindElement(By.Id("btnSaveSchedule")).Click();
+
+                takescreenshot("On_Duty Group");
+
+                // driver.FindElement(By.LinkText("Close")).Click(); // not working right now
+
+                driver.FindElement(By.LinkText("Recipients")).Click();
+
+                driver.FindElement(By.XPath("(//a[contains(text(),'On-Duty')])[2]")).Click(); // as an alternate of close button , bcz its not working right now
+
+            
+
+
+                // VERIFYING SECOND ADDED ONDUTY GROUP
+
+                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(on_duty_group_name_2)))
+                {
+                    takescreenshot("Second_Added_Onduty_Group_Failed");
+                    Assert.Fail("Second Added Onduty Group Failed ...");
+                }
+                else
+                {
+                    //EDITING SECOND ONDUTY GROUP 
+
+                    driver.FindElement(By.XPath("(//a[@title='Edit'])[2]")).Click();
+                    Thread.Sleep(2000);
+
+                    driver.FindElement(By.Id("txtName")).Clear();
+                    driver.FindElement(By.Id("txtName")).SendKeys(on_duty_group_name_2_edited); //name
+
+                    driver.FindElement(By.Id("txtDesc")).Clear();
+                    driver.FindElement(By.Id("txtDesc")).SendKeys(on_duty_group_description_2_edited); //description
+
+                    driver.FindElement(By.Id("btnSaveTabOne")).Click();
+                    Thread.Sleep(2000);
+
+                    driver.FindElement(By.Id("btncancel")).Click();
+                    Thread.Sleep(2000);
+
+
+                    // VERIFYING SECOND EDITED ONDUTY GROUP
+
+                    if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(on_duty_group_name_2_edited)))
+                    {
+                        takescreenshot("Editing_Onduty_Group_Failed");
+                        Assert.Fail("Editing Onduty Group Failed ...");
+                    }
+                    else
+                    {
+                        //DELETING EDITED ONDUTY GROUP
+
+                        driver.FindElement(By.XPath("(//a[@title='Delete'])[1]")).Click();
+
+                        driver.FindElement(By.Id("btnOk")).Click();
+                        Thread.Sleep(2000);
+
+                        if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(on_duty_group_name_2_edited)))
+                        {
+                            takescreenshot("Onduty_Group_Passed");
+                            Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add_Edit_Delete Onduty Group Passed... ^^^^^^^^^^^^^^^^^^^^^");
+                        }
+                        else
+                        {
+                            takescreenshot("Deleting_Onduty_Group_Failed");
+                            Assert.Fail("Deleting Onduty Group Failed ...");
+                        }
+                    }
+
+                }
+
+            }
 
         }
 
 
 
         [Test]
-        public void h_Add_Follow_me_Group()
+        public void h_Add_Edit_Delete_Follow_me_Group()
         {
 
 
             string receiver_name = "receiver_smtp";
-            string follow_me_group_name = "Follow_me_Group3";
+
+            string follow_me_group_name = "Follow_me_Group";
+            string follow_me_group_name_2 = "Follow_me_Group_2";
+            string follow_me_group_name_2_edited = "edited_Follow_me_Group_2";
+            
             string follow_me_group_description = "Follow me Group Description";
+            string follow_me_group_description_2 = "Follow me Group Description_2";
+            string follow_me_group_description_2_edited = "Follow me Group Description_2 Edited";
+
+            
             string set_owner = "admin";
 
             check_driver_type(driver_type, "recipients", "Follow-Me", "Recipients");
@@ -1383,92 +1796,154 @@ namespace HL_Breadth
             driver.FindElement(By.Id("schMonday")).Click();
 
             driver.FindElement(By.Id("startpicker")).Click(); //Range start from calendar
-            driver.FindElement(By.LinkText("6")).Click();
+            driver.FindElement(By.LinkText("8")).Click();
 
             driver.FindElement(By.Id("btnSaveSchedule")).Click();
             Thread.Sleep(2000);
 
-            /*    driver.FindElement(By.LinkText("Add Monthly")).Click();
-            
-                driver.FindElement(By.Id("sname")).Clear();
-                driver.FindElement(By.Id("sname")).SendKeys("monthly");
-
-                driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[1]/a[2]")).Click();
-                driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[1]/ul/li[2]")).Click();
-
-                driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[3]/a[2]")).Click();
-                driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[3]/ul/li[2]")).Click();//*[@id='sch_monthly']/fieldset[1]/div[1]/a[2]
-
-                driver.FindElement(By.XPath(".//*[@id='sch_monthly']/fieldset[1]/div[1]/a[2]")).Click();
-                driver.FindElement(By.XPath(".//*[@id='sch_monthly']/fieldset[1]/div[1]/ul/li[text()='Day']")).Click();
-
-                driver.FindElement(By.XPath(".//*[@id='sch_monthly']/fieldset[1]/div[2]/a[2]")).Click();
-                driver.FindElement(By.XPath(".//*[@id='sch_monthly']/fieldset[1]/div[2]/ul/li[2]")).Click();
-
-                driver.FindElement(By.CssSelector("#sch_monthly > fieldset > div.custom.dropdown > a.selector")).Click();
-                driver.FindElement(By.CssSelector("#sizzle-1399274460198 > li.selected")).Click();
-                driver.FindElement(By.XPath("//div[@id='sch_monthly']/fieldset/div[2]/a[2]")).Click();
-                driver.FindElement(By.XPath("//ul[@id='sizzle-1399274460198']/li[2]")).Click();
-                driver.FindElement(By.XPath("//div[@id='sch_monthly']/fieldset[2]/div/a[2]")).Click();
-                driver.FindElement(By.XPath("//ul[@id='sizzle-1399274460198']/li[2]")).Click();
-                driver.FindElement(By.XPath("//div[@id='sch_monthly']/fieldset[3]/div/a[2]")).Click();
-                driver.FindElement(By.XPath("//ul[@id='sizzle-1399274460198']/li[2]")).Click();
-                driver.FindElement(By.Id("startpicker")).Click();
-                driver.FindElement(By.LinkText("7")).Click();
-                driver.FindElement(By.CssSelector("#sizzle-1399274460198 > span.custom.radio")).Click();
-            
-                driver.FindElement(By.Id("txtOccurencies")).Clear();
-                driver.FindElement(By.Id("txtOccurencies")).SendKeys("2");
-            
-                driver.FindElement(By.Id("btnSaveSchedule")).Click();
-            
-                driver.FindElement(By.LinkText("Add Non-recurrent")).Click();
-            
-                driver.FindElement(By.Id("sname")).Clear();
-                driver.FindElement(By.Id("sname")).SendKeys("non_recurrent");
-            
-                driver.FindElement(By.CssSelector("fieldset.fs_duration > div.custom.dropdown > a.selector")).Click();
-                driver.FindElement(By.XPath("//ul[@id='sizzle-1399274460198']/li[2]")).Click();
-                driver.FindElement(By.XPath("//div[@id='sch_main']/div/fieldset[2]/div[3]/a[2]")).Click();
-                driver.FindElement(By.XPath("//ul[@id='sizzle-1399274460198']/li[3]")).Click();
-                driver.FindElement(By.LinkText("7")).Click();
-                driver.FindElement(By.Id("txtNonRecEndDate")).Click();
-                driver.FindElement(By.LinkText("9")).Click();*/
-
+          
             takescreenshot("Follow_me_Group");
 
             driver.FindElement(By.LinkText("Close")).Click();
-
-            driver.FindElement(By.LinkText("Recipients")).Click();
             Thread.Sleep(2000);
-
-            driver.FindElement(By.LinkText("Follow-Me")).Click();
 
             Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text);
 
-            if (driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(follow_me_group_name))
+            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(follow_me_group_name)))
             {
-                takescreenshot("Follow_me_Group_Passed");
 
-                Console.WriteLine("^^^^^^^^^^^^^^^ Follow_me Group Passed ... ^^^^^^^^^^^^^^^");
-            }
-            else
-            {
                 takescreenshot("Follow_me_Group_Failed");
 
                 Assert.Fail("Follow_me Group Failed ...");
-            }
 
+                /*
+                takescreenshot("Follow_me_Group_Passed");
+
+                Console.WriteLine("^^^^^^^^^^^^^^^ Follow_me Group Passed ... ^^^^^^^^^^^^^^^");
+                 */ 
+            }
+            else
+            {
+
+                // ADDING SECOND FOLLOWME GROUP
+
+                driver.FindElement(By.LinkText("Add Group")).Click();
+
+                driver.FindElement(By.Id("txtName")).Clear();
+                driver.FindElement(By.Id("txtName")).SendKeys(follow_me_group_name_2); //name
+
+                driver.FindElement(By.Id("txtDesc")).Clear();
+                driver.FindElement(By.Id("txtDesc")).SendKeys(follow_me_group_description_2); //description
+
+                driver.FindElement(By.XPath("//span[text()='Rotating']")).Click(); //Rotating checkbox
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click(); //member of department drop odwn
+
+                driver.FindElement(By.XPath("//li[text()='Default']")).Click();
+
+                driver.FindElement(By.XPath("//span[text()='Set Owner']")).Click();
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();//set owner drop down
+
+                driver.FindElement(By.XPath("//li[1][text()='" + set_owner + "']")).Click();
+
+                driver.FindElement(By.XPath("//span[text()='Alert this owner for membership changes']")).Click(); //Alert this owner for membership changes checkbox
+
+                driver.FindElement(By.Id("btnSaveTabOne")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//a[text()='Define Members']")).Click(); //Members tab
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+
+                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+
+                driver.FindElement(By.Id("addRec")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.Id("btnSaveTabTwo")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.Id("btnCancelTwo")).Click();
+
+                // VERIFYING SECOND ADDED FOLLOWME GROUP
+
+                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(follow_me_group_name_2)))
+                {
+                    takescreenshot("Second_Added_follow_me_Group_Failed");
+                    Assert.Fail("Second Added follow_me Group Failed ...");
+                }
+                else
+                {
+                    //EDITING SECOND FOLLOWME GROUP 
+
+                    driver.FindElement(By.XPath("(//a[@title='Edit'])[2]")).Click();
+                    Thread.Sleep(2000);
+
+                    driver.FindElement(By.Id("txtName")).Clear();
+                    driver.FindElement(By.Id("txtName")).SendKeys(follow_me_group_name_2_edited); //name
+
+                    driver.FindElement(By.Id("txtDesc")).Clear();
+                    driver.FindElement(By.Id("txtDesc")).SendKeys(follow_me_group_description_2_edited); //description
+
+                    driver.FindElement(By.Id("btnSaveTabOne")).Click();
+                    Thread.Sleep(2000);
+
+                    driver.FindElement(By.Id("btncancel")).Click();
+                    Thread.Sleep(2000);
+
+
+                    // VERIFYING SECOND EDITED FOLLOWME GROUP
+
+                    if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(follow_me_group_name_2_edited)))
+                    {
+                        takescreenshot("Editing_follow_me_Group_Failed");
+                        Assert.Fail("Editing follow_me Group Failed ...");
+                    }
+                    else
+                    {
+                        //DELETING EDITED FOLLOWME GROUP
+
+                        driver.FindElement(By.XPath("(//a[@title='Delete'])[1]")).Click();
+
+                        driver.FindElement(By.Id("btnOk")).Click();
+                        Thread.Sleep(2000);
+
+                        if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(follow_me_group_name_2_edited)))
+                        {
+                            takescreenshot("follow_me_Group_Passed");
+                            Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add_Edit_Delete follow_me Group Passed... ^^^^^^^^^^^^^^^^^^^^^");
+                        }
+                        else
+                        {
+                            takescreenshot("Deleting_follow_me_Group_Failed");
+                            Assert.Fail("Deleting follow_me Group Failed ...");
+                        }
+                    }
+
+                }
+
+            }
 
         }
 
+
+
         [Test]
-        public void i_Add_Rotate_Group()
+        public void i_Add_Edit_Delete_Rotate_Group()
         {
 
             string receiver_name = "receiver_smtp";
-            string rotate_group_name = "Rotate_Group3";
+            string rotate_group_name = "Rotate_Group";
+            string rotate_group_name_2 = "Rotate_Group_2";
+            string rotate_group_name_2_edited = "edited_Rotate_Group_2";
+
+            
             string rotate_group_description = "Rotate Group Description";
+            string rotate_group_description_2 = "Rotate Group Description_2";
+            string rotate_group_description_2_edited = "Rotate Group Description_2_edited";
+
             string set_owner = "admin";
 
             check_driver_type(driver_type, "recipients", "Rotation", "Recipients");
@@ -1518,29 +1993,139 @@ namespace HL_Breadth
 
             Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text);
 
-            if (driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text.Contains(rotate_group_name))
-            {
-                takescreenshot("Rotation_Group_Passed");
-                Console.WriteLine("^^^^^^^^^^^^^^^ Rotation Group Passed ... ^^^^^^^^^^^^^^^");
-            }
-            else
+            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text.Contains(rotate_group_name)))
             {
                 takescreenshot("Rotation_Group_Failed");
                 Assert.Fail("Rotation Group Failed ...");
+                
+                /*
+                takescreenshot("Rotation_Group_Passed");
+                Console.WriteLine("^^^^^^^^^^^^^^^ Rotation Group Passed ... ^^^^^^^^^^^^^^^");
+                 */ 
             }
+            else
+            {
+                // ADDING SECOND ROTATE GROUP
+
+                driver.FindElement(By.LinkText("Add Group")).Click();
+
+                driver.FindElement(By.Id("txtName")).Clear();
+                driver.FindElement(By.Id("txtName")).SendKeys(rotate_group_name_2); //name
+
+                driver.FindElement(By.Id("txtDesc")).Clear();
+                driver.FindElement(By.Id("txtDesc")).SendKeys(rotate_group_description_2); //description
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click(); //member of department 
+
+                driver.FindElement(By.XPath("//div[@id='additionalInfo']/fieldset[1]/div/ul/li[text()='Default']")).Click();
+
+                driver.FindElement(By.XPath("//span[text()='Set Owner']")).Click();
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click(); //set owner drop down
+
+                driver.FindElement(By.XPath("//li[1][text()='" + set_owner + "']")).Click();
+
+                driver.FindElement(By.XPath("//span[text()='Alert this owner for membership changes']")).Click(); // Alert this owner for membership changes checkbox
+
+                driver.FindElement(By.Id("btnSaveTabOne")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//a[text()='Define Members']")).Click(); //Members tab
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+
+                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+
+                driver.FindElement(By.Id("addRec")).Click();
+
+                driver.FindElement(By.Id("btnSaveTabTwo")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.Id("btnCancelTwo")).Click();
+                Thread.Sleep(2000);
 
 
+
+                // VERIFYING SECOND ADDED ROTATE GROUP
+
+                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(rotate_group_name_2)))
+                {
+                    takescreenshot("Second_Added_Rotation_Group_Failed");
+                    Assert.Fail("Second Added Rotation Group Failed ...");
+                }
+                else
+                {
+                    //EDITING SECOND ROTATE GROUP 
+
+                    driver.FindElement(By.XPath("(//a[@title='Edit'])[2]")).Click();
+                    Thread.Sleep(2000);
+
+                    driver.FindElement(By.Id("txtName")).Clear();
+                    driver.FindElement(By.Id("txtName")).SendKeys(rotate_group_name_2_edited); //name
+
+                    driver.FindElement(By.Id("txtDesc")).Clear();
+                    driver.FindElement(By.Id("txtDesc")).SendKeys(rotate_group_description_2_edited); //description
+
+                    driver.FindElement(By.Id("btnSaveTabOne")).Click();
+                    Thread.Sleep(2000);
+
+                    driver.FindElement(By.Id("btncancel")).Click();
+                    Thread.Sleep(2000);
+
+
+                    // VERIFYING SECOND EDITED ROTATE GROUP
+
+                    if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(rotate_group_name_2_edited)))
+                    {
+                        takescreenshot("Editing_Rotation_Group_Failed");
+                        Assert.Fail("Editing Rotation Group Failed ...");
+                    }
+                    else
+                    {
+                        //DELETING EDITED ROTATE GROUP
+
+                        driver.FindElement(By.XPath("(//a[@title='Delete'])[1]")).Click();
+
+                        driver.FindElement(By.Id("btnOk")).Click();
+                        Thread.Sleep(2000);
+
+                        if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(rotate_group_name_2_edited)))
+                        {
+                            takescreenshot("Rotation_Group_Passed");
+                            Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add_Edit_Delete Rotation Group Passed... ^^^^^^^^^^^^^^^^^^^^^");
+                        }
+                        else
+                        {
+                            takescreenshot("Deleting_Rotation_Group_Failed");
+                            Assert.Fail("Deleting Rotation Group Failed ...");
+                        }
+                    }
+
+                }
+
+            }
 
         }
 
+
+
         [Test]
-        public void j_Add_Subscription_Group()
+        public void j_Add_Edit_Delete_Subscription_Group()
         {
 
 
             string receiver_name = "receiver_smtp";
-            string subscription_group_name = "Subscription_Group4";
+            
+            string subscription_group_name = "Subscription_Group";
+            string subscription_group_name_2 = "Subscription_Group_2";
+            string subscription_group_name_2_edited = "edited_Subscription_Group_2";
+            
             string subscription_group_description = "Subscription Group Description";
+            string subscription_group_description_2 = "Subscription Group Description_2";
+            string subscription_group_description_2_edited = "Subscription Group Description_2 Edited";
+
+            
             string subscription_topic = "Demo topic";
 
             check_driver_type(driver_type, "recipients", "Subscription Groups", "Recipients");
@@ -1583,49 +2168,116 @@ namespace HL_Breadth
 
             Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text);
 
-            if (driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text.Contains(subscription_group_name))
+            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text.Contains(subscription_group_name)))
             {
+
+                takescreenshot("Subscription_Group_Failed");
+                Assert.Fail("Subscription Group Failed ...");
+
+                /*
                 takescreenshot("Subscription_Group_Passed");
                 Console.WriteLine("^^^^^^^^^^^^^^^ Subscription Group Passed ... ^^^^^^^^^^^^^^^");
+                 */ 
             }
             else
             {
-                takescreenshot("Subscription_Group_Failed");
-                Assert.Fail("Subscription Group Failed ...");
+                // ADDING SECOND SUBSCRIPTION GROUP
+
+                driver.FindElement(By.LinkText("Add Group")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.Id("txtName")).Clear();
+                driver.FindElement(By.Id("txtName")).SendKeys(subscription_group_name_2); //name
+
+                driver.FindElement(By.Id("txtTopic")).Clear();
+                driver.FindElement(By.Id("txtTopic")).SendKeys(subscription_topic); //topic
+
+                driver.FindElement(By.Id("txtDesc")).Clear();
+                driver.FindElement(By.Id("txtDesc")).SendKeys(subscription_group_description_2); //description
+
+                driver.FindElement(By.XPath("//span[text()='Alert this owner for membership changes']")).Click();
+
+                driver.FindElement(By.Id("btnSaveTabOne")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//a[text()='Define Members']")).Click(); //Members tab
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+
+                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+
+                driver.FindElement(By.Id("addRec")).Click();
+
+                driver.FindElement(By.Id("btnSaveTabTwo")).Click();
+                Thread.Sleep(2000);
+
+                takescreenshot("Subscription_Group");
+
+                driver.FindElement(By.Id("btnCancelTwo")).Click();
+                Thread.Sleep(2000);
+
+
+                // VERIFYING SECOND ADDED SUBSCRIPTION GROUP
+
+                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(subscription_group_name_2)))
+                {
+                    takescreenshot("Second_Added_Subscription_Group_Failed");
+                    Assert.Fail("Second Added Subscription Group Failed ...");
+                }
+                else
+                {
+                    //EDITING SECOND SUBSCRIPTION GROUP 
+
+                    driver.FindElement(By.XPath("(//a[@title='Edit'])[2]")).Click();
+                    Thread.Sleep(2000);
+
+                    driver.FindElement(By.Id("txtName")).Clear();
+                    driver.FindElement(By.Id("txtName")).SendKeys(subscription_group_name_2_edited); //name
+
+                    driver.FindElement(By.Id("txtDesc")).Clear();
+                    driver.FindElement(By.Id("txtDesc")).SendKeys(subscription_group_description_2_edited); //description
+
+                    driver.FindElement(By.Id("btnSaveTabOne")).Click();
+                    Thread.Sleep(2000);
+
+                    driver.FindElement(By.Id("btncancel")).Click();
+                    Thread.Sleep(2000);
+
+
+                    // VERIFYING SECOND EDITED SUBSCRIPTION GROUP
+
+                    if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(subscription_group_name_2_edited)))
+                    {
+                        takescreenshot("Editing_Subscription_Group_Failed");
+                        Assert.Fail("Editing Subscription Group Failed ...");
+                    }
+                    else
+                    {
+                        //DELETING EDITED SUBSCRIPTION GROUP
+
+                        driver.FindElement(By.XPath("(//a[@title='Delete'])[1]")).Click();
+
+                        driver.FindElement(By.Id("btnOk")).Click();
+                        Thread.Sleep(2000);
+
+                        if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(subscription_group_name_2_edited)))
+                        {
+                            takescreenshot("Subscription_Group_Passed");
+                            Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add_Edit_Delete Subscription Group Passed... ^^^^^^^^^^^^^^^^^^^^^");
+                        }
+                        else
+                        {
+                            takescreenshot("Deleting_Subscription_Group_Failed");
+                            Assert.Fail("Deleting Subscription Group Failed ...");
+                        }
+                    }
+
+                }
+
             }
 
-
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
