@@ -1,15 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-07-22" time="16:44:58">
+<test-results name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" total="6" errors="2" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-07-23" time="15:57:41">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5477" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" executed="True" result="Success" success="True" time="111.455" asserts="0">
+  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" executed="True" result="Failure" success="False" time="412.070" asserts="0">
     <results>
-      <test-suite type="Namespace" name="HL_Breadth" executed="True" result="Success" success="True" time="111.432" asserts="0">
+      <test-suite type="Namespace" name="HL_Breadth" executed="True" result="Failure" success="False" time="412.052" asserts="0">
         <results>
-          <test-suite type="TestFixture" name="b_Breadth_Recipients" executed="True" result="Success" success="True" time="111.428" asserts="1">
+          <test-suite type="TestFixture" name="c_Breadth_Account" executed="True" result="Failure" success="False" time="412.049" asserts="1">
             <results>
-              <test-case name="HL_Breadth.b_Breadth_Recipients.d_Add_Edit_Delete_Receiver" executed="True" result="Success" success="True" time="96.251" asserts="1" />
+              <test-case name="HL_Breadth.c_Breadth_Account.a_Add_Edit_Delete_Timezone" executed="True" result="Error" success="False" time="46.001" asserts="0">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : Element is not currently visible and so may not be interacted with]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Breadth.c_Breadth_Account.hover_func(String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\c_Breadth_Account.cs:line 1659
+at HL_Breadth.c_Breadth_Account.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\c_Breadth_Account.cs:line 1625
+at HL_Breadth.c_Breadth_Account.a_Add_Edit_Delete_Timezone() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\c_Breadth_Account.cs:line 191
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.c_Breadth_Account.b_Add_Edit_Delete_Message_Template" executed="True" result="Failure" success="False" time="84.545" asserts="1">
+                <failure>
+                  <message><![CDATA[Message_Template Deleted Failed...]]></message>
+                  <stack-trace><![CDATA[at HL_Breadth.c_Breadth_Account.b_Add_Edit_Delete_Message_Template() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\c_Breadth_Account.cs:line 610
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.c_Breadth_Account.c_Add_Edit_Delete_Response_Action" executed="True" result="Success" success="True" time="58.872" asserts="1" />
+              <test-case name="HL_Breadth.c_Breadth_Account.d_Add_Edit_Delete_User_Group" executed="True" result="Success" success="True" time="97.209" asserts="1" />
+              <test-case name="HL_Breadth.c_Breadth_Account.e_Add_Edit_Delete_Department" executed="True" result="Error" success="False" time="45.985" asserts="0">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : Element is not currently visible and so may not be interacted with]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Breadth.c_Breadth_Account.hover_func(String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\c_Breadth_Account.cs:line 1659
+at HL_Breadth.c_Breadth_Account.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\c_Breadth_Account.cs:line 1625
+at HL_Breadth.c_Breadth_Account.e_Add_Edit_Delete_Department() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\c_Breadth_Account.cs:line 1078
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.c_Breadth_Account.f_Add_Edit_Delete_User" executed="True" result="Success" success="True" time="66.781" asserts="1" />
             </results>
           </test-suite>
         </results>

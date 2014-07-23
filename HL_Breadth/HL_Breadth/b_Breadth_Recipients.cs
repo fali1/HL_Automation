@@ -69,7 +69,7 @@ namespace HL_Breadth
 
         string new_dir = "new_directory";
 
-        string new_dir_2 = "new_directory_2";
+        string new_dir_2 = "new_new_directory";
 
         string new_dir_2_edited = "edited_new_directory_2";
 
@@ -77,7 +77,7 @@ namespace HL_Breadth
 
         string messenger_name = "smtp_messenger";
 
-        string messenger_name_2 = "smtp_messenger_2";
+        string messenger_name_2 = "smtp_new_messenger";
 
         string messenger_name_2_edited = "edited_smtp_messenger_2";
 
@@ -86,7 +86,7 @@ namespace HL_Breadth
 
         string carrier_name = "smtp_carrier";
 
-        string carrier_name_2 = "smtp_carrier_2";
+        string carrier_name_2 = "smtp_new_carrier";
 
         string carrier_name_2_edited = "edited_smtp_carrier_2";
 
@@ -851,7 +851,7 @@ namespace HL_Breadth
 
 
             string receiver_name = "receiver_smtp";
-            string receiver_name_2 = "receiver_smtp_2";
+            string receiver_name_2 = "receiver_new_smtp";
             string receiver_name_2_edited = "edited_receiver_smtp_2";
 
             string receiver_description = "Receiver Description";
@@ -982,7 +982,7 @@ namespace HL_Breadth
                 {
                     //EDITING SECOND RECEIVER
 
-                    driver.FindElement(By.XPath("(//a[@title='Edit'])[2]")).Click();
+                    driver.FindElement(By.XPath("(//a[@title='Edit'])[1]")).Click();
 
                     driver.FindElement(By.Id("txtName")).Clear();
                     driver.FindElement(By.Id("txtName")).SendKeys(receiver_name_2_edited);
@@ -1048,7 +1048,7 @@ namespace HL_Breadth
 
 
             string broadcast_group_name = "Broadcast_Group";
-            string broadcast_group_name_2 = "Broadcast_Group_2";
+            string broadcast_group_name_2 = "Broadcast_new_Group_2";
             string broadcast_group_name_2_edited = "edited_Broadcast_Group_2";
             
             string broadcast_group_description = "Broadcast Group Description";
@@ -1254,7 +1254,7 @@ namespace HL_Breadth
             string receiver_name = "receiver_smtp";
             
             string escalation_group_name = "Escalation_Group";
-            string escalation_group_name_2 = "Escalation_Group_2";
+            string escalation_group_name_2 = "Escalation_new_Group_2";
             string escalation_group_name_2_edited = "edited_Escalation_Group_2_";
 
             string escalation_group_description = "Escalation Group Description";
@@ -1463,7 +1463,7 @@ namespace HL_Breadth
             string receiver_name = "receiver_smtp";
 
             string on_duty_group_name = "On_Duty_Group";
-            string on_duty_group_name_2 = "On_Duty_Group_2";
+            string on_duty_group_name_2 = "On_Duty_new_Group_2";
             string on_duty_group_name_2_edited = "edited_On_Duty_Group_2";
             
             string on_duty_group_description = "On Duty Group Description";
@@ -1722,7 +1722,7 @@ namespace HL_Breadth
             string receiver_name = "receiver_smtp";
 
             string follow_me_group_name = "Follow_me_Group";
-            string follow_me_group_name_2 = "Follow_me_Group_2";
+            string follow_me_group_name_2 = "Follow_me_new_Group_2";
             string follow_me_group_name_2_edited = "edited_Follow_me_Group_2";
             
             string follow_me_group_description = "Follow me Group Description";
@@ -1936,7 +1936,7 @@ namespace HL_Breadth
 
             string receiver_name = "receiver_smtp";
             string rotate_group_name = "Rotate_Group";
-            string rotate_group_name_2 = "Rotate_Group_2";
+            string rotate_group_name_2 = "Rotate_new_Group_2";
             string rotate_group_name_2_edited = "edited_Rotate_Group_2";
 
             
@@ -2118,7 +2118,7 @@ namespace HL_Breadth
             string receiver_name = "receiver_smtp";
             
             string subscription_group_name = "Subscription_Group";
-            string subscription_group_name_2 = "Subscription_Group_2";
+            string subscription_group_name_2 = "Subscription_new_Group_2";
             string subscription_group_name_2_edited = "edited_Subscription_Group_2";
             
             string subscription_group_description = "Subscription Group Description";
