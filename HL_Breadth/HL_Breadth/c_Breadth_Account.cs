@@ -93,7 +93,12 @@ namespace HL_Breadth
             switch (browser_name)
             {
                 case "firefox":
-                    driver = new FirefoxDriver();// launch firefox browser
+
+                    var profile = new FirefoxProfile();               // first create profile
+                    profile.SetPreference("plugin.state.flash", 0); // set preference for number
+                    
+                    driver = new FirefoxDriver(profile);              // set profile in firefox driver
+                   // driver = new FirefoxDriver();// launch firefox browser
                     break;
 
                 case "safari":
@@ -178,7 +183,7 @@ namespace HL_Breadth
         {
 
             string timezone_name_karachi = "Karachi Timezon";
-            string timezone_name_karachi_2 = "Karachi new Timezon";
+            string timezone_name_karachi_2 = "New Karachi Timezon";
             string timezone_name_karachi_2_edited = "edited new Karachi Timezon";
 
             string timezone_desc = "Karachi Timezone description";
@@ -332,7 +337,7 @@ namespace HL_Breadth
         public void b_Add_Edit_Delete_Message_Template()
         {
             string message_template_name = "Message Template";
-            string message_template_name_2 = "Message new Template";
+            string message_template_name_2 = "New Message Template";
             string message_template_name_2_edited = "edited Message Template";
 
 
@@ -560,6 +565,7 @@ namespace HL_Breadth
                     // EDITING SECOND RECORD
 
                     driver.FindElement(By.XPath("(//a[@title='Edit'])[2]")).Click();
+                    Thread.Sleep(2000);
 
                     driver.FindElement(By.Id("txtTmpltName")).Clear();
                     driver.FindElement(By.Id("txtTmpltName")).SendKeys(message_template_name_2_edited); //message template name
@@ -567,6 +573,26 @@ namespace HL_Breadth
                     driver.FindElement(By.Id("txtAdesc")).Clear();
                     driver.FindElement(By.Id("txtAdesc")).SendKeys(message_template_description_2_edited); //message template description
                     Thread.Sleep(2000);
+
+                    driver.FindElement(By.Id("btnSelectField")).Click(); //Drop down of Create Template Content
+                    Thread.Sleep(2000);
+
+                    driver.FindElement(By.XPath(".//*[@id='selectTempBox']/form/div[@id='comboDiv']/div/div[2]/div/div/div/div/div/fieldset/input")).SendKeys("1");
+
+                    driver.FindElement(By.XPath("//li[text()='Add New']")).Click();
+
+                    driver.FindElement(By.XPath(".//*[@id='selectTempBox']/form/div[@id='comboDiv']/div/div[2]/div/div/div/div/div[2]/fieldset/input")).SendKeys("2");
+
+                    driver.FindElement(By.Id("btnSelOk")).Click();
+
+                    driver.FindElement(By.Id("btnAddResp")).Click();
+                    Thread.Sleep(2000);
+
+                    driver.FindElement(By.Id("txtResponseText")).Clear();
+
+                    driver.FindElement(By.Id("txtResponseText")).SendKeys("ra2");
+
+                    driver.FindElement(By.Id("respSave")).Click();
 
                     driver.FindElement(By.Id("btnSaveTemp")).Click();
                     Thread.Sleep(1000);
@@ -635,6 +661,7 @@ namespace HL_Breadth
             string response_action_description_2_edited = "Reply Response Action new description Edited";
             
             string command_line_statement = ("echo \"fahad\"");
+            string command_line_statement_edited = ("echo \"fahad , its edited statment\"");
 
             check_driver_type(driver_type, "settings", "Response Actions", "Settings");
 
@@ -744,9 +771,14 @@ namespace HL_Breadth
                     driver.FindElement(By.Id("txtdescription")).SendKeys(response_action_description_2_edited);
                     Thread.Sleep(2000);
 
+                    driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();  // Actions dropdown
+                    driver.FindElement(By.XPath("//li[text()='Command Line']")).Click();
+
+                    driver.FindElement(By.Id("txtAcommand")).Clear();
+                    driver.FindElement(By.Id("txtAcommand")).SendKeys(command_line_statement_edited); // Commands textbox
+
                     driver.FindElement(By.Id("saveResponse")).Click();
                     Thread.Sleep(2000);
-
 
                     // VERIFYING EDITED SECOND RECORD
 
@@ -1000,6 +1032,7 @@ namespace HL_Breadth
                     // EDITING SECOND RECORD
 
                     driver.FindElement(By.XPath("(//a[@title='Edit'])[3]")).Click();
+                    Thread.Sleep(2000);
 
                     driver.FindElement(By.Id("txtname")).Clear();
 
@@ -1008,6 +1041,18 @@ namespace HL_Breadth
                     driver.FindElement(By.Id("txtdesc")).Clear();
 
                     driver.FindElement(By.Id("txtdesc")).SendKeys(user_group_name_2_edited + " " + user_group_desc_2_edited);
+                    
+                    driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
+
+                    driver.FindElement(By.XPath("//li[text()='Setting Menu']")).Click();
+
+                    driver.FindElement(By.LinkText("User Group")).Click();                     //User group tab
+                    Thread.Sleep(2000);
+
+                    driver.FindElement(By.XPath("//table[@id='ug_grid']/tbody/tr[4]/td[2]/label/span")).Click();//*[@id='ug_grid']/tbody/tr[4]/td[2]/label/span
+
+                    driver.FindElement(By.XPath("//table[@id='ug_grid']/tbody/tr[4]/td[3]/label/span")).Click();
+                    Thread.Sleep(1000);
 
                     driver.FindElement(By.Id("btnsave")).Click();
                     Thread.Sleep(2000);
@@ -1251,6 +1296,16 @@ namespace HL_Breadth
                     //  driver.FindElement(By.XPath("//a[text()='Permission']")).Click();
                     Thread.Sleep(2000);
 
+                    driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
+
+                    driver.FindElement(By.XPath(path1 + "sysOper" + path2)).Click();
+
+                    driver.FindElement(By.XPath("//tr[@id='footerTr']/td[3]/label")).Click();
+
+
+                    driver.FindElement(By.Id("btnUsergroup")).Click();
+                    Thread.Sleep(2000);
+
                     driver.FindElement(By.Id("btnsave")).Click();
                     Thread.Sleep(2000);
 
@@ -1311,6 +1366,7 @@ namespace HL_Breadth
             
             string email = "b@folio3.com";
             string email_2 = "d@folio3.com";
+            string email_3 = "m@folio3.com";
 
             string access_code = "1228";
             string status = "Enabled";
@@ -1494,9 +1550,22 @@ namespace HL_Breadth
 
                     driver.FindElement(By.Id("txtName")).SendKeys(username_2_edited);
 
+                    driver.FindElement(By.Id("txtEmail")).Clear();
+
+                    driver.FindElement(By.Id("txtEmail")).SendKeys(email_2);
+
                     driver.FindElement(By.Id("txtDesc")).Clear();
 
                     driver.FindElement(By.Id("txtDesc")).SendKeys(userdescription_2_edited);
+
+                    driver.FindElement(By.Id("txtpassword")).Clear();
+
+                    driver.FindElement(By.Id("txtpassword")).SendKeys("123");
+
+                    driver.FindElement(By.Id("txtRetypePass")).Clear();
+
+                    driver.FindElement(By.Id("txtRetypePass")).SendKeys("123");
+                    Thread.Sleep(1000);
 
                     driver.FindElement(By.Id("btnsave")).Click();
                     Thread.Sleep(2000);
