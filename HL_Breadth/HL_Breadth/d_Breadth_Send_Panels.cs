@@ -85,7 +85,7 @@ namespace HL_Breadth
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-                 System.Diagnostics.Debugger.Launch();// launch debugger
+            // System.Diagnostics.Debugger.Launch();// launch debugger
 
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
@@ -93,7 +93,9 @@ namespace HL_Breadth
             switch (browser_name)
             {
                 case "firefox":
-                    driver = new FirefoxDriver();// launch firefox browser
+                    var profile = new FirefoxProfile();
+                    profile.SetPreference("dom.forms.number",false);
+                    driver = new FirefoxDriver(profile);// launch firefox browser
                     break;
 
                 case "safari":
@@ -310,9 +312,35 @@ namespace HL_Breadth
             string primary_message = "Test Automation Message";
             string response_action_name = "Test Response Action";
 
+            ArrayList array_list = new ArrayList();
+
             check_driver_type(driver_type, "send", "Primary Send", "Send");
 
             Assert.AreEqual("Primary Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text);
+
+            driver.FindElement(By.Id("tt_interactive_filters")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("//ul[@id='recipientLetterTool']/li[text()='A']")).Click();
+            Thread.Sleep(2000);
+
+            Console.WriteLine("Count:" + driver.FindElements(By.XPath("//ul[@class='group_recipient_list']/li/span[@class='reciever g_r_l_name']")).Count + "*");
+
+            for (int i = 0; i < driver.FindElements(By.XPath("//ul[@class='group_recipient_list']/li/span[@class='reciever g_r_l_name']")).Count; i++)
+            {
+                int j = i + 1;
+                array_list.Add(driver.FindElement(By.XPath("(//ul[@class='group_recipient_list']/li/span[@class='reciever g_r_l_name'])["+ j +"]")).Text);
+                
+                Console.WriteLine("array_list_text" + array_list[i]);
+
+                Assert.AreEqual(true , driver.FindElement(By.XPath("(//ul[@class='group_recipient_list']/li/span[@class='reciever g_r_l_name'])[" + j + "]")).Text.StartsWith("a"));
+
+                
+            }
+
+
+            driver.FindElement(By.XPath("//b[@title='All']")).Click();
+            Thread.Sleep(2000);
 
             driver.FindElement(By.XPath("//*[contains(text(),'" + receiver_name + "')]")).Click();
 
@@ -399,14 +427,7 @@ namespace HL_Breadth
                             driver.FindElement(By.Id("btnToMessage")).Click();
                             Thread.Sleep(2000);
 
-                            driver.FindElement(By.Id("tt_interactive_filters")).Click();
-                            Thread.Sleep(2000);
-
-                            driver.FindElement(By.XPath("//ul[@id='recipientLetterTool']/li[text()='A']")).Click();
-                            Thread.Sleep(2000);
-
-                            Console.WriteLine("Count:" + driver.FindElements(By.XPath("//ul[@class='group_recipient_list']/li/span[@class='reciever g_r_l_name']")).Count + "*");
-
+                           
                         }
                     }
                     else
@@ -471,6 +492,20 @@ namespace HL_Breadth
 
             takescreenshot("Quick_Send");
 
+
+            Assert.AreEqual(true, driver.FindElement(By.Id("btnToMessage")).Displayed); // Visible Works
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("btnToMessage")).Click(); //return to message button
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("btnReset")).Click();
+            Thread.Sleep(2000);
+
+            Assert.AreEqual(true, driver.FindElement(By.Id("txtAreaMessage")).Text.Equals("")); // Visible Works
+            
+            /*
+
             if (driver.FindElement(By.XPath("//div[@class='popup_message']")).Displayed)
             {
                 if (driver.FindElement(By.Id("statusMessage")).Text.Contains("Created a total of 1 separate message(s)"))
@@ -493,12 +528,420 @@ namespace HL_Breadth
                 takescreenshot("Quick_Send_Failed");
                 Assert.Fail(" Quick Send Panel Failed ... ");
             }
+            
+             */
+
 
         }
 
 
 
+        [Test]
+        public void d_Escalation_Send_Panel()
+        {
+            string receiver_name = "receiver_smtp";
+            string msg = "hello escalation send panel";
 
+            check_driver_type(driver_type, "send", "Escalation Send", "Send");
+
+            Assert.AreEqual("Escalation Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text); // verifying page title
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click(); //cycles drop down
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.XPath("//div[@class='recipient_select_top_row']/div[2]/div/ul/li[text()='2']")).Click(); //selecting number of cycles 
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.XPath("//*[contains(text(),'" + receiver_name + "')]")).Click(); //select receiver to send message
+
+            driver.FindElement(By.Id("moveItemRight")).Click();
+
+            driver.FindElement(By.Id("txtAreaMessage")).Clear();
+
+            driver.FindElement(By.Id("txtAreaMessage")).SendKeys(msg);
+
+            driver.FindElement(By.Id("priorityCheck")).Click(); //priority checkbox
+
+            driver.FindElement(By.Id("incTimeStampCheck")).Click(); //timestamp checkbox
+
+            driver.FindElement(By.Id("incSenderNameCheck")).Click(); //sender name checkbox
+
+            driver.FindElement(By.Id("incMsgIdCheck")).Click(); //msg id checkbox
+
+
+            driver.FindElement(By.XPath("//div[@id='testing']/b")).Click();//opening Advanced Messaging Parameters
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click();// opening severity dropdown
+
+            driver.FindElement(By.XPath("//li[text()='Important']")).Click();// selecting severity as Important
+
+            driver.FindElement(By.XPath("//b[text()='Expire After']")).Click();// checking 'Expire After' checkbox
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();// selecting Hours drop down
+
+            driver.FindElement(By.XPath("//li[text()='02']")).Click();// selecting '02'
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[6]")).Click();// selecting Hours drop down
+
+            driver.FindElement(By.XPath("//div[@id='advOptPanel']/div/fieldset[2]/div[3]/div/ul/li[3]")).Click();// selecting '02'
+
+            Console.WriteLine("recipients:"+driver.FindElement(By.Id("selRecipientArea")).Text);
+            
+
+            driver.FindElement(By.Id("btnSend")).Click();
+            Thread.Sleep(3000);
+
+            takescreenshot("Escalation_Send_Panel");
+
+            Assert.AreEqual(true, driver.FindElement(By.Id("btnToMessage")).Displayed); // Visible Works
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("btnToMessage")).Click(); //return to message button
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("btnReset")).Click();
+            Thread.Sleep(2000);
+
+            Console.WriteLine("recipients:" + driver.FindElement(By.Id("selRecipientArea")).Text);
+
+            Assert.AreEqual(true, driver.FindElement(By.Id("selRecipientArea")).Text.Equals("")); // Visible Works
+            Assert.AreEqual(true, driver.FindElement(By.Id("txtAreaMessage")).Text.Equals("")); // Visible Works
+            
+                        
+           
+
+
+        }
+
+
+
+        [Test]
+        public void e_Fax_Send_Panel()
+        {
+            string receiver_name = "receiver_fax";
+            string msg = "hello fax receiver";
+
+            string receiver_pin = "123456789";
+            string receiver_description = "Receiver Description";
+            string receiver_emailaddress = "email@address.com";
+
+            string department_name = "Default";
+
+            check_driver_type(driver_type, "recipients", "Receivers", "Recipients");
+
+            Assert.AreEqual("Receivers", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            driver.FindElement(By.XPath("//a[text()='Add Reciever']")).Click();
+            Thread.Sleep(5000);
+
+            driver.FindElement(By.Id("txtName")).Clear();
+            driver.FindElement(By.Id("txtName")).SendKeys(receiver_name);
+
+            driver.FindElement(By.Id("txtADesc")).Clear();
+            driver.FindElement(By.Id("txtADesc")).SendKeys(receiver_description);
+
+            driver.FindElement(By.Id("txtEmailAdrs")).Clear();
+            driver.FindElement(By.Id("txtEmailAdrs")).SendKeys(receiver_emailaddress);
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("//label/b[text()='Email CC']")).Click();
+            driver.FindElement(By.XPath("//label/b[text()='Email Failover']")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("(//li[contains(text(),'Default')])")).Click();// selecting department
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("(//li[contains(text(),'Fax')])")).Click();// selecting receiver type
+
+            driver.FindElement(By.Id("txtPrimaryPin")).Clear();
+            driver.FindElement(By.Id("txtPrimaryPin")).SendKeys(receiver_pin);
+
+            driver.FindElement(By.Id("btnsave")).Click();
+            Thread.Sleep(2000);
+
+
+            check_driver_type(driver_type, "send", "Fax Send", "Send");
+
+            Assert.AreEqual("Fax Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text);
+
+            driver.FindElement(By.XPath("//*[contains(text(),'" + receiver_name + "')]")).Click(); //select receiver to send message
+
+            driver.FindElement(By.Id("moveItemRight")).Click();
+
+            driver.FindElement(By.Id("txtAreaMessage")).Clear();
+
+            driver.FindElement(By.Id("txtAreaMessage")).SendKeys(msg);
+
+            driver.FindElement(By.Id("incMsgIdCheck")).Click(); // include message id checkbox
+
+
+            driver.FindElement(By.Id("btnSend")).Click();
+            Thread.Sleep(2000);
+
+            takescreenshot("Fax_Send_Panel");
+
+            //driver.FindElement(By.Id("btnToMessage")).Displayed
+
+            Assert.AreEqual(true, driver.FindElement(By.Id("btnToMessage")).Displayed); // Visible Works
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("btnToMessage")).Click(); //return to message button
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("btnReset")).Click();
+            Thread.Sleep(2000);
+
+            Console.WriteLine("recipients:" + driver.FindElement(By.Id("selRecipientArea")).Text);
+
+            Assert.AreEqual(true, driver.FindElement(By.Id("selRecipientArea")).Text.Equals("")); // Visible Works
+            Assert.AreEqual(true, driver.FindElement(By.Id("txtAreaMessage")).Text.Equals("")); // Visible Works
+            
+            Console.WriteLine("Fax_Send_Panel Passed...");
+
+        }
+
+
+
+        [Test]
+        public void f_Voice_Send_Panel()
+        {
+            string receiver_name_voice = "receiver_voice";
+            string msg = "hello voice receiver";
+
+            string receiver_pin = "123456789";
+            string receiver_description = "Receiver Description";
+            string receiver_emailaddress = "email@address.com";
+
+            string department_name_default = "Default";
+
+            check_driver_type(driver_type, "recipients", "Receivers", "Recipients");
+
+            Assert.AreEqual("Receivers", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            driver.FindElement(By.XPath(".//div[@class='filter_panel']/a[text()='Add Reciever']")).Click();
+            Thread.Sleep(5000);
+
+            driver.FindElement(By.Id("txtName")).Clear();
+            driver.FindElement(By.Id("txtName")).SendKeys(receiver_name_voice);
+
+            driver.FindElement(By.Id("txtADesc")).Clear();
+            driver.FindElement(By.Id("txtADesc")).SendKeys(receiver_description);
+
+            driver.FindElement(By.Id("txtEmailAdrs")).Clear();
+            driver.FindElement(By.Id("txtEmailAdrs")).SendKeys(receiver_emailaddress);
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("//label/b[text()='Email CC']")).Click();
+            driver.FindElement(By.XPath("//label/b[text()='Email Failover']")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("(//li[contains(text(),'" + department_name_default + "')])")).Click();// selecting department
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("(//li[contains(text(),':Voice')])")).Click();// selecting carrier
+
+            driver.FindElement(By.Id("txtPrimaryPin")).Clear();
+            driver.FindElement(By.Id("txtPrimaryPin")).SendKeys(receiver_pin);
+
+            driver.FindElement(By.Id("btnsave")).Click();
+            Thread.Sleep(2000);
+
+            check_driver_type(driver_type, "send", "Voice Send", "Send");
+
+            Assert.AreEqual("Voice Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text); //verifying page title
+
+            driver.FindElement(By.XPath("//*[contains(text(),'" + receiver_name_voice + "')]")).Click(); //select receiver to send message
+
+            driver.FindElement(By.Id("moveItemRight")).Click();
+
+            driver.FindElement(By.Id("txtAreaMessage")).Clear();
+
+            driver.FindElement(By.Id("txtAreaMessage")).SendKeys(msg);
+
+            driver.FindElement(By.XPath("//b[text()='Include message ID']")).Click(); // include message id checkbox
+
+            driver.FindElement(By.XPath("//b[text()='Send sound file first']")).Click(); // send sound file first checkbox
+
+            driver.FindElement(By.XPath("//div[@class='accor_header']/b")).Click();
+            Thread.Sleep(2000);
+
+            //uploading attachment
+            IWebElement fileInput = driver.FindElement(By.XPath("//input[@type='file']"));
+            fileInput.SendKeys(@"C:\Users\fali\Downloads\beep-01a.wav");
+            Thread.Sleep(4500);
+
+            driver.FindElement(By.Id("btnSend")).Click();
+            Thread.Sleep(2000);
+
+            takescreenshot("Voice_Send_Panel");
+
+            Assert.AreEqual(true, driver.FindElement(By.Id("btnToMessage")).Displayed); // Visible Works
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("btnToMessage")).Click(); // return to message button
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("btnReset")).Click();
+            Thread.Sleep(2000);
+
+            Console.WriteLine("recipients:" + driver.FindElement(By.Id("selRecipientArea")).Text);
+
+            Assert.AreEqual(true, driver.FindElement(By.Id("selRecipientArea")).Text.Equals("")); // Visible Works
+            Assert.AreEqual(true, driver.FindElement(By.Id("txtAreaMessage")).Text.Equals("")); // Visible Works
+            
+
+            Console.WriteLine("Voice_Send_Panel Passed...");
+
+        }
+
+        [Test]
+        public void g_Quota_Send_Panel()
+        {
+            check_driver_type(driver_type, "send", "Quota Send", "Send");
+
+            driver.FindElement(By.XPath("//span[text()='receiver_smtp']")).Click();
+            driver.FindElement(By.Id("moveItemRight")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.XPath("//span[text()='receiver_fax']")).Click();
+            driver.FindElement(By.Id("moveItemRight")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.Id("txtQuota")).Clear();
+            driver.FindElement(By.Id("txtQuota")).SendKeys("1");
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.Id("txtRespWait")).Clear();
+            driver.FindElement(By.Id("txtRespWait")).SendKeys("1");
+
+            driver.FindElement(By.XPath("//b[text()='Notify sender']")).Click();
+
+            driver.FindElement(By.Id("txtAreaMessage")).Clear();
+            driver.FindElement(By.Id("txtAreaMessage")).SendKeys("Test quota");
+
+            driver.FindElement(By.Id("priorityCheck")).Click(); //priority checkbox
+
+            driver.FindElement(By.Id("incTimeStampCheck")).Click(); //timestamp checkbox
+
+            driver.FindElement(By.Id("incSenderNameCheck")).Click(); //sender name checkbox
+
+            driver.FindElement(By.Id("incMsgIdCheck")).Click(); //msg id checkbox
+
+
+            driver.FindElement(By.XPath("//div[@id='testing']/b")).Click();//opening Advanced Messaging Parameters
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click();// opening severity dropdown
+
+            driver.FindElement(By.XPath("//li[text()='Important']")).Click();// selecting severity as Important
+
+            driver.FindElement(By.XPath("//b[text()='Expire After']")).Click();// checking 'Expire After' checkbox
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();// selecting Hours drop down
+
+            driver.FindElement(By.XPath("//li[text()='02']")).Click();// selecting '02'
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[6]")).Click();// selecting Hours drop down
+
+            driver.FindElement(By.XPath("//div[@id='advOptPanel']/div/fieldset[2]/div[3]/div/ul/li[3]")).Click();// selecting '02'
+
+            driver.FindElement(By.Id("btnSend")).Click();
+            Thread.Sleep(2000);
+
+            takescreenshot("Quota_Send_Panel");
+
+            Assert.AreEqual(true, driver.FindElement(By.Id("btnToMessage")).Displayed); // Visible Works
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("btnToMessage")).Click(); // return to message button
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("btnReset")).Click();
+            Thread.Sleep(2000);
+
+            Console.WriteLine("recipients:" + driver.FindElement(By.Id("selRecipientArea")).Text);
+
+            Assert.AreEqual(true, driver.FindElement(By.Id("selRecipientArea")).Text.Equals("")); // Visible Works
+            Assert.AreEqual(true, driver.FindElement(By.Id("txtAreaMessage")).Text.Equals("")); // Visible Works
+            
+
+            Console.WriteLine("Quota_Send_Panel Passed...");
+        }
+
+
+        [Test]
+        public void h_Attribute_Send_Panel()
+        {
+
+            check_driver_type(driver_type, "send", "Attribute Send", "Send");
+
+            driver.FindElement(By.XPath("//b[text()='A1']")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.XPath("//span[text()='receiver_smtp']")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.Id("moveItemRight")).Click();
+
+            driver.FindElement(By.Id("txtAreaMessage")).SendKeys("Test attribute");
+
+            driver.FindElement(By.Id("priorityCheck")).Click(); //priority checkbox
+
+            driver.FindElement(By.Id("incTimeStampCheck")).Click(); //timestamp checkbox
+
+            driver.FindElement(By.Id("incSenderNameCheck")).Click(); //sender name checkbox
+
+            driver.FindElement(By.Id("incMsgIdCheck")).Click(); //msg id checkbox
+
+
+            driver.FindElement(By.XPath("//div[@id='testing']/b")).Click();//opening Advanced Messaging Parameters
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();// opening severity dropdown
+
+            driver.FindElement(By.XPath("//li[text()='Important']")).Click();// selecting severity as Important
+
+            driver.FindElement(By.XPath("//b[text()='Expire After']")).Click();// checking 'Expire After' checkbox
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click();// selecting Hours drop down
+
+            driver.FindElement(By.XPath("//li[text()='02']")).Click();// selecting '02'
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();// selecting Hours drop down
+
+            driver.FindElement(By.XPath("//div[@id='advOptPanel']/div/fieldset[2]/div[3]/div/ul/li[3]")).Click();// selecting '02'
+
+
+            driver.FindElement(By.Id("btnSend")).Click();
+            Thread.Sleep(2000);
+
+            takescreenshot("Attribute_Send_Panel");
+
+            Assert.AreEqual(true, driver.FindElement(By.Id("btnToMessage")).Displayed); // Visible Works
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("btnToMessage")).Click(); // return to message button
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("btnReset")).Click();
+            Thread.Sleep(2000);
+
+            Console.WriteLine("recipients:" + driver.FindElement(By.Id("selRecipientArea")).Text);
+
+            Assert.AreEqual(true, driver.FindElement(By.Id("selRecipientArea")).Text.Equals("")); // Visible Works
+            Assert.AreEqual(true, driver.FindElement(By.Id("txtAreaMessage")).Text.Equals("")); // Visible Works
+            
+
+            Console.WriteLine("Attribute_Send_Panel Passed...");
+        }
 
 
 
@@ -561,7 +1004,8 @@ namespace HL_Breadth
                 {
                     driver.FindElement(By.XPath("(//a[text()='" + link_text + "'])[2]")).Click();
                     Thread.Sleep(2000);
-                }*/
+                }
+                */
 
 
 

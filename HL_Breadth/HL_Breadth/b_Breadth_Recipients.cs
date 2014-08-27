@@ -875,6 +875,8 @@ namespace HL_Breadth
             string receiver_name = "receiver_smtp";
             string receiver_name_2 = "receiver_new_smtp";
             string receiver_name_2_edited = "edited_receiver_smtp_2";
+            string receiver_name_3 = "a_test_receiver";
+            string receiver_name_4 = "aa_test_receiver";
 
             string receiver_description = "Receiver Description";
             string receiver_description_2 = "Receiver Description 2";
@@ -1036,10 +1038,63 @@ namespace HL_Breadth
                         driver.FindElement(By.Id("btnOk")).Click();
                         Thread.Sleep(2000);
 
+
+
                         if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(receiver_name_2_edited)))
                         {
                             takescreenshot("Receiver_Passed");
                             Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add_Edit_Delete Receiver Passed... ^^^^^^^^^^^^^^^^^^^^^");
+
+
+                            driver.FindElement(By.XPath("//li[@id='recipients']")).Click(); //goto landing for particular ID
+                            Thread.Sleep(2000);
+
+                            // ADDING THIRD RECEIVER
+
+                            driver.FindElement(By.XPath("//a[text()='Add Reciever']")).Click();
+                            Thread.Sleep(5000);
+
+                            driver.FindElement(By.Id("txtName")).Clear();
+                            driver.FindElement(By.Id("txtName")).SendKeys(receiver_name_3);
+
+                            driver.FindElement(By.Id("txtEmailAdrs")).Clear();
+                            driver.FindElement(By.Id("txtEmailAdrs")).SendKeys(receiver_emailaddress);
+                            Thread.Sleep(2000);
+
+                            driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();
+                            Thread.Sleep(2000);
+
+                            driver.FindElement(By.XPath("(//li[contains(text(),'" + carrier_name + "')])")).Click();// selecting carrier
+
+                            driver.FindElement(By.Id("txtPrimaryPin")).Clear();
+                            driver.FindElement(By.Id("txtPrimaryPin")).SendKeys(receiver_pin);
+
+                            driver.FindElement(By.Id("btnsave")).Click();
+                            Thread.Sleep(2000);
+
+                            // ADDING FOURTH RECEIVER
+
+                            driver.FindElement(By.XPath("//a[text()='Add Reciever']")).Click();
+                            Thread.Sleep(5000);
+
+                            driver.FindElement(By.Id("txtName")).Clear();
+                            driver.FindElement(By.Id("txtName")).SendKeys(receiver_name_4);
+
+                            driver.FindElement(By.Id("txtEmailAdrs")).Clear();
+                            driver.FindElement(By.Id("txtEmailAdrs")).SendKeys(receiver_emailaddress);
+                            Thread.Sleep(2000);
+
+                            driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();
+                            Thread.Sleep(2000);
+
+                            driver.FindElement(By.XPath("(//li[contains(text(),'" + carrier_name + "')])")).Click();// selecting carrier
+
+                            driver.FindElement(By.Id("txtPrimaryPin")).Clear();
+                            driver.FindElement(By.Id("txtPrimaryPin")).SendKeys(receiver_pin);
+
+                            driver.FindElement(By.Id("btnsave")).Click();
+                            Thread.Sleep(2000);
+
                         }
 
                         else
