@@ -1122,7 +1122,7 @@ namespace HL_Breadth
 
             check_driver_type(driver_type, "settings", "Departments", "Settings");
 
-            Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+            Assert.AreEqual("Departments", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
 
             Thread.Sleep(2000);

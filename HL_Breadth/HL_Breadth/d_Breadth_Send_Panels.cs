@@ -85,7 +85,7 @@ namespace HL_Breadth
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-            //     System.Diagnostics.Debugger.Launch();// launch debugger
+                 System.Diagnostics.Debugger.Launch();// launch debugger
 
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
@@ -171,6 +171,338 @@ namespace HL_Breadth
 
             verificationErrors = new StringBuilder();
         }
+
+
+        [Test]
+        public void a_Services_Settings_Panel()
+        {
+
+            check_driver_type(driver_type, "administration", "Services", "Sys Admin");
+
+            Assert.AreEqual("Services", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            //hover_func("administration", "Services");
+
+            driver.FindElement(By.XPath("(//a[text()='Stop All'])[1]")).Click();
+            Thread.Sleep(2000);
+
+            // for messenger services panel 
+
+            if (IsElementPresent(By.XPath("(//a[@title='Play'])[1]"))) //messenger service start button
+            {
+                driver.FindElement(By.XPath("(//a[@title='Play'])[1]")).Click();
+                Thread.Sleep(2000);
+
+                if (IsElementPresent(By.XPath("(//a[@title='Restart'])[1]"))) //messenger service restart button
+                {
+                    driver.FindElement(By.XPath("(//a[@title='Restart'])[1]")).Click();
+                    Thread.Sleep(2000);
+
+                    if (IsElementPresent(By.XPath("(//a[@title='Stop'])[1]"))) //messenger service stop button
+                    {
+                        driver.FindElement(By.XPath("(//a[@title='Stop'])[1]")).Click();
+                        Thread.Sleep(2000);
+
+                        if (IsElementPresent(By.XPath("(//a[@title='Play'])[1]"))) //messenger service start button
+                        {
+                            driver.FindElement(By.XPath("(//a[@title='Play'])[1]")).Click();
+                            Thread.Sleep(2000);
+
+                            takescreenshot("Services_Passed");
+                            Console.WriteLine("Messenger Services Passed");
+                        }
+
+                        else
+                        {
+                            takescreenshot("Services_Failed");
+                            Assert.Fail("Messenger Services Start service button not found");
+                        }
+                    }
+
+                    else
+                    {
+                        takescreenshot("Services_Failed");
+                        Assert.Fail("Messenger Services Stop service button not found");
+                    }
+                }
+
+                else
+                {
+                    takescreenshot("Services_Failed");
+                    Assert.Fail("Messenger Services Restart service button not found");
+                }
+            }
+
+            else
+            {
+                takescreenshot("Services_Failed");
+                Assert.Fail("Messenger Services Start service button not found");
+            }
+
+
+            //table[@id='tblgateway']/tbody/tr[1]/td[2]/a[@class='action service_action_play']
+
+
+            // for gateway services 
+
+            Thread.Sleep(2000);
+
+            /*
+            // for system services panel 
+
+
+            if (IsElementPresent(By.XPath("//table[@id='tblsystem']/tbody/tr[1]/td[2]/a[@class='action service_action_stop']"))) //messenger service stop button
+            {
+                driver.FindElement(By.XPath("//table[@id='tblsystem']/tbody/tr[1]/td[2]/a[@class='action service_action_stop']")).Click();
+                Thread.Sleep(2000);
+
+                if (IsElementPresent(By.XPath("//table[@id='tblsystem']/tbody/tr[1]/td[2]/a[@class='action service_action_play']"))) //messenger service start button
+                {
+
+                    driver.FindElement(By.XPath("//table[@id='tblsystem']/tbody/tr[1]/td[2]/a[@class='action service_action_play']")).Click();
+                    Thread.Sleep(2000);
+
+
+                    if (IsElementPresent(By.XPath("//table[@id='tblsystem']/tbody/tr[1]/td[3]/a[@class='service_action_refresh']"))) //messenger service restart button
+                    {
+
+                        driver.FindElement(By.XPath("//table[@id='tblsystem']/tbody/tr[1]/td[3]/a[@class='service_action_refresh']")).Click();
+                        Thread.Sleep(2000);
+
+                        takescreenshot("System_Services_Passed");
+
+                        Console.WriteLine("System Services Passed");
+                    }
+                    else
+                    {
+                        takescreenshot("System_Services_Failed");
+                        Assert.Fail("System Services Restart service button not found");
+                    }
+
+                }
+                else
+                {
+                    takescreenshot("System_Services_Failed");
+                    Assert.Fail("System Services Start service button not found");
+                }
+
+            }
+            else
+            {
+                takescreenshot("System_Services_Failed");
+                Assert.Fail("System Services Stop service button not found");
+            }
+             */
+
+
+            Thread.Sleep(2000);
+
+        }
+
+
+
+
+        [Test]
+        public void b_Primary_Send_Panel()
+        {
+
+            string receiver_name = "receiver_smtp";
+            string primary_message = "Test Automation Message";
+            string response_action_name = "Test Response Action";
+
+            check_driver_type(driver_type, "send", "Primary Send", "Send");
+
+            Assert.AreEqual("Primary Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text);
+
+            driver.FindElement(By.XPath("//*[contains(text(),'" + receiver_name + "')]")).Click();
+
+            driver.FindElement(By.Id("moveItemRight")).Click();
+            //  driver.FindElement(By.XPath("//ul[@id='ulMembers']/li[2]/span")).Click();
+
+            driver.FindElement(By.Id("txtAreaMessage")).Clear();
+
+            driver.FindElement(By.Id("txtAreaMessage")).SendKeys(primary_message);
+
+            driver.FindElement(By.Id("priorityCheck")).Click();
+
+            driver.FindElement(By.Id("incTimeStampCheck")).Click();
+
+            driver.FindElement(By.Id("incSenderNameCheck")).Click();
+
+            driver.FindElement(By.Id("incMsgIdCheck")).Click();
+
+            driver.FindElement(By.Id("incEmail")).Click();
+
+            driver.FindElement(By.XPath("//div[@id='testing']/b")).Click();//opening Advanced Messaging Parameters
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();// opening severity dropdown
+
+            driver.FindElement(By.XPath("//li[text()='Important']")).Click();// selecting severity as Important
+
+            driver.FindElement(By.XPath("//b[text()='Expire After']")).Click();// checking 'Expire After' checkbox
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click();// selecting Hours drop down
+
+            driver.FindElement(By.XPath("//li[text()='02']")).Click();// selecting '02'
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();// selecting Hours drop down
+
+            driver.FindElement(By.XPath("//div[@id='advOptPanel']/div/fieldset[2]/div[3]/div/ul/li[3]")).Click();// selecting '02'
+
+            driver.FindElement(By.XPath("//div[@id='response2wayPanel']/div[1]/b")).Click();// opening 2way Responses section
+
+            driver.FindElement(By.Id("txtRespName")).Clear();
+
+            driver.FindElement(By.Id("txtRespName")).SendKeys(response_action_name);// typing Response Action name
+
+            driver.FindElement(By.Id("btnAddAction")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.XPath(".//*[@id='sideBars']/div[3]/div/div[1]/b")).Click();  // opening Attachment section
+
+            Thread.Sleep(4500);
+
+            //uploading attachment
+            IWebElement fileInput = driver.FindElement(By.XPath("//input[@type='file']"));
+            fileInput.SendKeys(@"C:\Users\Public\Pictures\Sample Pictures\Tulips.jpg");
+            Thread.Sleep(4500);
+
+
+
+            driver.FindElement(By.Id("btnSend")).Click();
+            Thread.Sleep(2000);
+
+            if (driver.FindElement(By.XPath("//div[@class='popup_message']")).Displayed)
+            {
+                if (driver.FindElement(By.Id("statusMessage")).Text.Contains("Created a total of 1 separate message(s)"))
+                {
+
+                    takescreenshot("Primary_Send_Passed");
+                    driver.FindElement(By.Id("btnToMessage")).Click();
+                    Thread.Sleep(2000);
+
+                    driver.FindElement(By.XPath("//label[@class='response_wait_notify_sender']")).Click();//span[contains(text(),'Send message to HNP Emergency User')]
+
+                    driver.FindElement(By.Id("txtAreaMessage")).Clear();
+
+                    driver.FindElement(By.Id("txtAreaMessage")).SendKeys(primary_message);
+
+                    driver.FindElement(By.Id("btnSend")).Click();
+                    Thread.Sleep(2000);
+
+                    
+                    if (driver.FindElement(By.XPath("//div[@class='popup_message']")).Displayed)
+                    {
+                        if (driver.FindElement(By.Id("statusMessage")).Text.Contains("Created a total of 1 separate message(s)"))
+                        {
+
+                            driver.FindElement(By.Id("btnToMessage")).Click();
+                            Thread.Sleep(2000);
+
+                            driver.FindElement(By.Id("tt_interactive_filters")).Click();
+                            Thread.Sleep(2000);
+
+                            driver.FindElement(By.XPath("//ul[@id='recipientLetterTool']/li[text()='A']")).Click();
+                            Thread.Sleep(2000);
+
+                            Console.WriteLine("Count:" + driver.FindElements(By.XPath("//ul[@class='group_recipient_list']/li/span[@class='reciever g_r_l_name']")).Count + "*");
+
+                        }
+                    }
+                    else
+                    {
+                        takescreenshot("Primary_Send_Failed");
+                        Assert.Fail(" Primary Send Panel Faled ... ");
+                    }
+                    Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^  Primary Send Panel Passed ... ^^^^^^^^^^^^^^^^^^^^^");
+
+                }
+                else
+                {
+                    takescreenshot("Primary_Send_Failed");
+                    Assert.Fail(" Primary Send Panel Faled ... ");
+                }
+            }
+
+            else
+            {
+                takescreenshot("Primary_Send_Failed");
+                Assert.Fail(" Primary Send Panel Failed ... ");
+            }
+
+        }
+
+
+
+        [Test]
+        public void c_Quick_Send_Panel()
+        {
+            string pin_number = "testm703@gmail.com";
+            string carrier_name = "smtp_carrier";
+            string quick_message = "test message";
+
+            check_driver_type(driver_type, "send", "Quick Send", "Send");
+
+            Assert.AreEqual("Quick Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text);
+
+            driver.FindElement(By.XPath("//div[@class='data_row_col1']/input")).Clear();
+
+            driver.FindElement(By.XPath("//div[@class='data_row_col1']/input")).SendKeys(pin_number);
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("(//li[contains(text(),'" + carrier_name + "')])")).Click();
+
+            driver.FindElement(By.Id("txtAreaMessage")).Clear();
+
+            driver.FindElement(By.Id("txtAreaMessage")).SendKeys(quick_message);
+
+            driver.FindElement(By.Id("priorityCheck")).Click();
+
+            driver.FindElement(By.Id("incTimeStampCheck")).Click();
+
+            driver.FindElement(By.Id("incSenderNameCheck")).Click();
+
+            driver.FindElement(By.Id("incMsgIdCheck")).Click();
+
+            driver.FindElement(By.Id("btnSend")).Click();
+            Thread.Sleep(2000);
+
+            takescreenshot("Quick_Send");
+
+            if (driver.FindElement(By.XPath("//div[@class='popup_message']")).Displayed)
+            {
+                if (driver.FindElement(By.Id("statusMessage")).Text.Contains("Created a total of 1 separate message(s)"))
+                {
+
+                    takescreenshot("Quick_Send_Passed");
+                    driver.FindElement(By.Id("btnToMessage")).Click();
+                    Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^  Quick Send Panel Passed ... ^^^^^^^^^^^^^^^^^^^^^");
+
+                }
+                else
+                {
+                    takescreenshot("Quick_Send_Failed");
+                    Assert.Fail(" Quick Send Panel Failed ...Mess ");
+                }
+            }
+
+            else
+            {
+                takescreenshot("Quick_Send_Failed");
+                Assert.Fail(" Quick Send Panel Failed ... ");
+            }
+
+        }
+
+
+
+
+
+
+
+
 
         public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 
         {
