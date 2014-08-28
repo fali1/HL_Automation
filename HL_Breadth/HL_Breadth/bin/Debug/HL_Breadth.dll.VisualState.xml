@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="true">
-  <TopNode>[0-1036]D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll</TopNode>
-  <SelectedNode>[0-1036]D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll</SelectedNode>
+  <TopNode>[0-1037]D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll</TopNode>
+  <SelectedNode>[0-1031]HL_Breadth.f_Breadth_Hnp.a_Hnp_Configuration</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
-    <Node UniqueName="[0-1036]D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" Expanded="true" />
-    <Node UniqueName="[0-1037]HL_Breadth" Expanded="true" />
+    <Node UniqueName="[0-1037]D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" Expanded="true" />
+    <Node UniqueName="[0-1038]HL_Breadth" Expanded="true" />
     <Node UniqueName="[0-1000]HL_Breadth.a_Breadth_Global_Settings" Expanded="true" />
     <Node UniqueName="[0-1002]HL_Breadth.b_Breadth_Recipients" Expanded="true" />
     <Node UniqueName="[0-1013]HL_Breadth.c_Breadth_Account" Expanded="true" />
-    <Node UniqueName="[0-1018]HL_Breadth.c_Breadth_Account.e_Add_Edit_Delete_Department" Checked="true" />
     <Node UniqueName="[0-1020]HL_Breadth.d_Breadth_Send_Panels" Expanded="true" />
-    <Node UniqueName="[0-1022]HL_Breadth.d_Breadth_Send_Panels.b_Primary_Send_Panel" Checked="true" />
-    <Node UniqueName="[0-1025]HL_Breadth.d_Breadth_Send_Panels.e_Fax_Send_Panel" Checked="true" />
-    <Node UniqueName="[0-1026]HL_Breadth.d_Breadth_Send_Panels.f_Voice_Send_Panel" Checked="true" />
-    <Node UniqueName="[0-1027]HL_Breadth.d_Breadth_Send_Panels.g_Quota_Send_Panel" Checked="true" />
-    <Node UniqueName="[0-1028]HL_Breadth.d_Breadth_Send_Panels.h_Attribute_Send_Panel" Checked="true" />
+    <Node UniqueName="[0-1030]HL_Breadth.f_Breadth_Hnp" Expanded="true" />
+    <Node UniqueName="[0-1031]HL_Breadth.f_Breadth_Hnp.a_Hnp_Configuration" Checked="true" />
   </Nodes>
 </VisualState>
