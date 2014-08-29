@@ -215,6 +215,8 @@ namespace HL_Breadth
 
             driver.FindElement(By.Id("btnSaveMsngr")).Click();
             Thread.Sleep(3000);
+            takescreenshot("hnp_messenger_created");
+
 
 
             // HNP Carrier
@@ -236,9 +238,8 @@ namespace HL_Breadth
             driver.FindElement(By.Id("carrierName")).SendKeys(hnp_carr_name);
 
             driver.FindElement(By.Id("btnsave")).Click();
-            
-
-
+            Thread.Sleep(2000);
+            takescreenshot("hnp_carrier_created");
 
 
             // Configuration of HNP
@@ -281,6 +282,9 @@ namespace HL_Breadth
             driver.FindElement(By.Id("serverKey")).Clear();
             driver.FindElement(By.Id("serverKey")).SendKeys(lines[4]);
 
+            takescreenshot("push_notifications_settings");
+
+
             driver.FindElement(By.LinkText("Save")).Click();
             Thread.Sleep(1000);
 
@@ -292,93 +296,85 @@ namespace HL_Breadth
             Assert.AreEqual(true,driver.FindElement(By.XPath("(//span[@class='c_f_info_text'])[1]")).Text.Equals("Yes"));
             Assert.AreEqual(true,driver.FindElement(By.XPath("(//span[@class='c_f_info_text'])[4]")).Text.Equals("Yes"));
 
+            takescreenshot("hnp_configured");
 
-         //   if (driver.FindElement(By.XPath("//span[@class='c_f_info_text']")).Text.Equals("Yes"))
-         //   {
-
-                Actions hnp = new Actions(driver);
-
-                hnp.MoveToElement(driver.FindElement(By.Id("settings"))).Perform();
-
-                Thread.Sleep(1000);
-
-                driver.FindElement(By.LinkText("General Policy")).Click(); //opening General Policy page
-                Thread.Sleep(2000);
                 
-                Assert.AreEqual("General Policy", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+            Actions hnp = new Actions(driver);
 
-                driver.FindElement(By.XPath("//b[text()='Enable General Policy']")).Click();
+            
+            //hnp.MoveToElement(driver.FindElement(By.Id("settings"))).Perform();
 
-                Thread.Sleep(1000);
+            
+            driver.FindElement(By.Id("settings")).Click();
+            Thread.Sleep(1000);
 
+            driver.FindElement(By.LinkText("General Policy")).Click(); //opening General Policy page
+            Thread.Sleep(2000);
+                
+            Assert.AreEqual("General Policy", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
-                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();    // Configure permissions
-                Thread.Sleep(1000);
-
-                driver.FindElement(By.XPath("//li[text()='Yes']")).Click();
-
-                driver.FindElement(By.XPath("//a[text()='System Configuration']")).Click(); // System configuration
-
-                driver.FindElement(By.XPath("(//a[@class='selector'])[9]")).Click();
-                Thread.Sleep(1000);
-
-                driver.FindElement(By.XPath("(//li[text()='Yes'])[8]")).Click();
-
-                driver.FindElement(By.XPath("//a[text()='Session Configuration']")).Click(); // Session configuration
-
-                driver.FindElement(By.XPath("(//a[@class='selector'])[14]")).Click();
-                Thread.Sleep(1000);
-
-                driver.FindElement(By.XPath("(//li[text()='Yes'])[12]")).Click();
-
-                driver.FindElement(By.XPath("//a[text()='Messaging Configuration']")).Click(); // Messaging configuration
-
-                driver.FindElement(By.XPath("(//a[@class='selector'])[15]")).Click();
-                Thread.Sleep(1000);
-
-                driver.FindElement(By.XPath("(//li[text()='Yes'])[13]")).Click();
-
-                driver.FindElement(By.XPath("//a[text()='Alert Configuration']")).Click(); // Alert configuration
-
-                driver.FindElement(By.XPath("(//a[@class='selector'])[21]")).Click();
-                Thread.Sleep(1000);
-
-                driver.FindElement(By.XPath("(//li[text()='01'])[4]")).Click();
-
-                driver.FindElement(By.XPath("//a[text()='File Transfer Configuration']")).Click(); // File Transfer configuration
-
-                driver.FindElement(By.XPath("(//a[@class='selector'])[31]")).Click();
-                Thread.Sleep(1000);
-
-                driver.FindElement(By.XPath("(//li[text()='01'])[9]")).Click();
+            driver.FindElement(By.XPath("//b[text()='Enable General Policy']")).Click();
+            Thread.Sleep(1000);
 
 
+            driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();    // Configure permissions
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.XPath("//li[text()='Yes']")).Click();
+
+            driver.FindElement(By.XPath("//a[text()='System Configuration']")).Click(); // System configuration
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[9]")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.XPath("(//li[text()='Yes'])[8]")).Click();
+
+            driver.FindElement(By.XPath("//a[text()='Session Configuration']")).Click(); // Session configuration
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[14]")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.XPath("(//li[text()='Yes'])[12]")).Click();
+
+            driver.FindElement(By.XPath("//a[text()='Messaging Configuration']")).Click(); // Messaging configuration
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[15]")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.XPath("(//li[text()='Yes'])[13]")).Click();
+
+            driver.FindElement(By.XPath("//a[text()='Alert Configuration']")).Click(); // Alert configuration
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[21]")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.XPath("(//li[text()='01'])[4]")).Click();
+
+            driver.FindElement(By.XPath("//a[text()='File Transfer Configuration']")).Click(); // File Transfer configuration
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[31]")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.XPath("(//li[text()='01'])[9]")).Click();
 
 
-
-                driver.FindElement(By.LinkText("Save")).Click();
-
-                Thread.Sleep(1000);
-
-
-                hnp.MoveToElement(driver.FindElement(By.Id("settings"))).Perform();
-
-                Thread.Sleep(1000);
+            driver.FindElement(By.LinkText("Save")).Click();
+            Thread.Sleep(1000);
+            takescreenshot("hnp_general_policy_configured");
 
 
-                driver.FindElement(By.LinkText("Activation")).Click(); //opening Activation page
+            hnp.MoveToElement(driver.FindElement(By.Id("settings"))).Perform();
+            Thread.Sleep(1000);
 
-                Assert.AreEqual("Activation", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
+            driver.FindElement(By.LinkText("Activation")).Click(); //opening Activation page
 
-                Thread.Sleep(2000);
+            Assert.AreEqual("Activation", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+            Thread.Sleep(2000);
 
                 /*--------------------------------------------------*/
 
                 // Start/Restart HNP manager Service
-
-
-                // check_driver_type(driver_type, "administration", "Services", "SysAdmin");
 
                 driver.FindElement(By.Id("administration")).Click();
 
@@ -401,11 +397,11 @@ namespace HL_Breadth
 
                         Thread.Sleep(2000);
 
-
                         Console.WriteLine("HNP Manager  Services restarted");
 
-                    }
+                        takescreenshot("hnp_service");
 
+                    }
 
                     else
                     {
@@ -416,26 +412,12 @@ namespace HL_Breadth
 
                 }
 
-
-
                 else
                 {
 
                     Assert.Fail("HNP Manager Services play service button not found");
 
-
                 }
-
-
-          //  }
-
-          //  else
-          //  {
-          //      Assert.Fail("HNP is not Enabled");
-          //  }
-         
-        
-
 
         }
 
