@@ -85,7 +85,7 @@ namespace HL_Smoke
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-            //     System.Diagnostics.Debugger.Launch();// launch debugger
+            // System.Diagnostics.Debugger.Launch();// launch debugger
 
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
@@ -232,6 +232,7 @@ namespace HL_Smoke
                 // Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             }
+
             else
             {
 
@@ -581,7 +582,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#settings/accounts/departments"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+                Assert.AreEqual("Departments", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -1256,7 +1257,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/message_queues/Escalation/3"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Escalation Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Escalation Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -1272,7 +1273,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/message_queues/Scheduled/2"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Scheduled Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Scheduled Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -1288,7 +1289,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/message_queues/Waiting/10"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Waiting Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Waiting Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -1304,7 +1305,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/paging_queues/Fax/6"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Fax Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Fax Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -1320,7 +1321,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/paging_queues/Voice/7"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Voice Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Voice Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -1336,7 +1337,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/paging_queues/Default/101"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Default Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Default Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -1352,7 +1353,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/terminal_queues/Failed/5"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Failed Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Failed Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -1368,7 +1369,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/terminal_queues/Filtered/9"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Filtered Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Filtered Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else
@@ -1384,7 +1385,7 @@ namespace HL_Smoke
             if (driver.Url.Contains("#queues/terminal_queues/Completed/4"))
             {
                 Thread.Sleep(2000);
-                Assert.AreEqual("Completed Queue", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Completed Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             }
             else

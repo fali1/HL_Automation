@@ -571,7 +571,7 @@ namespace HL_Smoke
 
                 check_driver_type(driver_type, "settings", "Departments", "Settings");
 
-                Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Departments", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
                 /*  var driver_type = driver.GetType();
                   Console.WriteLine("*" + driver_type + "*");

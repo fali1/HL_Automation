@@ -1,15 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="1" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-07-17" time="14:41:11">
-  <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5477" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
+<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="4" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-03" time="18:24:05">
+  <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5483" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Success" success="True" time="61.406" asserts="0">
+  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Success" success="True" time="112.136" asserts="0">
     <results>
-      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Success" success="True" time="61.406" asserts="0">
+      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Success" success="True" time="112.118" asserts="0">
         <results>
-          <test-suite type="TestFixture" name="a_Smoke_Global_Settings" executed="True" result="Success" success="True" time="61.341" asserts="1">
+          <test-suite type="TestFixture" name="k_Smoke_Help_About_Session_License_key" executed="True" result="Success" success="True" time="112.115" asserts="1">
             <results>
-              <test-case name="HL_Smoke.a_Smoke_Global_Settings.Global_Settings_Panel" executed="True" result="Success" success="True" time="47.786" asserts="1" />
+              <test-case name="HL_Smoke.k_Smoke_Help_About_Session_License_key.a_User_Session" executed="True" result="Success" success="True" time="31.918" asserts="1" />
+              <test-case name="HL_Smoke.k_Smoke_Help_About_Session_License_key.b_License_Page" executed="True" result="Success" success="True" time="31.093" asserts="1" />
+              <test-case name="HL_Smoke.k_Smoke_Help_About_Session_License_key.c_About_Page" executed="True" result="Success" success="True" time="30.612" asserts="1" />
+              <test-case name="HL_Smoke.k_Smoke_Help_About_Session_License_key.d_Help" executed="True" result="Success" success="True" time="5.508" asserts="0" />
             </results>
           </test-suite>
         </results>

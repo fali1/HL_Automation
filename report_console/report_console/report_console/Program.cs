@@ -96,10 +96,14 @@ namespace report_console
 
                         if (reader.GetAttribute("success").ToString().Equals("True")) // if testcase is passed message and tack trace columsn will be displayed as 'None'
                         {
-
+                            testcase_success_count = testcase_success_count + 1; // count of succeeded testcase
                             testcase_msg_list.Add("None");
                             testcase_stack_list.Add("None");
 
+                        }
+                        else
+                        {
+                            testcase_failed_count = testcase_failed_count + 1; // count of failed testcase
                         }
 
                         testcase_count = testcase_count + 1; // test cases count
@@ -162,6 +166,8 @@ namespace report_console
                 // Create a file to write to. 
                 using (StreamWriter sw = File.CreateText(path))
                 {
+
+
                     sw.WriteLine("<!DOCTYPE html>"); // adding html tags
                     sw.WriteLine("<html>");
                     sw.WriteLine("<body>");
@@ -184,10 +190,11 @@ namespace report_console
                     sw.WriteLine("</style>");
                     sw.WriteLine("</head>");
 
-
+                    
                     sw.WriteLine("<center>");
                     sw.WriteLine("<b> <font size=\"6\"><u>TESTCASE EXECUTION REPORT</u> </font> </b>");    // Main heading
                     sw.WriteLine("</center>");
+
 
 
                     sw.WriteLine("<p>");
@@ -203,6 +210,7 @@ namespace report_console
                     sw.WriteLine("Total Testcases :" + " " + "<b>" + testcase_count + "</b>");           // total testcases count
                     sw.WriteLine("</p>");
 
+
                     sw.WriteLine("<p style=\"color:green\">");
                     sw.WriteLine("Testcases Passed :" + " " + "<b>" + testcase_success_count + "</b>");  // total succeeded testcases
                     sw.WriteLine("</p>");
@@ -213,6 +221,9 @@ namespace report_console
 
                     sw.WriteLine("<p/>");
 
+
+                    
+
                     sw.WriteLine("<p>");
                     sw.WriteLine("<b> <u>DETAILS </u></b>");
                     sw.WriteLine("</p>");
@@ -220,8 +231,8 @@ namespace report_console
 
 
                     sw.WriteLine("<table>");
-                    
-                    sw.WriteLine("<tr>");                  // creating header row
+
+                    sw.WriteLine("<tr>");                  // creating grid header row
                     sw.WriteLine("<th>Testcase Name</th>");
                     sw.WriteLine("<th>Testcase Executed</th>");
                     sw.WriteLine("<th>Testcase Result</th>");
@@ -245,7 +256,7 @@ namespace report_console
                             sw.WriteLine("<td style=\"color:green\">" + testcase_success_list[i] + "</td>");
 
                         }
-                        else if (testcase_success_list[i].Equals("False")) // if testcase is succeeded then display it as Red
+                        else if (testcase_success_list[i].Equals("False")) // if testcase is not succeeded then display it as Red
                         {
 
                             sw.WriteLine("<td style=\"color:red\">" + testcase_result_list[i] + "</td>");
@@ -261,21 +272,27 @@ namespace report_console
                         if (testcase_success_list[i].Equals("True"))
                         {
 
-                            testcase_success_count = testcase_success_count + 1; // count of succeeded testcase
+                         //   testcase_success_count = testcase_success_count + 1; // count of succeeded testcase
                             Console.WriteLine("Testcase_success_count:" + testcase_success_count);
 
                         }
-                        else if (testcase_success_list[i].Equals("False")) 
+                        else if (testcase_success_list[i].Equals("False"))
                         {
 
-                            testcase_failed_count = testcase_failed_count + 1; // count of failed testcase
+                         //   testcase_failed_count = testcase_failed_count + 1; // count of failed testcase
                             Console.WriteLine("Testcase_failed_count:" + testcase_failed_count);
 
                         }
 
                     }
 
+
                     sw.WriteLine("</table>");
+
+
+
+
+                   
                     sw.WriteLine("</body>");
                     sw.WriteLine("</html>");
 

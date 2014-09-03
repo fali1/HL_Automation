@@ -1136,6 +1136,8 @@ namespace HL_Breadth
         {
 
             string schedule_template_name = "Schedule_Template_Monthly";
+            string schedule_template_name_new = "Schedule_new_Template_Monthly";
+            string schedule_template_name_new_edited = "edited_Schedule_new_Template_Monthly";
 
             check_driver_type(driver_type, "settings", "Schedule Template", "Settings");
 
@@ -1180,7 +1182,82 @@ namespace HL_Breadth
             {
                 takescreenshot("Schedule_Template_Passed");
 
-                Console.WriteLine("^^^^^^^^^^^^^^^ Schedule_Template Passed ... ^^^^^^^^^^^^^^^");
+
+                // ADDING SECOND SCHEDULE TEMPLATE
+
+                driver.FindElement(By.LinkText("Add Schedule Template")).Click();
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click(); //schedule type
+
+                driver.FindElement(By.XPath(".//*[@id='light']/div[2]/div[2]/div/ul/li[text()='Monthly']")).Click();
+
+                driver.FindElement(By.Id("sname")).Clear();
+                driver.FindElement(By.Id("sname")).SendKeys(schedule_template_name_new); //schedule template name
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click(); //time frame
+
+                driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[1]/ul/li[text()='01']")).Click();
+
+                driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click(); //time frame
+
+                driver.FindElement(By.XPath(".//*[@id='sch_main']/div[1]/fieldset[2]/div[3]/ul/li[text()='02']")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.Id("startpicker")).Click();//range start from
+
+                driver.FindElement(By.LinkText("14")).Click();
+
+                driver.FindElement(By.XPath(".//*[@class='end_after_label']")).Click(); //radio button 'End After'
+
+                driver.FindElement(By.Id("txtOccurences")).Clear();
+                driver.FindElement(By.Id("txtOccurences")).SendKeys("3");
+
+                driver.FindElement(By.Id("saveScheduleTemplate")).Click();
+                Thread.Sleep(1000);
+
+                if (driver.FindElement(By.XPath(".//*[@id='gridDiv']/table/tbody")).Text.Contains(schedule_template_name_new))
+                {
+
+                    // EDITING SECOND ADDED SCHEDULE TEMPLATE
+                    driver.FindElement(By.XPath("(//a[@class='row_action_edit'])[1]")).Click();
+
+                  //  driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click(); //schedule type
+
+                  //  driver.FindElement(By.XPath(".//*[@id='light']/div[2]/div[2]/div/ul/li[text()='Monthly']")).Click();
+
+                    driver.FindElement(By.Id("sname")).Clear();
+                    driver.FindElement(By.Id("sname")).SendKeys(schedule_template_name_new_edited); //schedule template name
+
+                    driver.FindElement(By.Id("saveScheduleTemplate")).Click();
+
+                    if (driver.FindElement(By.XPath(".//*[@id='gridDiv']/table/tbody")).Text.Contains(schedule_template_name_new_edited))
+                    {
+                        // DELETING SECOND ADDED SCHEDULE TEMPLATE
+                        driver.FindElement(By.XPath("(//a[@class='row_action_delete'])[1]")).Click();
+
+                        driver.FindElement(By.Id("btnOk")).Click();
+
+                        Console.WriteLine("^^^^^^^^^^^^^^^ Schedule_Template Passed ... ^^^^^^^^^^^^^^^");
+
+                    }
+                    else
+                    {
+                        takescreenshot("Schedule_Template_Failed_on_deleting");
+
+                        Assert.Fail("Schedule_Template Failed on Deleting ...");
+                    }
+
+                    
+                }
+                else
+                {
+                    takescreenshot("Schedule_Template_Failed_on_editing");
+
+                    Assert.Fail("Schedule_Template Failed on Editing ...");
+ 
+                }
+
+
             }
             else
             {
@@ -1379,6 +1456,14 @@ namespace HL_Breadth
             string expired_status_after_saving;
 
 
+            string api_filter_name = "API Filter";
+            string api_filter_name_new = "API new Filter";
+            string api_filter_name_new_edited = "edited API new Filter";
+
+            string message_filter_name = "Message Filter";
+            string message_filter_name_new = "API new Filter";
+            string message_filter_name_new_edited = "edited API new Filter";
+
             /* Adding API Filter */
 
             check_driver_type(driver_type, "administration", "Filters", "Sys Admin");
@@ -1394,7 +1479,7 @@ namespace HL_Breadth
 
             driver.FindElement(By.Id("name")).Clear();
 
-            driver.FindElement(By.Id("name")).SendKeys("API Filter");
+            driver.FindElement(By.Id("name")).SendKeys(api_filter_name);
 
             driver.FindElement(By.Id("description")).Clear();
 
@@ -1411,6 +1496,81 @@ namespace HL_Breadth
             driver.FindElement(By.Id("btnSave")).Click();
             Thread.Sleep(1000);
 
+            driver.FindElement(By.Id("tab_api")).Click();
+
+            Console.WriteLine(driver.FindElement(By.XPath("(//table[@class='common_light_grid light_grid_content']/tbody)[1]")).Text.Contains(api_filter_name));
+
+            Assert.AreEqual(true, driver.FindElement(By.XPath("(//table[@class='common_light_grid light_grid_content']/tbody)[1]")).Text.Contains(api_filter_name));
+
+            //ADDING SECOND API FILTER
+
+            action.MoveToElement(driver.FindElement(By.XPath("//i[text()='Add Filter']"))).Perform();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id(("api"))).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("name")).Clear();
+
+            driver.FindElement(By.Id("name")).SendKeys(api_filter_name_new);
+
+            driver.FindElement(By.Id("description")).Clear();
+
+            driver.FindElement(By.Id("description")).SendKeys("This is api new filter");
+
+            driver.FindElement(By.Id("messageCount")).Clear();
+
+            driver.FindElement(By.Id("messageCount")).SendKeys("2");
+
+            driver.FindElement(By.Id("actionInterval")).Clear();
+
+            driver.FindElement(By.Id("actionInterval")).SendKeys("1");
+
+            driver.FindElement(By.Id("btnSave")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.Id("tab_api")).Click();
+
+            Assert.AreEqual(true, driver.FindElement(By.XPath("(//table[@class='common_light_grid light_grid_content']/tbody)[1]")).Text.Contains(api_filter_name_new));
+
+
+            //EDITING SECOND API FILTER
+
+            driver.FindElement(By.XPath("(//a[@class='row_action_edit'])[2]")).Click();
+
+            driver.FindElement(By.Id("name")).Clear();
+
+            driver.FindElement(By.Id("name")).SendKeys(api_filter_name_new_edited);
+
+            driver.FindElement(By.Id("description")).Clear();
+
+            driver.FindElement(By.Id("description")).SendKeys("This is api new filter edited");
+
+            driver.FindElement(By.Id("messageCount")).Clear();
+
+            driver.FindElement(By.Id("messageCount")).SendKeys("2");
+
+            driver.FindElement(By.Id("actionInterval")).Clear();
+
+            driver.FindElement(By.Id("actionInterval")).SendKeys("1");
+
+            driver.FindElement(By.Id("btnSave")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.Id("tab_api")).Click();
+
+            Assert.AreEqual(true, driver.FindElement(By.XPath("(//table[@class='common_light_grid light_grid_content']/tbody)[1]")).Text.Contains(api_filter_name_new_edited));
+
+            //DELETING SECOND API FILTER
+
+            driver.FindElement(By.XPath("(//a[@class='row_action_delete'])[2]")).Click();
+
+            driver.FindElement(By.Id("btnOk")).Click();
+
+            Assert.AreEqual(false, driver.FindElement(By.XPath("(//table[@class='common_light_grid light_grid_content']/tbody)[1]")).Text.Contains(api_filter_name_new_edited));
+
+
+
             /* Adding Message Filter */
 
             action.MoveToElement(driver.FindElement(By.XPath("//i[text()='Add Filter']"))).Perform();
@@ -1419,7 +1579,7 @@ namespace HL_Breadth
             driver.FindElement(By.Id(("message"))).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.Id("name")).SendKeys("Message Filter");
+            driver.FindElement(By.Id("name")).SendKeys(message_filter_name);
 
             driver.FindElement(By.Id("description")).Clear();
 
@@ -1442,6 +1602,76 @@ namespace HL_Breadth
             Thread.Sleep(1000);
 
             driver.FindElement(By.Id("btnOk")).Click();
+
+            driver.FindElement(By.Id("tab_message")).Click();
+
+            Console.WriteLine(driver.FindElement(By.XPath("(//table[@class='common_light_grid light_grid_content']/tbody)[2]")).Text.Contains(message_filter_name));
+
+            Assert.AreEqual(true, driver.FindElement(By.XPath("(//table[@class='common_light_grid light_grid_content']/tbody)[2]")).Text.Contains(message_filter_name));
+
+            //ADDING SECOND MESSAGE FILTER
+
+            action.MoveToElement(driver.FindElement(By.XPath("//i[text()='Add Filter']"))).Perform();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id(("message"))).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("name")).SendKeys(message_filter_name_new);
+
+            driver.FindElement(By.Id("description")).Clear();
+
+            driver.FindElement(By.Id("description")).SendKeys("This is message new filter");
+
+            driver.FindElement(By.XPath("//div/ul/li[text()='Add New']")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.Id("equalText")).Clear();
+
+            driver.FindElement(By.Id("equalText")).SendKeys("Test");
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();
+
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.XPath("//li[text()='Suppress']")).Click();
+
+            driver.FindElement(By.Id("btnSave")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.Id("btnOk")).Click();
+
+            driver.FindElement(By.Id("tab_message")).Click();
+
+            Console.WriteLine(driver.FindElement(By.XPath("(//table[@class='common_light_grid light_grid_content']/tbody)[2]")).Text.Contains(message_filter_name_new));
+
+            Assert.AreEqual(true, driver.FindElement(By.XPath("(//table[@class='common_light_grid light_grid_content']/tbody)[2]")).Text.Contains(message_filter_name_new));
+
+            //EDITING SECOND MESSAGE FILTER
+
+            driver.FindElement(By.XPath("(//a[@class='row_action_edit'])[3]")).Click();
+            
+            driver.FindElement(By.Id("name")).SendKeys(message_filter_name_new_edited);
+
+            driver.FindElement(By.Id("btnSave")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.Id("btnOk")).Click();
+
+            driver.FindElement(By.Id("tab_message")).Click();
+
+            Console.WriteLine(driver.FindElement(By.XPath("(//table[@class='common_light_grid light_grid_content']/tbody)[2]")).Text.Contains(message_filter_name_new_edited));
+
+            Assert.AreEqual(true, driver.FindElement(By.XPath("(//table[@class='common_light_grid light_grid_content']/tbody)[2]")).Text.Contains(message_filter_name_new_edited));
+            
+            //DELETING SECOND MESSAGE FILTER
+
+            driver.FindElement(By.XPath("(//a[@class='row_action_delete'])[3]")).Click();
+
+            driver.FindElement(By.Id("btnOk")).Click();
+
+            Assert.AreEqual(false, driver.FindElement(By.XPath("(//table[@class='common_light_grid light_grid_content']/tbody)[2]")).Text.Contains(message_filter_name_new_edited));
+
 
             /*  ---------------------------------------------------------------- */
         }

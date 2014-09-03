@@ -76,7 +76,7 @@ namespace HL_Smoke
         public void SetupTest()
         {
 
-                 System.Diagnostics.Debugger.Launch();// launch debugger
+            //System.Diagnostics.Debugger.Launch();// launch debugger
 
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
