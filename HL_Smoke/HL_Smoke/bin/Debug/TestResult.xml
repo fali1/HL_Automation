@@ -1,18 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="4" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-03" time="18:24:05">
+<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="10" errors="5" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-04" time="19:23:21">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5483" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Success" success="True" time="112.136" asserts="0">
+  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Failure" success="False" time="547.132" asserts="0">
     <results>
-      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Success" success="True" time="112.118" asserts="0">
+      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Failure" success="False" time="547.114" asserts="0">
         <results>
-          <test-suite type="TestFixture" name="k_Smoke_Help_About_Session_License_key" executed="True" result="Success" success="True" time="112.115" asserts="1">
+          <test-suite type="TestFixture" name="d_Smoke_Send_Panels" executed="True" result="Failure" success="False" time="547.111" asserts="1">
             <results>
-              <test-case name="HL_Smoke.k_Smoke_Help_About_Session_License_key.a_User_Session" executed="True" result="Success" success="True" time="31.918" asserts="1" />
-              <test-case name="HL_Smoke.k_Smoke_Help_About_Session_License_key.b_License_Page" executed="True" result="Success" success="True" time="31.093" asserts="1" />
-              <test-case name="HL_Smoke.k_Smoke_Help_About_Session_License_key.c_About_Page" executed="True" result="Success" success="True" time="30.612" asserts="1" />
-              <test-case name="HL_Smoke.k_Smoke_Help_About_Session_License_key.d_Help" executed="True" result="Success" success="True" time="5.508" asserts="0" />
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.a_Services_Settings_Panel" executed="True" result="Success" success="True" time="46.114" asserts="1" />
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.b_Primary_Send_Panel" executed="True" result="Success" success="True" time="48.015" asserts="1" />
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.c_Quick_Send_Panel" executed="True" result="Success" success="True" time="38.780" asserts="1" />
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.d_Escalation_Send_Panel" executed="True" result="Success" success="True" time="43.678" asserts="2" />
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.e_Fax_Send_Panel" executed="True" result="Error" success="False" time="95.697" asserts="1">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : Element is not currently visible and so may not be interacted with]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Smoke.d_Smoke_Send_Panels.hover_func(String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 917
+at HL_Smoke.d_Smoke_Send_Panels.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 883
+at HL_Smoke.d_Smoke_Send_Panels.e_Fax_Send_Panel() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 560
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.f_Voice_Send_Panel" executed="True" result="Error" success="False" time="94.665" asserts="1">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : Element is not currently visible and so may not be interacted with]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Smoke.d_Smoke_Send_Panels.hover_func(String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 917
+at HL_Smoke.d_Smoke_Send_Panels.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 883
+at HL_Smoke.d_Smoke_Send_Panels.f_Voice_Send_Panel() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 642
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.g_Quota_Send_Panel" executed="True" result="Error" success="False" time="47.309" asserts="0">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : Element is not currently visible and so may not be interacted with]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Smoke.d_Smoke_Send_Panels.hover_func(String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 917
+at HL_Smoke.d_Smoke_Send_Panels.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 883
+at HL_Smoke.d_Smoke_Send_Panels.g_Quota_Send_Panel() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 676
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.h_Attribute_Send_Panel" executed="True" result="Error" success="False" time="46.572" asserts="0">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : Element is not currently visible and so may not be interacted with]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Smoke.d_Smoke_Send_Panels.hover_func(String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 917
+at HL_Smoke.d_Smoke_Send_Panels.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 883
+at HL_Smoke.d_Smoke_Send_Panels.h_Attribute_Send_Panel() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 717
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.i_Add_Message_Template_Primary_Send_Panel" executed="True" result="Success" success="True" time="20.815" asserts="1" />
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.j_Job_Confirmation_Panel" executed="True" result="Error" success="False" time="48.896" asserts="0">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : Element is not currently visible and so may not be interacted with]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Smoke.d_Smoke_Send_Panels.hover_func(String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 917
+at HL_Smoke.d_Smoke_Send_Panels.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 883
+at HL_Smoke.d_Smoke_Send_Panels.j_Job_Confirmation_Panel() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 797
+]]></stack-trace>
+                </failure>
+              </test-case>
             </results>
           </test-suite>
         </results>

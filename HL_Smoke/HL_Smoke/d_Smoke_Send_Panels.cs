@@ -572,7 +572,7 @@ namespace HL_Smoke
             driver.FindElement(By.Id("incMsgIdCheck")).Click(); // include message id checkbox
 
             driver.FindElement(By.Id("btnSend")).Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
 
             takescreenshot("Fax_Send_Panel");
 
@@ -752,10 +752,6 @@ namespace HL_Smoke
             driver.FindElement(By.LinkText("Primary Send")).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("//*[contains(text(),'" + receiver_name + "')]")).Click(); //selecting receiver from members list
-
-            driver.FindElement(By.Id("moveItemRight")).Click();
-
             driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
             Thread.Sleep(2000);
 
@@ -767,6 +763,11 @@ namespace HL_Smoke
 
             driver.FindElement(By.Id("btnSendTemp")).Click(); //open template button
             Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("//*[contains(text(),'" + receiver_name + "')]")).Click(); //selecting receiver from members list
+
+            driver.FindElement(By.Id("moveItemRight")).Click();
+
 
             Console.WriteLine("*" + driver.FindElement(By.XPath("//*[@id='txtAreaMessage']")).Text + "*");
 

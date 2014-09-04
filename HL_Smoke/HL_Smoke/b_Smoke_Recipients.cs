@@ -1272,8 +1272,6 @@ namespace HL_Smoke
                 driver.FindElement(By.XPath("//li[@id='" + id_name + "']/a[text()='" + a_text + "']")).Click(); //goto landing for particular ID
                 Thread.Sleep(2000);
 
-
-
                 Actions a1c = new Actions(driver);
                 Thread.Sleep(2000);
 
@@ -1285,21 +1283,8 @@ namespace HL_Smoke
                 driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
                 Thread.Sleep(2000);
 
-                /*
-                if (link_text.Equals("Escalation"))
-                {
-                    driver.FindElement(By.XPath("(//a[contains(text(),'"+link_text+"')])[4]")).Click();
-                    Thread.Sleep(2000);
-                }
-                else
-                {
-                    driver.FindElement(By.XPath("(//a[text()='" + link_text + "'])[2]")).Click();
-                    Thread.Sleep(2000);
-                }*/
-
-                
-
-                driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
+               
+                driver.FindElement(By.XPath("//li[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
                 Thread.Sleep(2000);
 
                 hover_func(id_name, link_text, a_text);
@@ -1342,10 +1327,8 @@ namespace HL_Smoke
 
             //------ Focus out the mouse to disappear hovered dialog ------
 
-            Actions action2 = new Actions(driver);
-            Thread.Sleep(2000);
-
-            action2.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
+           
+            action1.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
             Thread.Sleep(3000);
 
 
