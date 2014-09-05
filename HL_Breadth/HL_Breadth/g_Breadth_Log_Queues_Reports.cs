@@ -140,7 +140,7 @@ namespace HL_Breadth
             Console.WriteLine("Driver Type:" + " " + driver_type);
 
 
-            baseURL = "http://localhost:8000/";
+            baseURL = "http://192.168.5.207:8000/";
 
             driver.Navigate().GoToUrl(baseURL + "/HipLink5UI-Work/index.html#login");
 
@@ -172,6 +172,475 @@ namespace HL_Breadth
 
             verificationErrors = new StringBuilder();
         }
+
+
+
+        [Test]
+        public void a_Logs_Settings()
+        {
+            string log_level = "TRACE";
+
+            check_driver_type(driver_type, "administration", "Log Settings", "Sys Admin");
+
+            Assert.AreEqual("Log Settings", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            // it will check individual of different categories logs
+
+            /*    driver.FindElement(By.XPath("//input[@value='Alarm Notification Gateway']")).Click();
+
+                driver.FindElement(By.XPath("//input[@value='Campaign Manager']")).Click();
+
+                driver.FindElement(By.XPath("//input[@value='Confirmations']")).Click();
+
+                driver.FindElement(By.XPath("//input[@value='GIS Campaign Manager']")).Click();
+                Thread.Sleep(2000);
+
+                // scroll down the screen until "smtp_messenger" logs is displayed
+
+                IWebElement element = driver.FindElement(By.XPath("//div[text()='smtp_messenger']"));
+                ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
+                Thread.Sleep(500);
+
+                driver.FindElement(By.XPath("//input[@value='smtp_messenger']")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.Id("selChangeLevel")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//*[@id='selChangeLevel']/option[text()='ERROR']")).Click();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.Id("btnOk")).Click();
+                Thread.Sleep(2000);*/
+
+            if (driver_type.ToString() == "OpenQA.Selenium.Firefox.FirefoxDriver")
+            {
+                driver.FindElement(By.XPath("(//a[@class='row_action_edit'])[2]")).Click();
+                Thread.Sleep(2000);
+
+                if (driver.FindElement(By.Id("logSettingLightbox")).Displayed)
+                {
+                    driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
+
+                    driver.FindElement(By.XPath("//li[text()='" + log_level + "']")).Click();
+
+                    driver.FindElement(By.Id("lnkSave")).Click();
+
+                }
+                else
+                {
+                    Assert.Fail("Logs Settings Failed");
+                }
+
+            }
+
+            else
+            {
+
+                driver.FindElement(By.Id("divGrid_selectAllRows")).Click();  // Select all/Deselect all checkbox
+
+                driver.FindElement(By.Id("selChangeLevel")).Click();
+                Thread.Sleep(2000);
+
+                SelectElement se = new SelectElement(driver.FindElement(By.Id("selChangeLevel")));
+                se.SelectByText(log_level);
+
+                // new SelectElement(driver.FindElement(By.Id("selChangeLevel"))).SelectByText(log_level); // select value from dropdown
+
+                driver.FindElement(By.Id("btnOk")).Click();
+                Thread.Sleep(2000);
+
+                takescreenshot("Log_Settings");
+
+                if (driver.FindElement(By.XPath(".//*[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[5]/descendant::div")).Text.Equals(log_level))
+                {
+                    Console.WriteLine("^^^^^^^^^^^^^^^^^^ Log Settings Passed... ^^^^^^^^^^^^^^^^^^");
+                }
+                else
+                {
+                    Assert.Fail("Log Settings Failed...");
+                }
+            }
+
+        }
+
+
+        [Test]
+        public void b_Logs_View()
+        {
+
+            check_driver_type(driver_type, "administration", "Logs", "Sys Admin");
+
+            Assert.AreEqual("Logs", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            // Main logs
+
+            driver.FindElement(By.XPath("(//a[text()='Confirmations'])[1]")).Click();
+            Thread.Sleep(3000);
+
+            Assert.AreEqual(true, driver.FindElement(By.Id("logHeader")).Text.Equals("Confirmations"));
+
+            takescreenshot("Main_logs");
+
+            driver.FindElement(By.Id("administration")).Click();
+
+            driver.FindElement(By.LinkText("Logs")).Click();
+
+            driver.FindElement(By.XPath("(//a[@class='logs_panel_action_edit'])[1]")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("//li[text()='TRACE']")).Click();
+            
+            driver.FindElement(By.Id("btnSave")).Click();
+            Thread.Sleep(2000);
+
+            Assert.AreEqual(true, driver.FindElement(By.XPath("(.//table[@class='logs_panel_list_grid text_align_left logs_panel_list_grid_row_light_gray']/tbody/tr/td[3])[1]")).Text.Equals("TRACE"));
+
+
+            /*
+            // Messenger logs
+
+            driver.FindElement(By.XPath("//div[@class='logs_panel_list_panel']/table/tbody/tr/td[2]/a[text()='smtp_messenger']")).Click();
+            Thread.Sleep(2000);
+
+            if (driver.FindElement(By.Id("logHeader")).Text.Equals("Logs Panel - smtp_messenger"))
+            {
+                Console.WriteLine("^^^^^^^^^^^^^^^^   Messenger Logs Passed... ^^^^^^^^^^^^^^^^");
+
+                takescreenshot("Messenger_logs");
+
+                driver.Navigate().Back();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Logs']")).Click(); //goto particular panel w.r.t link
+                Thread.Sleep(2000);
+            }
+            else
+            {
+                Assert.Fail("Messenger Logs Failed...");
+            }
+
+            // System logs
+
+            driver.FindElement(By.XPath("//div[@class='logs_panel_list_panel']/table/tbody/tr[6]/td[2]/a[text()='System Attendant']")).Click();
+            Thread.Sleep(2000);
+
+            if (driver.FindElement(By.Id("logHeader")).Text.Equals("Logs Panel - System Attendant"))
+            {
+                Console.WriteLine("^^^^^^^^^^^^^^^^   System Logs Passed... ^^^^^^^^^^^^^^^^");
+
+                takescreenshot("System_logs");
+
+                driver.Navigate().Back();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Logs']")).Click(); //goto particular panel w.r.t link
+                Thread.Sleep(2000);
+            }
+            else
+            {
+                Assert.Fail("System Logs Failed...");
+            }
+
+            // Gateway logs
+
+            driver.FindElement(By.XPath("//div[@class='logs_panel_list_panel']/table/tbody/tr[2]/td[2]/a[text()='SNPP Gateway']")).Click();
+            Thread.Sleep(2000);
+
+            if (driver.FindElement(By.Id("logHeader")).Text.Equals("Logs Panel - SNPP Gateway"))
+            {
+                Console.WriteLine("^^^^^^^^^^^^^^^^   Gateway Logs Passed... ^^^^^^^^^^^^^^^^");
+
+                takescreenshot("Gateway_logs");
+
+                driver.Navigate().Back();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Logs']")).Click(); //goto particular panel w.r.t link
+                Thread.Sleep(2000);
+            }
+            else
+            {
+                Assert.Fail("Gateway Logs Failed...");
+            }
+
+            // scroll down the screen until "Campaign Manager" logs is displayed
+
+            IWebElement element = driver.FindElement(By.XPath("//div[@class='logs_panel_list_panel']/table/tbody/tr[1]/td[2]/a[text()='Campaign Manager']"));
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
+            Thread.Sleep(500);
+
+            // Miscellaneous logs
+
+            driver.FindElement(By.XPath("//div[@class='logs_panel_list_panel']/table/tbody/tr[1]/td[2]/a[text()='Campaign Manager']")).Click();
+            Thread.Sleep(2000);
+
+            if (driver.FindElement(By.Id("logHeader")).Text.Equals("Logs Panel - Campaign Manager"))
+            {
+                Console.WriteLine("^^^^^^^^^^^^^^^^   Miscellaneous Logs Passed... ^^^^^^^^^^^^^^^^");
+
+                takescreenshot("Miscellaneous_logs");
+
+                driver.Navigate().Back();
+                Thread.Sleep(2000);
+
+                driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='Logs']")).Click(); //goto particular panel w.r.t link
+                Thread.Sleep(2000);
+            }
+            else
+            {
+                Assert.Fail("Miscellaneous Logs Failed...");
+            }
+             */
+
+        }
+
+
+        [Test]
+        public void c_Queues_Panel()
+        {
+            string receiver_name = "receiver_smtp";
+            string new_dir = "Completed";
+
+            ICollection<string> windowids = null;
+            IEnumerator<String> iter = null;
+            String mainWindowId = null;
+            String curWindow = null;
+
+            Thread.Sleep(2000);
+            driver.FindElement(By.XPath(".//*[@id='queues']/a")).Click();
+
+            Thread.Sleep(2000);
+            driver.FindElement(By.LinkText(new_dir)).Click();
+
+            Assert.AreEqual("Completed Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text); //verifying Queues Panel label
+
+            takescreenshot("New_directory");
+
+           // driver.FindElement(By.XPath("(//*[@class='row_action_delete'])[1]")).Click();
+           // Thread.Sleep(2000);
+           // driver.FindElement(By.Id("btnOk")).Click();
+
+            if (driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text.Contains("Completed Queue"))
+            {
+
+                takescreenshot("Queues_View_Message_Details");
+
+                Console.WriteLine(driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text.Contains("Queues - View Message Details"));
+
+                Thread.Sleep(1000);
+
+                   mainWindowId = driver.CurrentWindowHandle;
+                   Console.WriteLine("Main window handle: " + mainWindowId);//main window id
+
+                   // The below step would use whatever element you need to use to 
+                   // open the new window. 
+
+                   driver.FindElement(By.XPath("(//ul[@class='row_grid_actions']/li[1]/a)[1]")).Click(); //click on edit button to view the message file
+                   Thread.Sleep(3000);
+
+
+                   //    Assert.AreEqual("Help", driver.FindElement(By.XPath("//div[@class='main_container pg_help']/h1")).Text);
+
+                   //the above should open a new tab on current browser window BUT Selenium will open it as a new browser window
+
+                   Thread.Sleep(25);
+
+                   windowids = null;
+                   windowids = driver.WindowHandles; // returns an ID for every opened window
+                   iter = windowids.GetEnumerator(); ;  // iterate through open browser and print out their ids. One id only for now.
+                   Console.WriteLine("List Window IDs. There should be 2 id now");
+                   Console.WriteLine("=========================================");
+
+                   for (int i = 0; i < windowids.Count; i++)
+                   {
+                       Console.WriteLine(windowids.ElementAt(i));
+                       if (i != 0)
+                       {
+
+                           driver.SwitchTo().Window(windowids.ElementAt(i)).Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5L));
+
+                         //  Console.WriteLine(driver.FindElement(By.XPath("//div[@class='main_container pg_help']")).Text);
+                         //  Console.WriteLine(driver.FindElement(By.XPath("//li[@class='product_name']")).Text);
+
+
+                           Assert.AreEqual(true, driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text.Contains("Queues - View Message Details")); //verfying Queues - View Message Details label 
+                          
+
+                       }
+
+                       else
+                       {
+                           Console.WriteLine("We are at main window right now! ");
+                       }
+                   }
+                   Thread.Sleep(3000);
+
+                   // This switches to the window by name. You could also search for 
+                   // the newly opened window handle and switch using that. 
+                   // Code that does this is left as an exercise for you to complete on your own. 
+
+
+                   // Do some operations in the new window and close it 
+                   driver.Close();
+
+
+                
+                   // Switch "focus" back to the original window. 
+                   //   driver.SwitchTo().Window(originalHandle);
+
+                   //-------------------------------------------------------------------      
+   
+
+            }
+            else
+            {
+                Assert.Fail("Queues_Panel_Failed");
+            }
+
+        }
+
+
+        [Test]
+        public void d_Reports_Panel()
+        {
+            string receiver_name = "receiver_smtp";
+            Thread.Sleep(3000);
+
+            ICollection<string> windowids = null;
+            IEnumerator<String> iter = null;
+            String mainWindowId = null;
+            String curWindow = null;
+
+            driver.FindElement(By.XPath(".//*[@id='reports']/a")).Click();
+
+            hover_func("reports", "Detail", "Reports");
+
+            Assert.AreEqual("Reports", driver.FindElement(By.XPath("//span[@id='main_title']")).Text); //verfying Reports panel label
+
+            hover_func("reports", "Summary", "Reports");
+
+            driver.FindElement(By.Id("send")).Click(); //navigate to send panel
+
+            driver.FindElement(By.XPath(".//*[@id='reports']/a")).Click();
+            Thread.Sleep(2000);
+
+            takescreenshot("Reports_Panel");
+
+            driver.FindElement(By.XPath("(//a[text()='Summary'])[3]")).Click(); //navigate to summary tab 
+            Thread.Sleep(2000);
+
+            takescreenshot("Reports_Panel_Summary");
+
+            driver.FindElement(By.XPath("(//a[text()='Detail'])[3]")).Click();
+
+            driver.FindElement(By.XPath(".//*[@id='reports']/a")).Click();
+        
+            Thread.Sleep(2000);
+
+               mainWindowId = driver.CurrentWindowHandle;
+                   Console.WriteLine("Main window handle: " + mainWindowId);//main window id
+
+                   // The below step would use whatever element you need to use to 
+                   // open the new window. 
+
+                   driver.FindElement(By.XPath("(//div[@class='columnContainer dataContainer']/div/ul/li/a)[1]")).Click(); //click on edit button to view the message file
+                   Thread.Sleep(3000);
+
+
+                   //    Assert.AreEqual("Help", driver.FindElement(By.XPath("//div[@class='main_container pg_help']/h1")).Text);
+
+                   //the above should open a new tab on current browser window BUT Selenium will open it as a new browser window
+
+                   Thread.Sleep(25);
+
+                   windowids = null;
+                   windowids = driver.WindowHandles; // returns an ID for every opened window
+                   iter = windowids.GetEnumerator(); ;  // iterate through open browser and print out their ids. One id only for now.
+                   Console.WriteLine("List Window IDs. There should be 2 id now");
+                   Console.WriteLine("=========================================");
+
+                   for (int i = 0; i < windowids.Count; i++)
+                   {
+                       Console.WriteLine(windowids.ElementAt(i));
+                       if (i != 0)
+                       {
+
+                           driver.SwitchTo().Window(windowids.ElementAt(i)).Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5L));
+
+                         //  Console.WriteLine(driver.FindElement(By.XPath("//div[@class='main_container pg_help']")).Text);
+                         //  Console.WriteLine(driver.FindElement(By.XPath("//li[@class='product_name']")).Text);
+
+
+                           Assert.AreEqual(true, driver.FindElement(By.XPath("//div[@class='inner_page_header2']/h1")).Text.Contains("History of")); //verfying History of JOB_ID
+                          
+
+                       }
+
+                       else
+                       {
+                           Console.WriteLine("We are at main window right now! ");
+                       }
+                   }
+                   Thread.Sleep(3000);
+
+                   // This switches to the window by name. You could also search for 
+                   // the newly opened window handle and switch using that. 
+                   // Code that does this is left as an exercise for you to complete on your own. 
+
+
+                   // Do some operations in the new window and close it 
+                   driver.Close();
+
+
+                
+                   // Switch "focus" back to the original window. 
+                   //   driver.SwitchTo().Window(originalHandle);
+
+                   //-------------------------------------------------------------------      
+   
+
+            
+
+        }
+
+
+        [Test]
+        public void e_Statistics()
+        {
+
+            hover_func("reports", "Statistics", "Reports");
+
+            Assert.AreEqual("Statistics", driver.FindElement(By.Id("main_title")).Text);
+
+            driver.FindElement(By.Id("stats_date_filter")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.Id("stats_start_date")).Click();
+
+            driver.FindElement(By.LinkText("Traffic by Messengers")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.LinkText("Traffic by Time")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.XPath("//*[@id='tab_summary']/a")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.LinkText("Passed")).Click();
+
+            driver.FindElement(By.Id("stats_export")).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(By.Id("btnOk")).Click();
+        }
+
+
+
+
 
         public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 
         {

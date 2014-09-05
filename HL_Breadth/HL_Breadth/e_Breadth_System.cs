@@ -1221,10 +1221,7 @@ namespace HL_Breadth
                     // EDITING SECOND ADDED SCHEDULE TEMPLATE
                     driver.FindElement(By.XPath("(//a[@class='row_action_edit'])[1]")).Click();
 
-                  //  driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click(); //schedule type
-
-                  //  driver.FindElement(By.XPath(".//*[@id='light']/div[2]/div[2]/div/ul/li[text()='Monthly']")).Click();
-
+                 
                     driver.FindElement(By.Id("sname")).Clear();
                     driver.FindElement(By.Id("sname")).SendKeys(schedule_template_name_new_edited); //schedule template name
 

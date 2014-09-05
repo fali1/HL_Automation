@@ -138,9 +138,23 @@ namespace HL_Smoke
             Console.WriteLine("Driver Type:" + " " + driver_type);
 
 
-            baseURL = "http://localhost:8000/";
+            // Read each line of the file into a string array. Each element 
+            // of the array is one line of the file. 
 
-            driver.Navigate().GoToUrl(baseURL + "/HipLink5UI-Work/index.html#login");
+            string[] lines = System.IO.File.ReadAllLines(@".\url.txt");
+
+            // Display the file contents by using a foreach loop.
+            System.Console.WriteLine("Contents of url.txt = ");
+            foreach (string line in lines)
+            {
+                // Use a tab to indent each line of the file.
+                Console.WriteLine("\n" + line);
+            }
+
+
+            baseURL = lines[0]; //url of application
+
+            driver.Navigate().GoToUrl(baseURL);
 
             driver.Manage().Window.Maximize();//maximize browser
 

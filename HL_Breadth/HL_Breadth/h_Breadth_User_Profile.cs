@@ -173,6 +173,123 @@ namespace HL_Breadth
             verificationErrors = new StringBuilder();
         }
 
+
+        [Test]
+        public void a_User_Profile()
+        {
+            ICollection<string> windowids = null;
+            IEnumerator<String> iter = null;
+            String mainWindowId = null;
+            String curWindow = null;
+
+            Assert.AreEqual(login_name, driver.FindElement(By.Id("entityTitle")).Text);
+
+            driver.FindElement(By.Id("pro_change_password")).Click();
+            Thread.Sleep(1000);
+
+            if (driver.FindElement(By.Id("pwLightBox")).Displayed)
+            {
+                driver.FindElement(By.Id("txtOldPass")).Clear();
+                driver.FindElement(By.Id("txtOldPass")).SendKeys("admin");
+                
+                Thread.Sleep(2000);
+                
+                driver.FindElement(By.Id("txtNewPass")).Clear();
+                driver.FindElement(By.Id("txtNewPass")).SendKeys("admin");
+                
+                Thread.Sleep(2000);
+                
+                driver.FindElement(By.Id("txtConfPass")).Clear();
+                driver.FindElement(By.Id("txtConfPass")).SendKeys("admin");
+                
+                Thread.Sleep(2000);
+                
+                driver.FindElement(By.Id("submitPassword")).Click();
+                Thread.Sleep(1000);
+
+                driver.FindElement(By.Id("favoriteToggle")).Click();
+                Thread.Sleep(1000);
+
+
+                driver.FindElement(By.Id("favoriteToggle")).Click();
+                Thread.Sleep(1000);
+
+
+                driver.FindElement(By.Id("dashboardToggle")).Click();
+                Thread.Sleep(1000);
+
+
+                driver.FindElement(By.Id("dashboardToggle")).Click();
+                Thread.Sleep(1000);
+
+                mainWindowId = driver.CurrentWindowHandle;
+                Console.WriteLine("Main window handle: " + mainWindowId);//main window id
+
+                // The below step would use whatever element you need to use to 
+                // open the new window. 
+
+                driver.FindElement(By.XPath("(//a[@class='report_popup_dashboard'])[1]")).Click(); //click on edit button to view the message file
+                Thread.Sleep(3000);
+
+
+                //    Assert.AreEqual("Help", driver.FindElement(By.XPath("//div[@class='main_container pg_help']/h1")).Text);
+
+                //the above should open a new tab on current browser window BUT Selenium will open it as a new browser window
+
+                Thread.Sleep(25);
+
+                windowids = null;
+                windowids = driver.WindowHandles; // returns an ID for every opened window
+                iter = windowids.GetEnumerator(); ;  // iterate through open browser and print out their ids. One id only for now.
+                Console.WriteLine("List Window IDs. There should be 2 id now");
+                Console.WriteLine("=========================================");
+
+                for (int i = 0; i < windowids.Count; i++)
+                {
+                    Console.WriteLine(windowids.ElementAt(i));
+                    if (i != 0)
+                    {
+
+                        driver.SwitchTo().Window(windowids.ElementAt(i)).Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5L));
+
+                        //  Console.WriteLine(driver.FindElement(By.XPath("//div[@class='main_container pg_help']")).Text);
+                        //  Console.WriteLine(driver.FindElement(By.XPath("//li[@class='product_name']")).Text);
+
+
+                        Assert.AreEqual(true, driver.FindElement(By.XPath("//div[@class='inner_page_header2']/h1")).Text.Contains("History of")); //verfying Queues - View Message Details label 
+
+
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("We are at main window right now! ");
+                    }
+                }
+                Thread.Sleep(3000);
+
+                // This switches to the window by name. You could also search for 
+                // the newly opened window handle and switch using that. 
+                // Code that does this is left as an exercise for you to complete on your own. 
+
+
+                // Do some operations in the new window and close it 
+                driver.Close();
+
+
+
+            }
+            else
+            {
+                Assert.Fail("User Profile Failed");
+            }
+
+        }
+
+
+
+
+
         public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 
         {
 
