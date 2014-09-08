@@ -2518,6 +2518,7 @@ namespace HL_Breadth
                 //a[contains(text(),'On-Duty')])[2]
 
                 driver.FindElement(By.XPath("//li[@id='" + id_name + "']/a[text()='" + a_text + "']")).Click(); //goto landing for particular ID
+               // driver.FindElement(By.XPath("//a[@href='#" + id_name + "']")).Click(); //goto landing for particular ID
                 Thread.Sleep(2000);
 
 
@@ -2576,6 +2577,7 @@ namespace HL_Breadth
             //------ Hover functionality and click ------
 
             var hoveritem = driver.FindElement(By.Id(id_name));
+            //var hoveritem = driver.FindElement(By.XPath("//a[@href='#" + id_name + "']"));
 
             Actions action1 = new Actions(driver); //simply my webdriver
             Thread.Sleep(2000);

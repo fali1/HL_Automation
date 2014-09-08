@@ -173,6 +173,1312 @@ namespace HL_Breadth
             verificationErrors = new StringBuilder();
         }
 
+
+        [Test]
+        public void shortcut_keys()
+        {
+            /*
+                        // Users data
+                        driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("pud");
+
+                        if (driver.Url.Contains("#profile/my_data/user_data"))
+                        {
+                            Thread.Sleep(2000);
+                            //  Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+
+
+                        }
+                        else
+                        {
+
+                            Assert.Fail("Shortcutkeys Users data");
+
+                        }
+             */
+
+            /*
+             // Change Password
+             driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).Click();
+             driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("pcp");
+
+             Thread.Sleep(1000);
+
+             //   Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text + "*");
+
+             Console.WriteLine("*" + driver.Url + "*");
+
+             if (driver.Url.Contains("#profile/my_data/change_password"))
+             {
+                 Thread.Sleep(2000);
+              //   Assert.AreEqual("Change Password", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+             }
+             else
+             {
+
+                 Assert.Fail("Shortcutkeys Change Password");
+
+             }
+             */
+
+
+            // Common System Information
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("psi");
+
+            if (driver.Url.Contains("#profile/my_data/common_system_information"))
+            {
+                Thread.Sleep(2000);
+                // Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Common System Information");
+
+            }
+
+            // Usage Reports
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("pur");
+
+            if (driver.Url.Contains("#profile/my_data/usage_reports"))
+            {
+                Thread.Sleep(2000);
+                //   Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Usage Reports");
+
+            }
+
+            // Bio information
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("pbi");
+
+            if (driver.Url.Contains("#profile/my_data/bio_information"))
+            {
+                Thread.Sleep(2000);
+                //  Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Bio information");
+
+            }
+
+            // Recipients
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("pfr");
+
+            if (driver.Url.Contains("#profile/favorites/recipients"))
+            {
+                Thread.Sleep(2000);
+                //  Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Recipients");
+
+            }
+
+            // Statistics
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("prs");
+
+            if (driver.Url.Contains("#profile/recent_messaging/statistics"))
+            {
+                Thread.Sleep(2000);
+                //  Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Statistics");
+
+            }
+
+            // Global Settings
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("ags");
+
+            if (driver.Url.Contains("#administration/system/global_settings"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Global Settings", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Global Settings");
+
+            }
+
+            // Directories
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("asd");
+
+            if (driver.Url.Contains("#administration/system/directories"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Directories & Queues", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Directories");
+
+            }
+
+            // LDAP Settings
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("alds");
+
+            if (driver.Url.Contains("#administration/system/ldap_settings"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("LDAP", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys LDAP Settings");
+
+            }
+
+            // Log Settings
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("als");
+
+            if (driver.Url.Contains("#administration/system/log_settings"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Log Settings", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Log Settings");
+
+            }
+
+            // DB Settings
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("ads");
+
+            if (driver.Url.Contains("#administration/system/db_settings"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Database Configuration Setting", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys DB Settings");
+
+            }
+
+            // Timezone Settings
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("ats");
+
+            if (driver.Url.Contains("#administration/system/timezone_settings"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Time Zone Setting", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Timezone Settings");
+
+            }
+
+            // Messengers
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("amr");
+
+            if (driver.Url.Contains("#administration/delivery/messengers"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Messengers", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Messengers");
+
+            }
+
+            // Carriers
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("acr");
+
+            if (driver.Url.Contains("#administration/delivery/carriers"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Carriers", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Carriers");
+
+            }
+
+            // Filters
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("afr");
+
+            if (driver.Url.Contains("#administration/delivery/filters"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Filters Panel", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Filters");
+
+            }
+
+            // System Attendant Settings
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("asa");
+
+            if (driver.Url.Contains("#administration/monitoring_failover/system_attendant_settings"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("System Attendant Settings", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys System Attendant Settings");
+
+            }
+
+            // Backup Settings
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("abs");
+
+            if (driver.Url.Contains("#administration/monitoring_failover/backup_settings"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Backup Service", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Backup Settings");
+
+            }
+
+            // Services
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("asv");
+
+            if (driver.Url.Contains("#administration/services_logs/services"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Services", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Services");
+
+            }
+
+            // Logs
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("asl");
+
+            if (driver.Url.Contains("#administration/services_logs/logs"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Logs", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Logs");
+
+            }
+
+            // Sessions Manager
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("asm");
+
+            if (driver.Url.Contains("#administration/services_logs/sessions_manager"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Sessions Manager", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Sessions Manager");
+
+            }
+
+            // About
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("me");
+
+            if (driver.Url.Contains("#about"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("About", driver.FindElement(By.XPath("//div[@class='main_container pg_about']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys About");
+
+            }
+
+            // Users
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sur");
+
+            if (driver.Url.Contains("#settings/accounts/users"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Users", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Users");
+
+            }
+
+            // User Groups
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sug");
+
+            if (driver.Url.Contains("#settings/accounts/user_groups"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("User Groups", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys User Groups");
+
+            }
+
+            // Department panel
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sdp");
+
+            if (driver.Url.Contains("#settings/accounts/departments"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Departments", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Department panel");
+
+            }
+
+            // Recipient Users
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sru");
+
+            if (driver.Url.Contains("#settings/accounts/recipient_users"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Recipient Users Main", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Recipient Users");
+
+            }
+
+            // Alarm Notification Gateway 
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("san");
+
+            if (driver.Url.Contains("#settings/integrations/alarm_notification_gateway"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Alarm Notification Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Alarm Notification Gateway");
+
+            }
+
+            // File System Interface
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sfs");
+
+            if (driver.Url.Contains("#settings/integrations/file_system_interface"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("File System Interface", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys File System Interface");
+
+            }
+
+            // Email Gateway
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sig");
+
+            if (driver.Url.Contains("#settings/integrations/email_gateway/view"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Email Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Email Gateway");
+
+            }
+
+            // SNPP Gateway
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sng");
+
+            if (driver.Url.Contains("#settings/integrations/snpp_gateway/view"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("SNPP Gateway", driver.FindElement(By.XPath("//div[@id='main']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys SNPP Gateway");
+
+            }
+
+            // XMPP Gateway
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sxg");
+
+            if (driver.Url.Contains("#settings/integrations/xmpp_gateway"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("XMPP Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys XMPP Gateway");
+
+            }
+
+            // TAP Gateway
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("stg");
+
+            if (driver.Url.Contains("#settings/integrations/tap_gateway"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("TAP Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys TAP Gateway");
+
+            }
+
+            // SNMP ALerts
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("smg");
+
+            if (driver.Url.Contains("#settings/integrations/snmp_alerts"))
+            {
+                Thread.Sleep(2000);
+                // Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys SNMP ALerts");
+
+            }
+
+            // Websign up Settings
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sws");
+
+            if (driver.Url.Contains("#settings/mass_notifications/websignup-settings"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Web Sign-up Settings", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Websign up Settings");
+
+            }
+
+            // GIS Settings
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sgs");
+
+            if (driver.Url.Contains("#settings/mass_notifications/gis_settings"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("GIS Integration", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys GIS Settings");
+
+            }
+
+            // Websign up Profiles
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("swp");
+
+            if (driver.Url.Contains("#settings/mass_notifications/web_signup_profiles"))
+            {
+                Thread.Sleep(2000);
+                //  Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Websign up Profiles");
+
+            }
+
+            // Websign up Topic Profiles
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("swt");
+
+            if (driver.Url.Contains("#settings/mass_notifications/web_signup_topic_profiles"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Web Sign-up Topic Settings", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Websign up Topic Profiles");
+
+            }
+
+            // Websign up Characteristics Profiles
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("swc");
+
+            if (driver.Url.Contains("#settings/mass_notifications/web_signup_characteristics_profile"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Web Sign-up characteristics Settings", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Websign up Characteristics Profiles");
+
+            }
+
+            // Websign up Recipients
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("swr");
+
+            if (driver.Url.Contains("#settings/mass_notifications/web_signup_recipients"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Web Sign-up Registered Recipients", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Websign up Recipients");
+
+            }
+
+            // Enterprise Mobility Activation
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sea");
+
+            if (driver.Url.Contains("#settings/enterprise_mobility/activation"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Activation", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Enterprise Mobility Activation");
+
+            }
+
+            // Enterprise Mobility Configuration
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sec");
+
+            if (driver.Url.Contains("#settings/enterprise_mobility/configuration"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("HNP Configuration", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Enterprise Mobility Configuration");
+
+            }
+
+            // General Ploicy 
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("seg");
+
+            if (driver.Url.Contains("#settings/enterprise_mobility/general_policy"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("General Policy", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys General Ploicy");
+
+            }
+
+            // Message Templates 
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("smt");
+
+            if (driver.Url.Contains("#settings/templates/message_templates"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Message Template", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Message Templates");
+
+            }
+
+            // Schedule Templates 
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sct");
+
+            if (driver.Url.Contains("#settings/templates/schedule_templates"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Schedule Template", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Schedule Templates");
+
+            }
+
+            // Events Feedback 
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sef");
+
+            if (driver.Url.Contains("#settings/2way_actions/events_feedback"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Feedback", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Events Feedback");
+
+            }
+
+            // Response Actions 
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("sra");
+
+            if (driver.Url.Contains("#settings/2way_actions/response_actions"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Response Actions Panel", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Response Actions");
+
+            }
+
+            // Broadcast Group 
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("cbg");
+
+            if (driver.Url.Contains("#recipients/groups/broadcast_group"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Broadcast Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Broadcast Group");
+
+            }
+
+            // Onduty Group 
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("cro");
+
+            if (driver.Url.Contains("#recipients/groups/on_duty_group"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("On-Duty Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Onduty Group");
+
+            }
+
+            // Escalation Group 
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("cre");
+
+            if (driver.Url.Contains("#recipients/groups/escalation_group"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Escalation Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Escalation Group");
+
+            }
+
+            // Rotation Group 
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("crg");
+
+            if (driver.Url.Contains("#recipients/groups/rotation_group"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Rotate Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Rotation Group");
+
+            }
+
+            // Follow me Group 
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("crf");
+
+            if (driver.Url.Contains("#recipients/groups/follow_me_group"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Follow-Me Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Follow me Group");
+
+            }
+
+            // Subscription Group 
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("crs");
+
+            if (driver.Url.Contains("#recipients/groups/subscription_group"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Subscription Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Subscription Group");
+
+            }
+
+            // Receivers 
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("crc");
+
+            if (driver.Url.Contains("#recipients/devices/receivers"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Receivers", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Receivers");
+
+            }
+
+            // Receiver Search
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("crh");
+
+            if (driver.Url.Contains("#recipients/devices/reciever_search"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Receiver Search", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Receiver Search");
+
+            }
+
+            // Primary Send
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("nsp");
+
+            if (driver.Url.Contains("#send/send/primary_send"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Primary Send Panel", driver.FindElement(By.Id("lblPanelTitle")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Primary Send");
+
+            }
+
+            // Quick Send
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("nsq");
+
+            if (driver.Url.Contains("#send/send/quick_send"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Quick Send Panel", driver.FindElement(By.Id("lblPanelTitle")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Quick Send");
+
+            }
+
+            // Escalation Send
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("nse");
+
+            if (driver.Url.Contains("#send/send/escalation_send"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Escalation Send Panel", driver.FindElement(By.Id("lblPanelTitle")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Escalation Send");
+
+            }
+
+            // Fax Send
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("nsf");
+
+            if (driver.Url.Contains("#send/send/fax_send"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Fax Send Panel", driver.FindElement(By.Id("lblPanelTitle")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Fax Send");
+
+            }
+
+            // Voice Send
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("nsv");
+
+            if (driver.Url.Contains("#send/send/voice_send"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Voice Send Panel", driver.FindElement(By.Id("lblPanelTitle")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Voice Send");
+
+            }
+
+            // Attribute Send
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("nsa");
+
+            if (driver.Url.Contains("#send/send/attribute_send"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Attribute Send Panel", driver.FindElement(By.Id("lblPanelTitle")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Attribute Send");
+
+            }
+
+            // Quota Send
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("nsu");
+
+            if (driver.Url.Contains("#send/send/quota_send"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Quota Send Panel", driver.FindElement(By.Id("lblPanelTitle")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Quota Send");
+
+            }
+
+            // Websign up Notification
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("nmw");
+
+            if (driver.Url.Contains("#send/mass_notification/web_signup_notification"))
+            {
+                Thread.Sleep(2000);
+                //  Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Websign up Notification");
+
+            }
+
+            // Map based Notification
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("nmn");
+
+            if (driver.Url.Contains("#send/mass_notification/map_based_notification"))
+            {
+                Thread.Sleep(2000);
+                //    Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Map based Notification");
+
+            }
+
+            // Campaign Progress
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("nsc");
+
+            if (driver.Url.Contains("#send/send_management/campaign_progress"))
+            {
+                Thread.Sleep(2000);
+                //   Assert.AreEqual("Departments Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Campaign Progress");
+
+            }
+
+            // Confirm Message
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("nsg");
+
+            if (driver.Url.Contains("#send/send_management/confirm_message"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual(true, driver.FindElement(By.XPath("//form[@id='jobConfirmationLightbox']")).Displayed);
+
+                driver.FindElement(By.Id("btnCloseJobConfirm")).Click();
+                Thread.Sleep(2000);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Confirm Message");
+
+            }
+
+            // Resend Message
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("nsn");
+
+            if (driver.Url.Contains("#send/send_management/resend_message"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Resend Panel", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Resend Message");
+
+            }
+
+            // Escalation Queue
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("qe");
+
+            if (driver.Url.Contains("#queues/message_queues/Escalation/3"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Escalation Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Escalation Queue");
+
+            }
+
+            // Scheduled Queue
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("qs");
+
+            if (driver.Url.Contains("#queues/message_queues/Scheduled/2"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Scheduled Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Scheduled Queue");
+
+            }
+
+            // Waiting Queue
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("qw");
+
+            if (driver.Url.Contains("#queues/message_queues/Waiting/10"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Waiting Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Waiting Queue");
+
+            }
+
+            // Fax Queue
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("qx");
+
+            if (driver.Url.Contains("#queues/paging_queues/Fax/6"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Fax Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Fax Queue");
+
+            }
+
+            // Voice Queue
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("qv");
+
+            if (driver.Url.Contains("#queues/paging_queues/Voice/7"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Voice Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Voice Queue");
+
+            }
+
+            // Default Queue
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("qd");
+
+            if (driver.Url.Contains("#queues/paging_queues/Default/101"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Default Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Default Queue");
+
+            }
+
+            // Failed Queue
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("qf");
+
+            if (driver.Url.Contains("#queues/terminal_queues/Failed/5"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Failed Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Failed Queue");
+
+            }
+
+            // Filtered Queue
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("ql");
+
+            if (driver.Url.Contains("#queues/terminal_queues/Filtered/9"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Filtered Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Filtered Queue");
+
+            }
+
+            // Completed Queue
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("qc");
+
+            if (driver.Url.Contains("#queues/terminal_queues/Completed/4"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Completed Queue", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Completed Queue");
+
+            }
+
+            // Report List
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("rl");
+
+            if (driver.Url.Contains("#reports/main/reports/list"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Reports", driver.FindElement(By.Id("main_title")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Report List");
+
+            }
+
+            // Report Summary
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("ru");
+
+            if (driver.Url.Contains("#reports/main/reports/summary"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Reports", driver.FindElement(By.Id("main_title")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Report Summary");
+
+            }
+
+            // Stats
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("rt");
+
+            if (driver.Url.Contains("#reports/main/stats"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Statistics", driver.FindElement(By.Id("main_title")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Stats");
+
+            }
+
+            // Websign up
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("rw");
+
+            if (driver.Url.Contains("#reports/main/reports/webSignup"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Reports", driver.FindElement(By.Id("main_title")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Websign up");
+
+            }
+
+            // Reports
+            driver.FindElement(By.XPath(".//*[@id='lblCustomHeader']")).SendKeys("rs");
+
+            if (driver.Url.Contains("#reports"))
+            {
+                Thread.Sleep(2000);
+                Assert.AreEqual("Reports", driver.FindElement(By.Id("main_title")).Text);
+
+            }
+            else
+            {
+
+                Assert.Fail("Shortcutkeys Reports");
+
+            }
+
+        }
+
+
+
         public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 
         {
 

@@ -173,6 +173,167 @@ namespace HL_Breadth
             verificationErrors = new StringBuilder();
         }
 
+
+
+        [Test]
+        public void a_User_Session()
+        {
+
+            check_driver_type(driver_type, "administration", "Sessions Manager", "Sys Admin");
+
+            Assert.AreEqual("Sessions Manager", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            Console.WriteLine(driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text);
+
+            if (!(driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text.Contains(login_name) &&
+
+                driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text.Contains(browser)))
+            {
+                Assert.Fail("Session Manager Failed ...");
+            }
+
+            else
+            {
+                Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Session Manager Passed ...    ^^^^^^^^^^^^^^^^^^^^^");
+
+            }
+
+        }
+
+
+        [Test]
+        public void b_License_Page()
+        {
+
+            check_driver_type(driver_type, "administration", "Install Licence", "Sys Admin");
+
+            Assert.AreEqual("Install Licence", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[@class='product_name']")).Text + "*");
+
+            if (!(driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[@class='product_name']")).Text.Contains("HipLink") &&
+                driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[@class='version']")).Text.Contains("4.7") &&
+                driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[4]")).Text.Contains("Full")))
+            {
+                Assert.Fail("License page Failed...");
+            }
+            else
+            {
+                Console.WriteLine("^^^^^^^^^^^^^^^^^  License page Passed...  ^^^^^^^^^^^^^^^^^^^");
+            }
+        }
+
+
+
+        [Test]
+        public void c_About_Page()
+        {
+
+            check_driver_type(driver_type, "administration", "About Hiplink", "Sys Admin");
+
+            Assert.AreEqual("About", driver.FindElement(By.XPath("//div[@class='main_container pg_about']/h1")).Text);
+
+
+            if (!(driver.FindElement(By.Id("lblProductName")).Text.Equals("HipLink") &&
+                driver.FindElement(By.XPath("//i[@class='product_name_sec']")).Text.Contains("Hiplink Alert Notification Solutions")))
+            {
+                Assert.Fail("About page Failed...");
+            }
+            else
+            {
+                Console.WriteLine("^^^^^^^^^^^^^^^^^  About page Passed...  ^^^^^^^^^^^^^^^^^^^");
+            }
+        }
+
+
+
+        [Test]
+        public void d_Help()
+        {
+            ICollection<string> windowids = null;
+            IEnumerator<String> iter = null;
+            String mainWindowId = null;
+            String curWindow = null;
+
+            Thread.Sleep(1000);
+
+            mainWindowId = driver.CurrentWindowHandle;
+            Console.WriteLine("Main window handle: " + mainWindowId);//main window id
+
+            // The below step would use whatever element you need to use to 
+            // open the new window. 
+            driver.FindElement(By.LinkText("Help")).Click();
+
+            //    Assert.AreEqual("Help", driver.FindElement(By.XPath("//div[@class='main_container pg_help']/h1")).Text);
+
+            //the above should open a new tab on current browser window BUT Selenium will open it as a new browser window
+
+            Thread.Sleep(25);
+
+            takescreenshot("help");
+
+            windowids = null;
+            windowids = driver.WindowHandles; // returns an ID for every opened window
+            iter = windowids.GetEnumerator(); ;  // iterate through open browser and print out their ids. One id only for now.
+            Console.WriteLine("List Window IDs. There should be 2 id now");
+            Console.WriteLine("=========================================");
+
+            for (int i = 0; i < windowids.Count; i++)
+            {
+                Console.WriteLine(windowids.ElementAt(i));
+                if (i != 0)
+                {
+
+                    driver.SwitchTo().Window(windowids.ElementAt(i)).Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(5L));
+
+                    Console.WriteLine(driver.FindElement(By.XPath("//div[@class='main_container pg_help']")).Text);
+                    Console.WriteLine(driver.FindElement(By.XPath("//li[@class='product_name']")).Text);
+
+
+                    if (driver.FindElement(By.XPath("//div[@class='main_container pg_help']")).Text.Contains("Help") &&
+
+                        driver.FindElement(By.XPath("//li[@class='product_name']")).Text.Contains("Manual"))
+                    {
+
+                        // Do some operations in the new window and close it 
+                        driver.Close();
+
+                        Console.WriteLine("^^^^^^^^^^^^^^^  Help Passed ... ^^^^^^^^^^^^^^^^");
+                    }
+
+                    else
+                    {
+                        Assert.Fail("Help Failed ...");
+                    }
+
+
+                }
+
+                else
+                {
+                    Console.WriteLine("We are at main window right now! ");
+                }
+            }
+            Thread.Sleep(3000);
+
+            // This switches to the window by name. You could also search for 
+            // the newly opened window handle and switch using that. 
+            // Code that does this is left as an exercise for you to complete on your own. 
+
+
+            // Switch "focus" back to the original window. 
+            //   driver.SwitchTo().Window(originalHandle);
+
+            //-------------------------------------------------------------------      
+
+
+
+        }
+
+
+
+
+
         public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 
         {
 
