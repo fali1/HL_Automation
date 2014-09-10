@@ -1220,7 +1220,7 @@ namespace HL_Breadth
 
                 driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
 
-                driver.FindElement(By.XPath(path1 + "sysOper" + path2)).Click();
+                driver.FindElement(By.XPath(path1 + "usrSend" + path2)).Click();
 
                 driver.FindElement(By.Id("btnUsergroup")).Click();
                 Thread.Sleep(2000);
@@ -1296,7 +1296,7 @@ namespace HL_Breadth
                     //  driver.FindElement(By.XPath("//a[text()='Permission']")).Click();
                     Thread.Sleep(2000);
 
-                    driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
+            /*        driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
 
                     driver.FindElement(By.XPath(path1 + "sysOper" + path2)).Click();
 
@@ -1305,6 +1305,7 @@ namespace HL_Breadth
 
                     driver.FindElement(By.Id("btnUsergroup")).Click();
                     Thread.Sleep(2000);
+             */ 
 
                     driver.FindElement(By.Id("btnsave")).Click();
                     Thread.Sleep(2000);

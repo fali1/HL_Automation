@@ -813,7 +813,7 @@ namespace HL_Breadth
             driver.FindElement(By.Id("moveItemRight")).Click();
             Thread.Sleep(1000);
 
-            driver.FindElement(By.XPath("//span[text()='receiver_fax']")).Click();
+            driver.FindElement(By.XPath("//span[text()='aa_test_receiver']")).Click();
             driver.FindElement(By.Id("moveItemRight")).Click();
             Thread.Sleep(1000);
 

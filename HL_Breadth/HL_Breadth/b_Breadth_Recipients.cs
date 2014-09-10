@@ -1306,7 +1306,7 @@ namespace HL_Breadth
                     if(!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(broadcast_group_name_2_edited)))
                     {
                         takescreenshot("Editing_Broadcast_Group_Failed");
-                        Assert.Fail("Editing Broadcast Group Failed ...");
+                        Assert.Fail("Editing Second Broadcast Group Failed ...");
                     }
                     else
                     {
@@ -1325,7 +1325,7 @@ namespace HL_Breadth
                         else
                         {
                             takescreenshot("Deleting_Broadcast_Group_Failed");
-                            Assert.Fail("Deleting Broadcast Group Failed ...");
+                            Assert.Fail("Deleting Second Broadcast Group Failed ...");
                         }
                     }
                 
