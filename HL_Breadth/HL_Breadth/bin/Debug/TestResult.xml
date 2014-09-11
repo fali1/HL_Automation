@@ -1,22 +1,98 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" total="1" errors="1" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-10" time="17:10:18">
+<test-results name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" total="9" errors="7" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-11" time="20:02:19">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5483" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" executed="True" result="Failure" success="False" time="95.862" asserts="0">
+  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" executed="False" result="Cancelled">
     <results>
-      <test-suite type="Namespace" name="HL_Breadth" executed="True" result="Failure" success="False" time="95.862" asserts="0">
+      <test-suite type="Namespace" name="HL_Breadth" executed="False" result="Cancelled">
         <results>
-          <test-suite type="TestFixture" name="c_Breadth_Account" executed="True" result="Failure" success="False" time="95.861" asserts="1">
+          <test-suite type="TestFixture" name="b_Breadth_Recipients" executed="False" result="Cancelled">
             <results>
-              <test-case name="HL_Breadth.c_Breadth_Account.e_Add_Edit_Delete_Department" executed="True" result="Error" success="False" time="83.909" asserts="1">
+              <test-case name="HL_Breadth.b_Breadth_Recipients.a_Add_Edit_Delete_Directory_Settings_Panel" executed="True" result="Success" success="True" time="42.045" asserts="1" />
+              <test-case name="HL_Breadth.b_Breadth_Recipients.b_Add_Edit_Delete_Messenger" executed="True" result="Success" success="True" time="65.236" asserts="1" />
+              <test-case name="HL_Breadth.b_Breadth_Recipients.c_Add_Edit_Delete_Carrier" executed="True" result="Error" success="False" time="28.039" asserts="0">
                 <failure>
-                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"xpath","selector":"//li[text()='sysOper']"}]]></message>
-                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
+                  <message><![CDATA[System.InvalidOperationException : [JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]'[JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]' when calling method: [nsICommandProcessor::execute]]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1048
 at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
 at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
 at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
-at HL_Breadth.c_Breadth_Account.e_Add_Edit_Delete_Department() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\c_Breadth_Account.cs:line 1301
+at HL_Breadth.b_Breadth_Recipients.hover_func(String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2598
+at HL_Breadth.b_Breadth_Recipients.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2554
+at HL_Breadth.b_Breadth_Recipients.c_Add_Edit_Delete_Carrier() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 570
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.b_Breadth_Recipients.d_Add_Edit_Delete_Receiver" executed="True" result="Error" success="False" time="4.024" asserts="0">
+                <failure>
+                  <message><![CDATA[System.InvalidOperationException : [JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]'[JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]' when calling method: [nsICommandProcessor::execute]]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1048
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Breadth.b_Breadth_Recipients.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2520
+at HL_Breadth.b_Breadth_Recipients.d_Add_Edit_Delete_Receiver() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 893
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.b_Breadth_Recipients.e_Add_Edit_Delete_Broadcast_Group" executed="True" result="Error" success="False" time="4.018" asserts="0">
+                <failure>
+                  <message><![CDATA[System.InvalidOperationException : [JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]'[JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]' when calling method: [nsICommandProcessor::execute]]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1048
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Breadth.b_Breadth_Recipients.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2520
+at HL_Breadth.b_Breadth_Recipients.e_Add_Edit_Delete_Broadcast_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 1138
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.b_Breadth_Recipients.f_Add_Edit_Delete_Escalation_Group" executed="True" result="Error" success="False" time="4.028" asserts="0">
+                <failure>
+                  <message><![CDATA[System.InvalidOperationException : [JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]'[JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]' when calling method: [nsICommandProcessor::execute]]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1048
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Breadth.b_Breadth_Recipients.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2520
+at HL_Breadth.b_Breadth_Recipients.f_Add_Edit_Delete_Escalation_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 1357
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.b_Breadth_Recipients.g_Add_Edit_Delete_On_Duty_Group" executed="True" result="Error" success="False" time="4.035" asserts="0">
+                <failure>
+                  <message><![CDATA[System.InvalidOperationException : [JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]'[JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]' when calling method: [nsICommandProcessor::execute]]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1048
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Breadth.b_Breadth_Recipients.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2520
+at HL_Breadth.b_Breadth_Recipients.g_Add_Edit_Delete_On_Duty_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 1585
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.b_Breadth_Recipients.h_Add_Edit_Delete_Follow_me_Group" executed="True" result="Error" success="False" time="4.027" asserts="0">
+                <failure>
+                  <message><![CDATA[System.InvalidOperationException : [JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]'[JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]' when calling method: [nsICommandProcessor::execute]]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1048
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Breadth.b_Breadth_Recipients.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2520
+at HL_Breadth.b_Breadth_Recipients.h_Add_Edit_Delete_Follow_me_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 1899
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.b_Breadth_Recipients.i_Add_Edit_Delete_Rotate_Group" executed="False" result="Cancelled">
+                <failure>
+                  <message><![CDATA[Test cancelled by user]]></message>
+                  <stack-trace><![CDATA[at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+at NUnit.Core.Reflect.InvokeMethod(MethodInfo method, Object fixture, Object[] args)
+at NUnit.Core.TestMethod.RunTestMethod()
+at NUnit.Core.TestMethod.RunTestCase(TestResult testResult)
 ]]></stack-trace>
                 </failure>
               </test-case>

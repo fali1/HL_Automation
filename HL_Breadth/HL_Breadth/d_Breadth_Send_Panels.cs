@@ -22,6 +22,8 @@ using OpenQA.Selenium.Support.PageObjects;
 using System.Windows;
 using System.Linq;
 using System.Collections;
+using System.Diagnostics;
+using System.ComponentModel;
 
 namespace HL_Breadth
 {
@@ -85,7 +87,7 @@ namespace HL_Breadth
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-            // System.Diagnostics.Debugger.Launch();// launch debugger
+             System.Diagnostics.Debugger.Launch();// launch debugger
 
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
@@ -172,6 +174,56 @@ namespace HL_Breadth
             Assert.AreEqual(trimmed_user_label, "Welcome admin");
 
             verificationErrors = new StringBuilder();
+        }
+
+        [Test]
+        public void aa_test()
+        {
+            
+            //Build Commands - You may have to play with the syntax
+            // on executing the batch file , in whch the following content will be written ,
+            // first directory will be Changed using '%1', to the specified path defined in Arguments
+            // then hipadm cmnd will be concatinated in th cmd prompt
+            // then it will take pause
+
+    
+            string[] cmdBuilder = new string[] 
+      
+            {
+                // '/d' will change the directory and '%1' will get the complete path till hiplink bin
+                @"cd /d ""%1""",
+                @"hipadm.exe -addreceiver -adminusername admin -adminpassword admin -receivername r1  -receivertype alpha -pin testm703@gmail.com -carrier smtp_carrier -department Default",
+                @"pause"
+            };
+            
+            //Create a File Path
+            string BatFile = @".\add_receiver.bat";
+
+            //Create Stream to write to file.
+            StreamWriter sWriter = new StreamWriter(BatFile);
+
+            foreach (string cmd in cmdBuilder) 
+            {
+                sWriter.WriteLine(cmd); 
+            }
+            
+            sWriter.Close();
+
+            //Run your Batch File & Remove it when finished.
+
+            Process p = new Process();
+            ProcessStartInfo ps = new ProcessStartInfo();
+   
+            ps.CreateNoWindow = true;
+            ps.UseShellExecute = true;
+            ps.FileName = @".\add_receiver.bat"; // this batch file will be executed
+            ps.Arguments = @"""C:\Program Files (x86)\HipLink Software\Hiplink\bin"""; //this argument will be replaced by '%1' in batch file created bove
+            p.StartInfo = ps;
+            p.Start();
+            p.WaitForExit();
+            // File.Delete(@".\add_receiver.bat");
+   
+            
         }
 
 
@@ -308,11 +360,70 @@ namespace HL_Breadth
         public void b_Primary_Send_Panel()
         {
 
-            string receiver_name = "receiver_smtp";
+          //  string receiver_name = "receiver_smtp";
             string primary_message = "Test Automation Message";
             string response_action_name = "Test Response Action";
 
             ArrayList array_list = new ArrayList();
+
+
+            /////////////////////////// Adding receiver ///////////////////////////////
+
+
+            string receiver_name = "receiver_smtp_send";
+            
+            string receiver_description = "Receiver Description";
+            
+            string receiver_pin = "testm703@gmail.com";
+            
+            string receiver_emailaddress = "email@address.com";
+
+            string department_name = "Default";
+
+
+            //check_driver_type(driver_type, "recipients", "Receivers", "Recipients");
+
+            driver.FindElement(By.Id("recipients")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.LinkText("Receivers")).Click();
+            Thread.Sleep(2000);
+
+            Assert.AreEqual("Receivers", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);  //verifying page name
+
+            driver.FindElement(By.XPath("//a[text()='Add Reciever']")).Click();
+            Thread.Sleep(5000);
+
+            driver.FindElement(By.Id("txtName")).Clear();
+            driver.FindElement(By.Id("txtName")).SendKeys(receiver_name);
+
+            driver.FindElement(By.Id("txtADesc")).Clear();
+            driver.FindElement(By.Id("txtADesc")).SendKeys(receiver_description);
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("(//li[contains(text(),'" + department_name + "')])")).Click();// selecting department
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("(//li[contains(text(),'" + carrier_name + "')])")).Click();// selecting carrier
+
+            driver.FindElement(By.Id("txtPrimaryPin")).Clear();
+            driver.FindElement(By.Id("txtPrimaryPin")).SendKeys(receiver_pin);
+
+            driver.FindElement(By.Id("btnsave")).Click();
+            Thread.Sleep(2000);
+
+            takescreenshot("Receiver");
+
+            ///////////////////////////////////////////////////////////////////////////
+
+
+
+
 
             check_driver_type(driver_type, "send", "Primary Send", "Send");
 
@@ -427,7 +538,6 @@ namespace HL_Breadth
                             driver.FindElement(By.Id("btnToMessage")).Click();
                             Thread.Sleep(2000);
 
-                           
                         }
                     }
                     else

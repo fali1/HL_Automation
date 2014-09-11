@@ -705,7 +705,7 @@ namespace HL_Smoke
 
                 check_driver_type(driver_type, "recipients", "Broadcast", "Recipients");
 
-                Assert.AreEqual("Broadcast Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);  //verifying page name
+                Assert.AreEqual("Broadcast Groups", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);  //verifying page name
 
                 driver.FindElement(By.LinkText("Add Group")).Click();
 
@@ -776,7 +776,7 @@ namespace HL_Smoke
 
                 check_driver_type(driver_type, "recipients", "Escalation", "Recipients");
 
-                Assert.AreEqual("Escalation Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);  //verifying page name
+                Assert.AreEqual("Escalation Groups", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);  //verifying page name
 
                 driver.FindElement(By.LinkText("Add Group")).Click();
                 Thread.Sleep(2000);
@@ -860,7 +860,7 @@ namespace HL_Smoke
 
                 check_driver_type(driver_type, "recipients", "On-Duty", "Recipients");
 
-                Assert.AreEqual("On-Duty Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);  //verifying page name
+                Assert.AreEqual("On-Duty Groups", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);  //verifying page name
 
                 driver.FindElement(By.LinkText("Add Group")).Click();
 
@@ -971,7 +971,7 @@ namespace HL_Smoke
 
                 check_driver_type(driver_type, "recipients", "Follow-Me", "Recipients");
 
-                Assert.AreEqual("Follow-Me Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);  //verifying page name
+                Assert.AreEqual("Follow-Me Groups", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);  //verifying page name
 
                 driver.FindElement(By.LinkText("Add Group")).Click();
 
@@ -1123,7 +1123,7 @@ namespace HL_Smoke
 
                 check_driver_type(driver_type, "recipients", "Rotation", "Recipients");
 
-                Assert.AreEqual("Rotate Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);  //verifying page name
+                Assert.AreEqual("Rotate Groups", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);  //verifying page name
 
                 driver.FindElement(By.LinkText("Add Group")).Click();
 
@@ -1195,7 +1195,7 @@ namespace HL_Smoke
 
                 check_driver_type(driver_type, "recipients", "Subscription Groups", "Recipients");
 
-                Assert.AreEqual("Subscription Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);  //verifying page name
+                Assert.AreEqual("Subscription Groups", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);  //verifying page name
 
                 driver.FindElement(By.LinkText("Add Group")).Click();
                 Thread.Sleep(2000);
