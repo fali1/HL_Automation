@@ -156,6 +156,7 @@ namespace HL_Breadth
             driver.FindElement(By.Id("password")).SendKeys(login_pwd);
 
             driver.FindElement(By.CssSelector("a.c_btn_large1.login_button")).Click();// user login button
+            driver.FindElement(By.Id("btnOk")).Click();
 
             Thread.Sleep(3000);
 
@@ -477,7 +478,7 @@ namespace HL_Breadth
         [Test]
         public void c_Backup_Settings_Panel()
         {
-            string backup_dir = @"C:\Program Files (x86)\Hiplink Software\HipLink\backup";
+            string backup_dir = @"C:\HipLink\backup";
             string backup_keep_days = "05";
             string backup_start_time = "05:06";
             string backup_interval = "02";
@@ -822,8 +823,8 @@ namespace HL_Breadth
         public void f_File_System_Interface()
         {
             string hiplink_url = "info@folio3.com";
-            string spool_dir = @"C:\Program Files (x86)\HipLink Software\Hiplink\test";
-            string bulk_spool_dir = @"C:\Program Files (x86)\HipLink Software\Hiplink\new";
+            string spool_dir = @"C:\Hiplink\test";
+            string bulk_spool_dir = @"C:\Hiplink\new";
             string bulk_message_recipient_pattern = "^.*<Receiver:(.*)>.*$";
             string bulk_message_pattern = "^.*>(.*)$";
             string bulk_message_file_pattern = "*";
@@ -1141,7 +1142,7 @@ namespace HL_Breadth
 
             check_driver_type(driver_type, "settings", "Schedule Template", "Settings");
 
-            Assert.AreEqual("Schedule Template", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+            Assert.AreEqual("Schedule Templates", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             driver.FindElement(By.LinkText("Add Schedule Template")).Click();
 

@@ -159,6 +159,7 @@ namespace HL_Breadth
             driver.FindElement(By.Id("password")).SendKeys(login_pwd);
 
             driver.FindElement(By.CssSelector("a.c_btn_large1.login_button")).Click();// user login button
+            driver.FindElement(By.Id("btnOk")).Click();
 
             Thread.Sleep(3000);
 
@@ -348,7 +349,7 @@ namespace HL_Breadth
 
             check_driver_type(driver_type, "settings", "Message Template", "Settings");
 
-            Assert.AreEqual("Message Template", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+            Assert.AreEqual("Message Templates", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             driver.FindElement(By.LinkText("Add Template")).Click();
 
@@ -665,11 +666,11 @@ namespace HL_Breadth
 
             check_driver_type(driver_type, "settings", "Response Actions", "Settings");
 
-            Assert.AreEqual("Response Actions Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+            Assert.AreEqual("Response Actions", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
             Thread.Sleep(2000);
 
-            driver.FindElement(By.LinkText("Add Action")).Click();
+            driver.FindElement(By.LinkText("Add Response Action")).Click();
 
             driver.FindElement(By.Id("txtname")).Clear();
             driver.FindElement(By.Id("txtname")).SendKeys(response_action_name);
@@ -701,7 +702,7 @@ namespace HL_Breadth
 
              */
 
-            driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();  // Actions dropdown
+            driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();  // Actions dropdown
             driver.FindElement(By.XPath("//li[text()='Command Line']")).Click();
 
             driver.FindElement(By.Id("txtAcommand")).Clear();
@@ -713,7 +714,7 @@ namespace HL_Breadth
             Thread.Sleep(2000);
 
 
-            Console.WriteLine(driver.FindElement(By.XPath(".//*[@id='divGrid_idGridDataNode']/div[1]/div[1]/div[1]/div[2]")).Text);
+            
 
             if (!(driver.FindElement(By.XPath(".//*[@id='divGrid_idGridDataNode']/div/div[1]/div/div[3]")).Text.Contains(response_action_name)))
             {
@@ -725,7 +726,7 @@ namespace HL_Breadth
             {
                 // ADDED SECOND RECORD
 
-                driver.FindElement(By.LinkText("Add Action")).Click();
+                driver.FindElement(By.LinkText("Add Response Action")).Click();
 
                 driver.FindElement(By.Id("txtname")).Clear();
                 driver.FindElement(By.Id("txtname")).SendKeys(response_action_name_2);
@@ -838,7 +839,7 @@ namespace HL_Breadth
 
             Thread.Sleep(2000);
 
-            check_driver_type(driver_type, "settings", "User Groups- Permissioning", "Settings");
+            check_driver_type(driver_type, "settings", "User Groups", "Settings");
 
             Assert.AreEqual("User Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
@@ -1426,7 +1427,7 @@ namespace HL_Breadth
                  Thread.Sleep(1000);
              */
 
-            driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
+            driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click();
             Thread.Sleep(1000);
 
             driver.FindElement(By.XPath("//li[text()='sysAdmin']")).Click();

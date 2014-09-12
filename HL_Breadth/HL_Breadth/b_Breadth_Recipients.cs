@@ -63,9 +63,9 @@ namespace HL_Breadth
 
         // DIRECTORY VARIABLES
 
-        string create_directory_path_directory = @"C:\Program Files (x86)\Hiplink Software\HipLink\new_directory";
+        string create_directory_path_directory = @"C:\HipLink\new_directory";
 
-        string create_directory_path_directory_2 = @"C:\Program Files (x86)\Hiplink Software\HipLink\new_directory_2";
+        string create_directory_path_directory_2 = @"C:\HipLink\new_directory_2";
 
         string new_dir = "new_directory";
 
@@ -173,6 +173,8 @@ namespace HL_Breadth
             driver.FindElement(By.Id("password")).SendKeys(login_pwd);
 
             driver.FindElement(By.CssSelector("a.c_btn_large1.login_button")).Click();// user login button
+
+            driver.FindElement(By.Id("btnOk")).Click();
 
             Thread.Sleep(3000);
 
@@ -776,7 +778,7 @@ namespace HL_Breadth
                 {
                     //EDITING CARRIER
 
-                    driver.FindElement(By.XPath("(//img[@src='./images/bg_gd_icon_edit.png'])[2]")).Click();
+                    driver.FindElement(By.XPath("(//a[@class='row_action_edit'])[2]")).Click();
 
                     driver.FindElement(By.Id("carrierName")).Clear();
                     driver.FindElement(By.Id("carrierName")).SendKeys(carrier_name_2_edited);
@@ -836,7 +838,7 @@ namespace HL_Breadth
                     {
                         // DELETING CARRIER
 
-                        driver.FindElement(By.XPath("(//img[@src='./images/bg_gd_icon_delete.png'])[1]")).Click();
+                        driver.FindElement(By.XPath("(//a[@class='row_action_delete'])[1]")).Click();
 
                         IAlert delete_alert = driver.SwitchTo().Alert();
                         delete_alert.Accept();
@@ -917,13 +919,13 @@ namespace HL_Breadth
             driver.FindElement(By.XPath("(//li[contains(text(),'" + department_name + "')])")).Click();// selecting department
             Thread.Sleep(2000);
 
-            driver.FindElement(By.Id("btnEditAttribute")).Click();
+         //   driver.FindElement(By.Id("btnEditAttribute")).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("//span[contains(text(),'A1')]")).Click();
+         //   driver.FindElement(By.XPath("//span[contains(text(),'A1')]")).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.Id("btnAddAttribute")).Click();
+         //   driver.FindElement(By.Id("btnAddAttribute")).Click();
             Thread.Sleep(2000);
 
             driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();
@@ -1137,7 +1139,7 @@ namespace HL_Breadth
 
             check_driver_type(driver_type, "recipients", "Broadcast", "Recipients");
 
-            Assert.AreEqual("Broadcast Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);  //verifying page name
+            Assert.AreEqual("Broadcast Groups", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);  //verifying page name
 
             driver.FindElement(By.LinkText("Add Group")).Click();
 
@@ -1181,9 +1183,9 @@ namespace HL_Breadth
             driver.FindElement(By.Id("btnCancelTwo")).Click();
             Thread.Sleep(2000);
 
-            Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text);
+           
 
-            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text.Contains(broadcast_group_name)))
+            if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(broadcast_group_name)))
             {
                 takescreenshot("Broadcast_Group_Failed");
                 Console.WriteLine("^^^^^^^^^^^^^^^ Broadcast Group Failed ... ^^^^^^^^^^^^^^^");
@@ -1255,8 +1257,8 @@ namespace HL_Breadth
 
 
                 // VERIFYING SECOND ADDED BROADCAST GROUP
-                
-                if(!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(broadcast_group_name_2)))
+
+                if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(broadcast_group_name_2)))
                 {
                     takescreenshot("Second_Added_Broadcast_Group_Failed");
                     Assert.Fail("Second Added Broadcast Group Failed ...");
@@ -1303,7 +1305,7 @@ namespace HL_Breadth
             
                     // VERIFYING SECOND EDITED BROADCAST GROUP
 
-                    if(!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(broadcast_group_name_2_edited)))
+                    if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(broadcast_group_name_2_edited)))
                     {
                         takescreenshot("Editing_Broadcast_Group_Failed");
                         Assert.Fail("Editing Second Broadcast Group Failed ...");
@@ -1317,7 +1319,7 @@ namespace HL_Breadth
                         driver.FindElement(By.Id("btnOk")).Click();
                         Thread.Sleep(2000);
 
-                        if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(broadcast_group_name_2_edited)))
+                        if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(broadcast_group_name_2_edited)))
                         {
                             takescreenshot("Broadcast_Group_Passed");
                             Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add_Edit_Delete Broadcast Group Passed... ^^^^^^^^^^^^^^^^^^^^^");
@@ -1356,7 +1358,7 @@ namespace HL_Breadth
 
             check_driver_type(driver_type, "recipients", "Escalation", "Recipients");
 
-            Assert.AreEqual("Escalation Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);  //verifying page name
+            Assert.AreEqual("Escalation Groups", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);  //verifying page name
 
             driver.FindElement(By.LinkText("Add Group")).Click();
             Thread.Sleep(2000);
@@ -1412,9 +1414,9 @@ namespace HL_Breadth
             driver.FindElement(By.Id("btnCancelTwo")).Click();
             Thread.Sleep(2000);
 
-            Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text);
+          
 
-            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text.Contains(escalation_group_name)))
+            if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(escalation_group_name)))
             {
                 takescreenshot("Escalation_Group_Failed");
                 Assert.Fail("Escalation Group Failed ...");
@@ -1485,7 +1487,7 @@ namespace HL_Breadth
 
                 // VERIFYING SECOND ADDED ESCALATION GROUP
 
-                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(escalation_group_name_2)))
+                if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(escalation_group_name_2)))
                 {
                     takescreenshot("Second_Added_Escalation_Group_Failed");
                     Assert.Fail("Second Added Escalation Group Failed ...");
@@ -1531,7 +1533,7 @@ namespace HL_Breadth
 
                     // VERIFYING SECOND EDITED ESCALATION GROUP
 
-                    if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(escalation_group_name_2_edited)))
+                    if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(escalation_group_name_2_edited)))
                     {
                         takescreenshot("Editing_Escalation_Group_Failed");
                         Assert.Fail("Editing Escalation Group Failed ...");
@@ -1545,7 +1547,7 @@ namespace HL_Breadth
                         driver.FindElement(By.Id("btnOk")).Click();
                         Thread.Sleep(2000);
 
-                        if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(escalation_group_name_2_edited)))
+                        if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(escalation_group_name_2_edited)))
                         {
                             takescreenshot("Broadcast_Group_Passed");
                             Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add_Edit_Delete Escalation Group Passed... ^^^^^^^^^^^^^^^^^^^^^");
@@ -1584,7 +1586,7 @@ namespace HL_Breadth
 
             check_driver_type(driver_type, "recipients", "On-Duty", "Recipients");
 
-            Assert.AreEqual("On-Duty Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);  //verifying page name
+            Assert.AreEqual("On-Duty Groups", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);  //verifying page name
 
             driver.FindElement(By.LinkText("Add Group")).Click();
 
@@ -1666,7 +1668,7 @@ namespace HL_Breadth
             driver.FindElement(By.XPath("(//a[contains(text(),'On-Duty')])[2]")).Click(); // as an alternate of close button , bcz its not working right now
 
 
-            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(on_duty_group_name))) // /div[1]/div[1]/div/div[3]
+            if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(on_duty_group_name))) // /div[1]/div[1]/div/div[3]
             {
 
                 takescreenshot("On_Duty_Group_Failed");
@@ -1767,7 +1769,7 @@ namespace HL_Breadth
 
                 // VERIFYING SECOND ADDED ONDUTY GROUP
 
-                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(on_duty_group_name_2)))
+                if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(on_duty_group_name_2)))
                 {
                     takescreenshot("Second_Added_Onduty_Group_Failed");
                     Assert.Fail("Second Added Onduty Group Failed ...");
@@ -1844,7 +1846,7 @@ namespace HL_Breadth
 
                     // VERIFYING SECOND EDITED ONDUTY GROUP
 
-                    if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(on_duty_group_name_2_edited)))
+                    if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(on_duty_group_name_2_edited)))
                     {
                         takescreenshot("Editing_Onduty_Group_Failed");
                         Assert.Fail("Editing Onduty Group Failed ...");
@@ -1858,7 +1860,7 @@ namespace HL_Breadth
                         driver.FindElement(By.Id("btnOk")).Click();
                         Thread.Sleep(2000);
 
-                        if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(on_duty_group_name_2_edited)))
+                        if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(on_duty_group_name_2_edited)))
                         {
                             takescreenshot("Onduty_Group_Passed");
                             Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add_Edit_Delete Onduty Group Passed... ^^^^^^^^^^^^^^^^^^^^^");
@@ -1898,7 +1900,7 @@ namespace HL_Breadth
 
             check_driver_type(driver_type, "recipients", "Follow-Me", "Recipients");
 
-            Assert.AreEqual("Follow-Me Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);  //verifying page name
+            Assert.AreEqual("Follow-Me Groups", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);  //verifying page name
 
             driver.FindElement(By.LinkText("Add Group")).Click();
 
@@ -1973,7 +1975,7 @@ namespace HL_Breadth
 
             Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text);
 
-            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(follow_me_group_name)))
+            if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(follow_me_group_name)))
             {
 
                 takescreenshot("Follow_me_Group_Failed");
@@ -2033,7 +2035,7 @@ namespace HL_Breadth
 
                 // VERIFYING SECOND ADDED FOLLOWME GROUP
 
-                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(follow_me_group_name_2)))
+                if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(follow_me_group_name_2)))
                 {
                     takescreenshot("Second_Added_follow_me_Group_Failed");
                     Assert.Fail("Second Added follow_me Group Failed ...");
@@ -2070,7 +2072,7 @@ namespace HL_Breadth
 
                     // VERIFYING SECOND EDITED FOLLOWME GROUP
 
-                    if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(follow_me_group_name_2_edited)))
+                    if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(follow_me_group_name_2_edited)))
                     {
                         takescreenshot("Editing_follow_me_Group_Failed");
                         Assert.Fail("Editing follow_me Group Failed ...");
@@ -2084,7 +2086,7 @@ namespace HL_Breadth
                         driver.FindElement(By.Id("btnOk")).Click();
                         Thread.Sleep(2000);
 
-                        if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(follow_me_group_name_2_edited)))
+                        if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(follow_me_group_name_2_edited)))
                         {
                             takescreenshot("follow_me_Group_Passed");
                             Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add_Edit_Delete follow_me Group Passed... ^^^^^^^^^^^^^^^^^^^^^");
@@ -2122,7 +2124,7 @@ namespace HL_Breadth
 
             check_driver_type(driver_type, "recipients", "Rotation", "Recipients");
 
-            Assert.AreEqual("Rotate Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);  //verifying page name
+            Assert.AreEqual("Rotate Groups", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);  //verifying page name
 
             driver.FindElement(By.LinkText("Add Group")).Click();
 
@@ -2165,9 +2167,9 @@ namespace HL_Breadth
             takescreenshot("Rotation_Group");
 
 
-            Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text);
+           
 
-            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text.Contains(rotate_group_name)))
+            if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(rotate_group_name)))
             {
                 takescreenshot("Rotation_Group_Failed");
                 Assert.Fail("Rotation Group Failed ...");
@@ -2223,7 +2225,7 @@ namespace HL_Breadth
 
                 // VERIFYING SECOND ADDED ROTATE GROUP
 
-                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(rotate_group_name_2)))
+                if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(rotate_group_name_2)))
                 {
                     takescreenshot("Second_Added_Rotation_Group_Failed");
                     Assert.Fail("Second Added Rotation Group Failed ...");
@@ -2267,7 +2269,7 @@ namespace HL_Breadth
 
                     // VERIFYING SECOND EDITED ROTATE GROUP
 
-                    if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(rotate_group_name_2_edited)))
+                    if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(rotate_group_name_2_edited)))
                     {
                         takescreenshot("Editing_Rotation_Group_Failed");
                         Assert.Fail("Editing Rotation Group Failed ...");
@@ -2281,7 +2283,7 @@ namespace HL_Breadth
                         driver.FindElement(By.Id("btnOk")).Click();
                         Thread.Sleep(2000);
 
-                        if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(rotate_group_name_2_edited)))
+                        if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(rotate_group_name_2_edited)))
                         {
                             takescreenshot("Rotation_Group_Passed");
                             Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add_Edit_Delete Rotation Group Passed... ^^^^^^^^^^^^^^^^^^^^^");
@@ -2321,7 +2323,7 @@ namespace HL_Breadth
 
             check_driver_type(driver_type, "recipients", "Subscription Groups", "Recipients");
 
-            Assert.AreEqual("Subscription Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);  //verifying page name
+            Assert.AreEqual("Subscription Groups", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);  //verifying page name
 
             driver.FindElement(By.LinkText("Add Group")).Click();
             Thread.Sleep(2000);
@@ -2357,9 +2359,9 @@ namespace HL_Breadth
             driver.FindElement(By.Id("btnCancelTwo")).Click();
             Thread.Sleep(2000);
 
-            Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text);
+          
 
-            if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text.Contains(subscription_group_name)))
+            if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(subscription_group_name)))
             {
 
                 takescreenshot("Subscription_Group_Failed");
@@ -2411,7 +2413,7 @@ namespace HL_Breadth
 
                 // VERIFYING SECOND ADDED SUBSCRIPTION GROUP
 
-                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(subscription_group_name_2)))
+                if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(subscription_group_name_2)))
                 {
                     takescreenshot("Second_Added_Subscription_Group_Failed");
                     Assert.Fail("Second Added Subscription Group Failed ...");
@@ -2450,7 +2452,7 @@ namespace HL_Breadth
 
                     // VERIFYING SECOND EDITED SUBSCRIPTION GROUP
 
-                    if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(subscription_group_name_2_edited)))
+                    if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(subscription_group_name_2_edited)))
                     {
                         takescreenshot("Editing_Subscription_Group_Failed");
                         Assert.Fail("Editing Subscription Group Failed ...");
@@ -2464,7 +2466,7 @@ namespace HL_Breadth
                         driver.FindElement(By.Id("btnOk")).Click();
                         Thread.Sleep(2000);
 
-                        if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(subscription_group_name_2_edited)))
+                        if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(subscription_group_name_2_edited)))
                         {
                             takescreenshot("Subscription_Group_Passed");
                             Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add_Edit_Delete Subscription Group Passed... ^^^^^^^^^^^^^^^^^^^^^");

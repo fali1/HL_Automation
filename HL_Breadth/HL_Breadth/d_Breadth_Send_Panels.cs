@@ -158,6 +158,7 @@ namespace HL_Breadth
             driver.FindElement(By.Id("password")).SendKeys(login_pwd);
 
             driver.FindElement(By.CssSelector("a.c_btn_large1.login_button")).Click();// user login button
+            driver.FindElement(By.Id("btnOk")).Click();
 
             Thread.Sleep(3000);
 
@@ -427,7 +428,7 @@ namespace HL_Breadth
 
             check_driver_type(driver_type, "send", "Primary Send", "Send");
 
-            Assert.AreEqual("Primary Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text);
+            Assert.AreEqual("Primary Send", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text);
 
             driver.FindElement(By.Id("tt_interactive_filters")).Click();
             Thread.Sleep(2000);
@@ -574,7 +575,7 @@ namespace HL_Breadth
 
             check_driver_type(driver_type, "send", "Quick Send", "Send");
 
-            Assert.AreEqual("Quick Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text);
+            Assert.AreEqual("Quick Send", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text);
 
             driver.FindElement(By.XPath("//div[@class='data_row_col1']/input")).Clear();
 
@@ -654,7 +655,7 @@ namespace HL_Breadth
 
             check_driver_type(driver_type, "send", "Escalation Send", "Send");
 
-            Assert.AreEqual("Escalation Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text); // verifying page title
+            Assert.AreEqual("Escalation Send", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text); // verifying page title
 
             driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click(); //cycles drop down
             Thread.Sleep(1000);
@@ -777,7 +778,7 @@ namespace HL_Breadth
 
             check_driver_type(driver_type, "send", "Fax Send", "Send");
 
-            Assert.AreEqual("Fax Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text);
+            Assert.AreEqual("Fax Send", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text);
 
             driver.FindElement(By.XPath("//*[contains(text(),'" + receiver_name + "')]")).Click(); //select receiver to send message
 
@@ -868,7 +869,7 @@ namespace HL_Breadth
 
             check_driver_type(driver_type, "send", "Voice Send", "Send");
 
-            Assert.AreEqual("Voice Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text); //verifying page title
+            Assert.AreEqual("Voice Send", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text); //verifying page title
 
             driver.FindElement(By.XPath("//*[contains(text(),'" + receiver_name_voice + "')]")).Click(); //select receiver to send message
 
@@ -918,6 +919,9 @@ namespace HL_Breadth
         public void g_Quota_Send_Panel()
         {
             check_driver_type(driver_type, "send", "Quota Send", "Send");
+
+
+            Assert.AreEqual("Quota Send", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text); //verifying page title
 
             driver.FindElement(By.XPath("//span[text()='receiver_smtp']")).Click();
             driver.FindElement(By.Id("moveItemRight")).Click();
@@ -993,6 +997,8 @@ namespace HL_Breadth
         {
 
             check_driver_type(driver_type, "send", "Attribute Send", "Send");
+
+            Assert.AreEqual("Attribute Send", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text); //verifying page title
 
             driver.FindElement(By.XPath("//b[text()='A1']")).Click();
             Thread.Sleep(1000);

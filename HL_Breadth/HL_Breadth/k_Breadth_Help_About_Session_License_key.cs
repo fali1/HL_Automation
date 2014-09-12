@@ -185,9 +185,7 @@ namespace HL_Breadth
 
             Console.WriteLine(driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text);
 
-            if (!(driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text.Contains(login_name) &&
-
-                driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text.Contains(browser)))
+            if (!(driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text.Contains(login_name)))
             {
                 Assert.Fail("Session Manager Failed ...");
             }

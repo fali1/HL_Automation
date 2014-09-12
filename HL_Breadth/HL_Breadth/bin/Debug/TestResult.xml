@@ -1,98 +1,206 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" total="9" errors="7" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-11" time="20:02:19">
-  <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5483" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
+<test-results name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" total="23" errors="13" failures="4" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-12" time="20:47:14">
+  <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5485" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" executed="False" result="Cancelled">
+  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" executed="True" result="Failure" success="False" time="2377.627" asserts="0">
     <results>
-      <test-suite type="Namespace" name="HL_Breadth" executed="False" result="Cancelled">
+      <test-suite type="Namespace" name="HL_Breadth" executed="True" result="Failure" success="False" time="2377.610" asserts="0">
         <results>
-          <test-suite type="TestFixture" name="b_Breadth_Recipients" executed="False" result="Cancelled">
+          <test-suite type="TestFixture" name="b_Breadth_Recipients" executed="True" result="Failure" success="False" time="233.849" asserts="1">
             <results>
-              <test-case name="HL_Breadth.b_Breadth_Recipients.a_Add_Edit_Delete_Directory_Settings_Panel" executed="True" result="Success" success="True" time="42.045" asserts="1" />
-              <test-case name="HL_Breadth.b_Breadth_Recipients.b_Add_Edit_Delete_Messenger" executed="True" result="Success" success="True" time="65.236" asserts="1" />
-              <test-case name="HL_Breadth.b_Breadth_Recipients.c_Add_Edit_Delete_Carrier" executed="True" result="Error" success="False" time="28.039" asserts="0">
+              <test-case name="HL_Breadth.b_Breadth_Recipients.e_Add_Edit_Delete_Broadcast_Group" executed="True" result="Error" success="False" time="50.242" asserts="1">
                 <failure>
-                  <message><![CDATA[System.InvalidOperationException : [JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]'[JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]' when calling method: [nsICommandProcessor::execute]]]></message>
-                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1048
+                  <message><![CDATA[OpenQA.Selenium.InvalidSelectorException : The given selector //div[@class='mCSB_container mCS_no_scrollbar' is either invalid or does not result in a WebElement. The following error occurred:
+InvalidSelectorError: Unable to locate an element with the xpath expression //div[@class='mCSB_container mCS_no_scrollbar' because of the following error:
+[Exception... "The expression is not a legal expression."  code: "12" nsresult: "0x805b0033 (SyntaxError)"  location: "<unknown>"]]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1105
 at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
 at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
 at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
-at HL_Breadth.b_Breadth_Recipients.hover_func(String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2598
-at HL_Breadth.b_Breadth_Recipients.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2554
-at HL_Breadth.b_Breadth_Recipients.c_Add_Edit_Delete_Carrier() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 570
+at HL_Breadth.b_Breadth_Recipients.e_Add_Edit_Delete_Broadcast_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 1188
 ]]></stack-trace>
                 </failure>
               </test-case>
-              <test-case name="HL_Breadth.b_Breadth_Recipients.d_Add_Edit_Delete_Receiver" executed="True" result="Error" success="False" time="4.024" asserts="0">
+              <test-case name="HL_Breadth.b_Breadth_Recipients.f_Add_Edit_Delete_Escalation_Group" executed="True" result="Error" success="False" time="50.088" asserts="1">
                 <failure>
-                  <message><![CDATA[System.InvalidOperationException : [JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]'[JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]' when calling method: [nsICommandProcessor::execute]]]></message>
-                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1048
+                  <message><![CDATA[OpenQA.Selenium.InvalidSelectorException : The given selector //div[@class='mCSB_container mCS_no_scrollbar' is either invalid or does not result in a WebElement. The following error occurred:
+InvalidSelectorError: Unable to locate an element with the xpath expression //div[@class='mCSB_container mCS_no_scrollbar' because of the following error:
+[Exception... "The expression is not a legal expression."  code: "12" nsresult: "0x805b0033 (SyntaxError)"  location: "<unknown>"]]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1105
 at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
 at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
 at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
-at HL_Breadth.b_Breadth_Recipients.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2520
-at HL_Breadth.b_Breadth_Recipients.d_Add_Edit_Delete_Receiver() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 893
+at HL_Breadth.b_Breadth_Recipients.f_Add_Edit_Delete_Escalation_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 1419
 ]]></stack-trace>
                 </failure>
               </test-case>
-              <test-case name="HL_Breadth.b_Breadth_Recipients.e_Add_Edit_Delete_Broadcast_Group" executed="True" result="Error" success="False" time="4.018" asserts="0">
+              <test-case name="HL_Breadth.b_Breadth_Recipients.i_Add_Edit_Delete_Rotate_Group" executed="True" result="Error" success="False" time="63.979" asserts="1">
                 <failure>
-                  <message><![CDATA[System.InvalidOperationException : [JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]'[JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]' when calling method: [nsICommandProcessor::execute]]]></message>
-                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1048
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"xpath","selector":"//li[text()='receiver_smtp']"}]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
 at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
 at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
 at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
-at HL_Breadth.b_Breadth_Recipients.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2520
-at HL_Breadth.b_Breadth_Recipients.e_Add_Edit_Delete_Broadcast_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 1138
+at HL_Breadth.b_Breadth_Recipients.i_Add_Edit_Delete_Rotate_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2155
 ]]></stack-trace>
                 </failure>
               </test-case>
-              <test-case name="HL_Breadth.b_Breadth_Recipients.f_Add_Edit_Delete_Escalation_Group" executed="True" result="Error" success="False" time="4.028" asserts="0">
+              <test-case name="HL_Breadth.b_Breadth_Recipients.j_Add_Edit_Delete_Subscription_Group" executed="True" result="Error" success="False" time="55.457" asserts="1">
                 <failure>
-                  <message><![CDATA[System.InvalidOperationException : [JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]'[JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]' when calling method: [nsICommandProcessor::execute]]]></message>
-                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1048
+                  <message><![CDATA[OpenQA.Selenium.InvalidSelectorException : The given selector //div[@class='mCSB_container mCS_no_scrollbar' is either invalid or does not result in a WebElement. The following error occurred:
+InvalidSelectorError: Unable to locate an element with the xpath expression //div[@class='mCSB_container mCS_no_scrollbar' because of the following error:
+[Exception... "The expression is not a legal expression."  code: "12" nsresult: "0x805b0033 (SyntaxError)"  location: "<unknown>"]]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1105
 at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
 at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
 at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
-at HL_Breadth.b_Breadth_Recipients.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2520
-at HL_Breadth.b_Breadth_Recipients.f_Add_Edit_Delete_Escalation_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 1357
+at HL_Breadth.b_Breadth_Recipients.j_Add_Edit_Delete_Subscription_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2364
 ]]></stack-trace>
                 </failure>
               </test-case>
-              <test-case name="HL_Breadth.b_Breadth_Recipients.g_Add_Edit_Delete_On_Duty_Group" executed="True" result="Error" success="False" time="4.035" asserts="0">
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="c_Breadth_Account" executed="True" result="Failure" success="False" time="325.417" asserts="1">
+            <results>
+              <test-case name="HL_Breadth.c_Breadth_Account.c_Add_Edit_Delete_Response_Action" executed="True" result="Error" success="False" time="67.271" asserts="1">
                 <failure>
-                  <message><![CDATA[System.InvalidOperationException : [JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]'[JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]' when calling method: [nsICommandProcessor::execute]]]></message>
-                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1048
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"link text","selector":"Add Action"}]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
 at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
 at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
 at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
-at HL_Breadth.b_Breadth_Recipients.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2520
-at HL_Breadth.b_Breadth_Recipients.g_Add_Edit_Delete_On_Duty_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 1585
+at HL_Breadth.c_Breadth_Account.c_Add_Edit_Delete_Response_Action() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\c_Breadth_Account.cs:line 729
 ]]></stack-trace>
                 </failure>
               </test-case>
-              <test-case name="HL_Breadth.b_Breadth_Recipients.h_Add_Edit_Delete_Follow_me_Group" executed="True" result="Error" success="False" time="4.027" asserts="0">
+              <test-case name="HL_Breadth.c_Breadth_Account.d_Add_Edit_Delete_User_Group" executed="True" result="Success" success="True" time="100.385" asserts="1" />
+              <test-case name="HL_Breadth.c_Breadth_Account.e_Add_Edit_Delete_Department" executed="True" result="Success" success="True" time="63.788" asserts="1" />
+              <test-case name="HL_Breadth.c_Breadth_Account.f_Add_Edit_Delete_User" executed="True" result="Error" success="False" time="82.621" asserts="1">
                 <failure>
-                  <message><![CDATA[System.InvalidOperationException : [JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]'[JavaScript Error: "a is null" {file: "file:///C:/Users/fali/AppData/Local/Temp/anonymous.710a960e7bf34f749fd7b4268d11da30.webdriver-profile/extensions/fxdriver@googlecode.com/components/command_processor.js" line: 8166}]' when calling method: [nsICommandProcessor::execute]]]></message>
-                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1048
+                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : Element is not currently visible and so may not be interacted with]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Breadth.c_Breadth_Account.f_Add_Edit_Delete_User() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\c_Breadth_Account.cs:line 1525
+]]></stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="d_Breadth_Send_Panels" executed="True" result="Failure" success="False" time="1249.445" asserts="1">
+            <results>
+              <test-case name="HL_Breadth.d_Breadth_Send_Panels.d_Escalation_Send_Panel" executed="True" result="Success" success="True" time="47.140" asserts="4" />
+              <test-case name="HL_Breadth.d_Breadth_Send_Panels.e_Fax_Send_Panel" executed="True" result="Error" success="False" time="107.383" asserts="2">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"xpath","selector":"//*[contains(text(),'receiver_fax')]"}]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
 at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
 at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
 at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
-at HL_Breadth.b_Breadth_Recipients.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2520
-at HL_Breadth.b_Breadth_Recipients.h_Add_Edit_Delete_Follow_me_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 1899
+at HL_Breadth.d_Breadth_Send_Panels.e_Fax_Send_Panel() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\d_Breadth_Send_Panels.cs:line 783
 ]]></stack-trace>
                 </failure>
               </test-case>
-              <test-case name="HL_Breadth.b_Breadth_Recipients.i_Add_Edit_Delete_Rotate_Group" executed="False" result="Cancelled">
+              <test-case name="HL_Breadth.d_Breadth_Send_Panels.f_Voice_Send_Panel" executed="True" result="Success" success="True" time="97.710" asserts="5" />
+              <test-case name="HL_Breadth.d_Breadth_Send_Panels.g_Quota_Send_Panel" executed="True" result="Success" success="True" time="56.973" asserts="4" />
+              <test-case name="HL_Breadth.d_Breadth_Send_Panels.h_Attribute_Send_Panel" executed="True" result="Error" success="False" time="57.590" asserts="1">
                 <failure>
-                  <message><![CDATA[Test cancelled by user]]></message>
-                  <stack-trace><![CDATA[at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
-at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
-at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
-at NUnit.Core.Reflect.InvokeMethod(MethodInfo method, Object fixture, Object[] args)
-at NUnit.Core.TestMethod.RunTestMethod()
-at NUnit.Core.TestMethod.RunTestCase(TestResult testResult)
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"xpath","selector":"//b[text()='A1']"}]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Breadth.d_Breadth_Send_Panels.h_Attribute_Send_Panel() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\d_Breadth_Send_Panels.cs:line 1003
+]]></stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="e_Breadth_System" executed="True" result="Failure" success="False" time="568.865" asserts="1">
+            <results>
+              <test-case name="HL_Breadth.e_Breadth_System.a_System_Attendant_Settings" executed="True" result="Failure" success="False" time="37.268" asserts="1">
+                <failure>
+                  <message><![CDATA[System_Attendant_Settings Testcase Failed]]></message>
+                  <stack-trace><![CDATA[at HL_Breadth.e_Breadth_System.a_System_Attendant_Settings() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\e_Breadth_System.cs:line 280
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.e_Breadth_System.b_Email_Gateway_Settings" executed="True" result="Failure" success="False" time="31.046" asserts="1">
+                <failure>
+                  <message><![CDATA[  Expected string length 13 but was 19. Strings differ at index 13.
+  Expected: "Email Gateway"
+  But was:  "Email Gateway\r\nEdit"
+  ------------------------^
+]]></message>
+                  <stack-trace><![CDATA[at HL_Breadth.e_Breadth_System.b_Email_Gateway_Settings() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\e_Breadth_System.cs:line 307
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.e_Breadth_System.c_Backup_Settings_Panel" executed="True" result="Error" success="False" time="72.318" asserts="1">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : Element is not currently visible and so may not be interacted with]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Breadth.e_Breadth_System.c_Backup_Settings_Panel() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\e_Breadth_System.cs:line 546
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.e_Breadth_System.d_Snpp_Gateway" executed="True" result="Error" success="False" time="69.343" asserts="1">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : Element is not currently visible and so may not be interacted with]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Breadth.e_Breadth_System.d_Snpp_Gateway() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\e_Breadth_System.cs:line 624
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.e_Breadth_System.e_Add_Tap_Gateway" executed="True" result="Error" success="False" time="76.028" asserts="1">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"link text","selector":"Services"}]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Breadth.e_Breadth_System.e_Add_Tap_Gateway() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\e_Breadth_System.cs:line 806
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.e_Breadth_System.f_File_System_Interface" executed="True" result="Failure" success="False" time="50.092" asserts="1">
+                <failure>
+                  <message><![CDATA[File System Interface Failed ...]]></message>
+                  <stack-trace><![CDATA[at HL_Breadth.e_Breadth_System.f_File_System_Interface() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\e_Breadth_System.cs:line 1034
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.e_Breadth_System.g_Add_Feedback" executed="True" result="Success" success="True" time="45.757" asserts="4" />
+              <test-case name="HL_Breadth.e_Breadth_System.h_Add_Schedule_Template" executed="True" result="Error" success="False" time="59.537" asserts="1">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"link text","selector":"14"}]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Breadth.e_Breadth_System.h_Add_Schedule_Template() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\e_Breadth_System.cs:line 1167
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.e_Breadth_System.i_LDAP_Panel" executed="True" result="Error" success="False" time="69.686" asserts="1">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"id","selector":"isUserId"}]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Breadth.e_Breadth_System.i_LDAP_Panel() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\e_Breadth_System.cs:line 1326
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.e_Breadth_System.j_Filter_Panel" executed="True" result="Failure" success="False" time="45.439" asserts="5">
+                <failure>
+                  <message><![CDATA[  Expected: False
+  But was:  True
+]]></message>
+                  <stack-trace><![CDATA[at HL_Breadth.e_Breadth_System.j_Filter_Panel() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\e_Breadth_System.cs:line 1568
 ]]></stack-trace>
                 </failure>
               </test-case>

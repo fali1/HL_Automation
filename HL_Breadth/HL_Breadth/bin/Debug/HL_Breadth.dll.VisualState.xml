@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="true">
-  <TopNode>[0-1060]HL_Breadth</TopNode>
-  <SelectedNode>[0-1002]HL_Breadth.b_Breadth_Recipients</SelectedNode>
+  <TopNode>[0-1003]HL_Breadth.b_Breadth_Recipients.a_Add_Edit_Delete_Directory_Settings_Panel</TopNode>
+  <SelectedNode>[0-1016]HL_Breadth.c_Breadth_Account.c_Add_Edit_Delete_Response_Action</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
-    <Node UniqueName="[0-1059]D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" Expanded="true" />
-    <Node UniqueName="[0-1060]HL_Breadth" Expanded="true" />
+    <Node UniqueName="[0-1060]D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" Expanded="true" />
+    <Node UniqueName="[0-1061]HL_Breadth" Expanded="true" />
     <Node UniqueName="[0-1000]HL_Breadth.a_Breadth_Global_Settings" Expanded="true" />
     <Node UniqueName="[0-1002]HL_Breadth.b_Breadth_Recipients" Expanded="true" />
+    <Node UniqueName="[0-1007]HL_Breadth.b_Breadth_Recipients.e_Add_Edit_Delete_Broadcast_Group" Checked="true" />
+    <Node UniqueName="[0-1008]HL_Breadth.b_Breadth_Recipients.f_Add_Edit_Delete_Escalation_Group" Checked="true" />
+    <Node UniqueName="[0-1011]HL_Breadth.b_Breadth_Recipients.i_Add_Edit_Delete_Rotate_Group" Checked="true" />
+    <Node UniqueName="[0-1012]HL_Breadth.b_Breadth_Recipients.j_Add_Edit_Delete_Subscription_Group" Checked="true" />
     <Node UniqueName="[0-1013]HL_Breadth.c_Breadth_Account" Expanded="true" />
+    <Node UniqueName="[0-1016]HL_Breadth.c_Breadth_Account.c_Add_Edit_Delete_Response_Action" Checked="true" />
+    <Node UniqueName="[0-1017]HL_Breadth.c_Breadth_Account.d_Add_Edit_Delete_User_Group" Checked="true" />
     <Node UniqueName="[0-1018]HL_Breadth.c_Breadth_Account.e_Add_Edit_Delete_Department" Checked="true" />
+    <Node UniqueName="[0-1019]HL_Breadth.c_Breadth_Account.f_Add_Edit_Delete_User" Checked="true" />
     <Node UniqueName="[0-1020]HL_Breadth.d_Breadth_Send_Panels" Expanded="true" />
-    <Node UniqueName="[0-1029]HL_Breadth.e_Breadth_System" Expanded="true" />
-    <Node UniqueName="[0-1040]HL_Breadth.f_Breadth_Hnp" Expanded="true" />
-    <Node UniqueName="[0-1042]HL_Breadth.g_Breadth_Log_Queues_Reports" Expanded="true" />
-    <Node UniqueName="[0-1048]HL_Breadth.h_Breadth_User_Profile" Expanded="true" />
-    <Node UniqueName="[0-1049]HL_Breadth.h_Breadth_User_Profile.a_User_Profile" Checked="true" />
-    <Node UniqueName="[0-1050]HL_Breadth.i_Breadth_Shortcut_keys" Expanded="true" />
-    <Node UniqueName="[0-1052]HL_Breadth.j_Breadth_Global_Search" Expanded="true" />
-    <Node UniqueName="[0-1054]HL_Breadth.k_Breadth_Help_About_Session_License_key" Expanded="true" />
+    <Node UniqueName="[0-1025]HL_Breadth.d_Breadth_Send_Panels.d_Escalation_Send_Panel" Checked="true" />
+    <Node UniqueName="[0-1026]HL_Breadth.d_Breadth_Send_Panels.e_Fax_Send_Panel" Checked="true" />
+    <Node UniqueName="[0-1027]HL_Breadth.d_Breadth_Send_Panels.f_Voice_Send_Panel" Checked="true" />
+    <Node UniqueName="[0-1028]HL_Breadth.d_Breadth_Send_Panels.g_Quota_Send_Panel" Checked="true" />
+    <Node UniqueName="[0-1029]HL_Breadth.d_Breadth_Send_Panels.h_Attribute_Send_Panel" Checked="true" />
+    <Node UniqueName="[0-1030]HL_Breadth.e_Breadth_System" Expanded="true" Checked="true" />
+    <Node UniqueName="[0-1041]HL_Breadth.f_Breadth_Hnp" Expanded="true" Checked="true" />
+    <Node UniqueName="[0-1043]HL_Breadth.g_Breadth_Log_Queues_Reports" Checked="true" />
+    <Node UniqueName="[0-1049]HL_Breadth.h_Breadth_User_Profile" Checked="true" />
+    <Node UniqueName="[0-1055]HL_Breadth.k_Breadth_Help_About_Session_License_key" Checked="true" />
   </Nodes>
 </VisualState>
