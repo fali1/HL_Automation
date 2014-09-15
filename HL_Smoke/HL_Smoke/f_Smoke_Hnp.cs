@@ -210,9 +210,7 @@ namespace HL_Smoke
             if (driver.FindElement(By.XPath("//span[@class='c_f_info_text']")).Text.Equals("Yes"))
             {
 
-
                 Actions hnp = new Actions(driver);
-
 
                 hnp.MoveToElement(driver.FindElement(By.Id("settings"))).Perform();
 

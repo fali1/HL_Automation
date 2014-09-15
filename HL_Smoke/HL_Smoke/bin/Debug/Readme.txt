@@ -21,3 +21,20 @@ URL.txt
 Provide url in url.txt.
  
 http://localhost:8000/HipLink5UI-Work/index.html#login
+
+Email_gateway_settings.txt file
+-------------------------------
+hiplink  url
+spool directory
+ip address
+port
+
+backup_settings.txt file
+-------------------------------
+backup directory
+
+file_system_interface_settings.txt file
+---------------------------------------
+hiplink url
+spool directory 
+bulk spool directory

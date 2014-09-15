@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="true">
-  <TopNode>[0-1062]HL_Smoke</TopNode>
+  <TopNode>[0-1058]HL_Smoke.b_Smoke_Recipients.h_Add_Follow_me_Group</TopNode>
   <SelectedNode>[0-1020]HL_Smoke.e_Smoke_System</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
@@ -12,6 +12,7 @@
     <Node UniqueName="[0-1002]HL_Smoke.c_Smoke_Account" Expanded="true" />
     <Node UniqueName="[0-1009]HL_Smoke.d_Smoke_Send_Panels" Expanded="true" />
     <Node UniqueName="[0-1020]HL_Smoke.e_Smoke_System" Expanded="true" />
+    <Node UniqueName="[0-1028]HL_Smoke.e_Smoke_System.h_Add_Schedule_Template" Checked="true" />
     <Node UniqueName="[0-1031]HL_Smoke.f_Smoke_Hnp" Expanded="true" />
     <Node UniqueName="[0-1033]HL_Smoke.g_Smoke_Logs_Queues_Reports" Expanded="true" />
     <Node UniqueName="[0-1039]HL_Smoke.h_Smoke_User_Profile" Expanded="true" />

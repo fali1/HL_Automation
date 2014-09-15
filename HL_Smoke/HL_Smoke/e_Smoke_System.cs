@@ -36,9 +36,9 @@ namespace HL_Smoke
 
         private bool acceptNextAlert = true;
 
-        public string login_name = "fahad"; //used in login and session manager testcases
+        public string login_name;
 
-        public string login_pwd = "123";
+        public string login_pwd;
 
         public string welcome_username = "Welcome admin"; //used in login testcase to verify 'Welcome user' label after login
 
@@ -84,7 +84,9 @@ namespace HL_Smoke
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-            //  System.Diagnostics.Debugger.Launch();// launch debugger
+            // System.Diagnostics.Debugger.Launch();// launch debugger
+
+            string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
 
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
@@ -158,6 +160,10 @@ namespace HL_Smoke
 
             driver.Manage().Window.Maximize();//maximize browser
 
+            login_name = lines_local[0]; //used in login and session manager testcases
+
+            login_pwd = lines_local[1];
+
             driver.FindElement(By.Id("username")).Clear();
 
             driver.FindElement(By.Id("username")).SendKeys(login_name);
@@ -180,7 +186,7 @@ namespace HL_Smoke
 
             Console.WriteLine("User label Trimmed at the end:" + "*" + trimmed_user_label + "*");
 
-            Assert.AreEqual(trimmed_user_label, "Welcome fahad");
+            Assert.AreEqual(trimmed_user_label, "Welcome "+lines_local[0]);
 
             verificationErrors = new StringBuilder();
         
@@ -191,7 +197,7 @@ namespace HL_Smoke
         [Test]
         public void a_System_Attendant_Settings()
         {
-            string administrationemail = "fali@folio3.com";
+          //  string administrationemail = "fali@folio3.com";
             string numberofcompletemsgs = "20";
             string numberoffailedmsgs = "30";
             string numberoffilteredmsgs = "40";
@@ -206,6 +212,10 @@ namespace HL_Smoke
 
             Assert.AreEqual("System Attendant Settings", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
+            string[] lines_local = read_from_file("system_attendant_settings"); // return all the data in the form of array
+
+            string administrationemail = lines_local[0];
+
             expired_status_on_page_load = driver.FindElement(By.Id("lblDelExpired")).Text.ToString();
 
             Console.WriteLine(expired_status_on_page_load);
@@ -217,9 +227,9 @@ namespace HL_Smoke
 
             driver.FindElement(By.Id("txtemail")).SendKeys(administrationemail);
 
-            driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
+     //      driver.FindElement(By.XPath("//select[@id='selrecipient']")).Click();
 
-            driver.FindElement(By.XPath("//li[contains(text(),'receiver_smtp')]")).Click();
+    //        driver.FindElement(By.XPath("//li[contains(text(),'receiver_smtp')]")).Click();
 
             driver.FindElement(By.Id("txtcompmsgs")).Clear();
 
@@ -263,9 +273,7 @@ namespace HL_Smoke
 
                     driver.FindElement(By.XPath("//*[@id='lblCommand']")).Text.Equals(alertcommand) &&
 
-                    driver.FindElement(By.XPath("//*[@id='lblIdleMsg']")).Text.Equals(idlemsgtime) &&
-
-                    driver.FindElement(By.XPath("//*[@id='lblDelExpired']")).Text.Equals(expired))
+                    driver.FindElement(By.XPath("//*[@id='lblIdleMsg']")).Text.Equals(idlemsgtime))
             {
                 Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   System_Attendant_Settings Testcase Passed    ^^^^^^^^^^^^^^^^^^^^^");
                 
@@ -283,10 +291,10 @@ namespace HL_Smoke
         public void b_Email_Gateway_Settings()
         {
             string type = "SMTP";
-            string hiplink_url = @"http://192.168.4.237:8000/cgi-bin/no_action.exe";
-            string email_spool_directory = @"C:\Program Files (x86)\HipLink Software\HipLink\test_email_spool";
-            string server_ip_address = "192.168.5.184";
-            string server_port = "1337";
+        //    string hiplink_url = @"http://192.168.4.237:8000/cgi-bin/no_action.exe";
+        //    string email_spool_directory = @"C:\Program Files (x86)\HipLink Software\HipLink\test_email_spool";
+        //    string server_ip_address = "192.168.5.184";
+        //    string server_port = "1337";
             string path_external_script = "/test/hiplink/5.0";
             string one_way_email = "scenario1@email.com";
             string two_way_email = "two-way@email.com";
@@ -297,11 +305,17 @@ namespace HL_Smoke
             string pop_two_acc = "poptwo@account.com";
             string pop_two_pwd = "123";
             string standard_send_pattern = "p1";
-
+           
             check_driver_type(driver_type, "settings", "Email Gateway", "Settings");
 
-            Assert.AreEqual("Email Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+           // Assert.AreEqual("Email Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
+            string[] lines_local = read_from_file("email_gateway_settings"); // return all the data in the form of array
+
+            string hiplink_url = lines_local[0];
+            string email_spool_directory = lines_local[1];
+            string server_ip_address = lines_local[2];
+            string server_port = lines_local[3];
 
             driver.FindElement(By.Id("btnedit")).Click();
             Thread.Sleep(2000);
@@ -460,7 +474,7 @@ namespace HL_Smoke
         [Test]
         public void c_Backup_Settings_Panel()
         {
-            string backup_dir = @"C:\Program Files (x86)\Hiplink Software\HipLink\backup";
+          //  string backup_dir = @"C:\Program Files (x86)\Hiplink Software\HipLink\backup";
             string backup_keep_days = "05";
             string backup_start_time = "05:06";
             string backup_interval = "02";
@@ -468,6 +482,10 @@ namespace HL_Smoke
             check_driver_type(driver_type, "administration", "Backup Service", "Sys Admin");
 
             Assert.AreEqual("Backup Service", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            string[] lines_local = read_from_file("backup_settings"); // return all the data in the form of array
+
+            string backup_dir = lines_local[0];
 
             driver.FindElement(By.Id("btnedit")).Click();
 
@@ -749,14 +767,18 @@ namespace HL_Smoke
         [Test]
         public void f_File_System_Interface()
         {
-            string hiplink_url = "info@folio3.com";
-            string spool_dir = @"C:\Program Files (x86)\HipLink Software\Hiplink\test";
-            string bulk_spool_dir = @"C:\Program Files (x86)\HipLink Software\Hiplink\new";
+         //   string hiplink_url = "http://192.168.4.237:8000/cgi-bin/no_action.exe";
+         //   string spool_dir = @"C:\Program Files (x86)\HipLink Software\Hiplink\test";
+         //   string bulk_spool_dir = @"C:\Program Files (x86)\HipLink Software\Hiplink\new";
             string bulk_message_recipient_pattern = "^.*<Receiver:(.*)>.*$";
             string bulk_message_pattern = "^.*>(.*)$";
             string bulk_message_file_pattern = "*";
 
+            string[] lines_local = read_from_file("file_system_interface_settings"); // return all the data in the form of array
 
+            string hiplink_url = lines_local[0];
+            string spool_dir = lines_local[1];
+            string bulk_spool_dir = lines_local[2];
 
             if (!Directory.Exists(spool_dir))
             {
@@ -792,7 +814,7 @@ namespace HL_Smoke
                 driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
                 Thread.Sleep(1000);
 
-                driver.FindElement(By.XPath("//li[text()='35']")).Click();
+                driver.FindElement(By.XPath("//li[text()='34']")).Click();
                 Thread.Sleep(1000);
               
                 driver.FindElement(By.Id("txtspooldir")).Clear();
@@ -931,7 +953,7 @@ namespace HL_Smoke
 
                     driver.FindElement(By.XPath(".//*[@id='lblSpoolDir']")).Text.Equals(spool_dir) &&
 
-                    driver.FindElement(By.XPath(".//*[@id='lblDirChk']")).Text.Equals("35") &&
+                    driver.FindElement(By.XPath(".//*[@id='lblDirChk']")).Text.Equals("34") &&
 
                     driver.FindElement(By.XPath(".//*[@id='lblBulkMsg']")).Text.Equals("Enabled") &&
 
@@ -1426,6 +1448,25 @@ namespace HL_Smoke
             Thread.Sleep(3000);
 
 
+        }
+
+
+        public string[] read_from_file(string file_name)
+        {
+            // Read each line of the file into a string array. Each element 
+            // of the array is one line of the file. 
+
+            string[] lines = System.IO.File.ReadAllLines(@".\"+file_name+".txt");
+
+            // Display the file contents by using a foreach loop.
+            System.Console.WriteLine("Contents of "+file_name+".txt = ");
+            foreach (string line in lines)
+            {
+                // Use a tab to indent each line of the file.
+                Console.WriteLine("\n" + line);
+            }
+
+            return lines;
         }
 
 
