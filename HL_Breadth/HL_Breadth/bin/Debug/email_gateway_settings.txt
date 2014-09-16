@@ -1,0 +1,4 @@
+http://192.168.4.237:8000/cgi-bin/no_action.exe
+C:\Program Files\HipLink Software\HipLink\test_email_spool
+192.168.6.40
+5220

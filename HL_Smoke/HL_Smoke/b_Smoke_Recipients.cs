@@ -201,7 +201,7 @@ namespace HL_Smoke
 
             string create_directory_path_directory = lines_local[0];
 
-                string dir_path = @"C:\Program Files (x86)\Hiplink Software\HipLink\new_directory";
+                string dir_path = lines_local[0];
 
                 if (!Directory.Exists(create_directory_path_directory))
                 {

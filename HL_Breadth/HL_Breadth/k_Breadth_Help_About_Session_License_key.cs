@@ -56,7 +56,7 @@ namespace HL_Breadth
 
         string trimmed_user_label;
 
-        string create_directory_path = @".\Screenshots_Testcase_Results";
+        string create_directory_path = @".\Screenshots_Help_Testcase";
 
         string create_directory_path_directory = @"C:\Program Files (x86)\Hiplink Software\HipLink\new_directory";
 
@@ -102,11 +102,14 @@ namespace HL_Breadth
                     break;
 
                 case "chrome":
-                    driver = new ChromeDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch chrome browser
+                    ChromeOptions options = new ChromeOptions();
+                    options.AddArguments("test-type");
+                    driver = new ChromeDriver(@".\drivers",options);
                     break;
 
+
                 case "internetexplorer":
-                    driver = new InternetExplorerDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch IE browser
+                    driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
                     break;
             }
 
@@ -155,6 +158,8 @@ namespace HL_Breadth
             driver.FindElement(By.Id("password")).SendKeys(login_pwd);
 
             driver.FindElement(By.CssSelector("a.c_btn_large1.login_button")).Click();// user login button
+
+            WaitForElementToExist("entityTitle", driver);
 
             Thread.Sleep(3000);
 
@@ -361,6 +366,8 @@ namespace HL_Breadth
                 Console.WriteLine("using hover func() ....");
                 Thread.Sleep(2000);
 
+                WaitForElementToExist(id_name,driver);
+
                 //a[contains(text(),'On-Duty')])[2]
 
                 driver.FindElement(By.XPath("//li[@id='" + id_name + "']/a[text()='" + a_text + "']")).Click(); //goto landing for particular ID
@@ -421,6 +428,8 @@ namespace HL_Breadth
 
             //------ Hover functionality and click ------
 
+            WaitForElementToExist(id_name, driver);
+
             var hoveritem = driver.FindElement(By.Id(id_name));
 
             Actions action1 = new Actions(driver); //simply my webdriver
@@ -429,6 +438,8 @@ namespace HL_Breadth
             action1.MoveToElement(hoveritem).Perform(); //move to list element that needs to be hovered
 
             Thread.Sleep(3000);
+
+            WaitForElementToExistUsingLinkText(link_text, driver);
 
             driver.FindElement(By.XPath("(//a[text()='" + link_text + "'])[1]")).Click();
             Thread.Sleep(3000);
@@ -443,6 +454,46 @@ namespace HL_Breadth
             Thread.Sleep(3000);
 
 
+        }
+
+        public static void WaitForElementToExist(string ID, IWebDriver driver)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+            wait.Until<bool>((d) =>
+            {
+                try
+                {
+                    // If the find succeeds, the element exists, and
+                    // we want the element to *not* exist, so we want
+                    // to return true when the find throws an exception.
+                    IWebElement element = d.FindElement(By.Id(ID));
+                    return true;
+                }
+                catch (NoSuchElementException)
+                {
+                    return false;
+                }
+            });
+        }
+
+        public static void WaitForElementToExistUsingLinkText(string link_text, IWebDriver driver)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+            wait.Until<bool>((d) =>
+            {
+                try
+                {
+                    // If the find succeeds, the element exists, and
+                    // we want the element to *not* exist, so we want
+                    // to return true when the find throws an exception.
+                    IWebElement element = d.FindElement(By.LinkText(link_text));
+                    return true;
+                }
+                catch (NoSuchElementException)
+                {
+                    return false;
+                }
+            });
         }
 
 

@@ -59,13 +59,13 @@ namespace HL_Breadth
 
         string create_directory_path_with_time;
 
-        string create_directory_path = @".\Screenshots_Testcase_Results";
+        string create_directory_path = @".\Screenshots_Recipients_Testcase";
 
         // DIRECTORY VARIABLES
 
-        string create_directory_path_directory = @"C:\HipLink\new_directory";
+      //  string create_directory_path_directory = @"C:\HipLink\new_directory";
 
-        string create_directory_path_directory_2 = @"C:\HipLink\new_directory_2";
+      //  string create_directory_path_directory_2 = @"C:\HipLink\new_directory_2";
 
         string new_dir = "new_directory";
 
@@ -106,7 +106,7 @@ namespace HL_Breadth
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-            //  System.Diagnostics.Debugger.Launch();// launch debugger
+              System.Diagnostics.Debugger.Launch();// launch debugger
 
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
@@ -122,11 +122,13 @@ namespace HL_Breadth
                     break;
 
                 case "chrome":
-                    driver = new ChromeDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch chrome browser
+                    ChromeOptions options = new ChromeOptions();
+                    options.AddArguments("test-type");
+                    driver = new ChromeDriver(@".\drivers",options);
                     break;
 
                 case "internetexplorer":
-                    driver = new InternetExplorerDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch IE browser
+                    driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
                     break;
             }
 
@@ -174,7 +176,7 @@ namespace HL_Breadth
 
             driver.FindElement(By.CssSelector("a.c_btn_large1.login_button")).Click();// user login button
 
-            driver.FindElement(By.Id("btnOk")).Click();
+            WaitForElementToExist("entityTitle", driver);
 
             Thread.Sleep(3000);
 
@@ -198,7 +200,13 @@ namespace HL_Breadth
         [Test]
         public void a_Add_Edit_Delete_Directory_Settings_Panel()
         {
+            string[] lines_local = read_from_file("directory_path"); // return all the data in the form of array
 
+            string create_directory_path_directory = lines_local[0];
+
+            string dir_path = lines_local[0];
+
+            string create_directory_path_directory_2 = lines_local[1];
 
             if (!Directory.Exists(create_directory_path_directory))
             {
@@ -2517,10 +2525,11 @@ namespace HL_Breadth
                 Console.WriteLine("using hover func() ....");
                 Thread.Sleep(2000);
 
+                WaitForElementToExist(id_name, driver);
+
                 //a[contains(text(),'On-Duty')])[2]
 
                 driver.FindElement(By.XPath("//li[@id='" + id_name + "']/a[text()='" + a_text + "']")).Click(); //goto landing for particular ID
-               // driver.FindElement(By.XPath("//a[@href='#" + id_name + "']")).Click(); //goto landing for particular ID
                 Thread.Sleep(2000);
 
 
@@ -2578,8 +2587,9 @@ namespace HL_Breadth
 
             //------ Hover functionality and click ------
 
+            WaitForElementToExist(id_name, driver);
+
             var hoveritem = driver.FindElement(By.Id(id_name));
-            //var hoveritem = driver.FindElement(By.XPath("//a[@href='#" + id_name + "']"));
 
             Actions action1 = new Actions(driver); //simply my webdriver
             Thread.Sleep(2000);
@@ -2587,6 +2597,8 @@ namespace HL_Breadth
             action1.MoveToElement(hoveritem).Perform(); //move to list element that needs to be hovered
 
             Thread.Sleep(3000);
+
+            WaitForElementToExistUsingLinkText(link_text, driver);
 
             driver.FindElement(By.XPath("(//a[text()='" + link_text + "'])[1]")).Click();
             Thread.Sleep(3000);
@@ -2601,6 +2613,64 @@ namespace HL_Breadth
             Thread.Sleep(3000);
 
 
+        }
+
+        public static void WaitForElementToExist(string ID, IWebDriver driver)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+            wait.Until<bool>((d) =>
+            {
+                try
+                {
+                    // If the find succeeds, the element exists, and
+                    // we want the element to *not* exist, so we want
+                    // to return true when the find throws an exception.
+                    IWebElement element = d.FindElement(By.Id(ID));
+                    return true;
+                }
+                catch (NoSuchElementException)
+                {
+                    return false;
+                }
+            });
+        }
+
+        public static void WaitForElementToExistUsingLinkText(string link_text, IWebDriver driver)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+            wait.Until<bool>((d) =>
+            {
+                try
+                {
+                    // If the find succeeds, the element exists, and
+                    // we want the element to *not* exist, so we want
+                    // to return true when the find throws an exception.
+                    IWebElement element = d.FindElement(By.LinkText(link_text));
+                    return true;
+                }
+                catch (NoSuchElementException)
+                {
+                    return false;
+                }
+            });
+        }
+
+        public string[] read_from_file(string file_name)
+        {
+            // Read each line of the file into a string array. Each element 
+            // of the array is one line of the file. 
+
+            string[] lines = System.IO.File.ReadAllLines(@".\" + file_name + ".txt");
+
+            // Display the file contents by using a foreach loop.
+            System.Console.WriteLine("Contents of " + file_name + ".txt = ");
+            foreach (string line in lines)
+            {
+                // Use a tab to indent each line of the file.
+                Console.WriteLine("\n" + line);
+            }
+
+            return lines;
         }
 
 
