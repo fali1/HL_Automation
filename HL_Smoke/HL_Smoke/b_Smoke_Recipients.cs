@@ -57,7 +57,7 @@ namespace HL_Smoke
 
         string create_directory_path = @".\Screenshots_Testcase_Results";
 
-        string create_directory_path_directory = @"C:\Program Files (x86)\Hiplink Software\HipLink\new_directory";
+        
 
         int test_result_exist = 0;
 
@@ -86,6 +86,8 @@ namespace HL_Smoke
             // driver = new FirefoxDriver();// launch firefox browser
 
             //     System.Diagnostics.Debugger.Launch();// launch debugger
+
+            string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
 
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
@@ -159,6 +161,10 @@ namespace HL_Smoke
 
             driver.Manage().Window.Maximize();//maximize browser
 
+            login_name = lines_local[0]; //used in login and session manager testcases
+
+            login_pwd = lines_local[1];
+
             driver.FindElement(By.Id("username")).Clear();
 
             driver.FindElement(By.Id("username")).SendKeys(login_name);
@@ -190,8 +196,10 @@ namespace HL_Smoke
         [Test]
         public void a_Directory_Settings_Panel()
         {
-            
-            
+
+            string[] lines_local = read_from_file("directory_path"); // return all the data in the form of array
+
+            string create_directory_path_directory = lines_local[0];
 
                 string dir_path = @"C:\Program Files (x86)\Hiplink Software\HipLink\new_directory";
 
@@ -204,6 +212,8 @@ namespace HL_Smoke
                 check_driver_type(driver_type, "administration", "Directories & Queues", "Sys Admin");
 
                 Assert.AreEqual("Directories & Queues", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);  //verifying page name
+
+                
 
                 /*   var driver_type = driver.GetType();
                    Console.WriteLine("*" + driver_type + "*");
@@ -651,15 +661,12 @@ namespace HL_Smoke
                 driver.FindElement(By.XPath("(//li[contains(text(),'" + department_name + "')])")).Click();// selecting department
                 Thread.Sleep(2000);
 
-                driver.FindElement(By.Id("btnEditAttribute")).Click();
-                Thread.Sleep(2000);
-
-                driver.FindElement(By.XPath("//span[contains(text(),'A1')]")).Click();
-                Thread.Sleep(2000);
-
-                driver.FindElement(By.Id("btnAddAttribute")).Click();
-                Thread.Sleep(2000);
-
+             //   driver.FindElement(By.Id("btnEditAttribute")).Click();
+              
+            //    driver.FindElement(By.XPath("//span[contains(text(),'A1')]")).Click();
+              
+            //    driver.FindElement(By.Id("btnAddAttribute")).Click();
+              
                 driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();
                 Thread.Sleep(2000);
 
@@ -673,7 +680,7 @@ namespace HL_Smoke
 
                 takescreenshot("Receiver");
 
-                if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(receiver_name)))
+                if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(receiver_name)))
                 {
                     takescreenshot("Receiver_Failed");
                     Assert.Fail("Add Receiver Failed...");
@@ -749,9 +756,9 @@ namespace HL_Smoke
                 driver.FindElement(By.Id("btnCancelTwo")).Click();
                 Thread.Sleep(2000);
 
-                Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text);
 
-                if (driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text.Contains(broadcast_group_name))
+
+                if (driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(broadcast_group_name))
                 {
                     takescreenshot("Broadcast_Group_Passed");
                     Console.WriteLine("^^^^^^^^^^^^^^^ Broadcast Group Passed ... ^^^^^^^^^^^^^^^");
@@ -832,9 +839,8 @@ namespace HL_Smoke
                 driver.FindElement(By.Id("btnCancelTwo")).Click();
                 Thread.Sleep(2000);
 
-                Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text);
 
-                if (driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text.Contains(escalation_group_name))
+                if (driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(escalation_group_name))
                 {
                     takescreenshot("Escalation_Group_Passed");
                     Console.WriteLine("^^^^^^^^^^^^^^^ Escalation Group Passed ... ^^^^^^^^^^^^^^^");
@@ -939,9 +945,8 @@ namespace HL_Smoke
 
                 driver.FindElement(By.XPath("(//a[contains(text(),'On-Duty')])[2]")).Click(); // as an alternate of close button , bcz its not working right now
 
-                Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text);
 
-                if (driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(on_duty_group_name)) // /div[1]/div[1]/div/div[3]
+                if (driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(on_duty_group_name)) // /div[1]/div[1]/div/div[3]
                 {
                     takescreenshot("On_Duty_Group_Passed");
 
@@ -1094,9 +1099,8 @@ namespace HL_Smoke
 
                 driver.FindElement(By.LinkText("Follow-Me")).Click();
 
-                Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text);
 
-                if (driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(follow_me_group_name))
+                if (driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(follow_me_group_name))
                 {
                     takescreenshot("Follow_me_Group_Passed");
 
@@ -1166,9 +1170,8 @@ namespace HL_Smoke
                 takescreenshot("Rotation_Group");
 
 
-                Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text);
 
-                if (driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text.Contains(rotate_group_name))
+                if (driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(rotate_group_name))
                 {
                     takescreenshot("Rotation_Group_Passed");
                     Console.WriteLine("^^^^^^^^^^^^^^^ Rotation Group Passed ... ^^^^^^^^^^^^^^^");
@@ -1231,9 +1234,8 @@ namespace HL_Smoke
                 driver.FindElement(By.Id("btnCancelTwo")).Click();
                 Thread.Sleep(2000);
 
-                Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text);
 
-                if (driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[3]")).Text.Contains(subscription_group_name))
+                if (driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(subscription_group_name))
                 {
                     takescreenshot("Subscription_Group_Passed");
                     Console.WriteLine("^^^^^^^^^^^^^^^ Subscription Group Passed ... ^^^^^^^^^^^^^^^");
@@ -1346,6 +1348,25 @@ namespace HL_Smoke
             Thread.Sleep(3000);
 
 
+        }
+
+
+        public string[] read_from_file(string file_name)
+        {
+            // Read each line of the file into a string array. Each element 
+            // of the array is one line of the file. 
+
+            string[] lines = System.IO.File.ReadAllLines(@".\" + file_name + ".txt");
+
+            // Display the file contents by using a foreach loop.
+            System.Console.WriteLine("Contents of " + file_name + ".txt = ");
+            foreach (string line in lines)
+            {
+                // Use a tab to indent each line of the file.
+                Console.WriteLine("\n" + line);
+            }
+
+            return lines;
         }
 
 

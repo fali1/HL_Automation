@@ -94,6 +94,8 @@ namespace HL_Smoke
 
             // System.Diagnostics.Debugger.Launch();// launch debugger
 
+            string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
+
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
 
@@ -165,6 +167,10 @@ namespace HL_Smoke
             driver.Navigate().GoToUrl(baseURL);
 
             driver.Manage().Window.Maximize();//maximize browser
+
+            login_name = lines_local[0]; //used in login and session manager testcases
+
+            login_pwd = lines_local[1];
 
             driver.FindElement(By.Id("username")).Clear();
 
@@ -263,7 +269,7 @@ namespace HL_Smoke
 
                 check_driver_type(driver_type, "settings", "Message Template", "Settings");
 
-                Assert.AreEqual("Message Template", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Message Templates", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
                 driver.FindElement(By.LinkText("Add Template")).Click();
 
@@ -383,11 +389,11 @@ namespace HL_Smoke
 
                 check_driver_type(driver_type, "settings", "Response Actions", "Settings");
 
-                Assert.AreEqual("Response Actions Panel", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
+                Assert.AreEqual("Response Actions", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
                 Thread.Sleep(2000);
 
-                driver.FindElement(By.LinkText("Add Action")).Click();
+                driver.FindElement(By.LinkText("Add Response Action")).Click();
 
                 driver.FindElement(By.Id("txtname")).Clear();
                 driver.FindElement(By.Id("txtname")).SendKeys(response_action_name);
@@ -419,7 +425,7 @@ namespace HL_Smoke
 
                  */
 
-                driver.FindElement(By.XPath("(//a[@class='selector'])[2]")).Click();  // Actions dropdown
+                driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();  // Actions dropdown
                 driver.FindElement(By.XPath("//li[text()='Command Line']")).Click();
 
                 driver.FindElement(By.Id("txtAcommand")).Clear();
@@ -459,7 +465,7 @@ namespace HL_Smoke
 
                 Thread.Sleep(2000);
 
-                check_driver_type(driver_type, "settings", "User Groups- Permissioning", "Settings");
+                check_driver_type(driver_type, "settings", "User Groups", "Settings");
 
                 Assert.AreEqual("User Groups", driver.FindElement(By.XPath("//div[@id='testing']/h1")).Text);
 
@@ -785,7 +791,7 @@ namespace HL_Smoke
                      Thread.Sleep(1000);
                  */
 
-                driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();
+                driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click();
                 Thread.Sleep(1000);
 
                 driver.FindElement(By.XPath("//li[text()='sysAdmin']")).Click();
@@ -948,7 +954,23 @@ namespace HL_Smoke
         }
 
 
+        public string[] read_from_file(string file_name)
+        {
+            // Read each line of the file into a string array. Each element 
+            // of the array is one line of the file. 
 
+            string[] lines = System.IO.File.ReadAllLines(@".\" + file_name + ".txt");
+
+            // Display the file contents by using a foreach loop.
+            System.Console.WriteLine("Contents of " + file_name + ".txt = ");
+            foreach (string line in lines)
+            {
+                // Use a tab to indent each line of the file.
+                Console.WriteLine("\n" + line);
+            }
+
+            return lines;
+        }
 
         public void takescreenshot(string suffix)
         {

@@ -23,6 +23,7 @@ using System.Windows;
 using System.Linq;
 using System.Collections;
 
+
 namespace HL_Smoke
 {
     [TestFixture]
@@ -55,19 +56,11 @@ namespace HL_Smoke
 
         string trimmed_user_label;
 
-        string create_directory_path = @".\Screenshots_Testcase_Results";
-
-        string create_directory_path_directory = @"C:\Program Files (x86)\Hiplink Software\HipLink\new_directory";
-
-        int test_result_exist = 0;
+        string create_directory_path = @".\Screenshots_Help_Testcase";
 
         string create_directory_path_with_time;
 
-        string new_dir = "new_directory";
 
-        string messenger_name = "smtp_messenger";
-
-        string carrier_name = "smtp_carrier";
 
 
 
@@ -85,7 +78,9 @@ namespace HL_Smoke
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-            //     System.Diagnostics.Debugger.Launch();// launch debugger
+               System.Diagnostics.Debugger.Launch();// launch debugger
+
+            string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
 
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
@@ -101,11 +96,13 @@ namespace HL_Smoke
                     break;
 
                 case "chrome":
-                    driver = new ChromeDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch chrome browser
+                    ChromeOptions options = new ChromeOptions();
+                    options.AddArguments("test-type");
+                    driver = new ChromeDriver(@".\drivers",options);
                     break;
 
                 case "internetexplorer":
-                    driver = new InternetExplorerDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch IE browser
+                    driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
                     break;
             }
 
@@ -124,20 +121,20 @@ namespace HL_Smoke
              */
 
             create_directory_path_with_time = create_directory_path + todaydatetime.ToString(format);
+           
             Console.WriteLine(create_directory_path_with_time);
+            
             if (!Directory.Exists(create_directory_path_with_time))
             {
                 Directory.CreateDirectory(create_directory_path_with_time);
             }
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(25000));//wait for request 
-
-            //driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 30, 15));
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+            
 
             driver_type = driver.GetType().ToString();// get driver type ( firefox , safari , chrome , internetexplorer )
 
             Console.WriteLine("Driver Type:" + " " + driver_type);
-
 
             // Read each line of the file into a string array. Each element 
             // of the array is one line of the file. 
@@ -159,6 +156,10 @@ namespace HL_Smoke
 
             driver.Manage().Window.Maximize();//maximize browser
 
+            login_name = lines_local[0]; //used in login and session manager testcases
+
+            login_pwd = lines_local[1];
+
             driver.FindElement(By.Id("username")).Clear();
 
             driver.FindElement(By.Id("username")).SendKeys(login_name);
@@ -168,6 +169,8 @@ namespace HL_Smoke
             driver.FindElement(By.Id("password")).SendKeys(login_pwd);
 
             driver.FindElement(By.CssSelector("a.c_btn_large1.login_button")).Click();// user login button
+
+            WaitForElementToExist("entityTitle", driver);
 
             Thread.Sleep(3000);
 
@@ -181,7 +184,7 @@ namespace HL_Smoke
 
             Console.WriteLine("User label Trimmed at the end:" + "*" + trimmed_user_label + "*");
 
-            Assert.AreEqual(trimmed_user_label, "Welcome admin");
+            Assert.AreEqual(trimmed_user_label, "Welcome "+login_name);
 
             verificationErrors = new StringBuilder();
         }
@@ -198,9 +201,7 @@ namespace HL_Smoke
 
             Console.WriteLine(driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text);
 
-            if (!(driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text.Contains(login_name) &&
-
-                driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text.Contains(browser)))
+            if (!(driver.FindElement(By.XPath("//div[@class='tab_block tab_session tab_active']")).Text.Contains(login_name)))
             {
                 Assert.Fail("Session Manager Failed ...");
             }
@@ -457,7 +458,45 @@ namespace HL_Smoke
 
         }
 
-       
+
+        public static void WaitForElementToExist(string ID, IWebDriver driver)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+            wait.Until<bool>((d) =>
+            {
+                try
+                {
+                    // If the find succeeds, the element exists, and
+                    // we want the element to *not* exist, so we want
+                    // to return true when the find throws an exception.
+                    IWebElement element = d.FindElement(By.Id(ID));
+                    return true;
+                }
+                catch (NoSuchElementException)
+                {
+                    return false;
+                }
+            });
+        }
+
+
+        public string[] read_from_file(string file_name)
+        {
+            // Read each line of the file into a string array. Each element 
+            // of the array is one line of the file. 
+
+            string[] lines = System.IO.File.ReadAllLines(@".\" + file_name + ".txt");
+
+            // Display the file contents by using a foreach loop.
+            System.Console.WriteLine("Contents of " + file_name + ".txt = ");
+            foreach (string line in lines)
+            {
+                // Use a tab to indent each line of the file.
+                Console.WriteLine("\n" + line);
+            }
+
+            return lines;
+        }
 
 
         public void takescreenshot(string suffix)

@@ -38,3 +38,11 @@ file_system_interface_settings.txt file
 hiplink url
 spool directory 
 bulk spool directory
+
+system_attendant_settings.txt file
+---------------------------------------
+email address of admin
+
+directory_path.txt file
+---------------------------------------
+directory path

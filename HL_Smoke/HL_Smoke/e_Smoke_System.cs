@@ -308,7 +308,7 @@ namespace HL_Smoke
            
             check_driver_type(driver_type, "settings", "Email Gateway", "Settings");
 
-           // Assert.AreEqual("Email Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+            Assert.AreEqual("Email Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             string[] lines_local = read_from_file("email_gateway_settings"); // return all the data in the form of array
 

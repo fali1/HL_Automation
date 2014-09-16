@@ -85,6 +85,8 @@ namespace HL_Smoke
 
             //     System.Diagnostics.Debugger.Launch();// launch debugger
 
+            string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
+
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
 
@@ -159,6 +161,10 @@ namespace HL_Smoke
 
             driver.Manage().Window.Maximize();//maximize browser
 
+            login_name = lines_local[0]; //used in login and session manager testcases
+
+            login_pwd = lines_local[1];
+
             driver.FindElement(By.Id("username")).Clear();
 
             driver.FindElement(By.Id("username")).SendKeys(login_name);
@@ -181,7 +187,7 @@ namespace HL_Smoke
 
             Console.WriteLine("User label Trimmed at the end:" + "*" + trimmed_user_label + "*");
 
-            Assert.AreEqual(trimmed_user_label, "Welcome fahad");
+            Assert.AreEqual(trimmed_user_label, "Welcome "+login_name);
 
             verificationErrors = new StringBuilder();
         
@@ -325,7 +331,7 @@ namespace HL_Smoke
 
             check_driver_type(driver_type, "send", "Primary Send", "Send");
 
-            Assert.AreEqual("Primary Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text);
+            Assert.AreEqual("Primary Send", driver.FindElement(By.Id("lblPanelTitle")).Text);
 
             driver.FindElement(By.XPath("//*[contains(text(),'" + receiver_name + "')]")).Click();
 
@@ -377,13 +383,13 @@ namespace HL_Smoke
 
             //uploading attachment
             IWebElement fileInput = driver.FindElement(By.XPath("//input[@type='file']"));
-            fileInput.SendKeys(@"C:\Users\Public\Pictures\Sample Pictures\Tulips.jpg");
+            fileInput.SendKeys(@".\Tulips.jpg");
             Thread.Sleep(4500);
 
             
 
             driver.FindElement(By.Id("btnSend")).Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
 
             if (driver.FindElement(By.XPath("//div[@class='popup_message']")).Displayed)
             {
@@ -420,7 +426,7 @@ namespace HL_Smoke
 
             check_driver_type(driver_type, "send", "Quick Send", "Send");
 
-            Assert.AreEqual("Quick Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text);
+            Assert.AreEqual("Quick Send", driver.FindElement(By.Id("lblPanelTitle")).Text);
 
             driver.FindElement(By.XPath("//div[@class='data_row_col1']/input")).Clear();
 
@@ -481,7 +487,7 @@ namespace HL_Smoke
 
             check_driver_type(driver_type, "send", "Escalation Send", "Send");
 
-            Assert.AreEqual("Escalation Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text); // verifying page title
+            Assert.AreEqual("Escalation Send", driver.FindElement(By.Id("lblPanelTitle")).Text); // verifying page title
 
             driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click(); //cycles drop down
             Thread.Sleep(1000);
@@ -573,7 +579,7 @@ namespace HL_Smoke
 
             check_driver_type(driver_type, "send", "Fax Send", "Send");
 
-            Assert.AreEqual("Fax Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text);
+            Assert.AreEqual("Fax Send", driver.FindElement(By.Id("lblPanelTitle")).Text);
 
             driver.FindElement(By.XPath("//*[contains(text(),'" + receiver_name + "')]")).Click(); //select receiver to send message
 
@@ -655,7 +661,7 @@ namespace HL_Smoke
 
             check_driver_type(driver_type, "send", "Voice Send", "Send");
 
-            Assert.AreEqual("Voice Send Panel", driver.FindElement(By.XPath("//span[@id='lblPanelTitle']")).Text); //verifying page title
+            Assert.AreEqual("Voice Send", driver.FindElement(By.Id("lblPanelTitle")).Text); //verifying page title
 
             driver.FindElement(By.XPath("//*[contains(text(),'" + receiver_name_voice + "')]")).Click(); //select receiver to send message
 
@@ -688,6 +694,8 @@ namespace HL_Smoke
         public void g_Quota_Send_Panel()
         {
             check_driver_type(driver_type, "send", "Quota Send", "Send");
+
+            Assert.AreEqual("Quota Send", driver.FindElement(By.Id("lblPanelTitle")).Text);
 
             driver.FindElement(By.XPath("//span[text()='receiver_smtp']")).Click();
             driver.FindElement(By.Id("moveItemRight")).Click();
@@ -731,6 +739,8 @@ namespace HL_Smoke
         {
             
             check_driver_type(driver_type, "send", "Attribute Send", "Send");
+
+            Assert.AreEqual("Attribute Send", driver.FindElement(By.Id("lblPanelTitle")).Text);
 
             driver.FindElement(By.XPath("//b[text()='A1']")).Click();
             Thread.Sleep(1000);
@@ -943,6 +953,24 @@ namespace HL_Smoke
             Thread.Sleep(3000);
 
 
+        }
+
+        public string[] read_from_file(string file_name)
+        {
+            // Read each line of the file into a string array. Each element 
+            // of the array is one line of the file. 
+
+            string[] lines = System.IO.File.ReadAllLines(@".\" + file_name + ".txt");
+
+            // Display the file contents by using a foreach loop.
+            System.Console.WriteLine("Contents of " + file_name + ".txt = ");
+            foreach (string line in lines)
+            {
+                // Use a tab to indent each line of the file.
+                Console.WriteLine("\n" + line);
+            }
+
+            return lines;
         }
 
 

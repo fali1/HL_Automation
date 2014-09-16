@@ -37,4 +37,3 @@ D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\WebDriver.Support.pdb
 D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\WebDriver.Support.xml
 D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.dll
 D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.pdb
-D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.csprojResolveAssemblyReference.cache
