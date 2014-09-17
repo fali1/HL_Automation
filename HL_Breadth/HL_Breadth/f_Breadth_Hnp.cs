@@ -27,7 +27,7 @@ using System.Collections;
 namespace HL_Breadth
 {
     [TestFixture]
-    public class f_Breadth_Hnp
+    public class f_Breadth_Hnp : HL_Base_Class
     {
 
         private IWebDriver driver;

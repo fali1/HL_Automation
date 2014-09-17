@@ -27,7 +27,7 @@ using System.Collections;
 namespace HL_Breadth
 {
     [TestFixture]
-    public class j_Breadth_Global_Search
+    public class j_Breadth_Global_Search : HL_Base_Class
     {
 
         private IWebDriver driver;

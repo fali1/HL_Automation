@@ -1,18 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" total="4" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-16" time="20:12:55">
+<test-results name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" total="10" errors="3" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-17" time="14:26:49">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5485" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" executed="True" result="Success" success="True" time="135.355" asserts="0">
+  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" executed="True" result="Failure" success="False" time="801.389" asserts="0">
     <results>
-      <test-suite type="Namespace" name="HL_Breadth" executed="True" result="Success" success="True" time="135.338" asserts="0">
+      <test-suite type="Namespace" name="HL_Breadth" executed="True" result="Failure" success="False" time="801.370" asserts="0">
         <results>
-          <test-suite type="TestFixture" name="k_Breadth_Help_About_Session_License_key" executed="True" result="Success" success="True" time="135.335" asserts="1">
+          <test-suite type="TestFixture" name="b_Breadth_Recipients" executed="True" result="Failure" success="False" time="801.368" asserts="1">
             <results>
-              <test-case name="HL_Breadth.k_Breadth_Help_About_Session_License_key.a_User_Session" executed="True" result="Success" success="True" time="30.842" asserts="1" />
-              <test-case name="HL_Breadth.k_Breadth_Help_About_Session_License_key.b_License_Page" executed="True" result="Success" success="True" time="30.684" asserts="1" />
-              <test-case name="HL_Breadth.k_Breadth_Help_About_Session_License_key.c_About_Page" executed="True" result="Success" success="True" time="31.694" asserts="1" />
-              <test-case name="HL_Breadth.k_Breadth_Help_About_Session_License_key.d_Help" executed="True" result="Success" success="True" time="5.395" asserts="0" />
+              <test-case name="HL_Breadth.b_Breadth_Recipients.a_Add_Edit_Delete_Directory_Settings_Panel" executed="True" result="Success" success="True" time="44.060" asserts="1" />
+              <test-case name="HL_Breadth.b_Breadth_Recipients.b_Add_Edit_Delete_Messenger" executed="True" result="Success" success="True" time="58.091" asserts="1" />
+              <test-case name="HL_Breadth.b_Breadth_Recipients.c_Add_Edit_Delete_Carrier" executed="True" result="Success" success="True" time="97.780" asserts="1" />
+              <test-case name="HL_Breadth.b_Breadth_Recipients.d_Add_Edit_Delete_Receiver" executed="True" result="Success" success="True" time="89.819" asserts="1" />
+              <test-case name="HL_Breadth.b_Breadth_Recipients.e_Add_Edit_Delete_Broadcast_Group" executed="True" result="Success" success="True" time="101.542" asserts="1" />
+              <test-case name="HL_Breadth.b_Breadth_Recipients.f_Add_Edit_Delete_Escalation_Group" executed="True" result="Success" success="True" time="100.397" asserts="1" />
+              <test-case name="HL_Breadth.b_Breadth_Recipients.g_Add_Edit_Delete_On_Duty_Group" executed="True" result="Error" success="False" time="58.623" asserts="1">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : no such element
+  (Session info: chrome=37.0.2062.120)
+  (Driver info: chromedriver=2.10.267521,platform=Windows NT 6.1 SP1 x86_64)]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Breadth.b_Breadth_Recipients.g_Add_Edit_Delete_On_Duty_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 1527
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.b_Breadth_Recipients.h_Add_Edit_Delete_Follow_me_Group" executed="True" result="Error" success="False" time="59.605" asserts="1">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : no such element
+  (Session info: chrome=37.0.2062.120)
+  (Driver info: chromedriver=2.10.267521,platform=Windows NT 6.1 SP1 x86_64)]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Breadth.b_Breadth_Recipients.h_Add_Edit_Delete_Follow_me_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 1838
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.b_Breadth_Recipients.i_Add_Edit_Delete_Rotate_Group" executed="True" result="Success" success="True" time="92.375" asserts="1" />
+              <test-case name="HL_Breadth.b_Breadth_Recipients.j_Add_Edit_Delete_Subscription_Group" executed="True" result="Error" success="False" time="59.903" asserts="1">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : element not visible
+  (Session info: chrome=37.0.2062.120)
+  (Driver info: chromedriver=2.10.267521,platform=Windows NT 6.1 SP1 x86_64)]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Breadth.b_Breadth_Recipients.j_Add_Edit_Delete_Subscription_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2330
+]]></stack-trace>
+                </failure>
+              </test-case>
             </results>
           </test-suite>
         </results>

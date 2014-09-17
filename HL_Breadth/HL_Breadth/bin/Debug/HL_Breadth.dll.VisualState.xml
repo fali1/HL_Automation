@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="true">
   <TopNode>[0-1015]HL_Breadth.c_Breadth_Account.b_Add_Edit_Delete_Message_Template</TopNode>
-  <SelectedNode>[0-1016]HL_Breadth.c_Breadth_Account.c_Add_Edit_Delete_Response_Action</SelectedNode>
+  <SelectedNode>[0-1011]HL_Breadth.b_Breadth_Recipients.i_Add_Edit_Delete_Rotate_Group</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
     <Node UniqueName="[0-1060]D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" Expanded="true" />
     <Node UniqueName="[0-1061]HL_Breadth" Expanded="true" />
     <Node UniqueName="[0-1000]HL_Breadth.a_Breadth_Global_Settings" Expanded="true" />
     <Node UniqueName="[0-1002]HL_Breadth.b_Breadth_Recipients" Expanded="true" />
-    <Node UniqueName="[0-1013]HL_Breadth.c_Breadth_Account" Expanded="true" />
+    <Node UniqueName="[0-1013]HL_Breadth.c_Breadth_Account" Expanded="true" Checked="true" />
     <Node UniqueName="[0-1020]HL_Breadth.d_Breadth_Send_Panels" Expanded="true" />
     <Node UniqueName="[0-1030]HL_Breadth.e_Breadth_System" Expanded="true" />
     <Node UniqueName="[0-1041]HL_Breadth.f_Breadth_Hnp" Expanded="true" />
@@ -16,6 +16,6 @@
     <Node UniqueName="[0-1049]HL_Breadth.h_Breadth_User_Profile" Expanded="true" />
     <Node UniqueName="[0-1051]HL_Breadth.i_Breadth_Shortcut_keys" Expanded="true" />
     <Node UniqueName="[0-1053]HL_Breadth.j_Breadth_Global_Search" Expanded="true" />
-    <Node UniqueName="[0-1055]HL_Breadth.k_Breadth_Help_About_Session_License_key" Expanded="true" Checked="true" />
+    <Node UniqueName="[0-1055]HL_Breadth.k_Breadth_Help_About_Session_License_key" Expanded="true" />
   </Nodes>
 </VisualState>

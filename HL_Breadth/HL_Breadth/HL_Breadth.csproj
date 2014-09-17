@@ -67,6 +67,7 @@
     <Compile Include="e_Breadth_System.cs" />
     <Compile Include="f_Breadth_Hnp.cs" />
     <Compile Include="g_Breadth_Log_Queues_Reports.cs" />
+    <Compile Include="HL_Base_Class.cs" />
     <Compile Include="h_Breadth_User_Profile.cs" />
     <Compile Include="i_Breadth_Shortcut_keys.cs" />
     <Compile Include="j_Breadth_Global_Search.cs" />

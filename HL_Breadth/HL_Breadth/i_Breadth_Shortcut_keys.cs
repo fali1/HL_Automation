@@ -27,7 +27,7 @@ using System.Collections;
 namespace HL_Breadth
 {
     [TestFixture]
-    public class i_Breadth_Shortcut_keys
+    public class i_Breadth_Shortcut_keys : HL_Base_Class
     {
 
         private IWebDriver driver;

@@ -27,7 +27,7 @@ using System.Collections;
 namespace HL_Breadth
 {
     [TestFixture]
-    public class g_Breadth_Log_Queues_Reports
+    public class g_Breadth_Log_Queues_Reports : HL_Base_Class
     {
 
         private IWebDriver driver;

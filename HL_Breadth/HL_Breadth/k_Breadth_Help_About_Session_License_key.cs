@@ -27,7 +27,7 @@ using System.Collections;
 namespace HL_Breadth
 {
     [TestFixture]
-    public class k_Breadth_Help_About_Session_License_key
+    public class k_Breadth_Help_About_Session_License_key : HL_Base_Class
     {
 
         private IWebDriver driver;

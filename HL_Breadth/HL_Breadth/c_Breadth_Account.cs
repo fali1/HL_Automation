@@ -26,7 +26,7 @@ using System.Collections;
 namespace HL_Breadth
 {
     [TestFixture]
-    public class c_Breadth_Account
+    public class c_Breadth_Account : HL_Base_Class
     {
 
         private IWebDriver driver;
@@ -106,11 +106,13 @@ namespace HL_Breadth
                     break;
 
                 case "chrome":
-                    driver = new ChromeDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch chrome browser
+                    ChromeOptions options = new ChromeOptions();
+                    options.AddArguments("test-type");
+                    driver = new ChromeDriver(@".\drivers",options);
                     break;
 
                 case "internetexplorer":
-                    driver = new InternetExplorerDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch IE browser
+                    driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
                     break;
             }
 
@@ -143,7 +145,7 @@ namespace HL_Breadth
 
             Console.WriteLine("Driver Type:" + " " + driver_type);
 
-
+            sleep(3000);
             baseURL = "http://localhost:8000/";
 
             driver.Navigate().GoToUrl(baseURL + "/HipLink5UI-Work/index.html#login");
@@ -160,6 +162,8 @@ namespace HL_Breadth
 
             driver.FindElement(By.CssSelector("a.c_btn_large1.login_button")).Click();// user login button
             driver.FindElement(By.Id("btnOk")).Click();
+
+            WaitForElementToExist("entityTitle", driver);
 
             Thread.Sleep(3000);
 
@@ -1718,14 +1722,16 @@ namespace HL_Breadth
 
             //------ Hover functionality and click ------
 
+            WaitForElementToExist(id_name, driver);
+
             var hoveritem = driver.FindElement(By.Id(id_name));
 
             Actions action1 = new Actions(driver); //simply my webdriver
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
 
             action1.MoveToElement(hoveritem).Perform(); //move to list element that needs to be hovered
 
-            Thread.Sleep(3000);
+            WaitForElementToExistUsingLinkText(link_text, driver);
 
             driver.FindElement(By.XPath("(//a[text()='" + link_text + "'])[1]")).Click();
             Thread.Sleep(3000);
@@ -1734,7 +1740,7 @@ namespace HL_Breadth
             //------ Focus out the mouse to disappear hovered dialog ------
 
             Actions action2 = new Actions(driver);
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
 
             action2.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
             Thread.Sleep(3000);
@@ -1742,6 +1748,63 @@ namespace HL_Breadth
 
         }
 
+        public static void WaitForElementToExist(string ID, IWebDriver driver)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+            wait.Until<bool>((d) =>
+            {
+                try
+                {
+                    // If the find succeeds, the element exists, and
+                    // we want the element to *not* exist, so we want
+                    // to return true when the find throws an exception.
+                    IWebElement element = d.FindElement(By.Id(ID));
+                    return true;
+                }
+                catch (NoSuchElementException)
+                {
+                    return false;
+                }
+            });
+        }
+
+        public static void WaitForElementToExistUsingLinkText(string link_text, IWebDriver driver)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+            wait.Until<bool>((d) =>
+            {
+                try
+                {
+                    // If the find succeeds, the element exists, and
+                    // we want the element to *not* exist, so we want
+                    // to return true when the find throws an exception.
+                    IWebElement element = d.FindElement(By.LinkText(link_text));
+                    return true;
+                }
+                catch (NoSuchElementException)
+                {
+                    return false;
+                }
+            });
+        }
+
+        public string[] read_from_file(string file_name)
+        {
+            // Read each line of the file into a string array. Each element 
+            // of the array is one line of the file. 
+
+            string[] lines = System.IO.File.ReadAllLines(@".\" + file_name + ".txt");
+
+            // Display the file contents by using a foreach loop.
+            System.Console.WriteLine("Contents of " + file_name + ".txt = ");
+            foreach (string line in lines)
+            {
+                // Use a tab to indent each line of the file.
+                Console.WriteLine("\n" + line);
+            }
+
+            return lines;
+        }
 
 
 

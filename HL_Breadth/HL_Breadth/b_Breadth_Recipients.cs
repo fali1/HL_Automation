@@ -28,7 +28,7 @@ using System.Collections;
 namespace HL_Breadth
 {
     [TestFixture]
-    public class b_Breadth_Recipients
+    public class b_Breadth_Recipients : HL_Base_Class
     {
 
         private IWebDriver driver;
@@ -772,7 +772,7 @@ namespace HL_Breadth
                 Thread.Sleep(1000);
 
                 driver.FindElement(By.Id("btnsave")).Click();
-                Thread.Sleep(2000);
+                Thread.Sleep(5000);
 
                 //VERIFYING SECOND ADDED CARRIER
 
@@ -787,7 +787,8 @@ namespace HL_Breadth
                     //EDITING CARRIER
 
                     driver.FindElement(By.XPath("(//a[@class='row_action_edit'])[2]")).Click();
-
+                    //WaitForElementToExist("carrierName",driver);
+                    Thread.Sleep(5000);
                     driver.FindElement(By.Id("carrierName")).Clear();
                     driver.FindElement(By.Id("carrierName")).SendKeys(carrier_name_2_edited);
 
@@ -1048,74 +1049,6 @@ namespace HL_Breadth
                         driver.FindElement(By.Id("btnOk")).Click();
                         Thread.Sleep(2000);
 
-
-
-                        if (!(driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(receiver_name_2_edited)))
-                        {
-                            takescreenshot("Receiver_Passed");
-                            Console.WriteLine("^^^^^^^^^^^^^^^^^^^^^   Add_Edit_Delete Receiver Passed... ^^^^^^^^^^^^^^^^^^^^^");
-
-
-                            driver.FindElement(By.XPath("//li[@id='recipients']")).Click(); //goto landing for particular ID
-                            Thread.Sleep(2000);
-
-                            // ADDING THIRD RECEIVER
-
-                            driver.FindElement(By.XPath("//a[text()='Add Reciever']")).Click();
-                            Thread.Sleep(5000);
-
-                            driver.FindElement(By.Id("txtName")).Clear();
-                            driver.FindElement(By.Id("txtName")).SendKeys(receiver_name_3);
-
-                            driver.FindElement(By.Id("txtEmailAdrs")).Clear();
-                            driver.FindElement(By.Id("txtEmailAdrs")).SendKeys(receiver_emailaddress);
-                            Thread.Sleep(2000);
-
-                            driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();
-                            Thread.Sleep(2000);
-
-                            driver.FindElement(By.XPath("(//li[contains(text(),'" + carrier_name + "')])")).Click();// selecting carrier
-
-                            driver.FindElement(By.Id("txtPrimaryPin")).Clear();
-                            driver.FindElement(By.Id("txtPrimaryPin")).SendKeys(receiver_pin);
-
-                            driver.FindElement(By.Id("btnsave")).Click();
-                            Thread.Sleep(2000);
-
-                            // ADDING FOURTH RECEIVER
-
-                            driver.FindElement(By.XPath("//a[text()='Add Reciever']")).Click();
-                            Thread.Sleep(5000);
-
-                            driver.FindElement(By.Id("txtName")).Clear();
-                            driver.FindElement(By.Id("txtName")).SendKeys(receiver_name_4);
-
-                            driver.FindElement(By.Id("txtEmailAdrs")).Clear();
-                            driver.FindElement(By.Id("txtEmailAdrs")).SendKeys(receiver_emailaddress);
-                            Thread.Sleep(2000);
-
-                            driver.FindElement(By.XPath("(//a[@class='selector'])[5]")).Click();
-                            Thread.Sleep(2000);
-
-                            driver.FindElement(By.XPath("(//li[contains(text(),'" + carrier_name + "')])")).Click();// selecting carrier
-
-                            driver.FindElement(By.Id("txtPrimaryPin")).Clear();
-                            driver.FindElement(By.Id("txtPrimaryPin")).SendKeys(receiver_pin);
-
-                            driver.FindElement(By.Id("btnsave")).Click();
-                            Thread.Sleep(2000);
-
-                        }
-
-                        else
-                        {
-
-                            takescreenshot("Second_Receiver_Deleted_Failed");
-
-                            Assert.Fail("Second Receiver Deleted Failed...");
-                        }
-
-
                     }
 
                 }
@@ -1178,10 +1111,10 @@ namespace HL_Breadth
             Thread.Sleep(2000);
 
             driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
-            driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+            Thread.Sleep(5000);
 
             driver.FindElement(By.Id("addRec")).Click();
+            Thread.Sleep(2000);
 
             driver.FindElement(By.Id("btnSaveTabTwo")).Click();
             Thread.Sleep(2000);
@@ -1244,12 +1177,11 @@ namespace HL_Breadth
             
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
 
-            
-                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
+                Thread.Sleep(5000);
             
                 driver.FindElement(By.Id("addRec")).Click();
 
+                Thread.Sleep(3000);
             
                 driver.FindElement(By.Id("btnSaveTabTwo")).Click();
             
@@ -1298,10 +1230,10 @@ namespace HL_Breadth
                     Thread.Sleep(2000);
 
                     driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
-                    driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+                    Thread.Sleep(5000);
 
                     driver.FindElement(By.Id("addRec")).Click();
+                    Thread.Sleep(3000);
 
                     driver.FindElement(By.Id("btnSaveTabTwo")).Click();
 
@@ -1402,8 +1334,7 @@ namespace HL_Breadth
             Thread.Sleep(2000);
 
             driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
-            driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+            Thread.Sleep(5000);
 
 
             driver.FindElement(By.Id("addRec")).Click();
@@ -1472,9 +1403,7 @@ namespace HL_Breadth
                 Thread.Sleep(2000);
 
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
-                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
+                Thread.Sleep(5000);
 
                 driver.FindElement(By.Id("addRec")).Click();
                 Thread.Sleep(2000);
@@ -1524,8 +1453,7 @@ namespace HL_Breadth
                     Thread.Sleep(2000);
 
                     driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
-                    driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+                    Thread.Sleep(5000);
 
                     driver.FindElement(By.Id("addRec")).Click();
                     Thread.Sleep(2000);
@@ -1625,8 +1553,7 @@ namespace HL_Breadth
             Thread.Sleep(2000);
 
             driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
-            driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+            Thread.Sleep(5000);
 
             driver.FindElement(By.Id("addRec")).Click();
             Thread.Sleep(2000);
@@ -1722,8 +1649,7 @@ namespace HL_Breadth
                 Thread.Sleep(2000);
 
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
-                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+                Thread.Sleep(5000);
 
                 driver.FindElement(By.Id("addRec")).Click();
                 Thread.Sleep(2000);
@@ -1807,8 +1733,7 @@ namespace HL_Breadth
                     Thread.Sleep(2000);
 
                     driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
-                    driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+                    Thread.Sleep(5000);
 
                     driver.FindElement(By.Id("addRec")).Click();
                     Thread.Sleep(2000);
@@ -1939,8 +1864,7 @@ namespace HL_Breadth
             Thread.Sleep(2000);
 
             driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
-            driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+            Thread.Sleep(5000);
 
             driver.FindElement(By.Id("addRec")).Click();
             Thread.Sleep(2000);
@@ -2030,8 +1954,7 @@ namespace HL_Breadth
                 Thread.Sleep(2000);
 
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
-                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+                Thread.Sleep(5000);
 
                 driver.FindElement(By.Id("addRec")).Click();
                 Thread.Sleep(2000);
@@ -2161,10 +2084,10 @@ namespace HL_Breadth
             Thread.Sleep(2000);
 
             driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
-            driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+            Thread.Sleep(5000);
 
             driver.FindElement(By.Id("addRec")).Click();
+            Thread.Sleep(3000);
 
             driver.FindElement(By.Id("btnSaveTabTwo")).Click();
             Thread.Sleep(2000);
@@ -2218,10 +2141,10 @@ namespace HL_Breadth
                 Thread.Sleep(2000);
 
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
-                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+                Thread.Sleep(5000);
 
                 driver.FindElement(By.Id("addRec")).Click();
+                Thread.Sleep(3000);
 
                 driver.FindElement(By.Id("btnSaveTabTwo")).Click();
                 Thread.Sleep(2000);
@@ -2263,10 +2186,10 @@ namespace HL_Breadth
                     Thread.Sleep(2000);
 
                     driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
-                    driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+                    Thread.Sleep(5000);
 
                     driver.FindElement(By.Id("addRec")).Click();
+                    Thread.Sleep(3000);
 
                     driver.FindElement(By.Id("btnSaveTabTwo")).Click();
                     Thread.Sleep(2000);
@@ -2354,10 +2277,10 @@ namespace HL_Breadth
             Thread.Sleep(2000);
 
             driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
-            driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+            Thread.Sleep(5000);
 
             driver.FindElement(By.Id("addRec")).Click();
+            Thread.Sleep(3000);
 
             driver.FindElement(By.Id("btnSaveTabTwo")).Click();
             Thread.Sleep(2000);
@@ -2405,10 +2328,10 @@ namespace HL_Breadth
                 Thread.Sleep(2000);
 
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
-                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+                Thread.Sleep(3000);
 
                 driver.FindElement(By.Id("addRec")).Click();
+                Thread.Sleep(3000);
 
                 driver.FindElement(By.Id("btnSaveTabTwo")).Click();
                 Thread.Sleep(2000);
@@ -2450,10 +2373,10 @@ namespace HL_Breadth
                     Thread.Sleep(2000);
 
                     driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
-                    driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+                    Thread.Sleep(5000);
 
                     driver.FindElement(By.Id("addRec")).Click();
+                    Thread.Sleep(3000);
 
                     driver.FindElement(By.Id("btnSaveTabTwo")).Click();
                     Thread.Sleep(2000);
@@ -2592,11 +2515,9 @@ namespace HL_Breadth
             var hoveritem = driver.FindElement(By.Id(id_name));
 
             Actions action1 = new Actions(driver); //simply my webdriver
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
 
             action1.MoveToElement(hoveritem).Perform(); //move to list element that needs to be hovered
-
-            Thread.Sleep(3000);
 
             WaitForElementToExistUsingLinkText(link_text, driver);
 
@@ -2607,7 +2528,7 @@ namespace HL_Breadth
             //------ Focus out the mouse to disappear hovered dialog ------
 
             Actions action2 = new Actions(driver);
-            Thread.Sleep(2000);
+            Thread.Sleep(5000);
 
             action2.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
             Thread.Sleep(3000);

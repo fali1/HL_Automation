@@ -28,7 +28,7 @@ using System.ComponentModel;
 namespace HL_Breadth
 {
     [TestFixture]
-    public class d_Breadth_Send_Panels
+    public class d_Breadth_Send_Panels : HL_Base_Class
     {
 
         private IWebDriver driver;
@@ -180,7 +180,8 @@ namespace HL_Breadth
         [Test]
         public void aa_test()
         {
-            
+
+            string[] lines_local= read_from_file("hipadm_cmd");
             //Build Commands - You may have to play with the syntax
             // on executing the batch file , in whch the following content will be written ,
             // first directory will be Changed using '%1', to the specified path defined in Arguments
@@ -218,7 +219,7 @@ namespace HL_Breadth
             ps.CreateNoWindow = true;
             ps.UseShellExecute = true;
             ps.FileName = @".\add_receiver.bat"; // this batch file will be executed
-            ps.Arguments = @"""C:\Program Files (x86)\HipLink Software\Hiplink\bin"""; //this argument will be replaced by '%1' in batch file created bove
+            ps.Arguments = lines_local[0]; //this argument will be replaced by '%1' in batch file created bove
             p.StartInfo = ps;
             p.Start();
             p.WaitForExit();
@@ -1175,6 +1176,24 @@ namespace HL_Breadth
             Thread.Sleep(3000);
 
 
+        }
+
+        public string[] read_from_file(string file_name)
+        {
+            // Read each line of the file into a string array. Each element 
+            // of the array is one line of the file. 
+
+            string[] lines = System.IO.File.ReadAllLines(@".\" + file_name + ".txt");
+
+            // Display the file contents by using a foreach loop.
+            System.Console.WriteLine("Contents of " + file_name + ".txt = ");
+            foreach (string line in lines)
+            {
+                // Use a tab to indent each line of the file.
+                Console.WriteLine("\n" + line);
+            }
+
+            return lines;
         }
 
 

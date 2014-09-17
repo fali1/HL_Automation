@@ -40,9 +40,13 @@ spool directory
 bulk spool directory
 
 system_attendant_settings.txt file
----------------------------------------
+----------------------------------
 email address of admin
 
 directory_path.txt file
----------------------------------------
+-----------------------
 directory path
+
+hipadm_cmd.txt file
+-----------------------
+hiplink bin folder path
