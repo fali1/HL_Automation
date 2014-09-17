@@ -1,91 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="4" errors="4" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-16" time="16:15:26">
+<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="1" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-17" time="20:12:04">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5485" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Failure" success="False" time="85.938" asserts="0">
+  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Failure" success="False" time="78.102" asserts="0">
     <results>
-      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Failure" success="False" time="85.908" asserts="0">
+      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Failure" success="False" time="78.084" asserts="0">
         <results>
-          <test-suite type="TestFixture" name="k_Smoke_Help_About_Session_License_key" executed="True" result="Failure" success="False" time="85.905" asserts="1">
+          <test-suite type="TestFixture" name="e_Smoke_System" executed="True" result="Failure" success="False" time="78.081" asserts="1">
             <results>
-              <test-case name="HL_Smoke.k_Smoke_Help_About_Session_License_key.a_User_Session" executed="True" result="Error" success="False" time="29.626" asserts="0">
+              <test-case name="HL_Smoke.e_Smoke_System.c_Backup_Settings_Panel" executed="True" result="Failure" success="False" time="39.985" asserts="1">
                 <failure>
-                  <message><![CDATA[OpenQA.Selenium.WebDriverException : Unexpected error. System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:65324
-   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
-   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
-   --- End of inner exception stack trace ---
-   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
-   at System.Net.HttpWebRequest.GetRequestStream()
-   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\HttpCommandExecutor.cs:line 109
-   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\DriverServiceCommandExecutor.cs:line 73
-   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 852]]></message>
-                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1113
-at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
-at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
-at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
-at HL_Smoke.k_Smoke_Help_About_Session_License_key.hover_func(String id_name, String link_text, String a_text)
-at HL_Smoke.k_Smoke_Help_About_Session_License_key.check_driver_type(String drivertype, String id_name, String link_text, String a_text)
-at HL_Smoke.k_Smoke_Help_About_Session_License_key.a_User_Session()
-]]></stack-trace>
-                </failure>
-              </test-case>
-              <test-case name="HL_Smoke.k_Smoke_Help_About_Session_License_key.b_License_Page" executed="True" result="Error" success="False" time="6.010" asserts="0">
-                <failure>
-                  <message><![CDATA[OpenQA.Selenium.WebDriverException : Unexpected error. System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:65324
-   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
-   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
-   --- End of inner exception stack trace ---
-   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
-   at System.Net.HttpWebRequest.GetRequestStream()
-   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\HttpCommandExecutor.cs:line 109
-   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\DriverServiceCommandExecutor.cs:line 73
-   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 852]]></message>
-                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1113
-at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
-at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
-at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
-at HL_Smoke.k_Smoke_Help_About_Session_License_key.check_driver_type(String drivertype, String id_name, String link_text, String a_text)
-at HL_Smoke.k_Smoke_Help_About_Session_License_key.b_License_Page()
-]]></stack-trace>
-                </failure>
-              </test-case>
-              <test-case name="HL_Smoke.k_Smoke_Help_About_Session_License_key.c_About_Page" executed="True" result="Error" success="False" time="6.009" asserts="0">
-                <failure>
-                  <message><![CDATA[OpenQA.Selenium.WebDriverException : Unexpected error. System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:65324
-   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
-   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
-   --- End of inner exception stack trace ---
-   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
-   at System.Net.HttpWebRequest.GetRequestStream()
-   at OpenQA.Selenium.Remote.HttpCommandExecutor.Execute(Command commandToExecute) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\HttpCommandExecutor.cs:line 109
-   at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\DriverServiceCommandExecutor.cs:line 73
-   at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 852]]></message>
-                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1113
-at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
-at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
-at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
-at HL_Smoke.k_Smoke_Help_About_Session_License_key.check_driver_type(String drivertype, String id_name, String link_text, String a_text)
-at HL_Smoke.k_Smoke_Help_About_Session_License_key.c_About_Page()
-]]></stack-trace>
-                </failure>
-              </test-case>
-              <test-case name="HL_Smoke.k_Smoke_Help_About_Session_License_key.d_Help" executed="True" result="Error" success="False" time="3.007" asserts="0">
-                <failure>
-                  <message><![CDATA[OpenQA.Selenium.WebDriverException : A exception with a null response was thrown sending an HTTP request to the remote WebDriver server for URL http://localhost:65324/session/47229196be36a2da8d38043a6e890adc/window_handle. The status of the exception was ConnectFailure, and the message was: Unable to connect to the remote server
-  ----> System.Net.WebException : Unable to connect to the remote server
-  ----> System.Net.Sockets.SocketException : No connection could be made because the target machine actively refused it 127.0.0.1:65324]]></message>
-                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.HttpCommandExecutor.CreateResponse(WebRequest request) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\HttpCommandExecutor.cs:line 155
-at OpenQA.Selenium.Remote.DriverServiceCommandExecutor.Execute(Command commandToExecute) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\DriverServiceCommandExecutor.cs:line 73
-at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 852
-at OpenQA.Selenium.Remote.RemoteWebDriver.get_CurrentWindowHandle() in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 216
-at HL_Smoke.k_Smoke_Help_About_Session_License_key.d_Help()
---WebException
-at System.Net.HttpWebRequest.GetResponse()
-at OpenQA.Selenium.Remote.HttpCommandExecutor.CreateResponse(WebRequest request) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\HttpCommandExecutor.cs:line 142
---SocketException
-at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
-at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+                  <message><![CDATA[Backup_settings_panel Testcase Failed]]></message>
+                  <stack-trace><![CDATA[at HL_Smoke.e_Smoke_System.c_Backup_Settings_Panel() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\e_Smoke_System.cs:line 546
 ]]></stack-trace>
                 </failure>
               </test-case>
