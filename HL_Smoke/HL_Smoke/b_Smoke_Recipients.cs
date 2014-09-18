@@ -103,11 +103,13 @@ namespace HL_Smoke
                     break;
 
                 case "chrome":
-                    driver = new ChromeDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch chrome browser
+                    ChromeOptions options = new ChromeOptions();
+                    options.AddArguments("test-type");
+                    driver = new ChromeDriver(@".\drivers",options);
                     break;
 
                 case "internetexplorer":
-                    driver = new InternetExplorerDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch IE browser
+                    driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
                     break;
             }
 

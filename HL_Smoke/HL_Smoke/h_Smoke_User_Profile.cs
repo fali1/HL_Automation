@@ -110,7 +110,7 @@ namespace HL_Smoke
                     driver = new ChromeDriver(@".\drivers",options);
                     break;
                 case "internetexplorer":
-                    driver = new InternetExplorerDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch IE browser
+                    driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
                     break;
             }
 
@@ -191,7 +191,7 @@ namespace HL_Smoke
 
             Console.WriteLine("User label Trimmed at the end:" + "*" + trimmed_user_label + "*");
 
-            Assert.AreEqual(trimmed_user_label, "Welcome fahad");
+            Assert.AreEqual(trimmed_user_label, "Welcome "+login_name);
 
             verificationErrors = new StringBuilder();
 

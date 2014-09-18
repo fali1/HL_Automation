@@ -1,18 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="1" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-17" time="20:12:04">
+<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="1" errors="1" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-18" time="20:29:51">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5485" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Failure" success="False" time="78.102" asserts="0">
+  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="False" result="Cancelled">
     <results>
-      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Failure" success="False" time="78.084" asserts="0">
+      <test-suite type="Namespace" name="HL_Smoke" executed="False" result="Cancelled">
         <results>
-          <test-suite type="TestFixture" name="e_Smoke_System" executed="True" result="Failure" success="False" time="78.081" asserts="1">
+          <test-suite type="TestFixture" name="b_Smoke_Recipients" executed="False" result="Cancelled">
             <results>
-              <test-case name="HL_Smoke.e_Smoke_System.c_Backup_Settings_Panel" executed="True" result="Failure" success="False" time="39.985" asserts="1">
+              <test-case name="HL_Smoke.b_Smoke_Recipients.a_Directory_Settings_Panel" executed="False" result="Cancelled">
                 <failure>
-                  <message><![CDATA[Backup_settings_panel Testcase Failed]]></message>
-                  <stack-trace><![CDATA[at HL_Smoke.e_Smoke_System.c_Backup_Settings_Panel() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\e_Smoke_System.cs:line 546
+                  <message><![CDATA[Test cancelled by user]]></message>
+                  <stack-trace><![CDATA[at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+at NUnit.Core.Reflect.InvokeMethod(MethodInfo method, Object fixture, Object[] args)
+at NUnit.Core.TestMethod.RunTestMethod()
+at NUnit.Core.TestMethod.RunTestCase(TestResult testResult)
 ]]></stack-trace>
                 </failure>
               </test-case>

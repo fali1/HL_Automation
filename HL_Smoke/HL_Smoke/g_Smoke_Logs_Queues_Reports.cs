@@ -85,7 +85,7 @@ namespace HL_Smoke
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-            // System.Diagnostics.Debugger.Launch();// launch debugger
+             System.Diagnostics.Debugger.Launch();// launch debugger
 
             string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
 
@@ -112,7 +112,7 @@ namespace HL_Smoke
                     break;
 
                 case "internetexplorer":
-                    driver = new InternetExplorerDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch IE browser
+                    driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
                     break;
             }
 
@@ -170,10 +170,6 @@ namespace HL_Smoke
 
             login_pwd = lines_local[1];
 
-            login_name = lines_local[0]; //used in login and session manager testcases
-
-            login_pwd = lines_local[1];
-
             driver.FindElement(By.Id("username")).Clear();
 
             driver.FindElement(By.Id("username")).SendKeys(login_name);
@@ -197,7 +193,7 @@ namespace HL_Smoke
 
             Console.WriteLine("User label Trimmed at the end:" + "*" + trimmed_user_label + "*");
 
-            Assert.AreEqual(trimmed_user_label, "Welcome fahad");
+            Assert.AreEqual(trimmed_user_label, "Welcome "+login_name);
 
             verificationErrors = new StringBuilder();
 
@@ -266,8 +262,8 @@ namespace HL_Smoke
             else
 
             {
-
-                driver.FindElement(By.Id("divGrid_selectAllRows")).Click();  // Select all/Deselect all checkbox
+                WaitForChrome(5000,browser_name);
+                driver.FindElement(By.XPath("//input[@name='allCheckbox']")).Click();  // Select all/Deselect all checkbox
 
                 driver.FindElement(By.Id("selChangeLevel")).Click();
                 Thread.Sleep(2000);
@@ -281,6 +277,8 @@ namespace HL_Smoke
                 Thread.Sleep(2000);
 
                 takescreenshot("Log_Settings");
+
+                WaitForChrome(5000,browser_name);
 
                 if (driver.FindElement(By.XPath(".//*[@id='divGrid_idGridDataNode']/div[1]/div[1]/div/div[5]/descendant::div")).Text.Equals(log_level))
                 {
@@ -569,24 +567,27 @@ namespace HL_Smoke
 
             Assert.AreEqual("Statistics", driver.FindElement(By.Id("main_title")).Text);
            
+            driver.FindElement(By.Id("stats_start_date")).Click();
+            Thread.Sleep(3000);
+
+            driver.FindElement(By.XPath("//a[text()='18']"));
+
             driver.FindElement(By.Id("stats_date_filter")).Click();
             Thread.Sleep(2000);
             
-            driver.FindElement(By.Id("stats_start_date")).Click();
-           
             driver.FindElement(By.LinkText("Traffic by Messengers")).Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             
             driver.FindElement(By.LinkText("Traffic by Time")).Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             
             driver.FindElement(By.XPath("//*[@id='tab_summary']/a")).Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             
             driver.FindElement(By.LinkText("Passed")).Click();
             
             driver.FindElement(By.Id("stats_export")).Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
             
             driver.FindElement(By.Id("btnOk")).Click();
         }
@@ -690,10 +691,12 @@ namespace HL_Smoke
 
             action1.MoveToElement(hoveritem).Perform(); //move to list element that needs to be hovered
 
-            Thread.Sleep(3000);
+            Thread.Sleep(5000);
 
             driver.FindElement(By.XPath("(//a[text()='" + link_text + "'])[1]")).Click();
             Thread.Sleep(3000);
+
+            WaitForElementToExist("lblCustomHeader",driver);
 
 
             //------ Focus out the mouse to disappear hovered dialog ------

@@ -109,7 +109,7 @@ namespace HL_Smoke
                     break;
 
                 case "internetexplorer":
-                    driver = new InternetExplorerDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch IE browser
+                    driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
                     break;
             }
 
@@ -227,7 +227,11 @@ namespace HL_Smoke
 
 
                 driver.FindElement(By.LinkText("General Policy")).Click(); //opening General Policy page
+                Thread.Sleep(2000);
 
+                hnp.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
+                Thread.Sleep(3000);
+                
                 Assert.AreEqual("General Policy", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
 
@@ -269,9 +273,10 @@ namespace HL_Smoke
                // check_driver_type(driver_type, "administration", "Services", "SysAdmin");
 
                 driver.FindElement(By.Id("administration")).Click();
+                Thread.Sleep(3000);
 
                 driver.FindElement(By.LinkText("Services")).Click();
-
+                Thread.Sleep(3000);
 
 
                 if (IsElementPresent(By.XPath("//*[@id='item_17']/td[2]/a[@class='action service_action_play']"))) //HNP Manager's play button
