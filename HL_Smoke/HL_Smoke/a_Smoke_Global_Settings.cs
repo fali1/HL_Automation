@@ -201,8 +201,8 @@ namespace HL_Smoke
             driver.FindElement(By.Id("btnEditMain")).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.Id("txtnumOfRecordReportPage")).Clear();
-            driver.FindElement(By.Id("txtnumOfRecordReportPage")).SendKeys("12");
+            driver.FindElement(By.Id("txtnumOfrecordPage")).Clear();
+            driver.FindElement(By.Id("txtnumOfrecordPage")).SendKeys("12");
 
            
             //Receiver section
@@ -380,7 +380,7 @@ namespace HL_Smoke
             //Common section (Display)
             driver.FindElement(By.XPath("(//a[text()='Common'])[1]")).Click();
 
-            if(driver.FindElement(By.Id("lblnumOfRecordReportPage")).Text.Equals("12"))
+            if (driver.FindElement(By.Id("lblnumOfrecordPage")).Text.Equals("12"))
             {
                 driver.FindElement(By.LinkText("Receiver")).Click();
                 
@@ -644,6 +644,10 @@ namespace HL_Smoke
         {
             try
             {
+
+                driver.FindElement(By.XPath("//a[text()='Logout']")).Click();
+                Thread.Sleep(2000);
+
                 driver.Quit();
             }
             catch (Exception)

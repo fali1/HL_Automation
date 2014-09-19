@@ -92,7 +92,7 @@ namespace HL_Smoke
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-             System.Diagnostics.Debugger.Launch();// launch debugger
+             //System.Diagnostics.Debugger.Launch();// launch debugger
 
             string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
 
@@ -117,7 +117,7 @@ namespace HL_Smoke
                     break;
 
                 case "internetexplorer":
-                    driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
+                    driver = new InternetExplorerDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch IE browser
                     break;
             }
 
@@ -623,7 +623,7 @@ namespace HL_Smoke
                       hover_func("settings", "Departments");
                   }*/
 
-                Thread.Sleep(2000);
+                WaitForChrome(5000, browser_name);
                 driver.FindElement(By.LinkText("Add Department")).Click();
 
                 Thread.Sleep(1000);
@@ -668,9 +668,9 @@ namespace HL_Smoke
                 Thread.Sleep(2000);
 
                 driver.FindElement(By.XPath("//li[text()='Default']")).Click();
-
+                Thread.Sleep(3000);
                 driver.FindElement(By.XPath("//li[contains(text(),'receiver_smtp')]")).Click();
-
+                Thread.Sleep(3000);
                 driver.FindElement(By.Id("moveMemberRight")).Click();
                 Thread.Sleep(2000);
 
@@ -857,13 +857,13 @@ namespace HL_Smoke
             {
 
                 Console.WriteLine("if clause ....");
-                Thread.Sleep(5000);
+                WaitForChrome(5000, browser_name);
 
                 driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
-                Thread.Sleep(5000);
+                WaitForChrome(5000, browser_name);
 
                 driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
-                Thread.Sleep(5000);
+                WaitForChrome(5000, browser_name);
 
                 
 
@@ -873,25 +873,26 @@ namespace HL_Smoke
             {
 
                 Console.WriteLine("using hover func() ....");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 //a[contains(text(),'On-Duty')])[2]
 
                 driver.FindElement(By.XPath("//li[@id='" + id_name + "']/a[text()='" + a_text + "']")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
 
 
                 Actions a1c = new Actions(driver);
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 a1c.MoveToElement(driver.FindElement(By.XPath("//div[@class='footer']"))).Perform();
                 Thread.Sleep(3000);
+                WaitForChrome(5000, browser_name);
 
                 
 
                 driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 /*
                 if (link_text.Equals("Escalation"))
@@ -908,10 +909,12 @@ namespace HL_Smoke
                 
 
                 driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
-                Thread.Sleep(5000);
+                Thread.Sleep(3000);
+                WaitForChrome(5000, browser_name);
 
                 hover_func(id_name, link_text, a_text);
-                Thread.Sleep(5000);
+                Thread.Sleep(3000);
+                WaitForChrome(5000, browser_name);
 
             }
 
@@ -938,23 +941,25 @@ namespace HL_Smoke
             var hoveritem = driver.FindElement(By.Id(id_name));
 
             Actions action1 = new Actions(driver); //simply my webdriver
-            Thread.Sleep(5000);
+            WaitForChrome(5000, browser_name);
 
             action1.MoveToElement(hoveritem).Perform(); //move to list element that needs to be hovered
-
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
+            WaitForChrome(5000, browser_name);
 
             driver.FindElement(By.XPath("(//a[text()='" + link_text + "'])[1]")).Click();
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
+            WaitForChrome(5000, browser_name);
 
 
             //------ Focus out the mouse to disappear hovered dialog ------
 
             Actions action2 = new Actions(driver);
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
 
             action2.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
             Thread.Sleep(3000);
+            WaitForChrome(5000, browser_name);
 
 
         }
@@ -1055,6 +1060,9 @@ namespace HL_Smoke
         {
             try
             {
+                driver.FindElement(By.XPath("//a[text()='Logout']")).Click();
+                Thread.Sleep(2000);
+
                 driver.Quit();
             }
             catch (Exception)

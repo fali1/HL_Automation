@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="true">
   <TopNode>[0-1061]D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll</TopNode>
-  <SelectedNode>[0-1034]HL_Smoke.g_Smoke_Logs_Queues_Reports.a_Logs_Settings</SelectedNode>
+  <SelectedNode>[0-1011]HL_Smoke.d_Smoke_Send_Panels.b_Primary_Send_Panel</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
     <Node UniqueName="[0-1061]D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" Expanded="true" />
     <Node UniqueName="[0-1062]HL_Smoke" Expanded="true" />
     <Node UniqueName="[0-1000]HL_Smoke.a_Smoke_Global_Settings" Expanded="true" />
-    <Node UniqueName="[0-1050]HL_Smoke.b_Smoke_Recipients" Expanded="true" Checked="true" />
-    <Node UniqueName="[0-1002]HL_Smoke.c_Smoke_Account" Expanded="true" Checked="true" />
+    <Node UniqueName="[0-1050]HL_Smoke.b_Smoke_Recipients" Expanded="true" />
+    <Node UniqueName="[0-1002]HL_Smoke.c_Smoke_Account" Expanded="true" />
     <Node UniqueName="[0-1009]HL_Smoke.d_Smoke_Send_Panels" Expanded="true" />
+    <Node UniqueName="[0-1011]HL_Smoke.d_Smoke_Send_Panels.b_Primary_Send_Panel" Checked="true" />
+    <Node UniqueName="[0-1012]HL_Smoke.d_Smoke_Send_Panels.c_Quick_Send_Panel" Checked="true" />
+    <Node UniqueName="[0-1013]HL_Smoke.d_Smoke_Send_Panels.d_Escalation_Send_Panel" Checked="true" />
+    <Node UniqueName="[0-1014]HL_Smoke.d_Smoke_Send_Panels.e_Fax_Send_Panel" Checked="true" />
+    <Node UniqueName="[0-1015]HL_Smoke.d_Smoke_Send_Panels.f_Voice_Send_Panel" Checked="true" />
+    <Node UniqueName="[0-1016]HL_Smoke.d_Smoke_Send_Panels.g_Quota_Send_Panel" Checked="true" />
+    <Node UniqueName="[0-1017]HL_Smoke.d_Smoke_Send_Panels.h_Attribute_Send_Panel" Checked="true" />
+    <Node UniqueName="[0-1018]HL_Smoke.d_Smoke_Send_Panels.i_Add_Message_Template_Primary_Send_Panel" Checked="true" />
+    <Node UniqueName="[0-1019]HL_Smoke.d_Smoke_Send_Panels.j_Job_Confirmation_Panel" Checked="true" />
     <Node UniqueName="[0-1020]HL_Smoke.e_Smoke_System" Expanded="true" />
     <Node UniqueName="[0-1031]HL_Smoke.f_Smoke_Hnp" Expanded="true" />
     <Node UniqueName="[0-1033]HL_Smoke.g_Smoke_Logs_Queues_Reports" Expanded="true" />
+    <Node UniqueName="[0-1036]HL_Smoke.g_Smoke_Logs_Queues_Reports.c_Queues_Panel" Checked="true" />
     <Node UniqueName="[0-1039]HL_Smoke.h_Smoke_User_Profile" Expanded="true" />
     <Node UniqueName="[0-1041]HL_Smoke.i_Smoke_Shortcut_keys" Expanded="true" />
     <Node UniqueName="[0-1043]HL_Smoke.j_Smoke_Global_search" Expanded="true" />

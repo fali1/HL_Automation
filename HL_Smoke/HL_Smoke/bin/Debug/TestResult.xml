@@ -1,23 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="1" errors="1" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-18" time="20:29:51">
+<test-results name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" total="10" errors="2" failures="3" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-19" time="19:47:18">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5485" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="False" result="Cancelled">
+  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll" executed="True" result="Failure" success="False" time="554.137" asserts="0">
     <results>
-      <test-suite type="Namespace" name="HL_Smoke" executed="False" result="Cancelled">
+      <test-suite type="Namespace" name="HL_Smoke" executed="True" result="Failure" success="False" time="554.136" asserts="0">
         <results>
-          <test-suite type="TestFixture" name="b_Smoke_Recipients" executed="False" result="Cancelled">
+          <test-suite type="TestFixture" name="d_Smoke_Send_Panels" executed="True" result="Failure" success="False" time="510.372" asserts="1">
             <results>
-              <test-case name="HL_Smoke.b_Smoke_Recipients.a_Directory_Settings_Panel" executed="False" result="Cancelled">
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.b_Primary_Send_Panel" executed="True" result="Failure" success="False" time="59.183" asserts="1">
                 <failure>
-                  <message><![CDATA[Test cancelled by user]]></message>
-                  <stack-trace><![CDATA[at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
-at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
-at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
-at NUnit.Core.Reflect.InvokeMethod(MethodInfo method, Object fixture, Object[] args)
-at NUnit.Core.TestMethod.RunTestMethod()
-at NUnit.Core.TestMethod.RunTestCase(TestResult testResult)
+                  <message><![CDATA[ Primary Send Panel Faled ... ]]></message>
+                  <stack-trace><![CDATA[at HL_Smoke.d_Smoke_Send_Panels.b_Primary_Send_Panel() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 411
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.c_Quick_Send_Panel" executed="True" result="Failure" success="False" time="39.268" asserts="1">
+                <failure>
+                  <message><![CDATA[ Quick Send Panel Failed ... ]]></message>
+                  <stack-trace><![CDATA[at HL_Smoke.d_Smoke_Send_Panels.c_Quick_Send_Panel() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 481
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.d_Escalation_Send_Panel" executed="True" result="Success" success="True" time="46.417" asserts="2" />
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.e_Fax_Send_Panel" executed="True" result="Success" success="True" time="95.765" asserts="3" />
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.f_Voice_Send_Panel" executed="True" result="Success" success="True" time="91.504" asserts="3" />
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.g_Quota_Send_Panel" executed="True" result="Success" success="True" time="46.416" asserts="2" />
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.h_Attribute_Send_Panel" executed="True" result="Error" success="False" time="59.574" asserts="1">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"xpath","selector":"//b[text()='A1']"}]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Smoke.d_Smoke_Send_Panels.h_Attribute_Send_Panel() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 749
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.i_Add_Message_Template_Primary_Send_Panel" executed="True" result="Failure" success="False" time="17.466" asserts="1">
+                <failure>
+                  <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                  <stack-trace><![CDATA[at HL_Smoke.d_Smoke_Send_Panels.i_Add_Message_Template_Primary_Send_Panel() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\d_Smoke_Send_Panels.cs:line 811
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Smoke.d_Smoke_Send_Panels.j_Job_Confirmation_Panel" executed="True" result="Success" success="True" time="38.673" asserts="1" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="g_Smoke_Logs_Queues_Reports" executed="True" result="Failure" success="False" time="43.735" asserts="1">
+            <results>
+              <test-case name="HL_Smoke.g_Smoke_Logs_Queues_Reports.c_Queues_Panel" executed="True" result="Error" success="False" time="29.398" asserts="0">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.NoSuchElementException : Unable to locate element: {"method":"link text","selector":"New_directory"}]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1051
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at OpenQA.Selenium.Remote.RemoteWebDriver.FindElement(String mechanism, String value) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 894
+at OpenQA.Selenium.By.FindElement(ISearchContext context) in c:\Projects\webdriver\dotnet\src\webdriver\By.cs:line 309
+at HL_Smoke.g_Smoke_Logs_Queues_Reports.c_Queues_Panel() in d:\git_local\HL_Automation\HL_Smoke\HL_Smoke\g_Smoke_Logs_Queues_Reports.cs:line 437
 ]]></stack-trace>
                 </failure>
               </test-case>

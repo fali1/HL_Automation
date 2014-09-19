@@ -1,1 +1,0 @@
-"C:\Program Files (x86)\NUnit 2.6.3\bin\nunit-console.exe" "D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll"

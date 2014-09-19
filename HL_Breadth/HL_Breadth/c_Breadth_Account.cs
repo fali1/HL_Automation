@@ -145,7 +145,6 @@ namespace HL_Breadth
 
             Console.WriteLine("Driver Type:" + " " + driver_type);
 
-            sleep(3000);
             baseURL = "http://localhost:8000/";
 
             driver.Navigate().GoToUrl(baseURL + "/HipLink5UI-Work/index.html#login");

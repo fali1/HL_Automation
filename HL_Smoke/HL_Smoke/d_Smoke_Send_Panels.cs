@@ -384,10 +384,10 @@ namespace HL_Smoke
             driver.FindElement(By.XPath(".//*[@id='sideBars']/div[3]/div/div[1]/b")).Click();  // opening Attachment section
             
             Thread.Sleep(4500);
-
+            string[] imageurl = read_from_file("image_url");
             //uploading attachment
             IWebElement fileInput = driver.FindElement(By.XPath("//input[@type='file']"));
-            fileInput.SendKeys(@".\Tulips.jpg");
+            fileInput.SendKeys(imageurl[0]);
             Thread.Sleep(4500);
 
             
@@ -705,7 +705,7 @@ namespace HL_Smoke
             driver.FindElement(By.Id("moveItemRight")).Click();
             Thread.Sleep(1000);
             
-            driver.FindElement(By.XPath("//span[text()='receiver_fax']")).Click();
+            driver.FindElement(By.XPath("//span[text()='receiver_voice']")).Click();
             driver.FindElement(By.Id("moveItemRight")).Click();
             Thread.Sleep(1000);
             
@@ -841,21 +841,21 @@ namespace HL_Smoke
         public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 
         {
 
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
 
             if (drivertype.ToString() == "OpenQA.Selenium.Safari.SafariDriver") //for safari
             {
 
                 Console.WriteLine("if clause ....");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 
 
                 driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 
 
@@ -865,7 +865,7 @@ namespace HL_Smoke
             {
 
                 Console.WriteLine("using hover func() ....");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 //a[contains(text(),'On-Duty')])[2]
 
@@ -979,6 +979,8 @@ namespace HL_Smoke
             });
         }
 
+
+
         public string[] read_from_file(string file_name)
         {
             // Read each line of the file into a string array. Each element 
@@ -1057,6 +1059,9 @@ namespace HL_Smoke
         {
             try
             {
+                driver.FindElement(By.XPath("//a[text()='Logout']")).Click();
+                Thread.Sleep(2000);
+
                 driver.Quit();
             }
             catch (Exception)

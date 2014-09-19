@@ -105,11 +105,13 @@ namespace HL_Breadth
                     break;
 
                 case "chrome":
-                    driver = new ChromeDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch chrome browser
+                    ChromeOptions options = new ChromeOptions();
+                    options.AddArguments("test-type");
+                    driver = new ChromeDriver(@".\drivers",options);
                     break;
 
                 case "internetexplorer":
-                    driver = new InternetExplorerDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch IE browser
+                    driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
                     break;
             }
 
@@ -503,9 +505,10 @@ namespace HL_Breadth
 
             Thread.Sleep(4500);
 
+            string[] imageurl = read_from_file("image_url");
             //uploading attachment
             IWebElement fileInput = driver.FindElement(By.XPath("//input[@type='file']"));
-            fileInput.SendKeys(@"C:\Users\Public\Pictures\Sample Pictures\Tulips.jpg");
+            fileInput.SendKeys(imageurl[0]);
             Thread.Sleep(4500);
 
 

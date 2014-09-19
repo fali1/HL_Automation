@@ -55,19 +55,11 @@ namespace HL_Breadth
 
         string trimmed_user_label;
 
-        string create_directory_path = @".\Screenshots_Testcase_Results";
+        string create_directory_path = @".\Screenshots_System_Testcase";
 
         string create_directory_path_directory = @"C:\Program Files (x86)\Hiplink Software\HipLink\new_directory";
 
-        int test_result_exist = 0;
-
         string create_directory_path_with_time;
-
-        string new_dir = "new_directory";
-
-        string messenger_name = "smtp_messenger";
-
-        string carrier_name = "smtp_carrier";
 
 
 
@@ -87,6 +79,8 @@ namespace HL_Breadth
 
             //     System.Diagnostics.Debugger.Launch();// launch debugger
 
+            string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
+
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
 
@@ -103,11 +97,13 @@ namespace HL_Breadth
                     break;
 
                 case "chrome":
-                    driver = new ChromeDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch chrome browser
+                    ChromeOptions options = new ChromeOptions();
+                    options.AddArguments("test-type");
+                    driver = new ChromeDriver(@".\drivers",options);
                     break;
 
                 case "internetexplorer":
-                    driver = new InternetExplorerDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch IE browser
+                    driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
                     break;
             }
 
@@ -140,12 +136,17 @@ namespace HL_Breadth
 
             Console.WriteLine("Driver Type:" + " " + driver_type);
 
+            string[] lines_url = read_url_from_file(@"url");
 
-            baseURL = "http://localhost:8000/";
+            baseURL = lines_url[0]; //url of application
 
-            driver.Navigate().GoToUrl(baseURL + "/HipLink5UI-Work/index.html#login");
+            driver.Navigate().GoToUrl(baseURL);
 
             driver.Manage().Window.Maximize();//maximize browser
+
+            login_name = lines_local[0]; //used in login and session manager testcases
+
+            login_pwd = lines_local[1];
 
             driver.FindElement(By.Id("username")).Clear();
 
@@ -156,7 +157,9 @@ namespace HL_Breadth
             driver.FindElement(By.Id("password")).SendKeys(login_pwd);
 
             driver.FindElement(By.CssSelector("a.c_btn_large1.login_button")).Click();// user login button
-            driver.FindElement(By.Id("btnOk")).Click();
+            
+
+            WaitForElementToExist("entityTitle", driver);
 
             Thread.Sleep(3000);
 
@@ -170,7 +173,7 @@ namespace HL_Breadth
 
             Console.WriteLine("User label Trimmed at the end:" + "*" + trimmed_user_label + "*");
 
-            Assert.AreEqual(trimmed_user_label, "Welcome admin");
+            Assert.AreEqual(trimmed_user_label, "Welcome " + lines_local[0]);
 
             verificationErrors = new StringBuilder();
         }
@@ -179,7 +182,7 @@ namespace HL_Breadth
         [Test]
         public void a_System_Attendant_Settings()
         {
-            string administrationemail = "fali@folio3.com";
+           // string administrationemail = "fali@folio3.com";
             string numberofcompletemsgs = "20";
             string numberoffailedmsgs = "30";
             string numberoffilteredmsgs = "40";
@@ -194,6 +197,10 @@ namespace HL_Breadth
 
             Assert.AreEqual("System Attendant Settings", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
+            string[] lines_local = read_from_file("system_attendant_settings"); // return all the data in the form of array
+
+            string administrationemail = lines_local[0];
+
             expired_status_on_page_load = driver.FindElement(By.Id("lblDelExpired")).Text.ToString();
 
             Console.WriteLine(expired_status_on_page_load);
@@ -205,9 +212,9 @@ namespace HL_Breadth
 
             driver.FindElement(By.Id("txtemail")).SendKeys(administrationemail);
 
-            driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
+        //    driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();
 
-            driver.FindElement(By.XPath("//li[contains(text(),'receiver_smtp')]")).Click();
+        //    driver.FindElement(By.XPath("//li[contains(text(),'receiver_smtp')]")).Click();
 
             driver.FindElement(By.Id("txtcompmsgs")).Clear();
 
@@ -242,7 +249,7 @@ namespace HL_Breadth
             Thread.Sleep(2000);
 
            
-            if (driver.FindElement(By.XPath("//*[@id='lblAdminEmail']")).Text.Equals(administrationemail) &&
+            if (driver.FindElement(By.XPath("//*[@id='lblAdminEmail']")).Text.Equals(administrationemail))/* &&
 
                     driver.FindElement(By.XPath("//*[@id='lblCompMsg']")).Text.Equals(numberofcompletemsgs) &&
 
@@ -254,7 +261,7 @@ namespace HL_Breadth
 
                     driver.FindElement(By.XPath("//*[@id='lblIdleMsg']")).Text.Equals(idlemsgtime) &&
 
-                    driver.FindElement(By.XPath("//*[@id='lblDelExpired']")).Text.Equals(expired))
+                    driver.FindElement(By.XPath("//*[@id='lblDelExpired']")).Text.Equals(expired))*/
             {
 
                 // Starting Respective Services
@@ -265,6 +272,7 @@ namespace HL_Breadth
                 Thread.Sleep(2000);
 
                 driver.FindElement(By.XPath("//table[@id='tblsystem']/tbody/tr[1]/td[2]/a[@title='Play']")).Click();
+                Thread.Sleep(2000);
 
                 driver.FindElement(By.XPath("//table[@id='tblsystem']/tbody/tr[1]/td[3]/a[@title='Restart']")).Click();
 
@@ -287,10 +295,10 @@ namespace HL_Breadth
         public void b_Email_Gateway_Settings()
         {
             string type = "SMTP";
-            string hiplink_url = @"http://192.168.4.237:8000/cgi-bin/no_action.exe";
-            string email_spool_directory = @"C:\Program Files (x86)\HipLink Software\HipLink\test_email_spool";
-            string server_ip_address = "192.168.5.184";
-            string server_port = "1337";
+         //   string hiplink_url = @"http://192.168.4.237:8000/cgi-bin/no_action.exe";
+         //   string email_spool_directory = @"C:\Program Files (x86)\HipLink Software\HipLink\test_email_spool";
+         //   string server_ip_address = "192.168.5.184";
+         //   string server_port = "1337";
             string path_external_script = "/test/hiplink/5.0";
             string one_way_email = "scenario1@email.com";
             string two_way_email = "two-way@email.com";
@@ -305,6 +313,13 @@ namespace HL_Breadth
             check_driver_type(driver_type, "settings", "Email Gateway", "Settings");
 
             Assert.AreEqual("Email Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            string[] lines_local = read_from_file("email_gateway_settings"); // return all the data in the form of array
+
+            string hiplink_url = lines_local[0];
+            string email_spool_directory = lines_local[1];
+            string server_ip_address = lines_local[2];
+            string server_port = lines_local[3];
 
 
             driver.FindElement(By.Id("btnedit")).Click();
@@ -478,7 +493,7 @@ namespace HL_Breadth
         [Test]
         public void c_Backup_Settings_Panel()
         {
-            string backup_dir = @"C:\HipLink\backup";
+           // string backup_dir = @"C:\HipLink\backup";
             string backup_keep_days = "05";
             string backup_start_time = "05:06";
             string backup_interval = "02";
@@ -486,6 +501,10 @@ namespace HL_Breadth
             check_driver_type(driver_type, "administration", "Backup Service", "Sys Admin");
 
             Assert.AreEqual("Backup Service", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+
+            string[] lines_local = read_from_file("backup_settings"); // return all the data in the form of array
+
+            string backup_dir = lines_local[0];
 
             driver.FindElement(By.Id("btnedit")).Click();
 
@@ -807,6 +826,7 @@ namespace HL_Breadth
                 Thread.Sleep(2000);
 
                 driver.FindElement(By.XPath("//table[@id='tblgateway']/tbody/tr[3]/td[2]/a[@title='Play']")).Click();
+                Thread.Sleep(2000);
 
                 driver.FindElement(By.XPath("//table[@id='tblgateway']/tbody/tr[3]/td[3]/a[@title='Restart']")).Click();
 
@@ -822,14 +842,18 @@ namespace HL_Breadth
         [Test]
         public void f_File_System_Interface()
         {
-            string hiplink_url = "info@folio3.com";
-            string spool_dir = @"C:\Hiplink\test";
-            string bulk_spool_dir = @"C:\Hiplink\new";
+         //   string hiplink_url = "info@folio3.com";
+         //   string spool_dir = @"C:\Hiplink\test";
+         //   string bulk_spool_dir = @"C:\Hiplink\new";
             string bulk_message_recipient_pattern = "^.*<Receiver:(.*)>.*$";
             string bulk_message_pattern = "^.*>(.*)$";
             string bulk_message_file_pattern = "*";
 
+            string[] lines_local = read_from_file("file_system_interface_settings"); // return all the data in the form of array
 
+            string hiplink_url = lines_local[0];
+            string spool_dir = lines_local[1];
+            string bulk_spool_dir = lines_local[2];
 
             if (!Directory.Exists(spool_dir))
             {
@@ -942,6 +966,7 @@ namespace HL_Breadth
                     Thread.Sleep(2000);
 
                     driver.FindElement(By.XPath("//table[@id='tblgateway']/tbody/tr[4]/td[2]/a[@title='Play']")).Click();
+                    Thread.Sleep(2000);
 
                     driver.FindElement(By.XPath("//table[@id='tblgateway']/tbody/tr[4]/td[3]/a[@title='Restart']")).Click();
 
@@ -1120,11 +1145,6 @@ namespace HL_Breadth
             
 
             Assert.AreEqual(true, driver.FindElement(By.XPath("//ul[@id='eventsList']/li[1]/span")).Text.Equals("0"));
-
-
-                      
-
-
 
 
 

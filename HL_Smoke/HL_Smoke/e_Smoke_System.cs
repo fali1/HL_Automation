@@ -67,6 +67,7 @@ namespace HL_Smoke
         string messenger_name = "smtp_messenger";
 
         string carrier_name = "smtp_carrier";
+      
 
 
 
@@ -84,7 +85,7 @@ namespace HL_Smoke
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-             System.Diagnostics.Debugger.Launch();// launch debugger
+            // System.Diagnostics.Debugger.Launch();// launch debugger
 
             string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
 
@@ -311,7 +312,7 @@ namespace HL_Smoke
            
             check_driver_type(driver_type, "settings", "Email Gateway", "Settings");
 
-            Assert.AreEqual("Email Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+          //  Assert.AreEqual("Email Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             string[] lines_local = read_from_file("email_gateway_settings"); // return all the data in the form of array
 
@@ -1130,10 +1131,10 @@ namespace HL_Smoke
             driver.FindElement(By.Id("domainName")).SendKeys("folio3pk");
 
             driver.FindElement(By.Id("userId")).Clear();
-            driver.FindElement(By.Id("userId")).SendKeys("fali");
+            driver.FindElement(By.Id("userId")).SendKeys("nakhter");
 
             driver.FindElement(By.Id("password")).Clear();
-            driver.FindElement(By.Id("password")).SendKeys("ducku123");
+            driver.FindElement(By.Id("password")).SendKeys("rana05");
 
             // LDAP User Parameters Section
 
@@ -1343,21 +1344,21 @@ namespace HL_Smoke
         public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 
         {
 
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
 
             if (drivertype.ToString() == "OpenQA.Selenium.Safari.SafariDriver") //for safari
             {
 
                 Console.WriteLine("if clause ....");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                
 
                 driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 
 
@@ -1367,17 +1368,17 @@ namespace HL_Smoke
             {
 
                 Console.WriteLine("using hover func() ....");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 //a[contains(text(),'On-Duty')])[2]
 
                 driver.FindElement(By.XPath("//li[@id='" + id_name + "']/a[text()='" + a_text + "']")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
 
 
                 Actions a1c = new Actions(driver);
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 a1c.MoveToElement(driver.FindElement(By.XPath("//div[@class='footer']"))).Perform();
                 Thread.Sleep(3000);
@@ -1385,7 +1386,7 @@ namespace HL_Smoke
                 
 
                 driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 /*
                 if (link_text.Equals("Escalation"))
@@ -1402,10 +1403,10 @@ namespace HL_Smoke
                
 
                 driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 hover_func(id_name, link_text, a_text);
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
             }
 
@@ -1417,7 +1418,7 @@ namespace HL_Smoke
                
 
                 hover_func(id_name, link_text, a_text);
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
             }
 
         }
@@ -1432,7 +1433,7 @@ namespace HL_Smoke
             var hoveritem = driver.FindElement(By.Id(id_name));
 
             Actions action1 = new Actions(driver); //simply my webdriver
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
 
             action1.MoveToElement(hoveritem).Perform(); //move to list element that needs to be hovered
 
@@ -1445,7 +1446,7 @@ namespace HL_Smoke
             //------ Focus out the mouse to disappear hovered dialog ------
 
             Actions action2 = new Actions(driver);
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
 
             action2.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
             Thread.Sleep(3000);
@@ -1551,6 +1552,9 @@ namespace HL_Smoke
         {
             try
             {
+                driver.FindElement(By.XPath("//a[text()='Logout']")).Click();
+                Thread.Sleep(2000);
+
                 driver.Quit();
             }
             catch (Exception)

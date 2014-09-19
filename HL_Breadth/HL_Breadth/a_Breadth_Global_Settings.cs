@@ -87,6 +87,7 @@ namespace HL_Breadth
 
             //     System.Diagnostics.Debugger.Launch();// launch debugger
 
+            string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
 
@@ -135,13 +136,29 @@ namespace HL_Breadth
             driver_type = driver.GetType().ToString();// get driver type ( firefox , safari , chrome , internetexplorer )
 
             Console.WriteLine("Driver Type:" + " " + driver_type);
+            // Read each line of the file into a string array. Each element 
+            // of the array is one line of the file. 
+
+            string[] lines = System.IO.File.ReadAllLines(@".\url.txt");
+
+            // Display the file contents by using a foreach loop.
+            System.Console.WriteLine("Contents of url.txt = ");
+            foreach (string line in lines)
+            {
+                // Use a tab to indent each line of the file.
+                Console.WriteLine("\n" + line);
+            }
 
 
-            baseURL = "http://localhost:8000/";
+            baseURL = lines[0]; //url of application
 
-            driver.Navigate().GoToUrl(baseURL + "/HipLink5UI-Work/index.html#login");
+            driver.Navigate().GoToUrl(baseURL);
 
             driver.Manage().Window.Maximize();//maximize browser
+
+            login_name = lines_local[0]; //used in login and session manager testcases
+
+            login_pwd = lines_local[1];
 
             driver.FindElement(By.Id("username")).Clear();
 
@@ -705,7 +722,23 @@ namespace HL_Breadth
 
         }
 
+        public string[] read_from_file(string file_name)
+        {
+            // Read each line of the file into a string array. Each element 
+            // of the array is one line of the file. 
 
+            string[] lines = System.IO.File.ReadAllLines(@".\" + file_name + ".txt");
+
+            // Display the file contents by using a foreach loop.
+            System.Console.WriteLine("Contents of " + file_name + ".txt = ");
+            foreach (string line in lines)
+            {
+                // Use a tab to indent each line of the file.
+                Console.WriteLine("\n" + line);
+            }
+
+            return lines;
+        }
 
 
         public void takescreenshot(string suffix)

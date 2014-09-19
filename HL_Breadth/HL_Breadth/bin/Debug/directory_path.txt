@@ -1,2 +1,2 @@
-C:\Program Files\Hiplink\new_directory
-C:\Program Files\Hiplink\new_directory_2
+C:\Program Files (x86)\Hiplink\new_directory
+C:\Program Files (x86)\Hiplink\new_directory_2

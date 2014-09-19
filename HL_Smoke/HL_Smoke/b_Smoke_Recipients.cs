@@ -22,11 +22,12 @@ using OpenQA.Selenium.Support.PageObjects;
 using System.Windows;
 using System.Linq;
 using System.Collections;
+using HL_Smoke;
 
 namespace HL_Smoke
 {
     [TestFixture]
-    public class b_Smoke_Recipients
+    public class b_Smoke_Recipients : HL_Base_Class
     {
 
         private IWebDriver driver;
@@ -55,7 +56,7 @@ namespace HL_Smoke
 
         string trimmed_user_label;
 
-        string create_directory_path = @".\Screenshots_Testcase_Results";
+        string create_directory_path = @".\Screenshots_Receipients_Testcase";
 
         
 
@@ -85,7 +86,7 @@ namespace HL_Smoke
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-            //     System.Diagnostics.Debugger.Launch();// launch debugger
+            //System.Diagnostics.Debugger.Launch();// launch debugger
 
             string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
 
@@ -103,13 +104,13 @@ namespace HL_Smoke
                     break;
 
                 case "chrome":
-                    ChromeOptions options = new ChromeOptions();
+                   ChromeOptions options = new ChromeOptions();
                     options.AddArguments("test-type");
                     driver = new ChromeDriver(@".\drivers",options);
                     break;
 
                 case "internetexplorer":
-                    driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
+                    driver = new InternetExplorerDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch IE browser
                     break;
             }
 
@@ -177,6 +178,7 @@ namespace HL_Smoke
 
             driver.FindElement(By.CssSelector("a.c_btn_large1.login_button")).Click();// user login button
 
+            WaitForElementToExist("entityTitle", driver);
             Thread.Sleep(3000);
 
             takescreenshot("login");
@@ -203,7 +205,7 @@ namespace HL_Smoke
 
             string create_directory_path_directory = lines_local[0];
 
-                string dir_path = lines_local[0];
+            string dir_path = lines_local[0];
 
                 if (!Directory.Exists(create_directory_path_directory))
                 {
@@ -360,7 +362,7 @@ namespace HL_Smoke
 
 
                 driver.FindElement(By.Id("btnMsngr")).Click();
-                Thread.Sleep(5000);
+                WaitForChrome(5000, browser_name);
                 driver.FindElement(By.Id("txtMessangerName")).Clear();
                 driver.FindElement(By.Id("txtMessangerName")).SendKeys(messenger_name);
 
@@ -596,8 +598,8 @@ namespace HL_Smoke
                 Thread.Sleep(2000);
 
                 takescreenshot("Carrier");
-
-                Thread.Sleep(3000);
+                Thread.Sleep(2000);
+                WaitForChrome(5000, browser_name);
                 Console.WriteLine("*" + driver.FindElement(By.Id("divGrid_idGridDataNode")).Text.Contains(carrier_name) + "*");
                 Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(carrier_desc) + "*");
                 Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text.Contains(new_dir) + "*");
@@ -740,16 +742,16 @@ namespace HL_Smoke
 
                 driver.FindElement(By.Id("btnSaveTabOne")).Click();
                 Thread.Sleep(2000);
-
+                WaitForChrome(5000, browser_name);
                 driver.FindElement(By.XPath("//a[text()='Define Members']")).Click(); //Members tab
                 Thread.Sleep(2000);
 
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
 
-                driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
+           //     driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
+                Thread.Sleep(2000);
                 driver.FindElement(By.Id("addRec")).Click();
-
+                Thread.Sleep(2000);
                 driver.FindElement(By.Id("btnSaveTabTwo")).Click();
                 Thread.Sleep(2000);
 
@@ -816,14 +818,14 @@ namespace HL_Smoke
 
                 driver.FindElement(By.Id("btnSaveTabOne")).Click();
                 Thread.Sleep(3000);
+                WaitForChrome(5000, browser_name);
 
                 driver.FindElement(By.XPath("//a[text()='Define Members']")).Click(); //Members tab
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
 
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
 
                 driver.FindElement(By.Id("addRec")).Click();
                 Thread.Sleep(2000);
@@ -901,7 +903,7 @@ namespace HL_Smoke
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
 
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
+              
                 driver.FindElement(By.Id("addRec")).Click();
                 Thread.Sleep(2000);
 
@@ -932,7 +934,7 @@ namespace HL_Smoke
                 driver.FindElement(By.XPath("(//a[@class='selector'])[10]")).Click();
 
                 driver.FindElement(By.XPath(".//*[@id='sch_monthly']/fieldset[1]/div[2]/ul/li[2][text()='Monday']")).Click();
-                Thread.Sleep(3000);
+                WaitForChrome(5000, browser_name);
 
                 driver.FindElement(By.Id("startpicker")).Click(); //Range start from calendar
                 driver.FindElement(By.LinkText("8")).Click();
@@ -1011,7 +1013,7 @@ namespace HL_Smoke
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
 
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
+                
                 driver.FindElement(By.Id("addRec")).Click();
                 Thread.Sleep(2000);
 
@@ -1160,9 +1162,9 @@ namespace HL_Smoke
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
 
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
+               
                 driver.FindElement(By.Id("addRec")).Click();
-
+                Thread.Sleep(2000);
                 driver.FindElement(By.Id("btnSaveTabTwo")).Click();
                 Thread.Sleep(2000);
 
@@ -1225,11 +1227,14 @@ namespace HL_Smoke
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
 
                 driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-
+                Thread.Sleep(2000);
+                WaitForChrome(5000, browser_name);
                 driver.FindElement(By.Id("addRec")).Click();
-
+                Thread.Sleep(2000);
+                WaitForChrome(5000, browser_name);
                 driver.FindElement(By.Id("btnSaveTabTwo")).Click();
                 Thread.Sleep(2000);
+                WaitForChrome(5000, browser_name);
 
                 takescreenshot("Subscription_Group");
 
@@ -1259,21 +1264,24 @@ namespace HL_Smoke
         public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 
         {
 
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
 
             if (drivertype.ToString() == "OpenQA.Selenium.Safari.SafariDriver") //for safari
             {
 
                 Console.WriteLine("if clause ....");
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
+                WaitForChrome(5000, browser_name);
 
                 driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
+                WaitForChrome(5000, browser_name);
 
                 
 
                 driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
+                WaitForChrome(5000, browser_name);
 
                 
 
@@ -1295,18 +1303,22 @@ namespace HL_Smoke
 
                 a1c.MoveToElement(driver.FindElement(By.XPath("//div[@class='footer']"))).Perform();
                 Thread.Sleep(3000);
+                WaitForChrome(5000, browser_name);
 
                 
 
                 driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
+                WaitForChrome(5000, browser_name);
 
                
                 driver.FindElement(By.XPath("//li[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
+                WaitForChrome(5000, browser_name);
 
                 hover_func(id_name, link_text, a_text);
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
+                WaitForChrome(5000, browser_name);
 
             }
 
@@ -1333,14 +1345,16 @@ namespace HL_Smoke
             var hoveritem = driver.FindElement(By.Id(id_name));
 
             Actions action1 = new Actions(driver); //simply my webdriver
-            Thread.Sleep(2000);
-
+            
+            WaitForElementToExist(id_name,driver);
+            WaitForChrome(5000, browser_name);
             action1.MoveToElement(hoveritem).Perform(); //move to list element that needs to be hovered
-
             Thread.Sleep(3000);
+            WaitForChrome(5000, browser_name);
 
             driver.FindElement(By.XPath("(//a[text()='" + link_text + "'])[1]")).Click();
             Thread.Sleep(3000);
+            WaitForChrome(5000, browser_name);
 
 
             //------ Focus out the mouse to disappear hovered dialog ------
@@ -1348,8 +1362,29 @@ namespace HL_Smoke
            
             action1.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
             Thread.Sleep(3000);
+            WaitForChrome(5000, browser_name);
 
 
+        }
+
+        public static void WaitForElementToExist(string ID, IWebDriver driver)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+            wait.Until<bool>((d) =>
+            {
+                try
+                {
+                    // If the find succeeds, the element exists, and
+                    // we want the element to *not* exist, so we want
+                    // to return true when the find throws an exception.
+                    IWebElement element = d.FindElement(By.Id(ID));
+                    return true;
+                }
+                catch (NoSuchElementException)
+                {
+                    return false;
+                }
+            });
         }
 
 
@@ -1385,6 +1420,15 @@ namespace HL_Smoke
 
         }
 
+
+     /*   public void WaitForChrome(int counter, string browser_name)
+        {
+            if (drivertype.ToString() == "OpenQA.Selenium.Chrome.ChromeDriver")
+            {
+                sleep(5000);
+            }
+
+        }*/
         public string get_browser() // Get browser name from Browsers.xml file
         {
 
@@ -1431,6 +1475,9 @@ namespace HL_Smoke
         {
             try
             {
+                driver.FindElement(By.XPath("//a[text()='Logout']")).Click();
+                Thread.Sleep(2000);
+
                 driver.Quit();
             }
             catch (Exception)

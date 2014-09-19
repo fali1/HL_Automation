@@ -544,6 +544,9 @@ namespace HL_Smoke
         {
             try
             {
+                driver.FindElement(By.XPath("//a[text()='Logout']")).Click();
+                Thread.Sleep(2000);
+
                 driver.Quit();
             }
             catch (Exception)

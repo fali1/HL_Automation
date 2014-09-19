@@ -108,6 +108,7 @@ namespace HL_Breadth
 
               System.Diagnostics.Debugger.Launch();// launch debugger
 
+              string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
 

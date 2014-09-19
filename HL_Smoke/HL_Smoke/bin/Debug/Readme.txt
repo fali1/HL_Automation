@@ -50,3 +50,7 @@ directory path
 hipadm_cmd.txt file
 -----------------------
 hiplink bin folder path
+
+image_url.txt
+---------------
+Path of image to be selected on send panel
