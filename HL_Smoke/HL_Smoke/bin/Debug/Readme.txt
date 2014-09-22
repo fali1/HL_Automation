@@ -8,7 +8,7 @@ Place your required browser on the first position in Browser.xml.
 Push Notifications.txt file(for Breadth cycle)
 ---------------------------
 
-Provide all the paths for push notification in the following sequence:
+Provide all the paths for push notification in the following sequence for HNP module:
 
 SSL_Certificate path
 Private_Key path

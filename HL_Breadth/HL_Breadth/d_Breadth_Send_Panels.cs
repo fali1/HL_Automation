@@ -89,67 +89,84 @@ namespace HL_Breadth
 
              System.Diagnostics.Debugger.Launch();// launch debugger
 
-            browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
-            Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
+             string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
 
-            switch (browser_name)
-            {
-                case "firefox":
-                    var profile = new FirefoxProfile();
+             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
+             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
+
+             switch (browser_name)
+             {
+                 case "firefox":
+                     var profile = new FirefoxProfile();
                     profile.SetPreference("dom.forms.number",false);
                     driver = new FirefoxDriver(profile);// launch firefox browser
                     break;
 
-                case "safari":
-                    driver = new SafariDriver();// launch safari browser
-                    break;
+                 case "safari":
+                     driver = new SafariDriver();// launch safari browser
+                     break;
 
-                case "chrome":
-                    ChromeOptions options = new ChromeOptions();
-                    options.AddArguments("test-type");
-                    driver = new ChromeDriver(@".\drivers",options);
-                    break;
+                 case "chrome":
+                     ChromeOptions options = new ChromeOptions();
+                     options.AddArguments("test-type");
+                     driver = new ChromeDriver(@".\drivers", options);
+                     break;
 
-                case "internetexplorer":
-                    driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
-                    break;
-            }
+                 case "internetexplorer":
+                     driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
+                     break;
+             }
 
-            DateTime todaydatetime = DateTime.Now;          // Use current time
-            string format = "yyyy_MM_dd_hh_mm_ss";          // Use this format Year_Month_Date_Hour_Minute_Second => 2014_04_21_02_35_09
-            Console.WriteLine(todaydatetime.ToString(format));
+             DateTime todaydatetime = DateTime.Now;          // Use current time
+             string format = "yyyy_MM_dd_hh_mm_ss";          // Use this format Year_Month_Date_Hour_Minute_Second => 2014_04_21_02_35_09
+             Console.WriteLine(todaydatetime.ToString(format));
 
-            /*    Console.WriteLine(time.ToString("U"));    // output U =>   Friday, February 27, 2009 8:12:22 PM
-                  Console.WriteLine(time.ToString("G"));    // output G =>   2/27/2009 12:12:22 PM
+             /*    Console.WriteLine(time.ToString("U"));    // output U =>   Friday, February 27, 2009 8:12:22 PM
+                   Console.WriteLine(time.ToString("G"));    // output G =>   2/27/2009 12:12:22 PM
             
-              M       display one-digit month number          
-              d       display one-digit day of the MONTH      
-              h       display one-digit hour on 12-hour scale 
-              mm      display two-digit minutes
-              yy      display two-digit year                  
-             */
+               M       display one-digit month number          
+               d       display one-digit day of the MONTH      
+               h       display one-digit hour on 12-hour scale 
+               mm      display two-digit minutes
+               yy      display two-digit year                  
+              */
 
-            create_directory_path_with_time = create_directory_path + todaydatetime.ToString(format);
-            Console.WriteLine(create_directory_path_with_time);
-            if (!Directory.Exists(create_directory_path_with_time))
-            {
-                Directory.CreateDirectory(create_directory_path_with_time);
-            }
+             create_directory_path_with_time = create_directory_path + todaydatetime.ToString(format);
+             Console.WriteLine(create_directory_path_with_time);
+             if (!Directory.Exists(create_directory_path_with_time))
+             {
+                 Directory.CreateDirectory(create_directory_path_with_time);
+             }
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(25000));//wait for request 
+             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(25000));//wait for request 
 
-            //driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 30, 15));
+             driver_type = driver.GetType().ToString();// get driver type ( firefox , safari , chrome , internetexplorer )
 
-            driver_type = driver.GetType().ToString();// get driver type ( firefox , safari , chrome , internetexplorer )
+             Console.WriteLine("Driver Type:" + " " + driver_type);
 
-            Console.WriteLine("Driver Type:" + " " + driver_type);
+             // Read each line of the file into a string array. Each element 
+             // of the array is one line of the file. 
+
+             string[] lines = System.IO.File.ReadAllLines(@".\url.txt");
+
+             // Display the file contents by using a foreach loop.
+             System.Console.WriteLine("Contents of url.txt = ");
+             foreach (string line in lines)
+             {
+                 // Use a tab to indent each line of the file.
+                 Console.WriteLine("\n" + line);
+             }
 
 
-            baseURL = "http://localhost:8000/";
+             baseURL = lines[0]; //url of application
 
-            driver.Navigate().GoToUrl(baseURL + "/HipLink5UI-Work/index.html#login");
+             driver.Navigate().GoToUrl(baseURL);
 
-            driver.Manage().Window.Maximize();//maximize browser
+             driver.Manage().Window.Maximize();//maximize browser
+
+             login_name = lines_local[0]; //used in login and session manager testcases
+
+             login_pwd = lines_local[1];
 
             driver.FindElement(By.Id("username")).Clear();
 

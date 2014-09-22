@@ -18,6 +18,21 @@ C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug\
 C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.dll
 C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.pdb
 C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.csprojResolveAssemblyReference.cache
+E:\Automation 5.0\HL_Smoke_chrome_isuue_resolved\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll
+E:\Automation 5.0\HL_Smoke_chrome_isuue_resolved\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.pdb
+E:\Automation 5.0\HL_Smoke_chrome_isuue_resolved\HL_Smoke\HL_Smoke\bin\Debug\nunit.framework.dll
+E:\Automation 5.0\HL_Smoke_chrome_isuue_resolved\HL_Smoke\HL_Smoke\bin\Debug\nunit.mocks.dll
+E:\Automation 5.0\HL_Smoke_chrome_isuue_resolved\HL_Smoke\HL_Smoke\bin\Debug\nunit.framework.xml
+E:\Automation 5.0\HL_Smoke_chrome_isuue_resolved\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.dll
+E:\Automation 5.0\HL_Smoke_chrome_isuue_resolved\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.pdb
+E:\writeable\Automation by fahad\FF\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll
+E:\writeable\Automation by fahad\FF\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.pdb
+E:\writeable\Automation by fahad\FF\HL_Smoke\HL_Smoke\bin\Debug\nunit.framework.dll
+E:\writeable\Automation by fahad\FF\HL_Smoke\HL_Smoke\bin\Debug\nunit.mocks.dll
+E:\writeable\Automation by fahad\FF\HL_Smoke\HL_Smoke\bin\Debug\nunit.framework.xml
+E:\writeable\Automation by fahad\FF\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.dll
+E:\writeable\Automation by fahad\FF\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.pdb
+E:\writeable\Automation by fahad\FF\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.csprojResolveAssemblyReference.cache
 D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll
 D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.pdb
 D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\nunit.framework.dll
@@ -37,18 +52,4 @@ D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\WebDriver.Support.pdb
 D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\bin\Debug\WebDriver.Support.xml
 D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.dll
 D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.pdb
-E:\Automation 5.0\HL_Smoke_chrome_isuue_resolved\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll
-E:\Automation 5.0\HL_Smoke_chrome_isuue_resolved\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.pdb
-E:\Automation 5.0\HL_Smoke_chrome_isuue_resolved\HL_Smoke\HL_Smoke\bin\Debug\nunit.framework.dll
-E:\Automation 5.0\HL_Smoke_chrome_isuue_resolved\HL_Smoke\HL_Smoke\bin\Debug\nunit.mocks.dll
-E:\Automation 5.0\HL_Smoke_chrome_isuue_resolved\HL_Smoke\HL_Smoke\bin\Debug\nunit.framework.xml
-E:\Automation 5.0\HL_Smoke_chrome_isuue_resolved\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.dll
-E:\Automation 5.0\HL_Smoke_chrome_isuue_resolved\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.pdb
-E:\writeable\Automation by fahad\FF\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.dll
-E:\writeable\Automation by fahad\FF\HL_Smoke\HL_Smoke\bin\Debug\HL_Smoke.pdb
-E:\writeable\Automation by fahad\FF\HL_Smoke\HL_Smoke\bin\Debug\nunit.framework.dll
-E:\writeable\Automation by fahad\FF\HL_Smoke\HL_Smoke\bin\Debug\nunit.mocks.dll
-E:\writeable\Automation by fahad\FF\HL_Smoke\HL_Smoke\bin\Debug\nunit.framework.xml
-E:\writeable\Automation by fahad\FF\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.dll
-E:\writeable\Automation by fahad\FF\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.pdb
-E:\writeable\Automation by fahad\FF\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.csprojResolveAssemblyReference.cache
+D:\git_local\HL_Automation\HL_Smoke\HL_Smoke\obj\Debug\HL_Smoke.csprojResolveAssemblyReference.cache

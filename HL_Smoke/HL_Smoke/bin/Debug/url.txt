@@ -1,1 +1,1 @@
-http://localhost:8000/HipLink5UI-Work/index.html#login
+http://192.168.6.40:8000/HipLink5UI-Work/index.html#login

@@ -29,6 +29,10 @@ namespace HL_Breadth
     {
         public string var1;
         
+
+        // this function will be called only when 
+        // chrome browser is selected in Browser.xml
+        // located in Debug folder
         public void WaitForChrome(int counter, string browser_name)
         {
             if (browser_name.ToString() == "chrome")
@@ -38,6 +42,9 @@ namespace HL_Breadth
 
         }
 
+
+        // this function will restrict browser to wait 
+        // untill desired element is not appeared
         public static void WaitForElementToExist(string ID, IWebDriver driver)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
@@ -58,6 +65,8 @@ namespace HL_Breadth
             });
         }
 
+
+
         public string[] read_from_file(string file_name)
         {
             // Read each line of the file into a string array. Each element 
@@ -76,6 +85,9 @@ namespace HL_Breadth
             return lines;
         }
 
+
+        // this function is used to read url form file
+        // and called at the start of every script in login section
         public string[] read_url_from_file(string file_name)
         {
             // Read each line of the file into a string array. Each element 

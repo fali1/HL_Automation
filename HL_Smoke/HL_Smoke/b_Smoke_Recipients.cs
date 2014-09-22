@@ -30,7 +30,7 @@ namespace HL_Smoke
     public class b_Smoke_Recipients : HL_Base_Class
     {
 
-        private IWebDriver driver;
+      //  private IWebDriver driver;
 
         private StringBuilder verificationErrors;
 
@@ -50,17 +50,11 @@ namespace HL_Smoke
 
         string browser_type;
 
-        string browser_name;
-
         string user_label;
 
         string trimmed_user_label;
 
         string create_directory_path = @".\Screenshots_Receipients_Testcase";
-
-        
-
-        int test_result_exist = 0;
 
         string create_directory_path_with_time;
 
@@ -86,7 +80,7 @@ namespace HL_Smoke
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-            //System.Diagnostics.Debugger.Launch();// launch debugger
+           // System.Diagnostics.Debugger.Launch();// launch debugger
 
             string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
 
@@ -110,7 +104,7 @@ namespace HL_Smoke
                     break;
 
                 case "internetexplorer":
-                    driver = new InternetExplorerDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch IE browser
+                    driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
                     break;
             }
 
@@ -143,22 +137,9 @@ namespace HL_Smoke
 
             Console.WriteLine("Driver Type:" + " " + driver_type);
 
+            string[] line_url = read_url_from_file("url"); //url of application
 
-            // Read each line of the file into a string array. Each element 
-            // of the array is one line of the file. 
-
-            string[] lines = System.IO.File.ReadAllLines(@".\url.txt");
-
-            // Display the file contents by using a foreach loop.
-            System.Console.WriteLine("Contents of url.txt = ");
-            foreach (string line in lines)
-            {
-                // Use a tab to indent each line of the file.
-                Console.WriteLine("\n" + line);
-            }
-
-
-            baseURL = lines[0]; //url of application
+            baseURL = line_url[0];
 
             driver.Navigate().GoToUrl(baseURL);
 
@@ -630,13 +611,14 @@ namespace HL_Smoke
         {
             
            
-                string receiver_name = "receiver_smtp";
+                string receiver_name = "receiver_smtp_new";
                 string receiver_pin = "testm703@gmail.com";
                 string receiver_description = "Receiver Description";
                 string receiver_emailaddress = "email@address.com";
 
                 string department_name = "Default";
 
+                create_receiver("hipadm_cmd_receiver");
 
                 check_driver_type(driver_type, "recipients", "Receivers", "Recipients");
 
@@ -943,11 +925,7 @@ namespace HL_Smoke
 
                 takescreenshot("On_Duty Group");
 
-                // driver.FindElement(By.LinkText("Close")).Click(); // not working right now
-
-                driver.FindElement(By.LinkText("Recipients")).Click();
-
-                driver.FindElement(By.XPath("(//a[contains(text(),'On-Duty')])[2]")).Click(); // as an alternate of close button , bcz its not working right now
+                driver.FindElement(By.Id("btnCloseAtSch")).Click(); // as an alternate of close button , bcz its not working right now
 
 
                 if (driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(on_duty_group_name)) // /div[1]/div[1]/div/div[3]
@@ -1096,12 +1074,7 @@ namespace HL_Smoke
 
                 takescreenshot("Follow_me_Group");
 
-                driver.FindElement(By.LinkText("Close")).Click();
-
-                driver.FindElement(By.LinkText("Recipients")).Click();
-                Thread.Sleep(2000);
-
-                driver.FindElement(By.LinkText("Follow-Me")).Click();
+                driver.FindElement(By.Id("btnCloseAtSch")).Click();
 
 
                 if (driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(follow_me_group_name))
@@ -1259,154 +1232,11 @@ namespace HL_Smoke
 
 
 
-        
 
-        public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 
-        {
+         
 
-            Thread.Sleep(3000);
-
-            if (drivertype.ToString() == "OpenQA.Selenium.Safari.SafariDriver") //for safari
-            {
-
-                Console.WriteLine("if clause ....");
-                Thread.Sleep(3000);
-                WaitForChrome(5000, browser_name);
-
-                driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
-                Thread.Sleep(3000);
-                WaitForChrome(5000, browser_name);
-
-                
-
-                driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
-                Thread.Sleep(3000);
-                WaitForChrome(5000, browser_name);
-
-                
-
-            }
-
-            else if (drivertype.ToString() == "OpenQA.Selenium.Chrome.ChromeDriver" || drivertype.ToString() == "OpenQA.Selenium.Firefox.FirefoxDriver") //for firefox and chrome
-            {
-
-                Console.WriteLine("using hover func() ....");
-                Thread.Sleep(2000);
-
-                //a[contains(text(),'On-Duty')])[2]
-
-                driver.FindElement(By.XPath("//li[@id='" + id_name + "']/a[text()='" + a_text + "']")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
-
-                Actions a1c = new Actions(driver);
-                Thread.Sleep(2000);
-
-                a1c.MoveToElement(driver.FindElement(By.XPath("//div[@class='footer']"))).Perform();
-                Thread.Sleep(3000);
-                WaitForChrome(5000, browser_name);
-
-                
-
-                driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
-                Thread.Sleep(3000);
-                WaitForChrome(5000, browser_name);
-
-               
-                driver.FindElement(By.XPath("//li[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
-                Thread.Sleep(3000);
-                WaitForChrome(5000, browser_name);
-
-                hover_func(id_name, link_text, a_text);
-                Thread.Sleep(3000);
-                WaitForChrome(5000, browser_name);
-
-            }
-
-            else // for IE
-            {
-
-                // drivertype.ToString() == "OpenQA.Selenium.IE.InternetExplorerDriver"
-
-                
-
-                hover_func(id_name, link_text, a_text);
-                Thread.Sleep(2000);
-            }
-
-        }
-
-
-
-        public void hover_func(string id_name, string link_text, string a_text)
-        {
-
-            //------ Hover functionality and click ------
-
-            var hoveritem = driver.FindElement(By.Id(id_name));
-
-            Actions action1 = new Actions(driver); //simply my webdriver
-            
-            WaitForElementToExist(id_name,driver);
-            WaitForChrome(5000, browser_name);
-            action1.MoveToElement(hoveritem).Perform(); //move to list element that needs to be hovered
-            Thread.Sleep(3000);
-            WaitForChrome(5000, browser_name);
-
-            driver.FindElement(By.XPath("(//a[text()='" + link_text + "'])[1]")).Click();
-            Thread.Sleep(3000);
-            WaitForChrome(5000, browser_name);
-
-
-            //------ Focus out the mouse to disappear hovered dialog ------
-
-           
-            action1.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
-            Thread.Sleep(3000);
-            WaitForChrome(5000, browser_name);
-
-
-        }
-
-        public static void WaitForElementToExist(string ID, IWebDriver driver)
-        {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
-            wait.Until<bool>((d) =>
-            {
-                try
-                {
-                    // If the find succeeds, the element exists, and
-                    // we want the element to *not* exist, so we want
-                    // to return true when the find throws an exception.
-                    IWebElement element = d.FindElement(By.Id(ID));
-                    return true;
-                }
-                catch (NoSuchElementException)
-                {
-                    return false;
-                }
-            });
-        }
-
-
-        public string[] read_from_file(string file_name)
-        {
-            // Read each line of the file into a string array. Each element 
-            // of the array is one line of the file. 
-
-            string[] lines = System.IO.File.ReadAllLines(@".\" + file_name + ".txt");
-
-            // Display the file contents by using a foreach loop.
-            System.Console.WriteLine("Contents of " + file_name + ".txt = ");
-            foreach (string line in lines)
-            {
-                // Use a tab to indent each line of the file.
-                Console.WriteLine("\n" + line);
-            }
-
-            return lines;
-        }
-
-
+      
+      
 
 
         public void takescreenshot(string suffix)
@@ -1421,44 +1251,7 @@ namespace HL_Smoke
         }
 
 
-     /*   public void WaitForChrome(int counter, string browser_name)
-        {
-            if (drivertype.ToString() == "OpenQA.Selenium.Chrome.ChromeDriver")
-            {
-                sleep(5000);
-            }
-
-        }*/
-        public string get_browser() // Get browser name from Browsers.xml file
-        {
-
-            using (XmlTextReader reader = new XmlTextReader(@".\Browsers.xml"))
-            {
-
-                while (reader.Read())
-                {
-
-                    if (reader.IsStartElement())
-                    {
-
-                        if (reader.Name == "browser")
-                        {
-
-                            browser_type = reader.ReadString(); //read browser name under <browser> tag
-                            Console.WriteLine("browser: " + browser_type);
-                            break;
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-            return browser_type;
-        }
-
+    
         public string random_alphanum(string alphanumeric)
         {
 

@@ -49,25 +49,14 @@ namespace HL_Smoke
 
         string browser_type;
 
-        string browser_name;
-
         string user_label;
 
         string trimmed_user_label;
 
         string create_directory_path = @".\Screenshots_User-Profile_Testcase";
 
-        string create_directory_path_directory = @"C:\Program Files (x86)\Hiplink Software\HipLink\new_directory";
-
-        int test_result_exist = 0;
-
         string create_directory_path_with_time;
 
-        string new_dir = "new_directory";
-
-        string messenger_name = "smtp_messenger";
-
-        string carrier_name = "smtp_carrier";
 
 
 
@@ -143,22 +132,9 @@ namespace HL_Smoke
 
             Console.WriteLine("Driver Type:" + " " + driver_type);
 
+            string[] line_url = read_url_from_file("url"); //url of application
 
-            // Read each line of the file into a string array. Each element 
-            // of the array is one line of the file. 
-
-            string[] lines = System.IO.File.ReadAllLines(@".\url.txt");
-
-            // Display the file contents by using a foreach loop.
-            System.Console.WriteLine("Contents of url.txt = ");
-            foreach (string line in lines)
-            {
-                // Use a tab to indent each line of the file.
-                Console.WriteLine("\n" + line);
-            }
-
-
-            baseURL = lines[0]; //url of application
+            baseURL = line_url[0];
 
             driver.Navigate().GoToUrl(baseURL);
 

@@ -87,6 +87,7 @@ namespace HL_Breadth
             // driver = new FirefoxDriver();// launch firefox browser
 
             //     System.Diagnostics.Debugger.Launch();// launch debugger
+            string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
 
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
@@ -94,7 +95,9 @@ namespace HL_Breadth
             switch (browser_name)
             {
                 case "firefox":
-                    driver = new FirefoxDriver();// launch firefox browser
+                    var profile = new FirefoxProfile();
+                    profile.SetPreference("dom.forms.number", false);
+                    driver = new FirefoxDriver(profile);// launch firefox browser
                     break;
 
                 case "safari":
@@ -104,9 +107,8 @@ namespace HL_Breadth
                 case "chrome":
                     ChromeOptions options = new ChromeOptions();
                     options.AddArguments("test-type");
-                    driver = new ChromeDriver(@".\drivers",options);
+                    driver = new ChromeDriver(@".\drivers", options);
                     break;
-
 
                 case "internetexplorer":
                     driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
@@ -142,12 +144,17 @@ namespace HL_Breadth
 
             Console.WriteLine("Driver Type:" + " " + driver_type);
 
+            string[] lines_url = read_url_from_file(@"url");
 
-            baseURL = "http://localhost:8000/";
+            baseURL = lines_url[0]; //url of application
 
-            driver.Navigate().GoToUrl(baseURL + "/HipLink5UI-Work/index.html#login");
+            driver.Navigate().GoToUrl(baseURL);
 
             driver.Manage().Window.Maximize();//maximize browser
+
+            login_name = lines_local[0]; //used in login and session manager testcases
+
+            login_pwd = lines_local[1];
 
             driver.FindElement(By.Id("username")).Clear();
 

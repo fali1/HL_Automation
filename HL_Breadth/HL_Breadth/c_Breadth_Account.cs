@@ -87,18 +87,15 @@ namespace HL_Breadth
 
             //     System.Diagnostics.Debugger.Launch();// launch debugger
 
+            string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
+
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
 
             switch (browser_name)
             {
                 case "firefox":
-
-                    var profile = new FirefoxProfile();               // first create profile
-                    profile.SetPreference("plugin.state.flash", 0); // set preference for number
-                    
-                    driver = new FirefoxDriver(profile);              // set profile in firefox driver
-                   // driver = new FirefoxDriver();// launch firefox browser
+                    driver = new FirefoxDriver();// launch firefox browser
                     break;
 
                 case "safari":
@@ -108,7 +105,7 @@ namespace HL_Breadth
                 case "chrome":
                     ChromeOptions options = new ChromeOptions();
                     options.AddArguments("test-type");
-                    driver = new ChromeDriver(@".\drivers",options);
+                    driver = new ChromeDriver(@".\drivers", options);
                     break;
 
                 case "internetexplorer":
@@ -139,17 +136,33 @@ namespace HL_Breadth
 
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(25000));//wait for request 
 
-            //driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0, 30, 15));
-
             driver_type = driver.GetType().ToString();// get driver type ( firefox , safari , chrome , internetexplorer )
 
             Console.WriteLine("Driver Type:" + " " + driver_type);
 
-            baseURL = "http://localhost:8000/";
+            // Read each line of the file into a string array. Each element 
+            // of the array is one line of the file. 
 
-            driver.Navigate().GoToUrl(baseURL + "/HipLink5UI-Work/index.html#login");
+            string[] lines = System.IO.File.ReadAllLines(@".\url.txt");
+
+            // Display the file contents by using a foreach loop.
+            System.Console.WriteLine("Contents of url.txt = ");
+            foreach (string line in lines)
+            {
+                // Use a tab to indent each line of the file.
+                Console.WriteLine("\n" + line);
+            }
+
+
+            baseURL = lines[0]; //url of application
+
+            driver.Navigate().GoToUrl(baseURL);
 
             driver.Manage().Window.Maximize();//maximize browser
+
+            login_name = lines_local[0]; //used in login and session manager testcases
+
+            login_pwd = lines_local[1];
 
             driver.FindElement(By.Id("username")).Clear();
 

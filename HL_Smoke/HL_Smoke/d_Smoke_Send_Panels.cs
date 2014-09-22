@@ -22,6 +22,8 @@ using OpenQA.Selenium.Support.PageObjects;
 using System.Windows;
 using System.Linq;
 using System.Collections;
+using System.Diagnostics;
+using System.ComponentModel;
 
 namespace HL_Smoke
 {
@@ -48,25 +50,13 @@ namespace HL_Smoke
 
         string browser_type;
 
-        string browser_name;
-
         string user_label;
 
         string trimmed_user_label;
 
         string create_directory_path = @".\Screenshots_Send_Testcase";
 
-        string create_directory_path_directory = @"C:\Program Files (x86)\Hiplink Software\HipLink\new_directory";
-
-        int test_result_exist = 0;
-
         string create_directory_path_with_time;
-
-        string new_dir = "new_directory";
-
-        string messenger_name = "smtp_messenger";
-
-        string carrier_name = "smtp_carrier";
 
 
         [TestFixtureSetUp]
@@ -143,22 +133,9 @@ namespace HL_Smoke
 
             Console.WriteLine("Driver Type:" + " " + driver_type);
 
+            string[] line_url = read_url_from_file("url"); //url of application
 
-            // Read each line of the file into a string array. Each element 
-            // of the array is one line of the file. 
-
-            string[] lines = System.IO.File.ReadAllLines(@".\url.txt");
-
-            // Display the file contents by using a foreach loop.
-            System.Console.WriteLine("Contents of url.txt = ");
-            foreach (string line in lines)
-            {
-                // Use a tab to indent each line of the file.
-                Console.WriteLine("\n" + line);
-            }
-
-
-            baseURL = lines[0]; //url of application
+            baseURL = line_url[0];
 
             driver.Navigate().GoToUrl(baseURL);
 
@@ -195,6 +172,70 @@ namespace HL_Smoke
 
             verificationErrors = new StringBuilder();
         
+        }
+
+        [Test]
+        public void aa_testt()
+        {
+            
+            create_messenger("hipadm_cmd_messenger");
+        }
+        [Test]
+        public void aa_testtt()
+        {
+            create_receiver("hipadm_cmd_receiver");
+            
+        }
+
+        [Test]
+        public void aa_test()
+        {
+
+            string[] lines_local= read_from_file("hipadm_cmd");
+            //Build Commands - You may have to play with the syntax
+            // on executing the batch file , in whch the following content will be written ,
+            // first directory will be Changed using '%1', to the specified path defined in Arguments
+            // then hipadm cmnd will be concatinated in th cmd prompt
+            // then it will take pause
+
+      
+            string[] cmdBuilder = new string[] 
+      
+            {
+                // '/d' will change the directory and '%1' will get the complete path till hiplink bin
+                @"cd /d ""%1""",
+                @"hipadm.exe -addreceiver -adminusername admin -adminpassword admin -receivername r1  -receivertype alpha -pin testm703@gmail.com -carrier smtp_carrier -department Default",
+                @"pause"
+            };
+            
+            //Create a File Path
+            string BatFile = @".\add_receiver.bat";
+
+            //Create Stream to write to file.
+            StreamWriter sWriter = new StreamWriter(BatFile);
+
+            foreach (string cmd in cmdBuilder) 
+            {
+                sWriter.WriteLine(cmd); 
+            }
+            
+            sWriter.Close();
+
+            //Run your Batch File & Remove it when finished.
+
+            Process p = new Process();
+            ProcessStartInfo ps = new ProcessStartInfo();
+   
+            ps.CreateNoWindow = true;
+            ps.UseShellExecute = true;
+            ps.FileName = @".\add_receiver.bat"; // this batch file will be executed
+            ps.Arguments = lines_local[0]; //this argument will be replaced by '%1' in batch file created bove
+            p.StartInfo = ps;
+            p.Start();
+            p.WaitForExit();
+            // File.Delete(@".\add_receiver.bat");
+   
+            
         }
 
 
@@ -329,9 +370,12 @@ namespace HL_Smoke
         public void b_Primary_Send_Panel()
         {
 
-            string receiver_name = "receiver_smtp";
+            string receiver_name = "receiver1";
             string primary_message = "Test Automation Message";
             string response_action_name = "Test Response Action";
+
+            create_messenger("hipadm_cmd");
+            create_receiver("hipadm_cmd");
 
             check_driver_type(driver_type, "send", "Primary Send", "Send");
 
@@ -486,7 +530,7 @@ namespace HL_Smoke
         [Test]
         public void d_Escalation_Send_Panel()
         {
-            string receiver_name = "receiver_smtp";
+            string receiver_name = "receiver1";
             string msg = "hello escalation send panel";
 
             check_driver_type(driver_type, "send", "Escalation Send", "Send");

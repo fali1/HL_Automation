@@ -8,7 +8,7 @@ Place your required browser on the first position in Browser.xml.
 Push Notifications.txt file(for Breadth cycle)
 ---------------------------
 
-Provide all the paths for push notification in the following sequence:
+Provide all the paths for push notification in the following sequence for HNP module:
 
 SSL_Certificate path
 Private_Key path
@@ -50,3 +50,7 @@ directory path
 hipadm_cmd.txt file
 -----------------------
 hiplink bin folder path
+
+image_url.txt
+---------------
+Path of image to be selected on send panel

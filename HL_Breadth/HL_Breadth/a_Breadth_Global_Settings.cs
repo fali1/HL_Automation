@@ -88,6 +88,7 @@ namespace HL_Breadth
             //     System.Diagnostics.Debugger.Launch();// launch debugger
 
             string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
+
             browser_name = get_browser();// get browser name ( firefox , safari , chrome , internetexplorer )
             Console.WriteLine("Browser Name got from xml file:" + " " + browser_name);
 
@@ -102,11 +103,13 @@ namespace HL_Breadth
                     break;
 
                 case "chrome":
-                    driver = new ChromeDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch chrome browser
+                    ChromeOptions options = new ChromeOptions();
+                    options.AddArguments("test-type");
+                    driver = new ChromeDriver(@".\drivers", options);
                     break;
 
                 case "internetexplorer":
-                    driver = new InternetExplorerDriver(@"C:\Users\fali\Documents\Visual Studio 2012\Projects\HL_Smoke\HL_Smoke\bin\Debug"); // launch IE browser
+                    driver = new InternetExplorerDriver(@".\drivers"); // launch IE browser
                     break;
             }
 
@@ -136,6 +139,7 @@ namespace HL_Breadth
             driver_type = driver.GetType().ToString();// get driver type ( firefox , safari , chrome , internetexplorer )
 
             Console.WriteLine("Driver Type:" + " " + driver_type);
+
             // Read each line of the file into a string array. Each element 
             // of the array is one line of the file. 
 
