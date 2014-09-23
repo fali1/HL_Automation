@@ -1,3 +1,4 @@
 cd /d "%1"
-hipadm.exe -addmessenger -adminusername admin -adminpassword admin  -name abc -type smtp -interval 10s -queuename default
+"C:\Program Files (x86)\Hiplink\bin"
 pause
+exit

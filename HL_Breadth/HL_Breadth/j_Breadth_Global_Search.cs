@@ -494,6 +494,7 @@ namespace HL_Breadth
         {
             try
             {
+                driver.FindElement(By.XPath("//a[text()='Logout']")).Click();
                 driver.Quit();
             }
             catch (Exception)

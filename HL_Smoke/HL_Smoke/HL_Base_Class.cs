@@ -265,7 +265,7 @@ namespace HL_Smoke
                 // '/d' will change the directory and '%1' will get the complete path till hiplink bin
                 @"cd /d ""%1""",
                 receiver_cmd[0],
-                @"pause"
+                @"exit"
             };
 
             //Create a File Path
@@ -417,7 +417,8 @@ namespace HL_Smoke
                 // '/d' will change the directory and '%1' will get the complete path till hiplink bin
                 @"cd /d ""%1""",
                 messenger_cmd[0],
-                @"pause"
+                @"pause",
+                @"exit"
             };
 
             //Create a File Path

@@ -31,7 +31,7 @@ namespace HL_Breadth
     public class d_Breadth_Send_Panels : HL_Base_Class
     {
 
-        private IWebDriver driver;
+    //    private IWebDriver driver;
 
         private StringBuilder verificationErrors;
 
@@ -49,26 +49,16 @@ namespace HL_Breadth
 
         public string driver_type;
 
-        string browser_type;
+   //     string browser_type;
 
-        string browser_name;
+    //    string browser_name;
 
         string user_label;
 
         string trimmed_user_label;
 
         string create_directory_path = @".\Screenshots_Testcase_Results";
-
-        string create_directory_path_directory = @"C:\Program Files (x86)\Hiplink Software\HipLink\new_directory";
-
-        int test_result_exist = 0;
-
         string create_directory_path_with_time;
-
-        string new_dir = "new_directory";
-
-        string messenger_name = "smtp_messenger";
-
         string carrier_name = "smtp_carrier";
 
 
@@ -87,7 +77,7 @@ namespace HL_Breadth
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-             System.Diagnostics.Debugger.Launch();// launch debugger
+            // System.Diagnostics.Debugger.Launch();// launch debugger
 
              string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
 
@@ -177,7 +167,7 @@ namespace HL_Breadth
             driver.FindElement(By.Id("password")).SendKeys(login_pwd);
 
             driver.FindElement(By.CssSelector("a.c_btn_large1.login_button")).Click();// user login button
-            driver.FindElement(By.Id("btnOk")).Click();
+            WaitForElementToExist("entityTitle", driver);
 
             Thread.Sleep(3000);
 
@@ -196,57 +186,7 @@ namespace HL_Breadth
             verificationErrors = new StringBuilder();
         }
 
-        [Test]
-        public void aa_test()
-        {
-
-            string[] lines_local= read_from_file("hipadm_cmd");
-            //Build Commands - You may have to play with the syntax
-            // on executing the batch file , in whch the following content will be written ,
-            // first directory will be Changed using '%1', to the specified path defined in Arguments
-            // then hipadm cmnd will be concatinated in th cmd prompt
-            // then it will take pause
-
-    
-            string[] cmdBuilder = new string[] 
-      
-            {
-                // '/d' will change the directory and '%1' will get the complete path till hiplink bin
-                @"cd /d ""%1""",
-                @"hipadm.exe -addreceiver -adminusername admin -adminpassword admin -receivername r1  -receivertype alpha -pin testm703@gmail.com -carrier smtp_carrier -department Default",
-                @"pause"
-            };
-            
-            //Create a File Path
-            string BatFile = @".\add_receiver.bat";
-
-            //Create Stream to write to file.
-            StreamWriter sWriter = new StreamWriter(BatFile);
-
-            foreach (string cmd in cmdBuilder) 
-            {
-                sWriter.WriteLine(cmd); 
-            }
-            
-            sWriter.Close();
-
-            //Run your Batch File & Remove it when finished.
-
-            Process p = new Process();
-            ProcessStartInfo ps = new ProcessStartInfo();
-   
-            ps.CreateNoWindow = true;
-            ps.UseShellExecute = true;
-            ps.FileName = @".\add_receiver.bat"; // this batch file will be executed
-            ps.Arguments = lines_local[0]; //this argument will be replaced by '%1' in batch file created bove
-            p.StartInfo = ps;
-            p.Start();
-            p.WaitForExit();
-            // File.Delete(@".\add_receiver.bat");
-   
-            
-        }
-
+     
 
         [Test]
         public void a_Services_Settings_Panel()
@@ -465,7 +405,7 @@ namespace HL_Breadth
                 
                 Console.WriteLine("array_list_text" + array_list[i]);
 
-                Assert.AreEqual(true , driver.FindElement(By.XPath("(//ul[@class='group_recipient_list']/li/span[@class='reciever g_r_l_name'])[" + j + "]")).Text.StartsWith("a"));
+                Assert.AreEqual(true , driver.FindElement(By.XPath("(//ul[@class='group_recipient_list']/li/span[@class='reciever g_r_l_name'])[" + j + "]")).Text.StartsWith("r"));
 
                 
             }
@@ -948,7 +888,7 @@ namespace HL_Breadth
             driver.FindElement(By.Id("moveItemRight")).Click();
             Thread.Sleep(1000);
 
-            driver.FindElement(By.XPath("//span[text()='aa_test_receiver']")).Click();
+            driver.FindElement(By.XPath("//span[text()='receiver_smtp_send']")).Click();
             driver.FindElement(By.Id("moveItemRight")).Click();
             Thread.Sleep(1000);
 
@@ -1083,142 +1023,6 @@ namespace HL_Breadth
 
 
 
-
-        public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 
-        {
-
-            Thread.Sleep(2000);
-
-            if (drivertype.ToString() == "OpenQA.Selenium.Safari.SafariDriver") //for safari
-            {
-
-                Console.WriteLine("if clause ....");
-                Thread.Sleep(2000);
-
-                driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
-
-
-
-                driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
-                Thread.Sleep(2000);
-
-
-
-            }
-
-            else if (drivertype.ToString() == "OpenQA.Selenium.Chrome.ChromeDriver" || drivertype.ToString() == "OpenQA.Selenium.Firefox.FirefoxDriver") //for firefox and chrome
-            {
-
-                Console.WriteLine("using hover func() ....");
-                Thread.Sleep(2000);
-
-                //a[contains(text(),'On-Duty')])[2]
-
-                driver.FindElement(By.XPath("//li[@id='" + id_name + "']/a[text()='" + a_text + "']")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
-
-
-
-                Actions a1c = new Actions(driver);
-                Thread.Sleep(2000);
-
-                a1c.MoveToElement(driver.FindElement(By.XPath("//div[@class='footer']"))).Perform();
-                Thread.Sleep(3000);
-
-
-
-                driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
-                Thread.Sleep(2000);
-
-                /*
-                if (link_text.Equals("Escalation"))
-                {
-                    driver.FindElement(By.XPath("(//a[contains(text(),'"+link_text+"')])[4]")).Click();
-                    Thread.Sleep(2000);
-                }
-                else
-                {
-                    driver.FindElement(By.XPath("(//a[text()='" + link_text + "'])[2]")).Click();
-                    Thread.Sleep(2000);
-                }
-                */
-
-
-
-                driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
-
-                hover_func(id_name, link_text, a_text);
-                Thread.Sleep(2000);
-
-            }
-
-            else // for IE
-            {
-
-                // drivertype.ToString() == "OpenQA.Selenium.IE.InternetExplorerDriver"
-
-
-
-                hover_func(id_name, link_text, a_text);
-                Thread.Sleep(2000);
-            }
-
-        }
-
-
-
-        public void hover_func(string id_name, string link_text, string a_text)
-        {
-
-            //------ Hover functionality and click ------
-
-            var hoveritem = driver.FindElement(By.Id(id_name));
-
-            Actions action1 = new Actions(driver); //simply my webdriver
-            Thread.Sleep(2000);
-
-            action1.MoveToElement(hoveritem).Perform(); //move to list element that needs to be hovered
-
-            Thread.Sleep(3000);
-
-            driver.FindElement(By.XPath("(//a[text()='" + link_text + "'])[1]")).Click();
-            Thread.Sleep(3000);
-
-
-            //------ Focus out the mouse to disappear hovered dialog ------
-
-            Actions action2 = new Actions(driver);
-            Thread.Sleep(2000);
-
-            action2.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
-            Thread.Sleep(3000);
-
-
-        }
-
-        public string[] read_from_file(string file_name)
-        {
-            // Read each line of the file into a string array. Each element 
-            // of the array is one line of the file. 
-
-            string[] lines = System.IO.File.ReadAllLines(@".\" + file_name + ".txt");
-
-            // Display the file contents by using a foreach loop.
-            System.Console.WriteLine("Contents of " + file_name + ".txt = ");
-            foreach (string line in lines)
-            {
-                // Use a tab to indent each line of the file.
-                Console.WriteLine("\n" + line);
-            }
-
-            return lines;
-        }
-
-
-
-
         public void takescreenshot(string suffix)
         {
 
@@ -1230,36 +1034,7 @@ namespace HL_Breadth
 
         }
 
-        public string get_browser() // Get browser name from Browsers.xml file
-        {
-
-            using (XmlTextReader reader = new XmlTextReader(@".\Browsers.xml"))
-            {
-
-                while (reader.Read())
-                {
-
-                    if (reader.IsStartElement())
-                    {
-
-                        if (reader.Name == "browser")
-                        {
-
-                            browser_type = reader.ReadString(); //read browser name under <browser> tag
-                            Console.WriteLine("browser: " + browser_type);
-                            break;
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-            return browser_type;
-        }
-
+   
         public string random_alphanum(string alphanumeric)
         {
 

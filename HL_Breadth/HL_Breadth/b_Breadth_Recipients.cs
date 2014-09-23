@@ -31,7 +31,7 @@ namespace HL_Breadth
     public class b_Breadth_Recipients : HL_Base_Class
     {
 
-        private IWebDriver driver;
+    //    private IWebDriver driver;
 
         private StringBuilder verificationErrors;
 
@@ -49,9 +49,9 @@ namespace HL_Breadth
 
         public string driver_type;
 
-        string browser_type;
+   //     string browser_type;
 
-        string browser_name;
+   //     string browser_name;
 
         string user_label;
 
@@ -106,7 +106,7 @@ namespace HL_Breadth
 
             // driver = new FirefoxDriver();// launch firefox browser
 
-              System.Diagnostics.Debugger.Launch();// launch debugger
+            //  System.Diagnostics.Debugger.Launch();// launch debugger
 
               string[] lines_local = read_from_file("login_credentials"); // return all the data in the form of array
 
@@ -1097,6 +1097,8 @@ namespace HL_Breadth
             string owner_name = "admin";
             string receiver_name = "receiver_smtp";
 
+        //    create_receiver("hipadm_cmd_receiver");
+
             check_driver_type(driver_type, "recipients", "Broadcast", "Recipients");
 
             Assert.AreEqual("Broadcast Groups", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);  //verifying page name
@@ -1924,8 +1926,7 @@ namespace HL_Breadth
             driver.FindElement(By.LinkText("Close")).Click();
             Thread.Sleep(2000);
 
-            Console.WriteLine("Grid Text:" + " " + driver.FindElement(By.XPath("//div[@id='divGrid_idGridDataNode']")).Text);
-
+        
             if (!(driver.FindElement(By.XPath("//div[@class='mCSB_container mCS_no_scrollbar']")).Text.Contains(follow_me_group_name)))
             {
 
@@ -2436,145 +2437,6 @@ namespace HL_Breadth
 
 
 
-
-
-        public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 
-        {
-
-            Thread.Sleep(2000);
-
-            if (drivertype.ToString() == "OpenQA.Selenium.Safari.SafariDriver") //for safari
-            {
-
-                Console.WriteLine("if clause ....");
-                Thread.Sleep(2000);
-
-                driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
-
-
-
-                driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
-                Thread.Sleep(2000);
-
-
-
-            }
-
-            else if (drivertype.ToString() == "OpenQA.Selenium.Chrome.ChromeDriver" || drivertype.ToString() == "OpenQA.Selenium.Firefox.FirefoxDriver") //for firefox and chrome
-            {
-
-                Console.WriteLine("using hover func() ....");
-                Thread.Sleep(2000);
-
-                WaitForElementToExist(id_name, driver);
-
-                //a[contains(text(),'On-Duty')])[2]
-
-                driver.FindElement(By.XPath("//li[@id='" + id_name + "']/a[text()='" + a_text + "']")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
-
-
-
-                Actions a1c = new Actions(driver);
-                Thread.Sleep(2000);
-
-                a1c.MoveToElement(driver.FindElement(By.XPath("//div[@class='footer']"))).Perform();
-                Thread.Sleep(3000);
-
-
-
-                driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
-                Thread.Sleep(2000);
-
-                /*
-                if (link_text.Equals("Escalation"))
-                {
-                    driver.FindElement(By.XPath("(//a[contains(text(),'"+link_text+"')])[4]")).Click();
-                    Thread.Sleep(2000);
-                }
-                else
-                {
-                    driver.FindElement(By.XPath("(//a[text()='" + link_text + "'])[2]")).Click();
-                    Thread.Sleep(2000);
-                }*/
-
-
-
-                driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
-
-                hover_func(id_name, link_text, a_text);
-                Thread.Sleep(2000);
-
-            }
-
-            else // for IE
-            {
-
-                // drivertype.ToString() == "OpenQA.Selenium.IE.InternetExplorerDriver"
-
-
-
-                hover_func(id_name, link_text, a_text);
-                Thread.Sleep(2000);
-            }
-
-        }
-
-
-
-        public void hover_func(string id_name, string link_text, string a_text)
-        {
-
-            //------ Hover functionality and click ------
-
-            WaitForElementToExist(id_name, driver);
-
-            var hoveritem = driver.FindElement(By.Id(id_name));
-
-            Actions action1 = new Actions(driver); //simply my webdriver
-            Thread.Sleep(5000);
-
-            action1.MoveToElement(hoveritem).Perform(); //move to list element that needs to be hovered
-
-            WaitForElementToExistUsingLinkText(link_text, driver);
-
-            driver.FindElement(By.XPath("(//a[text()='" + link_text + "'])[1]")).Click();
-            Thread.Sleep(3000);
-
-
-            //------ Focus out the mouse to disappear hovered dialog ------
-
-            Actions action2 = new Actions(driver);
-            Thread.Sleep(5000);
-
-            action2.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
-            Thread.Sleep(3000);
-
-
-        }
-
-        public static void WaitForElementToExist(string ID, IWebDriver driver)
-        {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
-            wait.Until<bool>((d) =>
-            {
-                try
-                {
-                    // If the find succeeds, the element exists, and
-                    // we want the element to *not* exist, so we want
-                    // to return true when the find throws an exception.
-                    IWebElement element = d.FindElement(By.Id(ID));
-                    return true;
-                }
-                catch (NoSuchElementException)
-                {
-                    return false;
-                }
-            });
-        }
-
         public static void WaitForElementToExistUsingLinkText(string link_text, IWebDriver driver)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
@@ -2595,25 +2457,6 @@ namespace HL_Breadth
             });
         }
 
-        public string[] read_from_file(string file_name)
-        {
-            // Read each line of the file into a string array. Each element 
-            // of the array is one line of the file. 
-
-            string[] lines = System.IO.File.ReadAllLines(@".\" + file_name + ".txt");
-
-            // Display the file contents by using a foreach loop.
-            System.Console.WriteLine("Contents of " + file_name + ".txt = ");
-            foreach (string line in lines)
-            {
-                // Use a tab to indent each line of the file.
-                Console.WriteLine("\n" + line);
-            }
-
-            return lines;
-        }
-
-
 
 
         public void takescreenshot(string suffix)
@@ -2627,35 +2470,7 @@ namespace HL_Breadth
 
         }
 
-        public string get_browser() // Get browser name from Browsers.xml file
-        {
-
-            using (XmlTextReader reader = new XmlTextReader(@".\Browsers.xml"))
-            {
-
-                while (reader.Read())
-                {
-
-                    if (reader.IsStartElement())
-                    {
-
-                        if (reader.Name == "browser")
-                        {
-
-                            browser_type = reader.ReadString(); //read browser name under <browser> tag
-                            Console.WriteLine("browser: " + browser_type);
-                            break;
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-            return browser_type;
-        }
+      
 
         public string random_alphanum(string alphanumeric)
         {
@@ -2673,6 +2488,7 @@ namespace HL_Breadth
         {
             try
             {
+                driver.FindElement(By.XPath("//a[text()='Logout']")).Click();
                 driver.Quit();
             }
             catch (Exception)

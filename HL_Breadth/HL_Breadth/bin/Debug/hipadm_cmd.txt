@@ -1,1 +1,1 @@
-"C:\Program Files (x86)\Hiplink\bin"
+"C:\Program Files (x86)\Hiplink Software\Hiplink\bin"
