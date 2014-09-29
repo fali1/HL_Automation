@@ -393,7 +393,7 @@ namespace HL_Breadth
             driver.FindElement(By.Id("tt_interactive_filters")).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("//ul[@id='recipientLetterTool']/li[text()='A']")).Click();
+            driver.FindElement(By.XPath("//ul[@id='recipientLetterTool']/li[text()='R']")).Click();
             Thread.Sleep(2000);
 
             Console.WriteLine("Count:" + driver.FindElements(By.XPath("//ul[@class='group_recipient_list']/li/span[@class='reciever g_r_l_name']")).Count + "*");
@@ -407,7 +407,6 @@ namespace HL_Breadth
 
                 Assert.AreEqual(true , driver.FindElement(By.XPath("(//ul[@class='group_recipient_list']/li/span[@class='reciever g_r_l_name'])[" + j + "]")).Text.StartsWith("r"));
 
-                
             }
 
 
@@ -436,6 +435,7 @@ namespace HL_Breadth
             driver.FindElement(By.XPath("//div[@id='testing']/b")).Click();//opening Advanced Messaging Parameters
 
             driver.FindElement(By.XPath("(//a[@class='selector'])[3]")).Click();// opening severity dropdown
+            WaitForChrome(5000,browser_name);
 
             driver.FindElement(By.XPath("//li[text()='Important']")).Click();// selecting severity as Important
 
@@ -450,6 +450,7 @@ namespace HL_Breadth
             driver.FindElement(By.XPath("//div[@id='advOptPanel']/div/fieldset[2]/div[3]/div/ul/li[3]")).Click();// selecting '02'
 
             driver.FindElement(By.XPath("//div[@id='response2wayPanel']/div[1]/b")).Click();// opening 2way Responses section
+            WaitForChrome(5000,browser_name);
 
             driver.FindElement(By.Id("txtRespName")).Clear();
 
@@ -644,6 +645,7 @@ namespace HL_Breadth
             driver.FindElement(By.XPath("//div[@id='testing']/b")).Click();//opening Advanced Messaging Parameters
 
             driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click();// opening severity dropdown
+            WaitForChrome(5000, browser_name);
 
             driver.FindElement(By.XPath("//li[text()='Important']")).Click();// selecting severity as Important
 
@@ -916,6 +918,7 @@ namespace HL_Breadth
             driver.FindElement(By.XPath("//div[@id='testing']/b")).Click();//opening Advanced Messaging Parameters
 
             driver.FindElement(By.XPath("(//a[@class='selector'])[4]")).Click();// opening severity dropdown
+            WaitForChrome(5000, browser_name);
 
             driver.FindElement(By.XPath("//li[text()='Important']")).Click();// selecting severity as Important
 

@@ -435,9 +435,11 @@ namespace HL_Breadth
             driver.FindElement(By.Id("txtResponseText")).SendKeys("ra1");
 
             driver.FindElement(By.Id("respSave")).Click();
+            WaitForChrome(5000,browser_name);
 
             driver.FindElement(By.Id("btnSaveTemp")).Click();
-            Thread.Sleep(1000);
+            WaitForChrome(5000, browser_name);
+            Thread.Sleep(2000);
 
             driver.FindElement(By.Id("btnCancel")).Click();
             Thread.Sleep(1000);

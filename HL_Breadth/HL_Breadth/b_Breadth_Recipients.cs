@@ -155,7 +155,7 @@ namespace HL_Breadth
                 Directory.CreateDirectory(create_directory_path_with_time);
             }
 
-            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromMilliseconds(25000));//wait for request 
+            driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(60));//wait for request 
 
             driver_type = driver.GetType().ToString();// get driver type ( firefox , safari , chrome , internetexplorer )
 
@@ -905,9 +905,7 @@ namespace HL_Breadth
             string receiver_name = "receiver_smtp";
             string receiver_name_2 = "receiver_new_smtp";
             string receiver_name_2_edited = "edited_receiver_smtp_2";
-            string receiver_name_3 = "a_test_receiver";
-            string receiver_name_4 = "aa_test_receiver";
-
+            
             string receiver_description = "Receiver Description";
             string receiver_description_2 = "Receiver Description 2";
             string receiver_description_edited = "Receiver Description Edited";
@@ -1097,7 +1095,7 @@ namespace HL_Breadth
             string owner_name = "admin";
             string receiver_name = "receiver_smtp";
 
-        //    create_receiver("hipadm_cmd_receiver");
+            create_receiver("hipadm_cmd_receiver");
 
             check_driver_type(driver_type, "recipients", "Broadcast", "Recipients");
 
@@ -1249,12 +1247,6 @@ namespace HL_Breadth
                     driver.FindElement(By.XPath("//a[text()='Define Members']")).Click(); //Members tab
 
                     Thread.Sleep(2000);
-
-                    driver.FindElement(By.XPath("//li[text()='" + receiver_name + "']")).Click();
-                    Thread.Sleep(5000);
-
-                    driver.FindElement(By.Id("addRec")).Click();
-                    Thread.Sleep(3000);
 
                     driver.FindElement(By.Id("btnSaveTabTwo")).Click();
 
@@ -1568,7 +1560,7 @@ namespace HL_Breadth
             driver.FindElement(By.XPath("//span[text()='Alert this owner for membership changes']")).Click(); //Alert this owner for membership changes checkbox
 
             driver.FindElement(By.Id("btnSaveTabOne")).Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
 
             driver.FindElement(By.XPath("//a[text()='Define Members']")).Click(); //Members tab
             Thread.Sleep(2000);

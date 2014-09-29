@@ -404,6 +404,7 @@ namespace HL_Breadth
             driver.FindElement(By.XPath("//*[@id='pin']/div/div[2]/div/div[2]/div/div/fieldset/div[2]/input")).SendKeys("SMTP_Carrier");
 
             driver.FindElement(By.Id("btnsave")).Click();
+            
             Thread.Sleep(2000);
             takescreenshot("Email Gateway");
 
@@ -1168,7 +1169,7 @@ namespace HL_Breadth
 
             driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click(); //schedule type
 
-            driver.FindElement(By.XPath(".//*[@id='light']/div[2]/div[2]/div/ul/li[text()='Monthly']")).Click();
+            driver.FindElement(By.XPath("//li[text()='Monthly']")).Click();
 
             driver.FindElement(By.Id("sname")).Clear();
             driver.FindElement(By.Id("sname")).SendKeys(schedule_template_name); //schedule template name
@@ -1183,8 +1184,10 @@ namespace HL_Breadth
             Thread.Sleep(2000);
 
             driver.FindElement(By.Id("startpicker")).Click();//range start from
+            WaitForChrome(5000, browser_name);
 
             driver.FindElement(By.LinkText("14")).Click();
+            WaitForChrome(5000, browser_name);
 
             driver.FindElement(By.XPath(".//*[@class='end_after_label']")).Click(); //radio button 'End After'
 
@@ -1210,7 +1213,7 @@ namespace HL_Breadth
 
                 driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click(); //schedule type
 
-                driver.FindElement(By.XPath(".//*[@id='light']/div[2]/div[2]/div/ul/li[text()='Monthly']")).Click();
+                driver.FindElement(By.XPath("//li[text()='Monthly']")).Click();
 
                 driver.FindElement(By.Id("sname")).Clear();
                 driver.FindElement(By.Id("sname")).SendKeys(schedule_template_name_new); //schedule template name
@@ -1227,8 +1230,10 @@ namespace HL_Breadth
                 driver.FindElement(By.Id("startpicker")).Click();//range start from
 
                 driver.FindElement(By.LinkText("14")).Click();
+                WaitForChrome(5000, browser_name);
 
                 driver.FindElement(By.XPath(".//*[@class='end_after_label']")).Click(); //radio button 'End After'
+                WaitForChrome(5000, browser_name);
 
                 driver.FindElement(By.Id("txtOccurences")).Clear();
                 driver.FindElement(By.Id("txtOccurences")).SendKeys("3");
@@ -1241,12 +1246,13 @@ namespace HL_Breadth
 
                     // EDITING SECOND ADDED SCHEDULE TEMPLATE
                     driver.FindElement(By.XPath("(//a[@class='row_action_edit'])[1]")).Click();
-
+                    WaitForChrome(5000, browser_name);
                  
                     driver.FindElement(By.Id("sname")).Clear();
                     driver.FindElement(By.Id("sname")).SendKeys(schedule_template_name_new_edited); //schedule template name
 
                     driver.FindElement(By.Id("saveScheduleTemplate")).Click();
+                    WaitForChrome(5000, browser_name);
 
                     if (driver.FindElement(By.XPath(".//*[@id='gridDiv']/table/tbody")).Text.Contains(schedule_template_name_new_edited))
                     {
