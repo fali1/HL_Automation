@@ -755,6 +755,7 @@ namespace HL_Breadth
 
 
             driver.FindElement(By.Id("btnSend")).Click();
+            WaitForChrome(5000,browser_name);
             Thread.Sleep(2000);
 
             takescreenshot("Fax_Send_Panel");

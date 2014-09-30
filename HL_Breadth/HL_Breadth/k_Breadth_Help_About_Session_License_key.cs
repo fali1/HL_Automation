@@ -222,7 +222,7 @@ namespace HL_Breadth
             Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[@class='product_name']")).Text + "*");
 
             if (!(driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[@class='product_name']")).Text.Contains("HipLink") &&
-                driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[@class='version']")).Text.Contains("4.7") &&
+                driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[@class='version']")).Text.Contains("5.0") &&
                 driver.FindElement(By.XPath("//div[@class='license_table']/ul/li[4]")).Text.Contains("Full")))
             {
                 Assert.Fail("License page Failed...");
@@ -563,6 +563,7 @@ namespace HL_Breadth
         {
             try
             {
+                WaitForChrome(5000, browser_name);
                 driver.FindElement(By.XPath("//a[text()='Logout']")).Click();
                 driver.Quit();
             }

@@ -278,6 +278,8 @@ namespace HL_Breadth
             Thread.Sleep(2000);
             driver.FindElement(By.LinkText("User Group")).Click();
             Thread.Sleep(2000);
+            WaitForChrome(5000,browser_name);
+
             if (driver.FindElement(By.XPath("(//div[@class='result-row-title'])[2]")).Text.Contains(user_group))
             {
                 Console.WriteLine("User Group record fetched ...");
@@ -305,12 +307,12 @@ namespace HL_Breadth
             Thread.Sleep(2000);
             if (driver.FindElement(By.XPath("(//div[@class='result-row-title'])[2]")).Text.Contains(receiver_group))
             {
-                Console.WriteLine("User Group record fetched ...");
+                Console.WriteLine("Receiver Group record fetched ...");
                 driver.FindElement(By.Id("btnClose")).Click();
             }
             else
             {
-                Assert.Fail("User Group record not fetched ...");
+                Assert.Fail("Receiver Group record not fetched ...");
             }
 
 
@@ -319,124 +321,7 @@ namespace HL_Breadth
         }
         
 
-
-
-        public void check_driver_type(string drivertype, string id_name, string link_text, string a_text) //drivertype= browser , id_name = landing page , link_text = panel(e.g Add user page) 
-        {
-
-            Thread.Sleep(2000);
-
-            if (drivertype.ToString() == "OpenQA.Selenium.Safari.SafariDriver") //for safari
-            {
-
-                Console.WriteLine("if clause ....");
-                Thread.Sleep(2000);
-
-                driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
-
-
-
-                driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
-                Thread.Sleep(2000);
-
-
-
-            }
-
-            else if (drivertype.ToString() == "OpenQA.Selenium.Chrome.ChromeDriver" || drivertype.ToString() == "OpenQA.Selenium.Firefox.FirefoxDriver") //for firefox and chrome
-            {
-
-                Console.WriteLine("using hover func() ....");
-                Thread.Sleep(2000);
-
-                //a[contains(text(),'On-Duty')])[2]
-
-                driver.FindElement(By.XPath("//li[@id='" + id_name + "']/a[text()='" + a_text + "']")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
-
-
-
-                Actions a1c = new Actions(driver);
-                Thread.Sleep(2000);
-
-                a1c.MoveToElement(driver.FindElement(By.XPath("//div[@class='footer']"))).Perform();
-                Thread.Sleep(3000);
-
-
-
-                driver.FindElement(By.XPath("//div[@class='category']/ul/li/a[text()='" + link_text + "']")).Click(); //goto particular panel w.r.t link
-                Thread.Sleep(2000);
-
-                /*
-                if (link_text.Equals("Escalation"))
-                {
-                    driver.FindElement(By.XPath("(//a[contains(text(),'"+link_text+"')])[4]")).Click();
-                    Thread.Sleep(2000);
-                }
-                else
-                {
-                    driver.FindElement(By.XPath("(//a[text()='" + link_text + "'])[2]")).Click();
-                    Thread.Sleep(2000);
-                }*/
-
-
-
-                driver.FindElement(By.XPath(".//*[@id='" + id_name + "']/a")).Click(); //goto landing for particular ID
-                Thread.Sleep(2000);
-
-                hover_func(id_name, link_text, a_text);
-                Thread.Sleep(2000);
-
-            }
-
-            else // for IE
-            {
-
-                // drivertype.ToString() == "OpenQA.Selenium.IE.InternetExplorerDriver"
-
-
-
-                hover_func(id_name, link_text, a_text);
-                Thread.Sleep(2000);
-            }
-
-        }
-
-
-
-        public void hover_func(string id_name, string link_text, string a_text)
-        {
-
-            //------ Hover functionality and click ------
-
-            var hoveritem = driver.FindElement(By.Id(id_name));
-
-            Actions action1 = new Actions(driver); //simply my webdriver
-            Thread.Sleep(2000);
-
-            action1.MoveToElement(hoveritem).Perform(); //move to list element that needs to be hovered
-
-            Thread.Sleep(3000);
-
-            driver.FindElement(By.XPath("(//a[text()='" + link_text + "'])[1]")).Click();
-            Thread.Sleep(3000);
-
-
-            //------ Focus out the mouse to disappear hovered dialog ------
-
-            Actions action2 = new Actions(driver);
-            Thread.Sleep(2000);
-
-            action2.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
-            Thread.Sleep(3000);
-
-
-        }
-
-
-
-
+  
         public void takescreenshot(string suffix)
         {
 
@@ -448,36 +333,7 @@ namespace HL_Breadth
 
         }
 
-        public string get_browser() // Get browser name from Browsers.xml file
-        {
-
-            using (XmlTextReader reader = new XmlTextReader(@".\Browsers.xml"))
-            {
-
-                while (reader.Read())
-                {
-
-                    if (reader.IsStartElement())
-                    {
-
-                        if (reader.Name == "browser")
-                        {
-
-                            browser_type = reader.ReadString(); //read browser name under <browser> tag
-                            Console.WriteLine("browser: " + browser_type);
-                            break;
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-            return browser_type;
-        }
-
+  
         public string random_alphanum(string alphanumeric)
         {
 
@@ -494,6 +350,8 @@ namespace HL_Breadth
         {
             try
             {
+                WaitForChrome(5000,browser_name);
+                driver.FindElement(By.Id("btnClose")).Click();
                 driver.FindElement(By.XPath("//a[text()='Logout']")).Click();
                 driver.Quit();
             }

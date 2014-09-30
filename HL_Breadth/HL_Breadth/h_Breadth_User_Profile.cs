@@ -318,6 +318,7 @@ namespace HL_Breadth
         {
             try
             {
+                WaitForChrome(5000, browser_name);
                 driver.FindElement(By.XPath("//a[text()='Logout']")).Click();
                 driver.Quit();
             }

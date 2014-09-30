@@ -198,16 +198,24 @@ namespace HL_Breadth
             }
 
             // HNP Messenger
+            WaitForChrome(5000, browser_name);
 
             driver.FindElement(By.XPath("//a[text()='Sys Admin']")).Click();
             Thread.Sleep(2000);
+            WaitForChrome(5000,browser_name);
+
+            Actions action = new Actions(driver);
 
             driver.FindElement(By.XPath("//a[text()='Messengers']")).Click();
+            action.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.XPath("//li[text()='Hiplink']")).Click();
+            WaitForChrome(5000,browser_name);
 
-            driver.FindElement(By.XPath("//li[text()='HNP Two-Way']")).Click();
+            driver.FindElement(By.XPath("//li[text()='Hiplink']")).Click();
+            Thread.Sleep(2000);
+
+            driver.FindElement(By.XPath("//li[text()='HNP 2 Way']")).Click();
 
             driver.FindElement(By.Id("btnMsngr")).Click();
             Thread.Sleep(3000);
@@ -227,11 +235,14 @@ namespace HL_Breadth
             Thread.Sleep(2000);
 
             driver.FindElement(By.XPath("//a[text()='Carriers']")).Click();
+            action.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
             Thread.Sleep(2000);
+
+            WaitForChrome(5000, browser_name);
 
             driver.FindElement(By.XPath("//li[text()='Hiplink']")).Click();
 
-            driver.FindElement(By.XPath("//li[text()='HNP Two-Way']")).Click();
+            driver.FindElement(By.XPath("//li[text()='HNP 2 Way']")).Click();
 
             driver.FindElement(By.Id("btnaddcarrier")).Click();
             Thread.Sleep(3000);
@@ -264,6 +275,7 @@ namespace HL_Breadth
             Thread.Sleep(2000);
 
             driver.FindElement(By.XPath("//a[text()='Push Notifications']")).Click();
+            WaitForChrome(5000,browser_name);
 
             driver.FindElement(By.XPath("//span[text()='Enable APNS (Apple Push Notification Service)']")).Click();
 
@@ -311,30 +323,31 @@ namespace HL_Breadth
             Thread.Sleep(1000);
 
             driver.FindElement(By.LinkText("General Policy")).Click(); //opening General Policy page
+            action.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
             Thread.Sleep(2000);
                 
             Assert.AreEqual("General Policy", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
 
             driver.FindElement(By.XPath("//b[text()='Enable General Policy']")).Click();
-            Thread.Sleep(1000);
-
+            
+            Thread.Sleep(2000);
 
             driver.FindElement(By.XPath("(//a[@class='selector'])[1]")).Click();    // Configure permissions
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             driver.FindElement(By.XPath("//li[text()='Yes']")).Click();
 
             driver.FindElement(By.XPath("//a[text()='System Configuration']")).Click(); // System configuration
 
             driver.FindElement(By.XPath("(//a[@class='selector'])[9]")).Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             driver.FindElement(By.XPath("(//li[text()='Yes'])[8]")).Click();
 
             driver.FindElement(By.XPath("//a[text()='Session Configuration']")).Click(); // Session configuration
 
             driver.FindElement(By.XPath("(//a[@class='selector'])[14]")).Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             driver.FindElement(By.XPath("(//li[text()='Yes'])[12]")).Click();
 
@@ -370,6 +383,8 @@ namespace HL_Breadth
 
 
             driver.FindElement(By.LinkText("Activation")).Click(); //opening Activation page
+            action.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
+            Thread.Sleep(2000);
 
             Assert.AreEqual("Activation", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
             Thread.Sleep(2000);
@@ -382,13 +397,15 @@ namespace HL_Breadth
 
                 driver.FindElement(By.LinkText("Services")).Click();
 
+                Thread.Sleep(2000);
+                WaitForChrome(5000,browser_name);
 
 
                 if (IsElementPresent(By.XPath("//*[@id='item_17']/td[2]/a[@class='action service_action_play']"))) //HNP Manager's play button
                 {
 
                     driver.FindElement(By.XPath("//*[@id='item_17']/td[2]/a[@class='action service_action_play']")).Click();
-
+                    WaitForChrome(5000, browser_name);
                     Thread.Sleep(2000);
 
 
@@ -396,7 +413,7 @@ namespace HL_Breadth
                     {
 
                         driver.FindElement(By.XPath("//*[@id='item_17']/td[3]/a[@class='service_action_refresh']")).Click();
-
+                        WaitForChrome(5000, browser_name);
                         Thread.Sleep(2000);
 
                         Console.WriteLine("HNP Manager  Services restarted");
@@ -455,6 +472,7 @@ namespace HL_Breadth
         {
             try
             {
+                WaitForChrome(5000, browser_name);
                 driver.FindElement(By.XPath("//a[text()='Logout']")).Click();
                 driver.Quit();
             }

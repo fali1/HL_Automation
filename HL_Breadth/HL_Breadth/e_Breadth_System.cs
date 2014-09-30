@@ -273,8 +273,10 @@ namespace HL_Breadth
 
                 driver.FindElement(By.XPath("//table[@id='tblsystem']/tbody/tr[1]/td[2]/a[@title='Play']")).Click();
                 Thread.Sleep(2000);
+                WaitForChrome(5000, browser_name);
 
                 driver.FindElement(By.XPath("//table[@id='tblsystem']/tbody/tr[1]/td[3]/a[@title='Restart']")).Click();
+                WaitForChrome(5000, browser_name);
 
                 takescreenshot("System_Attendant_service");
 
@@ -312,7 +314,9 @@ namespace HL_Breadth
 
             check_driver_type(driver_type, "settings", "Email Gateway", "Settings");
 
-            Assert.AreEqual("Email Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1")).Text);
+            Console.WriteLine("*" + driver.FindElement(By.XPath("//div[@class='main_container']/h1/span/span")).Text + "*");
+
+            Assert.AreEqual("Email Gateway", driver.FindElement(By.XPath("//div[@class='main_container']/h1/span/span")).Text);
 
             string[] lines_local = read_from_file("email_gateway_settings"); // return all the data in the form of array
 
@@ -471,6 +475,7 @@ namespace HL_Breadth
                     Thread.Sleep(2000);
 
                     driver.FindElement(By.XPath("//table[@id='tblgateway']/tbody/tr[1]/td[2]/a[@title='Play']")).Click();
+                    WaitForChrome(5000,browser_name);
 
                     driver.FindElement(By.XPath("//table[@id='tblgateway']/tbody/tr[1]/td[3]/a[@title='Restart']")).Click();
 
@@ -562,6 +567,8 @@ namespace HL_Breadth
                 Thread.Sleep(2000);
 
                 driver.FindElement(By.XPath("//table[@id='tblsystem']/tbody/tr[3]/td[2]/a[@title='Play']")).Click();
+                Thread.Sleep(3000);
+                WaitForChrome(5000,browser_name);
 
                 driver.FindElement(By.XPath("//table[@id='tblsystem']/tbody/tr[3]/td[3]/a[@title='Restart']")).Click();
 
@@ -640,6 +647,7 @@ namespace HL_Breadth
                     Thread.Sleep(2000);
 
                     driver.FindElement(By.XPath("//table[@id='tblgateway']/tbody/tr[2]/td[2]/a[@title='Play']")).Click();
+                    WaitForChrome(5000, browser_name);
 
                     driver.FindElement(By.XPath("//table[@id='tblgateway']/tbody/tr[2]/td[3]/a[@title='Restart']")).Click();
 
@@ -696,6 +704,7 @@ namespace HL_Breadth
                     Thread.Sleep(2000);
 
                     driver.FindElement(By.XPath("//table[@id='tblgateway']/tbody/tr[2]/td[2]/a[@title='Play']")).Click();
+                    WaitForChrome(5000,browser_name);
 
                     driver.FindElement(By.XPath("//table[@id='tblgateway']/tbody/tr[2]/td[3]/a[@title='Restart']")).Click();
 
@@ -1485,8 +1494,8 @@ namespace HL_Breadth
             string api_filter_name_new_edited = "edited API new Filter";
 
             string message_filter_name = "Message Filter";
-            string message_filter_name_new = "API new Filter";
-            string message_filter_name_new_edited = "edited API new Filter";
+            string message_filter_name_new = "Message new Filter";
+            string message_filter_name_new_edited = "edited Message new Filter";
 
             /* Adding API Filter */
 
@@ -1588,8 +1597,10 @@ namespace HL_Breadth
             //DELETING SECOND API FILTER
 
             driver.FindElement(By.XPath("(//a[@class='row_action_delete'])[2]")).Click();
+            WaitForChrome(5000, browser_name);
 
             driver.FindElement(By.Id("btnOk")).Click();
+            WaitForChrome(5000, browser_name);
 
             Assert.AreEqual(false, driver.FindElement(By.XPath("(//table[@class='common_light_grid light_grid_content']/tbody)[1]")).Text.Contains(api_filter_name_new_edited));
 
@@ -1691,8 +1702,10 @@ namespace HL_Breadth
             //DELETING SECOND MESSAGE FILTER
 
             driver.FindElement(By.XPath("(//a[@class='row_action_delete'])[3]")).Click();
+            WaitForChrome(5000, browser_name);
 
             driver.FindElement(By.Id("btnOk")).Click();
+            WaitForChrome(5000, browser_name);
 
             Assert.AreEqual(false, driver.FindElement(By.XPath("(//table[@class='common_light_grid light_grid_content']/tbody)[2]")).Text.Contains(message_filter_name_new_edited));
 

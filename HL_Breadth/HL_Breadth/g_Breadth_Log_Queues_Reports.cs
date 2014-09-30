@@ -240,7 +240,8 @@ namespace HL_Breadth
             else
             {
 
-                driver.FindElement(By.Id("divGrid_selectAllRows")).Click();  // Select all/Deselect all checkbox
+                driver.FindElement(By.XPath("//div[@class='header_label dataGridHead']")).Click();  // Select all/Deselect all checkbox
+                Thread.Sleep(2000);
 
                 driver.FindElement(By.Id("selChangeLevel")).Click();
                 Thread.Sleep(2000);
@@ -288,6 +289,11 @@ namespace HL_Breadth
             driver.FindElement(By.Id("administration")).Click();
 
             driver.FindElement(By.LinkText("Logs")).Click();
+            
+            Actions action = new Actions(driver);
+            action.MoveToElement(driver.FindElement(By.Id("lblCustomHeader"))).Perform();
+            
+            WaitForChrome(5000, browser_name);
 
             driver.FindElement(By.XPath("(//a[@class='logs_panel_action_edit'])[1]")).Click();
             Thread.Sleep(2000);
@@ -489,7 +495,8 @@ namespace HL_Breadth
 
                    // Do some operations in the new window and close it 
                    driver.Close();
-
+                   WaitForChrome(5000, browser_name);
+                   
 
                 
                    // Switch "focus" back to the original window. 
@@ -527,6 +534,7 @@ namespace HL_Breadth
             hover_func("reports", "Summary", "Reports");
 
             driver.FindElement(By.Id("send")).Click(); //navigate to send panel
+            WaitForChrome(5000,browser_name);
 
             driver.FindElement(By.XPath(".//*[@id='reports']/a")).Click();
             Thread.Sleep(2000);
@@ -534,6 +542,7 @@ namespace HL_Breadth
             takescreenshot("Reports_Panel");
 
             driver.FindElement(By.XPath("(//a[text()='Summary'])[3]")).Click(); //navigate to summary tab 
+            WaitForChrome(5000,browser_name);
             Thread.Sleep(2000);
 
             takescreenshot("Reports_Panel_Summary");
@@ -619,13 +628,14 @@ namespace HL_Breadth
 
             Assert.AreEqual("Statistics", driver.FindElement(By.Id("main_title")).Text);
 
+            driver.FindElement(By.Id("stats_start_date")).Click();
+            WaitForChrome(5000, browser_name);
+
             driver.FindElement(By.Id("stats_date_filter")).Click();
             Thread.Sleep(2000);
 
-            driver.FindElement(By.Id("stats_start_date")).Click();
-
             driver.FindElement(By.LinkText("Traffic by Messengers")).Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(2000);
 
             driver.FindElement(By.LinkText("Traffic by Time")).Click();
             Thread.Sleep(1000);
@@ -674,6 +684,7 @@ namespace HL_Breadth
         {
             try
             {
+                WaitForChrome(5000,browser_name);
                 driver.FindElement(By.XPath("//a[text()='Logout']")).Click();
                 driver.Quit();
             }
