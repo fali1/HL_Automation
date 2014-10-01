@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="true">
-  <TopNode>[0-1059]D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll</TopNode>
+  <TopNode>[0-1005]HL_Breadth.b_Breadth_Recipients.c_Add_Edit_Delete_Carrier</TopNode>
   <SelectedNode>[0-1031]HL_Breadth.e_Breadth_System.b_Email_Gateway_Settings</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
@@ -11,11 +11,11 @@
     <Node UniqueName="[0-1013]HL_Breadth.c_Breadth_Account" Expanded="true" />
     <Node UniqueName="[0-1020]HL_Breadth.d_Breadth_Send_Panels" Expanded="true" />
     <Node UniqueName="[0-1029]HL_Breadth.e_Breadth_System" Expanded="true" />
-    <Node UniqueName="[0-1040]HL_Breadth.f_Breadth_Hnp" Expanded="true" Checked="true" />
+    <Node UniqueName="[0-1040]HL_Breadth.f_Breadth_Hnp" Expanded="true" />
     <Node UniqueName="[0-1042]HL_Breadth.g_Breadth_Log_Queues_Reports" Expanded="true" />
     <Node UniqueName="[0-1048]HL_Breadth.h_Breadth_User_Profile" Expanded="true" />
     <Node UniqueName="[0-1050]HL_Breadth.i_Breadth_Shortcut_keys" Expanded="true" />
-    <Node UniqueName="[0-1052]HL_Breadth.j_Breadth_Global_Search" Expanded="true" />
+    <Node UniqueName="[0-1052]HL_Breadth.j_Breadth_Global_Search" Expanded="true" Checked="true" />
     <Node UniqueName="[0-1054]HL_Breadth.k_Breadth_Help_About_Session_License_key" Expanded="true" />
   </Nodes>
 </VisualState>

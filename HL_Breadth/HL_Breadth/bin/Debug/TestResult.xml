@@ -1,18 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" total="1" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-09-30" time="20:10:43">
+<test-results name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" total="4" errors="2" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-10-01" time="13:09:41">
   <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5485" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files (x86)\NUnit 2.6.3\bin" machine-name="FAHADALI-PC" user="fali" user-domain="FOLIO3PK" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" executed="True" result="Failure" success="False" time="60.932" asserts="0">
+  <test-suite type="Assembly" name="D:\git_local\HL_Automation\HL_Breadth\HL_Breadth\bin\Debug\HL_Breadth.dll" executed="True" result="Failure" success="False" time="437.364" asserts="0">
     <results>
-      <test-suite type="Namespace" name="HL_Breadth" executed="True" result="Failure" success="False" time="60.914" asserts="0">
+      <test-suite type="Namespace" name="HL_Breadth" executed="True" result="Failure" success="False" time="437.364" asserts="0">
         <results>
-          <test-suite type="TestFixture" name="j_Breadth_Global_Search" executed="True" result="Failure" success="False" time="60.911" asserts="1">
+          <test-suite type="TestFixture" name="b_Breadth_Recipients" executed="True" result="Failure" success="False" time="437.363" asserts="1">
             <results>
-              <test-case name="HL_Breadth.j_Breadth_Global_Search.Global_Search_Panel" executed="True" result="Failure" success="False" time="46.189" asserts="0">
+              <test-case name="HL_Breadth.b_Breadth_Recipients.g_Add_Edit_Delete_On_Duty_Group" executed="True" result="Error" success="False" time="98.545" asserts="1">
                 <failure>
-                  <message><![CDATA[Receiver Group record not fetched ...]]></message>
-                  <stack-trace><![CDATA[at HL_Breadth.j_Breadth_Global_Search.Global_Search_Panel() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\j_Breadth_Global_Search.cs:line 315
+                  <message><![CDATA[System.InvalidOperationException : unknown error: Element is not clickable at point (669, 237). Other element would receive the click: <div class="subnav send_menu">...</div>
+  (Session info: chrome=37.0.2062.124)
+  (Driver info: chromedriver=2.10.267521,platform=Windows NT 6.1 SP1 x86_64)]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1048
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Breadth.b_Breadth_Recipients.g_Add_Edit_Delete_On_Duty_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 1616
+]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case name="HL_Breadth.b_Breadth_Recipients.h_Add_Edit_Delete_Follow_me_Group" executed="True" result="Success" success="True" time="124.851" asserts="1" />
+              <test-case name="HL_Breadth.b_Breadth_Recipients.i_Add_Edit_Delete_Rotate_Group" executed="True" result="Success" success="True" time="130.046" asserts="1" />
+              <test-case name="HL_Breadth.b_Breadth_Recipients.j_Add_Edit_Delete_Subscription_Group" executed="True" result="Error" success="False" time="46.445" asserts="0">
+                <failure>
+                  <message><![CDATA[OpenQA.Selenium.ElementNotVisibleException : element not visible
+  (Session info: chrome=37.0.2062.124)
+  (Driver info: chromedriver=2.10.267521,platform=Windows NT 6.1 SP1 x86_64)]]></message>
+                  <stack-trace><![CDATA[at OpenQA.Selenium.Remote.RemoteWebDriver.UnpackAndThrowOnError(Response errorResponse) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 1064
+at OpenQA.Selenium.Remote.RemoteWebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters) in c:\Projects\webdriver\dotnet\src\webdriver\Remote\RemoteWebDriver.cs:line 865
+at HL_Breadth.HL_Base_Class.hover_func(String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\HL_Base_Class.cs:line 160
+at HL_Breadth.HL_Base_Class.check_driver_type(String drivertype, String id_name, String link_text, String a_text) in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\HL_Base_Class.cs:line 123
+at HL_Breadth.b_Breadth_Recipients.j_Add_Edit_Delete_Subscription_Group() in d:\git_local\HL_Automation\HL_Breadth\HL_Breadth\b_Breadth_Recipients.cs:line 2267
 ]]></stack-trace>
                 </failure>
               </test-case>
